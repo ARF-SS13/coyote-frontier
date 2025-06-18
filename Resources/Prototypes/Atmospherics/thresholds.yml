@@ -19,6 +19,18 @@
     threshold: 1.1
 
 - type: alarmThreshold
+  id: stationTemperatureSauna
+  upperBound: !type:AlarmThresholdSetting
+    threshold: 393.15 # T20C + 200
+  lowerBound: !type:AlarmThresholdSetting
+    threshold: 193.15 # T20C - 100
+  upperWarnAround: !type:AlarmThresholdSetting
+    threshold: 0.9
+  lowerWarnAround: !type:AlarmThresholdSetting
+    threshold: 1.1
+
+
+- type: alarmThreshold
   id: stationPressure
   upperBound: !type:AlarmThresholdSetting
     threshold: 550 # HazardHighPressure from Atmospherics.cs
@@ -39,6 +51,17 @@
     threshold: 0.3
   lowerWarnAround: !type:AlarmThresholdSetting
     threshold: 1.5
+  upperWarnAround: !type:AlarmThresholdSetting
+    threshold: 0.8
+
+- type: alarmThreshold
+  id: stationOxygenSauna
+  lowerBound: !type:AlarmThresholdSetting
+    threshold: 0.08
+  upperBound: !type:AlarmThresholdSetting
+    threshold: 0.3
+  lowerWarnAround: !type:AlarmThresholdSetting
+    threshold: 1.3
   upperWarnAround: !type:AlarmThresholdSetting
     threshold: 0.8
 
