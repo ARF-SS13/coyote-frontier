@@ -15,6 +15,7 @@
   category: Medium
   group: Shipyard
   shuttlePath: /Maps/_NF/Shuttles/gondola.yml
+  guidebookPage: ShipyardGondola
   class:
   - Civilian
   engine:
