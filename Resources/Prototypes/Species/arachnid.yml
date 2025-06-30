@@ -22,6 +22,8 @@
     UndergarmentTop: MobHumanoidAnyMarking
     UndergarmentBottom: MobHumanoidAnyMarking
     Chest: MobArachnidTorso
+    Underwear: MobHumanoidAnyMarking # Floof, add underwear
+    Undershirt: MobHumanoidAnyMarking # Floof, add underwear
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
@@ -45,6 +47,13 @@
   id: MobArachnidMarkingLimits
   onlyWhitelisted: true
   points:
+    Underwear:
+      points: 1
+      required: true
+      defaultMarkings: [ UnderwearBoxers ] # Floof, add underwear
+    Undershirt:
+      points: 1
+      required: false # Floof, add underwear
     Hair:
       points: 0
       required: false

@@ -22,6 +22,8 @@
     UndergarmentTop: MobHumanoidAnyMarking
     UndergarmentBottom: MobHumanoidAnyMarking
     Chest: MobReptilianTorso
+    Underwear: MobHumanoidAnyMarking # Floof, add underwear
+    Undershirt: MobHumanoidAnyMarking # Floof, add underwear
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
@@ -39,6 +41,13 @@
   id: MobReptilianMarkingLimits
   onlyWhitelisted: false
   points:
+    Underwear:
+      points: 1
+      required: true
+      defaultMarkings: [ UnderwearBoxers ] # Floof, add underwear
+    Undershirt:
+      points: 1 # Floof, add underwear
+      required: false
     Hair:
       points: 1
       required: false
