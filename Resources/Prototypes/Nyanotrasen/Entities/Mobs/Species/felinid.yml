@@ -11,6 +11,7 @@
     hideLayersOnEquip: # Frontier
     - Hair # Frontier
     - HeadTop # Frontier
+    initial: Felinid
   - type: Fixtures
     fixtures: # TODO: This needs a second fixture just for mob collisions.
       fix1:

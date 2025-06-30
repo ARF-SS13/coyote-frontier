@@ -106,6 +106,18 @@ public sealed partial class HumanoidAppearanceComponent : Component
     /// </summary>
     [DataField]
     public Dictionary<HumanoidVisualLayers, DisplacementData> MarkingsDisplacement = new();
+
+    /// <summary>
+    ///     The height of this humanoid.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float Height = 1f;
+
+    /// <summary>
+    ///     The width of this humanoid.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float Width = 1f;
 }
 
 [DataDefinition]

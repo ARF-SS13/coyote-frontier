@@ -140,6 +140,8 @@ namespace Content.Shared.Preferences
             string name,
             string flavortext,
             string species,
+            float height,
+            float width,
             int age,
             Sex sex,
             Gender gender,
@@ -155,6 +157,8 @@ namespace Content.Shared.Preferences
             Name = name;
             FlavorText = flavortext;
             Species = species;
+            Height = height;
+            Width = width;
             Age = age;
             Sex = sex;
             Gender = gender;
@@ -175,12 +179,41 @@ namespace Content.Shared.Preferences
             HashSet<ProtoId<AntagPrototype>> antagPreferences,
             HashSet<ProtoId<TraitPrototype>> traitPreferences,
             Dictionary<string, RoleLoadout> loadouts)
-            : this(other.Name, other.FlavorText, other.Species, other.Age, other.Sex, other.Gender, other.BankBalance, other.Appearance, other.SpawnPriority,
+            : this(other.Name, other.FlavorText, other.Species, other.Height, other.Width, other.Age, other.Sex, other.Gender, other.BankBalance, other.Appearance, other.SpawnPriority,
                 jobPriorities, other.PreferenceUnavailable, antagPreferences, traitPreferences, loadouts)
         {
         }
 
         /// <summary>Copy constructor</summary>
+        private HumanoidCharacterProfile(HumanoidCharacterProfile other)
+            : this(other, new Dictionary<string, JobPriority>(other.JobPriorities),
+                new List<string>(other.AntagPreferences), new List<string>(other.TraitPreferences),
+                new List<string>(other.LoadoutPreferences))
+        {
+        }
+
+        public HumanoidCharacterProfile(
+            string name,
+            string flavortext,
+            string species,
+            float height,
+            float width,
+            int age,
+            Sex sex,
+            Gender gender,
+            HumanoidCharacterAppearance appearance,
+            ClothingPreference clothing,
+            BackpackPreference backpack,
+            SpawnPriorityPreference spawnPriority,
+            IReadOnlyDictionary<string, JobPriority> jobPriorities,
+            PreferenceUnavailableMode preferenceUnavailable,
+            IReadOnlyList<string> antagPreferences,
+            IReadOnlyList<string> traitPreferences,
+            IReadOnlyList<string> loadoutPreferences)
+            : this(name, flavortext, species, height, width, age, sex, gender, appearance, clothing, backpack, spawnPriority,
+                new Dictionary<string, JobPriority>(jobPriorities), preferenceUnavailable,
+                new List<string>(antagPreferences), new List<string>(traitPreferences),
+                new List<string>(loadoutPreferences))
         public HumanoidCharacterProfile(HumanoidCharacterProfile other)
             : this(other.Name,
                 other.FlavorText,
@@ -243,10 +276,14 @@ namespace Content.Shared.Preferences
 
             var sex = Sex.Unsexed;
             var age = 18;
+            var height = 1f;
+            var width = 1f;
             if (prototypeManager.TryIndex<SpeciesPrototype>(species, out var speciesPrototype))
             {
                 sex = random.Pick(speciesPrototype.Sexes);
                 age = random.Next(speciesPrototype.MinAge, speciesPrototype.OldAge); // people don't look and keep making 119 year old characters with zero rp, cap it at middle aged
+                height = random.NextFloat(speciesPrototype.MinHeight, speciesPrototype.MaxHeight);
+                width = random.NextFloat(speciesPrototype.MinWidth, speciesPrototype.MaxWidth);
             }
 
             var gender = Gender.Epicene;
@@ -310,6 +347,15 @@ namespace Content.Shared.Preferences
             return new(this) { Species = species };
         }
 
+        public HumanoidCharacterProfile WithHeight(float height)
+        {
+            return new(this) { Height = height };
+        }
+
+        public HumanoidCharacterProfile WithWidth(float width)
+        {
+            return new(this) { Width = width };
+        }
 
         public HumanoidCharacterProfile WithCharacterAppearance(HumanoidCharacterAppearance appearance)
         {
@@ -636,6 +682,8 @@ namespace Content.Shared.Preferences
             Name = name;
             FlavorText = flavortext;
             Age = age;
+            Height = height;
+            Width = width;
             Sex = sex;
             Gender = gender;
             BankBalance = bankBalance;
