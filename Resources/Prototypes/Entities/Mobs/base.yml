@@ -45,6 +45,8 @@
   - type: RequireProjectileTarget
     active: False
   - type: AnimatedEmotes # goob edit - animated emotes
+  - type: OwnInteractionVerbs # EE interaction system
+    allowedVerbs: [] # TODO: define something here, or don't.
 
 - type: entity
   save: false

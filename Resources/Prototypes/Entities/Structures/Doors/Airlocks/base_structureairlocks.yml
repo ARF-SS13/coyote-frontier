@@ -181,6 +181,9 @@
     - Airlocks
     - WirePanels
     - Networking
+  - type: InteractionVerbs # EE interaction system
+    allowedVerbs:
+    - KnockOn
   placement:
     mode: SnapgridCenter
 

@@ -539,6 +539,12 @@ public sealed partial class ClimbSystem : VirtualController
         Climb(uid, uid, climbable, true, component);
     }
 
+    // EE - used in StandingStateSystem
+    public void ForciblyStopClimbing(EntityUid uid, ClimbingComponent? component = null)
+    {
+        StopClimb(uid, component);
+    }
+
     private void OnBuckled(EntityUid uid, ClimbingComponent component, ref BuckledEvent args)
     {
         StopOrCancelClimb(uid, component);

@@ -167,6 +167,9 @@
   - type: StaticPrice
     price: 100 # Frontier: 150<100 - TODO: material value rework
   - type: PryUnpowered
+  - type: InteractionVerbs # EE interaction system
+    allowedVerbs:
+    - KnockOn
 
 - type: entity
   id: BaseSecureWindoor

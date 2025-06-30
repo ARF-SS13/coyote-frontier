@@ -162,6 +162,8 @@ ui-options-function-swap-hands = Swap hands (next)
 ui-options-function-move-stored-item = Move stored item
 ui-options-function-rotate-stored-item = Rotate stored item
 ui-options-function-save-item-location = Save item location
+ui-options-function-toggle-standing = Toggle standing
+ui-options-function-toggle-crawling-under = Toggle crawling under furniture
 ui-options-static-storage-ui = Lock storage window to hotbar
 
 ui-options-function-smart-equip-backpack = Smart-equip to backpack
@@ -401,3 +403,8 @@ ui-options-admin-enable-overlay-starting-job = Show starting job
 ui-options-admin-overlay-merge-distance = Stack merge distance
 ui-options-admin-overlay-ghost-fade-distance = Ghost overlay fade range from mouse
 ui-options-admin-overlay-ghost-hide-distance = Ghost overlay hide range from mouse
+
+## EE - Combat Options
+ui-options-function-look-up = Look up/Take aim
+ui-options-function-auto-get-up = Automatically get up after falling
+ui-options-function-hold-look-up = Hold down the key to aim

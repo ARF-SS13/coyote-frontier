@@ -42,6 +42,9 @@
         acts: ["Destruction"]
   - type: StaticPrice
     price: 100
+  - type: InteractionVerbs # EE interaction system - commented out
+    allowedVerbs:
+    - KnockOn
 
 - type: entity
   id: ComputerFrame

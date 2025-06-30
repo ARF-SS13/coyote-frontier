@@ -258,6 +258,13 @@ binds:
   type: State
   key: V
   mod1: Shift
+- function: ToggleStanding # EE
+  type: State
+  key: R
+- function: ToggleCrawlingUnder # EE
+  type: State
+  mod1: Shift
+  key: R
 - function: ShowDebugConsole
   type: State
   key: Tilde
@@ -630,3 +637,8 @@ binds:
   key: X
   mod1: Shift
 # endregion Frontier
+# region EE
+- function: LookUp
+  type: State
+  key: Space
+# endregion EE

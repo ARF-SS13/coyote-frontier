@@ -28,6 +28,8 @@ verb-categories-lever = Lever
 verb-categories-select-type = Select Type
 verb-categories-fax = Set Destination
 verb-categories-power-level = Power Level
+# EE interaction system
+verb-categories-interaction = Interact
 
 verb-common-toggle-light = Toggle light
 verb-common-close = Close
