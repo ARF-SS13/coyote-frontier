@@ -1,0 +1,89 @@
+- type: species
+  id: Arachne
+  name: species-name-arachne
+  roundStart: true # I'll kill these issues somehow.
+  prototype: MobArachne
+  sprites: MobArachneSprites
+  markingLimits: MobArachneMarkingLimits
+  dollPrototype: MobArachneDummy
+  skinColoration: Hues
+  minAge: 60
+  youngAge: 150
+  oldAge: 400
+  maxAge: 666
+  customName: true
+
+- type: markingPoints
+  id: MobArachneMarkingLimits
+  points:
+    Undershirt:
+      points: 1
+      required: false # Floof, add underwear
+    Face:
+      points: 1
+      required: false
+    Hair:
+      points: 1
+      required: false
+    FacialHair:
+      points: 1
+      required: false
+    Tail:
+      points: 1
+      required: false
+    Wings:
+      points: 1
+      required: false
+    Chest:
+      points: 1
+      required: false
+    RightArm:
+      points: 2
+      required: false
+    RightHand:
+      points: 3
+      required: false
+    LeftArm:
+      points: 2
+      required: false
+    LeftHand:
+      points: 3
+      required: false
+    Head:
+      points: 2
+      required: false
+    HeadTop:
+      points: 2
+      required: false
+    HeadSide:
+      points: 1
+      required: false
+
+
+- type: speciesBaseSprites
+  id: MobArachneSprites
+  sprites:
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
+    Head: MobHumanHead
+    Face: MobHumanoidAnyMarking
+    HeadSide: MobHumanoidAnyMarking
+    Hair: MobHumanoidAnyMarking
+    FacialHair: MobHumanoidAnyMarking
+    Snout: MobHumanoidAnyMarking
+    Chest: MobHumanTorso
+    Underwear: MobHumanoidAnyMarking
+    Undershirt: MobHumanoidAnyMarking
+    Eyes: MobArachneEyes
+    LArm: MobHumanLArm
+    RArm: MobHumanRArm
+    LHand: MobHumanLHand
+    RHand: MobHumanRHand
+    Wings: MobHumanoidAnyMarking
+    HeadTop: MobHumanoidAnyMarking
+
+- type: humanoidBaseSprite
+  id: MobArachneEyes
+  baseSprite:
+    sprite: Mobs/Species/eyes.rsi
+    state: eyes
