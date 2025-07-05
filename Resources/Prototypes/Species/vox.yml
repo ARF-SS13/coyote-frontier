@@ -36,6 +36,8 @@
     LFoot: MobVoxLFoot
     RFoot: MobVoxRFoot
     Tail: MobHumanoidAnyMarking
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
 
 - type: markingPoints
   id: MobVoxMarkingLimits
@@ -48,10 +50,10 @@
       points: 1
       required: false
     Head:
-      points: 1
+      points: 3
       required: true
     Snout:
-      points: 1
+      points: 3
       required: true
       defaultMarkings: [ VoxBeak ]
     Arms:
@@ -75,7 +77,7 @@
       points: 4
       required: false
     Tail:
-      points: 1
+      points: 3
       required: true
       defaultMarkings: [ VoxTail ]
 

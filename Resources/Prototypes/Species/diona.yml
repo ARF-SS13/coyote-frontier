@@ -33,6 +33,8 @@
     RLeg: MobDionaRLeg
     LFoot: MobDionaLFoot
     RFoot: MobDionaRFoot
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
 
 - type: markingPoints
   id: MobDionaMarkingLimits

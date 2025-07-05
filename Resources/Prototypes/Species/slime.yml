@@ -29,6 +29,8 @@
     RLeg: MobSlimeRLeg
     LFoot: MobSlimeLFoot
     RFoot: MobSlimeRFoot
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
 
 - type: markingPoints
   id: MobSlimeMarkingLimits
@@ -39,15 +41,34 @@
     FacialHair:
       points: 1
       required: false
-    Chest:
-      points: 4 # imp 2<4
+    Tail:
+      points: 3
+      required: true
+      defaultMarkings: [ VulpTail ]
+    Head:
+      points: 3
       required: false
     Legs:
-      points: 8 # imp 4<8
+      points: 3
       required: false
     Arms:
-      points: 8 # imp 4<8
+      points: 3
       required: false
+    Snout:
+      points: 3
+      required: false
+    # Frontier: apparently these don't exist on Delta
+    UndergarmentTop:
+      points: 3
+      required: false
+    UndergarmentBottom:
+      points: 3
+      required: false
+    # End Frontier
+    HeadTop:
+      points: 3
+      required: false
+
 
 - type: humanoidBaseSprite
   id: MobSlimeMarkingFollowSkin

@@ -34,6 +34,10 @@
     LFoot: MobResomiLFoot
     RFoot: MobResomiRFoot
     Tail: MobHumanoidAnyMarking
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
 
 - type: markingPoints
   id: MobResomiMarkingLimits

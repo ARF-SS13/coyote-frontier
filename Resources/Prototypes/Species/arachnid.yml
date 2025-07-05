@@ -36,6 +36,8 @@
     RLeg: MobArachnidRLeg
     LFoot: MobArachnidLFoot
     RFoot: MobArachnidRFoot
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
 
 - type: humanoidBaseSprite
   id: MobArachnidEyes

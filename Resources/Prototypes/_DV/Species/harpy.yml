@@ -34,6 +34,8 @@
     LFoot: MobHarpyLFoot
     RFoot: MobHarpyRFoot
     RArmExtension: MobHumanoidAnyMarking # Frontier
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
 
 
 - type: markingPoints

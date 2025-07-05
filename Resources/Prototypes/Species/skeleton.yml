@@ -26,6 +26,8 @@
     RLeg: MobSkeletonRLeg
     LFoot: MobSkeletonLFoot
     RFoot: MobSkeletonRFoot
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
 
 - type: humanoidBaseSprite
   id: MobSkeletonHead

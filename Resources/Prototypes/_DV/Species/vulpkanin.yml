@@ -37,6 +37,8 @@
     RLeg: MobVulpkaninRLeg
     LFoot: MobVulpkaninLFoot
     RFoot: MobVulpkaninRFoot
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
 
 - type: markingPoints
   id: MobVulpkaninMarkingLimits

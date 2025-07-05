@@ -45,16 +45,21 @@
     RLeg: MobIPCRLeg
     LFoot: MobIPCLFoot
     RFoot: MobIPCRFoot
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
 
 - type: markingPoints
   id: MobIPCMarkingLimits
   points:
-    Head:
+    Hair:
       points: 1
+      required: false
+    Head:
+      points: 3
       required: true
       defaultMarkings: [ MobIPCHeadDefault ]
     Chest:
-      points: 1
+      points: 3
       required: true
       defaultMarkings: [ MobIPCTorsoDefault ]
     Legs:
@@ -66,6 +71,23 @@
       required: true
       defaultMarkings: [ MobIPCLArmDefault, MobIPCLHandDefault, MobIPCRArmDefault, MobIPCRHandDefault ]
     HeadSide:
+      points: 3
+      required: false
+    Tail:
+      points: 1
+      required: false
+    Snout:
+      points: 1
+      required: false
+    # Frontier: apparently these don't exist on Delta
+    UndergarmentTop:
+      points: 3
+      required: false
+    UndergarmentBottom:
+      points: 3
+      required: false
+    # End Frontier
+    HeadTop:
       points: 1
       required: false
 

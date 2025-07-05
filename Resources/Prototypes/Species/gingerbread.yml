@@ -27,6 +27,8 @@
     RLeg: MobGingerbreadRLeg
     LFoot: MobGingerbreadLFoot
     RFoot: MobGingerbreadRFoot
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
 
 - type: humanoidBaseSprite
   id: MobGingerbreadEyes

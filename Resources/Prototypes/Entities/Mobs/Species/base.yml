@@ -11,6 +11,7 @@
   components:
   - type: Sprite
     layers:
+    - map: [ "enum.HumanoidVisualLayers.TailBehind" ]
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
@@ -33,6 +34,7 @@
     - map: [ "belt" ]
     - map: [ "id" ]
     - map: [ "outerClothing" ]
+    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ]
     - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
@@ -214,6 +216,7 @@
     - FootstepSound
     - DoorBumpOpener
     - AnomalyHost
+  - type: ModifyUndies  # FLOOF Add
 
 - type: entity
   save: false
@@ -283,6 +286,7 @@
   - type: FireVisuals
     alternateState: Standing
   - type: LayingDown
+  - type: ModifyUndies  # FLOOF Add
 
 - type: entity
   save: false
@@ -301,6 +305,7 @@
     noRot: true
     # TODO BODY Turn these into individual body parts?
     layers:
+    - map: [ "enum.HumanoidVisualLayers.TailBehind" ]
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
@@ -328,6 +333,7 @@
     - map: [ "belt" ]
     - map: [ "id" ]
     - map: [ "outerClothing" ]
+    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ]
     - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]

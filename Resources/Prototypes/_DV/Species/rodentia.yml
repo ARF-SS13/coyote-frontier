@@ -26,6 +26,8 @@
     Chest: MobRodentiaTorso
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
     Eyes: MobHumanoidEyes
     LArm: MobRodentiaLArm
@@ -36,6 +38,8 @@
     RLeg: MobRodentiaRLeg
     LFoot: MobRodentiaLFoot
     RFoot: MobRodentiaRFoot
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
 
 - type: markingPoints
   id: MobRodentiaMarkingLimits
@@ -69,6 +73,14 @@
     Chest:
       points: 2
       required: false
+    # Frontier: apparently these don't exist on Delta
+    UndergarmentTop:
+      points: 3
+      required: false
+    UndergarmentBottom:
+      points: 3
+      required: false
+    # End Frontier
 
 - type: humanoidBaseSprite
   id: MobRodentiaHead

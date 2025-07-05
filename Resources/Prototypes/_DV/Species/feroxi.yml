@@ -25,6 +25,8 @@
     Chest: MobFeroxiTorso
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
     Eyes: MobHumanoidEyes
     LArm: MobFeroxiLArm
@@ -35,6 +37,8 @@
     RLeg: MobFeroxiRLeg
     LFoot: MobFeroxiLFoot
     RFoot: MobFeroxiRFoot
+    TailBehind: MobHumanoidAnyMarking
+    TailOversuit: MobHumanoidAnyMarking
 
 - type: markingPoints
   id: MobFeroxiMarkingLimits
@@ -69,6 +73,14 @@
       points: 1
       required: true
       defaultMarkings: [ FeroxiTailAndDorsal ]
+    # Frontier: apparently these don't exist on Delta
+    UndergarmentTop:
+      points: 3
+      required: false
+    UndergarmentBottom:
+      points: 3
+      required: false
+    # End Frontier
 
 - type: humanoidBaseSprite
   id: MobFeroxiHead
