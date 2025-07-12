@@ -21,7 +21,6 @@
   - type: Sprite
     noRot: true
     drawdepth: Mobs
-    scale: 1, 0.8
   - type: Body
     prototype: Dwarf
     requiredLegs: 2
@@ -72,6 +71,7 @@
 - type: entity
   parent: BaseSpeciesDummy
   id: MobDwarfDummy
+  noSpawn: true
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite

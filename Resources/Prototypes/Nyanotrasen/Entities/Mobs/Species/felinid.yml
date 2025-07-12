@@ -1,4 +1,5 @@
 - type: entity
+  save: false
   name: Urist McFelinid
   parent: BaseMobHuman
   id: MobFelinidBase
@@ -11,6 +12,7 @@
     hideLayersOnEquip: # Frontier
     - Hair # Frontier
     - HeadTop # Frontier
+    initial: Felinid
   - type: Fixtures
     fixtures: # TODO: This needs a second fixture just for mob collisions.
       fix1:
@@ -55,6 +57,7 @@
       types:
         Blunt: 1
   - type: Stamina
+    critThreshold: 85
   - type: TypingIndicator
     proto: felinid
   - type: PseudoItem
