@@ -16,6 +16,8 @@
       Ammonia: stationAmmonia
       NitrousOxide: stationNO
       Frezon: danger
+      Respiron: ignore # Frontier
+
 
 - type: entity
   parent: [AirSensorSaunaBase, AirSensor]
