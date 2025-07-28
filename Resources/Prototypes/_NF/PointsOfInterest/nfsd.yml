@@ -11,7 +11,7 @@
 - type: pointOfInterest
   id: Nfsd
   parent: BasePOI
-  name: 'FSD Outpost'
+  name: 'NFSD Outpost'
   minimumDistance: 750
   maximumDistance: 1000
   spawnGroup: Required
@@ -27,7 +27,7 @@
 
 - type: gameMap
   id: Nfsd
-  mapName: 'FSD Outpost'
+  mapName: 'NFSD Outpost'
   mapPath: /Maps/_NF/POI/nfsd.yml
   minPlayers: 0
   stations:
@@ -35,7 +35,7 @@
       stationProto: SecurityFrontierOutpost
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'FSD Outpost'
+          mapNameTemplate: 'NFSD Outpost'
         - type: ExtraStationInformation
           iconPath: /Textures/_NF/Structures/Decoration/banner.rsi/nfsd-banner.png
           stationSubtext: 'frontier-lobby-nfsd-subtext'
@@ -49,7 +49,7 @@
             Brigmedic: [ 0, 0 ]
             NFDetective: [ 0, 0 ]
             Deputy: [ 3, 3 ]
-            Cadet: [ 0, 0 ]
+            Cadet: [ 3, 3 ]
             # Others:
             PublicAffairsLiaison: [ 1, 1 ]
           tags:
