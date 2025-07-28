@@ -8,11 +8,11 @@
       time: 43200 # 12 hours
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 21600 # 6 hours
-  alternateRequirementSets:
-    longerPlaytimeLessSec:
-    - !type:OverallPlaytimeRequirement
-      time: 360000 # 100 hours
+      time: 108000 # frontier: 6 hours | CS: 30 hours / 5 shifts
+#  alternateRequirementSets: # NOTE: this is a frontier added workaround to let noncadets get into NFSD because they're doing some gmod military roleplay. Shit. COPILOT STOP OFFERING SUGGESTIONS I AM GOING CUM IN YOUR CIRCUITS.
+#    longerPlaytimeLessSec:
+#    - !type:OverallPlaytimeRequirement
+#      time: 360000 # 100 hours
   startingGear: DeputyGear
   icon: JobIconDeputy
   supervisors: job-supervisors-sergeant
