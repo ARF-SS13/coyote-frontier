@@ -6,6 +6,9 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 72000 # 20 hrs
+    - !type:RoleTimeRequirement
+      role: JobDirectorOfCare # CS: JobDirectorOfCare
+      time: 3600 # CS: 1 hr of itself
   whitelisted: true
   startingGear: DocGear
   alwaysUseSpawner: true

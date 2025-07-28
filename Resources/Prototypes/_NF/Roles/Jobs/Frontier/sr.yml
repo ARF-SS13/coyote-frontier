@@ -7,8 +7,8 @@
     - !type:OverallPlaytimeRequirement
       time: 72000 # 20 hrs
     - !type:RoleTimeRequirement
-      role: JobSecurityGuard
-      time: 10800 # 3 hrs as security guard
+      role: JobHeadOfPersonnel # frontier: JobSecurityGuard -> CS: JobHeadOfPersonnel
+      time: 3600 # frontier: 3 hrs as security guard -> CS: 1 hr of itself
   whitelisted: true
   startingGear: SrGear
   alwaysUseSpawner: true

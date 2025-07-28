@@ -7,8 +7,8 @@
     - !type:OverallPlaytimeRequirement
       time: 172800 # 48 hours
     - !type:RoleTimeRequirement
-      role: JobSeniorOfficer
-      time: 10800 # 3 hours
+      role: JobPirateCaptain # Frontier: JobSeniorOfficer
+      time: 3600 # Frontier: 3 hrs as JobSeniorOfficer -> CS: 1 hr of itself
   whitelisted: true
   startingGear: NFPirateCaptainGear
   alwaysUseSpawner: true
