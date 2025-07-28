@@ -5,10 +5,13 @@
   playTimeTracker: JobPirate
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 86400 # 24 hours
-    - !type:DepartmentTimeRequirement
-      department: Security
-      time: 10800 # 3 hrs
+      time: 43200 # frontier: 24 hrs / 4 shifts | CS: 12 hours / 2 shifts
+    - !type:RoleTimeRequirement
+      role: JobPirate
+      time: 3600 # CS: 1 hour
+#    - !type:DepartmentTimeRequirement # CS: swaps the playtime requirement to literally just be an hour of the role itself.
+#      department: Security
+#      time: 10800 # 3 hrs
   startingGear: NFPirateGear
   alwaysUseSpawner: true
   hideConsoleVisibility: true
