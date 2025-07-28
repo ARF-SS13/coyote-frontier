@@ -6,10 +6,13 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 43200 # frontier = 6 hrs | CS = 12 hrs, TIME IN SECONDS
-    - !type:DepartmentTimeRequirement
-      department: Security
-      time: 3600 # frontier = 18 hrs | CS = 1 hrs, joblist requirement.
-#      inverted: true # Leave slots open for newer, less confident players. | We use a different joblisting system. This can't be inverted. Plus, it's kinda kills rookie roleplay.
+    - !type:RoleTimeRequirement # CS: swaps the playtime requirement to literally just be an hour of the role itself.
+      role: JobSecurityCadet
+      time: 3600 # 1 hour
+#    - !type:DepartmentTimeRequirement # CS: swaps the playtime requirement to literally just be an hour of the role itself.
+#      department: Security
+#      time: 3600 # frontier = 18 hrs | CS = 1 hrs, joblist requirement.
+#      inverted: true # Leave slots open for newer, less confident players.
   startingGear: CadetGear
   icon: JobIconCadetNF
   supervisors: job-supervisors-cadet
