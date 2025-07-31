@@ -4,7 +4,7 @@ meta:
   engineVersion: 255.1.0
   forkId: ""
   forkVersion: ""
-  time: 07/31/2025 13:28:41
+  time: 07/31/2025 14:16:15
   entityCount: 718
 maps: []
 grids:
@@ -312,9 +312,9 @@ entities:
       parent: 1
     - type: DeviceList
       devices:
-      - 597
       - 523
       - 650
+      - 597
 - proto: Airlock
   entities:
   - uid: 195
@@ -349,6 +349,12 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -1.5,-10.5
       parent: 1
+    - type: Door
+      secondsUntilStateChange: -161.2988
+      state: Opening
+    - type: DeviceLinkSource
+      lastSignals:
+        DoorStatus: True
   - uid: 182
     components:
     - type: Transform
@@ -2132,8 +2138,6 @@ entities:
       pos: 0.5,-12.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 649
   - uid: 657
@@ -2324,7 +2328,6 @@ entities:
     - type: GasMixer
       inletTwoConcentration: 0.65
       inletOneConcentration: 0.35
-      enabled: True
     - type: AtmosPipeColor
       color: '#9955CCFF'
 - proto: GasMixerOn
@@ -2338,7 +2341,6 @@ entities:
     - type: GasMixer
       inletTwoConcentration: 0.22000003
       inletOneConcentration: 0.78
-      enabled: True
     - type: AtmosPipeColor
       color: '#0055CCFF'
 - proto: GasPassiveVent
@@ -2998,18 +3000,24 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 3.5,-13.5
       parent: 1
+    - type: AtmosPipeColor
+      color: '#9955CCFF'
   - uid: 473
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 3.5,-14.5
       parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
   - uid: 474
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 3.5,-15.5
       parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
 - proto: GasPressurePumpOn
   entities:
   - uid: 586
@@ -3018,8 +3026,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 0.5,-15.5
       parent: 1
-    - type: GasPressurePump
-      enabled: True
     - type: AtmosPipeColor
       color: '#0055CCFF'
   - uid: 496
@@ -3027,8 +3033,6 @@ entities:
     - type: Transform
       pos: 1.5,-17.5
       parent: 1
-    - type: GasPressurePump
-      enabled: True
     - type: AtmosPipeColor
       color: '#990000FF'
   - uid: 501
@@ -3037,8 +3041,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 2.5,-15.5
       parent: 1
-    - type: GasPressurePump
-      enabled: True
     - type: AtmosPipeColor
       color: '#0055CCFF'
   - uid: 502
@@ -3047,8 +3049,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 2.5,-14.5
       parent: 1
-    - type: GasPressurePump
-      enabled: True
     - type: AtmosPipeColor
       color: '#0055CCFF'
   - uid: 503
@@ -3057,8 +3057,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 2.5,-13.5
       parent: 1
-    - type: GasPressurePump
-      enabled: True
     - type: AtmosPipeColor
       color: '#9955CCFF'
 - proto: GasThermoMachineHeaterEnabled
@@ -3157,8 +3155,6 @@ entities:
       pos: -0.5,-16.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 649
     - type: AtmosPipeColor
@@ -3184,8 +3180,6 @@ entities:
       pos: 0.5,-17.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 649
     - type: AtmosPipeColor
