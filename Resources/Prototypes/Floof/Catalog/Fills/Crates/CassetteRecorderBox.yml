@@ -1,0 +1,9 @@
+- type: entity
+  id: CrateTapeRecorderBox
+  parent: CrateBaseWeldable
+  name: tape recorder box
+  description: A box with colorful cassette tapes and a tape recorder.
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxTapeRecorder

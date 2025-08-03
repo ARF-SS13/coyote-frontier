@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: CrateTapeRecorderBox
+  icon:
+    sprite: _DV/Objects/Devices/tape_recorder.rsi
+    state: idle
+  product: CrateTapeRecorderBox
+  cost: 1000
+  category: cargoproduct-category-name-service
+  group: market

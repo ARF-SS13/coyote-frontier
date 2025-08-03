@@ -54,10 +54,10 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: ContractorT1
-  price: 600
+  price: 1000
   storage:
     back:
-    - TapeRecorder
+    - BoxTapeRecorder
 
 #T2
 - type: loadout
