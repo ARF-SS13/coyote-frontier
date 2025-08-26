@@ -1,7 +1,6 @@
 ﻿## Phrases used for where central command got this information.
 random-sentience-event-data-1 = scans from our long-range sensors
 random-sentience-event-data-2 = our sophisticated probabilistic models
-random-sentience-event-data-3 = our omnipotence
 # Frontier: "from your station"<"within the sector"
 random-sentience-event-data-4 = the communications traffic within the sector
 random-sentience-event-data-5 = energy emissions we detected
@@ -15,9 +14,7 @@ random-sentience-event-strength-3 = moderate
 random-sentience-event-strength-4 = high
 # Frontier: command < genius (......)
 random-sentience-event-strength-5 = genius
-random-sentience-event-strength-6 = clown
 random-sentience-event-strength-7 = low
-random-sentience-event-strength-8 = AI
 
 ## Announcement text
 
