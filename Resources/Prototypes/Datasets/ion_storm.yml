@@ -183,10 +183,10 @@
   - MEDICINE
   - METAL
   - NUTS
-  # - OXYGEN # Coyote edit theres still alot of loopholes that could lead to mass cass just by having O2 in the law
+  # - OXYGEN // Coyote edit theres still alot of loopholes that could lead to mass cass just by having O2 in the law
   - PAIN
   - PLANTS
-  # - PLASMA # Coyote edit yeah for plasma too
+  # - PLASMA // Coyote edit yeah for plasma too
   - ROBOTS
   - SPACE
   - SUNLIGHT
@@ -207,7 +207,7 @@
   id: IonStormAllergySeverities
   values:
   - CONTAGIOUSLY
-  - DEADLY # Coyote edit Deathly = something suggesting or resembling the concept of Death while deadly is something that is likely to cause death.
+  - DEADLY # //Coyote edit Deathly = something suggesting or resembling the concept of Death while deadly is something that is likely to cause death.
   - EXTREMELY
   - MILDLY
   - NOT VERY
@@ -524,7 +524,7 @@
   id: IonStormFoods
   values:
   - BANANAS
-# - BANANIUM # Coyote edit is actually edible and radioactive
+# - BANANIUM // Coyote edit is actually edible and radioactive
   - BIG BITE BURGER
   - CAKE
   - CARP
@@ -543,7 +543,7 @@
   - PIZZA
   - ROBURGERS
   - STEEL
-#  - SUPPERMATTER # Coyote edit in case supermatter is ported its probably best to preemptively comment this out cause supermatter disintegrates
+#  - SUPPERMATTER // Coyote edit in case supermatter is ported its probably best to preemptively comment this out cause supermatter disintegrates
 #  - URANIUM
   # Frontier
   - DONK POCKET CASSEROLE
