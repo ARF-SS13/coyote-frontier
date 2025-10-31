@@ -214,9 +214,25 @@ namespace Content.Server.Database
                 {
                     var parsed = Marking.ParseFromDbString(marking);
 
-                    if (parsed is null) continue;
+                    if (parsed is null)
+                        continue;
 
                     markings.Add(parsed);
+                }
+            }
+
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+            var genitalsRaw = profile.Genitals?.Deserialize<List<string>>();
+            List<GenitalData> genitalia = new();
+            if (genitalsRaw != null)
+            {
+                foreach (var genital in genitalsRaw)
+                {
+                    var parsed = GenitalData.ParseFromDbString(genital);
+                    if (parsed is null)
+                        continue;
+
+                    genitalia.Add(parsed);
                 }
             }
 
@@ -263,7 +279,8 @@ namespace Content.Server.Database
                     Color.FromHex(profile.FacialHairColor),
                     Color.FromHex(profile.EyeColor),
                     Color.FromHex(profile.SkinColor),
-                    markings
+                    markings,
+                    genitalia
                 ),
                 spawnPriority,
                 jobs,
@@ -284,6 +301,13 @@ namespace Content.Server.Database
                 markingStrings.Add(marking.ToString());
             }
             var markings = JsonSerializer.SerializeToDocument(markingStrings);
+            // genitals
+            List<string> genitalStrings = new(); // ew genital strings
+            foreach (var genital in appearance.Genitals)
+            {
+                genitalStrings.Add(genital.Genital2String());
+            }
+            var genitals = JsonSerializer.SerializeToDocument(genitalStrings);
 
             profile.CharacterName = humanoid.Name;
             profile.FlavorText = humanoid.FlavorText;
@@ -303,6 +327,7 @@ namespace Content.Server.Database
             profile.SkinColor = appearance.SkinColor.ToHex();
             profile.SpawnPriority = (int) humanoid.SpawnPriority;
             profile.Markings = markings;
+            profile.Genitals = genitals;
             profile.Slot = slot;
             profile.PreferenceUnavailable = (DbPreferenceUnavailableMode) humanoid.PreferenceUnavailable;
 

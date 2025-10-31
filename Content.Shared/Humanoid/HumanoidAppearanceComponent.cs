@@ -1,3 +1,4 @@
+using Content.Shared._Coyote.GenitalsShared;
 using Content.Shared.DisplacementMap;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
@@ -144,6 +145,15 @@ public sealed partial class HumanoidAppearanceComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float Width = 1f;
+
+    /// <summary>
+    /// The dict of genitals that are currently being used.
+    /// THIS STORES a lot of the data!
+    /// </summary>
+    public List<GenitalData> Genitals = new();
+
+    public List<GenitalSpriteMetaData> GenitalSpriteMetaDatas = new();
+
 }
 
 [DataDefinition]
@@ -169,3 +179,200 @@ public readonly partial struct CustomBaseLayerInfo
     [DataField]
     public Color? Color { get; init; }
 }
+
+/// <summary>
+/// Genital data, holds some cool data about the genitals
+/// Needs to be modifiable cus these values will change, a lot!
+/// </summary>
+public sealed class GenitalData(
+    ProtoId<GenitalShapePrototype> prototype,
+    int size = 0,
+    List<Color> colors = null!,
+    bool hidden = false,
+    bool aroused = false,
+    GenitalLayeringMode layeringMode = GenitalLayeringMode.UnderClothing)
+{
+    /// <summary>
+    /// The genital prototype. Generally doesnt change
+    /// </summary>
+    public ProtoId<GenitalShapePrototype> Prototype = prototype;
+
+    /// <summary>
+    /// The current size of the genital.
+    /// Will be sanitized to be within the min and max size of the prototype.
+    /// </summary>
+    public int Size = size;
+
+    /// <summary>
+    /// The colors of the genital.
+    /// Can be up to three colors, but can be less.
+    /// </summary>
+    public List<Color> Colors = colors;
+
+    /// <summary>
+    /// Is it hidden?
+    /// </summary>
+    public bool Hidden = hidden;
+
+    /// <summary>
+    /// Is it aroused?
+    /// </summary>
+    public bool Aroused = aroused;
+
+    /// <summary>
+    /// What layer group should this genital be drawn on?
+    /// </summary>
+    public GenitalLayeringMode LayeringMode = layeringMode;
+
+    /// <summary>
+    /// The sprites we're currently using for this genital.
+    /// This is a dictionary of sprite keys, with a chunk of metadata.
+    /// </summary>
+    public Dictionary<string, GenitalSpriteMetaData> Sprites = new();
+
+
+    /// <summary>
+    /// Generates a string that can be used to store the genital data in a database.
+    /// WELCOME TO SERIALIZE
+    /// </summary>
+    public string Genital2String()
+    {
+        // reserved character
+        var sanitizedProtoId = Prototype.ToString().Replace('@', '_');
+        List<string> colorStringList = new();
+        foreach (Color color in Colors)
+        {
+            colorStringList.Add(color.ToHex());
+        }
+        var colorString = string.Join("&&&", colorStringList);
+        var sizeString = Size.ToString();
+        var hiddenString = Hidden ? "HIDDEN" : "VISIBLE";
+        var arousedString = Aroused ? "AROUSED" : "NOTAROUSED";
+        var layerGroupString = LayeringMode switch
+        {
+            GenitalLayeringMode.UnderUnderwear => "DEFAULT",
+            GenitalLayeringMode.UnderClothing => "UNDERCLOTHING",
+            GenitalLayeringMode.OverClothing => "OVERCLOTHING",
+            GenitalLayeringMode.OverSuit => "OVERSUIT",
+            _ => "DEFAULT",
+        };
+        var outString =
+            sanitizedProtoId
+            + "@"
+            + sizeString
+            + "@"
+            + hiddenString
+            + "@"
+            + arousedString
+            + "@"
+            + layerGroupString
+            + "@"
+            + colorString;
+
+        return outString;
+    }
+
+    public static GenitalData? ParseFromDbString(string input)
+    {
+        if (input.Length == 0)
+            return null;
+        var split = input.Split('@');
+        if (split.Length != 6)
+            return null;
+        // indexes:
+        // 0 - prototype
+        // 1 - size
+        // 2 - hidden
+        // 3 - aroused
+        // 4 - layer group
+        // 5 - colors
+        var prototype = new ProtoId<GenitalShapePrototype>(split[0].Replace('_', '@'));
+        var size = int.Parse(split[1]);
+        var hidden = split[2] == "HIDDEN";
+        var aroused = split[3] == "AROUSED";
+        var layerGroup = split[4] switch
+        {
+            "UNDERUNDERWEAR" => GenitalLayeringMode.UnderUnderwear,
+            "UNDERCLOTHING" => GenitalLayeringMode.UnderClothing,
+            "OVERCLOTHING" => GenitalLayeringMode.OverClothing,
+            "OVERSUIT" => GenitalLayeringMode.OverSuit,
+            _ => GenitalLayeringMode.UnderUnderwear,
+        };
+        var colorString = split[5];
+        var splitColor = colorString.Split("&&&");
+        var colorList = SplitColor2ColorList(splitColor);
+        var genDatNew = new GenitalData(
+            prototype,
+            size,
+            colorList,
+            hidden,
+            aroused,
+            layerGroup);
+        return genDatNew;
+    }
+    private static List<Color> SplitColor2ColorList(string[] splitColor)
+    {
+        if (splitColor.Length == 0)
+            return new List<Color>();
+        List<Color> colorList = new();
+        foreach (string color in splitColor)
+        {
+            if (color.Length == 0)
+                continue;
+            colorList.Add(Color.FromHex(color));
+        }
+        return colorList;
+    }
+
+}
+
+/// <summary>
+/// Genital sprite metadata.
+/// Hoooooolds.... sprite RSI path, sprite state, color index, layer group, the key for the sprite
+/// this is for a single sprite, not a size.
+/// </summary>
+public sealed class GenitalSpriteMetaData(
+    string spriteRsiPath,
+    string spriteState,
+    int colorIndex,
+    Color colorTrue,
+    GenitalSpritePositioning layerGroup,
+    string key)
+{
+    /// <summary>
+    /// The RSI path of the sprite.
+    /// </summary>
+    public string SpriteRsiPath = spriteRsiPath;
+
+    /// <summary>
+    /// The state of the sprite.
+    /// </summary>
+    public string SpriteState = spriteState;
+
+    /// <summary>
+    /// The color index of the sprite.
+    /// </summary>
+    public int ColorIndex = colorIndex;
+
+    /// <summary>
+    /// The actual color of the sprite.
+    /// </summary>
+    public Color Color = colorTrue;
+
+    /// <summary>
+    /// The layer group of the sprite.
+    /// </summary>
+    public GenitalSpritePositioning LayerGroup = layerGroup;
+
+    /// <summary>
+    /// The key for the sprite.
+    /// </summary>
+    public string Key = key;
+}
+
+
+
+
+
+
+
