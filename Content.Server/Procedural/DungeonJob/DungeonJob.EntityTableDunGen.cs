@@ -7,9 +7,9 @@ using Content.Shared.Physics;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.DungeonLayers;
 using Robust.Shared.Collections;
-
+//
 namespace Content.Server.Procedural.DungeonJob;
-
+//
 public sealed partial class DungeonJob
 {
     private async Task PostGen(
@@ -20,25 +20,25 @@ public sealed partial class DungeonJob
     {
         var count = random.Next(gen.MinCount, gen.MaxCount + 1);
         var npcs = _entManager.System<NPCSystem>();
-
+//
         foreach (var dungeon in dungeons)
         {
             var availableRooms = new ValueList<DungeonRoom>();
             availableRooms.AddRange(dungeon.Rooms);
             var availableTiles = new ValueList<Vector2i>(dungeon.AllTiles);
-
+//
             while (availableTiles.Count > 0 && count > 0)
             {
                 var tile = availableTiles.RemoveSwap(random.Next(availableTiles.Count));
-
+//
                 await SuspendDungeon();
-
+//
                 if (!ValidateResume())
                     return;
-
+//
                 // if (reservedTiles.Contains(tile))    // Frontier: spawn floor loot inside the dungeon footprint
-                //    continue;                         // Frontier 
-
+                //    continue;                         // Frontier
+//
                 if (!_anchorable.TileFree((_gridUid, _grid),
                         tile,
                         (int) CollisionGroup.MachineLayer,
@@ -46,7 +46,7 @@ public sealed partial class DungeonJob
                 {
                     continue;
                 }
-
+//
                 var entities = _entManager.System<EntityTableSystem>().GetSpawns(gen.Table, random).ToList();
                 foreach (var ent in entities)
                 {
@@ -55,10 +55,10 @@ public sealed partial class DungeonJob
                     _entManager.RemoveComponent<GhostTakeoverAvailableComponent>(uid);
                     npcs.SleepNPC(uid);
                 }
-
+//
                 count--;
             }
-
+//
             if (gen.PerDungeon)
             {
                 count = random.Next(gen.MinCount, gen.MaxCount + 1);

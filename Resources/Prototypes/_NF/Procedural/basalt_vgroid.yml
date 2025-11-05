@@ -390,4 +390,3 @@
     - !type:BiomeTileLayer
       threshold: -1
       tile: FloorBasalt
-##
