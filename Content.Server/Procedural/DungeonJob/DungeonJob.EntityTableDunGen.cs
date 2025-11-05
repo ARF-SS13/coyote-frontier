@@ -7,7 +7,7 @@ using Content.Shared.Physics;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.DungeonLayers;
 using Robust.Shared.Collections;
-//goodbye whitespace
+//
 namespace Content.Server.Procedural.DungeonJob;
 //
 public sealed partial class DungeonJob
