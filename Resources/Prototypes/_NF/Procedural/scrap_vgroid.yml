@@ -4,9 +4,9 @@
 # 3. Generate N normal dungeons around the larger mass, preferably near the border
 # 4. Generate large paths / small paths around the place
 # 5. Spawn ores + fill the rest and the normal stuff
-
+##
 # If you want mobs they needed to be added at specific steps due to how dungeons work at the moment.
-
+##
 - type: dungeonConfig
   id: NFVGRoidScrap
   layers:
@@ -152,7 +152,7 @@
       count: 2
       minGroupSize: 1
       maxGroupSize: 1
-
+##
 # Configs
 - type: dungeonConfig
   id: NFVGRoidBlobScrap
@@ -171,7 +171,7 @@
         octaves: 5
         lacunarity: 2
         gain: 0.5
-
+##
 - type: dungeonConfig
   id: NFVGRoidExteriorScrap
   reserveTiles: true
@@ -181,7 +181,7 @@
   - !type:SplineDungeonConnectorDunGen
     tile: FloorTechMaint3
     widenTile: Lattice # Plating
-
+##
 - type: dungeonConfig
   id: NFVGRoidExteriorDungeonsScrap
   reserveTiles: true
@@ -242,41 +242,41 @@
     minCount: 0
     maxCount: 1
     contents: SpawnMobRogueSiliconBossRandomTable
-
+##
 - type: entityTable
   id: SpawnMobRogueSiliconsT3Table
   table: !type:GroupSelector
     children:
     - id: SpawnMobRogueSiliconsT3
       amount: 1
-
+##
 - type: entityTable
   id: SpawnMobRogueSiliconsT2Table
   table: !type:GroupSelector
     children:
     - id: SpawnMobRogueSiliconsT2
       amount: 1
-
+##
 - type: entityTable
   id: SpawnMobRogueScapT1Table
   table: !type:GroupSelector
     children:
     - id: SpawnMobRogueScapT1
       amount: 1
-
+##
 - type: entityTable
   id: SpawnMobRogueSiliconBossRandomTable
   table: !type:GroupSelector
     children:
     - id: SpawnMobRogueSiliconBossRandom
       amount: 1
-
+##
 #- type: dungeonConfig
 #  id: NFVGRoidInteriorDungeonsScrap
 #  minCount: 3
 #  maxCount: 5
 #  # Just randomly spawn these in bounds, doesn't really matter if they go out.
-
+##
 - type: dungeonConfig
   id: NFVGRoidSmallPathsScrap
   reserveTiles: true
@@ -292,7 +292,7 @@
         lacunarity: 1.5
         octaves: 2
         gain: 2.0
-
+##
 # Scrapyard -> Derived from Shadow
 - type: biomeTemplate
   id: NFVGRoidScrapyard
@@ -343,3 +343,4 @@
     - !type:BiomeTileLayer
       threshold: -1
       tile: Lattice # Plating
+##

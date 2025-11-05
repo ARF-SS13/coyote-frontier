@@ -4,9 +4,9 @@
 # 3. Generate N normal dungeons around the larger mass, preferably near the border
 # 4. Generate large paths / small paths around the place
 # 5. Spawn ores + fill the rest and the normal stuff
-
+##
 # If you want mobs they needed to be added at specific steps due to how dungeons work at the moment.
-
+##
 - type: dungeonConfig
   id: NFVGRoidChromite
   layers:
@@ -147,7 +147,7 @@
       count: 5
       minGroupSize: 1
       maxGroupSize: 1
-
+##
 # Configs
 - type: dungeonConfig
   id: NFVGRoidBlobChromite
@@ -166,7 +166,7 @@
         octaves: 5
         lacunarity: 2
         gain: 0.5
-
+##
 - type: dungeonConfig
   id: NFVGRoidSmallerChromite
   minOffset: 40
@@ -185,7 +185,7 @@
         octaves: 5
         lacunarity: 1.5
         gain: 0.5
-
+##
 - type: dungeonConfig
   id: NFVGRoidExteriorChromite
   reserveTiles: true
@@ -195,7 +195,7 @@
   - !type:SplineDungeonConnectorDunGen
     tile: FloorDarkHerringbone
     widenTile: FloorChromite
-
+##
 - type: dungeonConfig
   id: NFVGRoidExteriorDungeonsChromite
   reserveTiles: true
@@ -268,49 +268,49 @@
   #   minCount: 1
   #   maxCount: 1
   #   contents:SpawnMobCatBloodCultLowChanceTable
-
+##
 - type: entityTable
   id: SpawnMobBloodCultistPriestTable
   table: !type:GroupSelector
     children:
     - id: SpawnMobBloodCultistPriest
       amount: 1
-
+##
 - type: entityTable
   id: SpawnMobBloodCultistAcolyteTable
   table: !type:GroupSelector
     children:
     - id: SpawnMobBloodCultistAcolyte
       amount: 1
-
+##
 - type: entityTable
   id: SpawnMobBloodCultistZealotMeleeTable
   table: !type:GroupSelector
     children:
     - id: SpawnMobBloodCultistZealotMelee
       amount: 1
-
+##
 - type: entityTable
   id: SpawnMobBloodCultistZealotRangedTable
   table: !type:GroupSelector
     children:
     - id: SpawnMobBloodCultistZealotRanged
       amount: 1
-
+##
 - type: entityTable
   id: SpawnMobBloodCultistCasterTable
   table: !type:GroupSelector
     children:
     - id: SpawnMobBloodCultistCaster
       amount: 1
-
+##
 - type: entityTable
   id: SpawnMobBloodCultistAscendedTable
   table: !type:GroupSelector
     children:
     - id: SpawnMobBloodCultistAscended
       amount: 1
-
+##
 # Dies to barotrauma - equip it for space if you want this restored
 #- type: entityTable
 #  id: SpawnMobCatBloodCultLowChanceTable
@@ -318,13 +318,13 @@
 #    children:
 #    - id: SpawnMobCatBloodCultLowChance
 #      amount: 1
-
+##
 #- type: dungeonConfig
 #  id: NFVGRoidInteriorDungeonsChromite
 #  minCount: 3
 #  maxCount: 5
 #  # Just randomly spawn these in bounds, doesn't really matter if they go out.
-
+##
 - type: dungeonConfig
   id: NFVGRoidSmallPathsChromite
   reserveTiles: true
@@ -340,7 +340,7 @@
         lacunarity: 1.5
         octaves: 2
         gain: 2.0
-
+##
 # Shadow -> Derived from lava
 - type: biomeTemplate
   id: NFVGRoidShadow
@@ -399,3 +399,4 @@
     - !type:BiomeTileLayer
       threshold: -1
       tile: FloorChromite
+##

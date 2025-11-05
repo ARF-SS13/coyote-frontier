@@ -4,9 +4,9 @@
 # 3. Generate N normal dungeons around the larger mass, preferably near the border
 # 4. Generate large paths / small paths around the place
 # 5. Spawn ores + fill the rest and the normal stuff
-
+##
 # If you want mobs they needed to be added at specific steps due to how dungeons work at the moment.
-
+##
 - type: dungeonConfig
   id: NFVGRoidBasalt
   layers:
@@ -147,7 +147,7 @@
       count: 5
       minGroupSize: 1
       maxGroupSize: 1
-
+##
 # Configs
 - type: dungeonConfig
   id: NFVGRoidBlobBasalt
@@ -166,7 +166,7 @@
         octaves: 5
         lacunarity: 2
         gain: 0.5
-
+##
 - type: dungeonConfig
   id: NFVGRoidSmallerBasalt
   minOffset: 40
@@ -185,7 +185,7 @@
         octaves: 5
         lacunarity: 1.5
         gain: 0.5
-
+##
 - type: dungeonConfig
   id: NFVGRoidExteriorBasalt
   reserveTiles: true
@@ -195,7 +195,7 @@
   - !type:SplineDungeonConnectorDunGen
     tile: FloorGrayConcreteMono
     widenTile: FloorBasalt
-
+##
 - type: dungeonConfig
   id: NFVGRoidExteriorDungeonsBasalt
   reserveTiles: true
@@ -256,42 +256,41 @@
     minCount: 0
     maxCount: 1
     contents: SpawnMobMercenaryCaptainEVATable
-
-
+##
 - type: entityTable
   id: SpawnMobMercenaryEVAT1Table
   table: !type:GroupSelector
     children:
     - id: SpawnMobMercenaryEVAT1
       amount: 2
-
+##
 - type: entityTable
   id: SpawnMobMercenaryEVAT2Table
   table: !type:GroupSelector
     children:
     - id: SpawnMobMercenaryEVAT2
       amount: 1
-
+##
 - type: entityTable
   id: SpawnMobMercenaryEVAT3Table
   table: !type:GroupSelector
     children:
     - id: SpawnMobMercenaryEVAT3
       amount: 1
-
+##
 - type: entityTable
   id: SpawnMobMercenaryCaptainEVATable
   table: !type:GroupSelector
     children:
     - id: SpawnMobMercenaryCaptainEVA
       amount: 1
-
+##
 #- type: dungeonConfig
 #  id: NFVGRoidInteriorDungeonsBasalt
 #  minCount: 3
 #  maxCount: 5
 #  # Just randomly spawn these in bounds, doesn't really matter if they go out.
-
+##
 - type: dungeonConfig
   id: NFVGRoidSmallPathsBasalt
   reserveTiles: true
@@ -307,7 +306,7 @@
         lacunarity: 1.5
         octaves: 2
         gain: 2.0
-
+##
 # Lava
 - type: biomeTemplate
   id: NFVGRoidLava
@@ -391,3 +390,4 @@
     - !type:BiomeTileLayer
       threshold: -1
       tile: FloorBasalt
+##

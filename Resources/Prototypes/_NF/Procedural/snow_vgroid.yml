@@ -4,9 +4,9 @@
 # 3. Generate N normal dungeons around the larger mass, preferably near the border
 # 4. Generate large paths / small paths around the place
 # 5. Spawn ores + fill the rest and the normal stuff
-
+##
 # If you want mobs they needed to be added at specific steps due to how dungeons work at the moment.
-
+##
 - type: dungeonConfig
   id: NFVGRoidSnow
   layers:
@@ -168,7 +168,7 @@
       count: 1
       minGroupSize: 0
       maxGroupSize: 1
-
+##
 # Configs
 - type: dungeonConfig
   id: NFVGRoidBlobSnow
@@ -187,7 +187,7 @@
         octaves: 5
         lacunarity: 2
         gain: 0.5
-
+##
 - type: dungeonConfig
   id: NFVGRoidSmallerSnow
   minOffset: 40
@@ -206,7 +206,7 @@
         octaves: 5
         lacunarity: 1.5
         gain: 0.5
-
+##
 - type: dungeonConfig
   id: NFVGRoidExteriorSnow
   reserveTiles: true
@@ -216,7 +216,7 @@
   - !type:SplineDungeonConnectorDunGen
     tile: FloorSnowDug
     widenTile: FloorSnow
-
+##
 - type: dungeonConfig
   id: NFVGRoidExteriorDungeonsSnow
   reserveTiles: true
@@ -269,27 +269,27 @@
     minCount: 0
     maxCount: 1
     contents: NFSpawnMobXenoQueenTable
-
+##
 - type: entityTable
   id: NFSpawnMobXenoT2Table
   table: !type:GroupSelector
     children:
     - id: NFSpawnMobXenoT2
       amount: 1
-
+##
 - type: entityTable
   id: NFSpawnMobXenoQueenTable
   table: !type:GroupSelector
     children:
     - id: NFSpawnMobXenoQueen
       amount: 1
-
+##
 #- type: dungeonConfig
 #  id: NFVGRoidInteriorDungeonsSnow
 #  minCount: 3
 #  maxCount: 5
 #  # Just randomly spawn these in bounds, doesn't really matter if they go out.
-
+##
 - type: dungeonConfig
   id: NFVGRoidSmallPathsSnow
   reserveTiles: true
@@ -305,7 +305,7 @@
         lacunarity: 1.5
         octaves: 2
         gain: 2.0
-
+##
 # Snow
 - type: biomeTemplate
   id: NFVGRoidSnow # Similar to Grasslands... but snow
@@ -375,3 +375,4 @@
         seed: 0
         frequency: 0.02
         fractalType: None
+##
