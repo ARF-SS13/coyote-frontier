@@ -1,0 +1,34 @@
+- type: vessel
+  id: Zweihander
+  parent: BaseVessel
+  name: TSF Zweihander
+  description: A twin-cannoned assault ship designed for long chases and sustained ship combat. Comes with a tempbrig.
+  price: 34220
+  category: Small
+  group: Security
+  access: Security
+  mapchecker_group_override: Security  # Treat this as a security vessel for mapchecker purposes
+  shuttlePath: /Maps/_NF/Shuttles/Nfsd/zweihander.yml
+  guidebookPage: Null
+  class:
+  - Fighter
+  engine:
+  - APU
+  - Uranium
+
+- type: gameMap
+  id: Zweihander
+  mapName: 'TSF Zweihander'
+  mapPath: /Maps/_NF/Shuttles/Nfsd/zweihander.yml
+  minPlayers: 0
+  stations:
+    Zweihander:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Zweihander {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs: {}

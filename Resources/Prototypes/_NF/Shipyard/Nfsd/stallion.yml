@@ -1,0 +1,34 @@
+- type: vessel
+  id: Stallion
+  parent: BaseVessel
+  name: TSF Stallion
+  description: A trusty steed to carry illicit parcels and various contraband, as well as assist in the securing of such.
+  price: 30000
+  category: Small
+  group: Security
+  access: Security
+  mapchecker_group_override: Security  # Treat this as a security vessel for mapchecker purposes
+  shuttlePath: /Maps/_NF/Shuttles/Nfsd/stallion.yml
+  guidebookPage: Null
+  class:
+  - Security
+  - Cargo
+  engine:
+  - APU
+
+- type: gameMap
+  id: Stallion
+  mapName: 'TSF Stallion'
+  mapPath: /Maps/_NF/Shuttles/Nfsd/stallion.yml
+  minPlayers: 0
+  stations:
+    Stallion:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Stallion {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs: {}
