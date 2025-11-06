@@ -75,6 +75,7 @@
   - WeaponCaseLong
   - WeaponCaseHeavy
   - WeaponCaseShortAmmo
+  - WeaponCaseHeavyAmmo # Coyote
   - WeaponCaseShortExplosives
 ## Weapons
   - NFCombatKnife
