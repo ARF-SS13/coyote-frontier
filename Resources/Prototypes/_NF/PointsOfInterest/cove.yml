@@ -45,7 +45,7 @@
             NFPirateCaptain: [ 3, 3 ]
             NFPirateFirstMate: [ 3, 3 ]
             NFPirate: [ 12, 12 ]
-            Smuggler: [ 3, 3 ] #Coyote
+            Smuggler: [ 12, 12 ] #Coyote
             Escort: [ 12, 12 ]
         - type: StationDeadDropReporting
           messageSet: Pirate
