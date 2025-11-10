@@ -22,6 +22,7 @@
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
     - map: [ "enum.HumanoidVisualLayers.Genital" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
+    - map: [ "enum.HumanoidVisualLayers.Testicles" ]
     - map: [ "enum.HumanoidVisualLayers.Penis" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
     - map: [ "enum.HumanoidVisualLayers.UndershirtUnderclothes" ]

@@ -574,7 +574,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
 
     public void MarkingAdded(MarkingPrototype prototype, HumanoidAppearanceComponent humanoid)
     {
-        if (prototype.BodyPart == HumanoidVisualLayers.Penis
+        if (prototype.BodyPart is HumanoidVisualLayers.Penis or HumanoidVisualLayers.Testicles
             && humanoid.MarkingSet.TryGetCategory(MarkingCategories.UndergarmentBottom, out var undies))
         {
             // If we're wearing underwear, hide the penis.
@@ -590,7 +590,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
             {
                 if (!_markingManager.Markings.TryGetValue(genital.MarkingId, out var genitalProto))
                     continue;
-                if (genitalProto.BodyPart == HumanoidVisualLayers.Penis)
+                if (genitalProto.BodyPart is HumanoidVisualLayers.Penis or HumanoidVisualLayers.Testicles)
                     humanoid.HiddenMarkings.Add(genital.MarkingId);
             }
         }

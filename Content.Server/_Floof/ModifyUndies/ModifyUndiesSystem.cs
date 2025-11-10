@@ -211,7 +211,7 @@ public sealed class ModifyUndiesSystem : EntitySystem
             {
                 if (!_markingManager.TryGetMarking(genital, out var genitalProt))
                     continue;
-                if (genitalProt.BodyPart == HumanoidVisualLayers.Penis)
+                if (genitalProt.BodyPart is HumanoidVisualLayers.Penis or HumanoidVisualLayers.Testicles)
                     _humanoid.SetMarkingVisibility(uid, humApp, genitalProt.ID, args.IsVisible);
             }
         }
