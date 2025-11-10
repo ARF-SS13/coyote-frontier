@@ -23,7 +23,7 @@ public sealed class ServerConsentManager : IServerConsentManager
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
 
     /// <summary>
-    /// Stores consent settigns for all connected players, including guests.
+    /// Stores consent settings for all connected players, including guests.
     /// </summary>
     private readonly Dictionary<NetUserId, PlayerConsentSettings> _consent = new();
 

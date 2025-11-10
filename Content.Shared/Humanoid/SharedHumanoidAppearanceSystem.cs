@@ -572,6 +572,30 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         Dirty(uid, humanoid);
     }
 
+    public void MarkingAdded(MarkingPrototype prototype, HumanoidAppearanceComponent humanoid)
+    {
+        if (prototype.BodyPart == HumanoidVisualLayers.Penis
+            && humanoid.MarkingSet.TryGetCategory(MarkingCategories.UndergarmentBottom, out var undies))
+        {
+            // If we're wearing underwear, hide the penis.
+            if (undies.Any(undie => !humanoid.HiddenMarkings.Contains(undie.MarkingId)))
+                humanoid.HiddenMarkings.Add(prototype.ID);
+        }
+
+        if (prototype.MarkingCategory == MarkingCategories.UndergarmentBottom
+            && humanoid.MarkingSet.TryGetCategory(MarkingCategories.Genital, out var genitals))
+        {
+            // If we have a penis, hide it.
+            foreach (var genital in genitals)
+            {
+                if (!_markingManager.Markings.TryGetValue(genital.MarkingId, out var genitalProto))
+                    continue;
+                if (genitalProto.BodyPart == HumanoidVisualLayers.Penis)
+                    humanoid.HiddenMarkings.Add(genital.MarkingId);
+            }
+        }
+    }
+
     /// <summary>
     ///     Adds a marking to this humanoid.
     /// </summary>
@@ -600,6 +624,8 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         }
 
         humanoid.MarkingSet.AddBack(prototype.MarkingCategory, markingObject);
+
+        MarkingAdded(prototype, humanoid);
 
         if (sync)
             Dirty(uid, humanoid);
@@ -639,11 +665,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         markingObject.Forced = forced;
         humanoid.MarkingSet.AddBack(prototype.MarkingCategory, markingObject);
 
-        // Automatically hide Genital markings by default (like undergarments)
-        if (prototype.MarkingCategory == MarkingCategories.Genital)
-        {
-            humanoid.HiddenMarkings.Add(marking);
-        }
+        MarkingAdded(prototype, humanoid);
 
         if (sync)
             Dirty(uid, humanoid);

@@ -34,6 +34,7 @@ public sealed class ModifyUndiesSystem : EntitySystem
     [Dependency] private readonly SharedConsentSystem _consentSystem = default!;
 
     public static ProtoId<ConsentTogglePrototype> GenitalMarkingsConsent = "GenitalMarkings";
+    public static ProtoId<ConsentTogglePrototype> ModifyUndiesConsent = "ModifyUndies";
 
     public static readonly VerbCategory UndiesCat =
         new("verb-categories-undies", "/Textures/Interface/VerbIcons/undies.png");
@@ -52,7 +53,12 @@ public sealed class ModifyUndiesSystem : EntitySystem
             return;
         if (!TryComp<HumanoidAppearanceComponent>(args.Target, out var humApp))
             return;
+
         var isMine = args.User == args.Target;
+
+        if (!isMine && !_consentSystem.HasConsent(args.Target, ModifyUndiesConsent))
+            return;
+
         // okay go through their markings, and find all the undershirts and underwear markings
         // <marking_ID>, list:(localized name, bodypart enum, isvisible)
         foreach (var marking in humApp.MarkingSet.Markings.Values.SelectMany(markingLust => markingLust))
@@ -62,22 +68,20 @@ public sealed class ModifyUndiesSystem : EntitySystem
             // check if the Bodypart is in the component's BodyPartTargets
             if (!component.BodyPartTargets.Contains(mProt.BodyPart))
                 continue;
-                
-            // Skip genital markings based on consent
-            if (mProt.BodyPart == HumanoidVisualLayers.Genital)
+
+            if (mProt.MarkingCategory == MarkingCategories.Genital)
             {
-                // If user and target are the same person, they can always interact with their own markings
-                if (args.User != args.Target)
-                {
-                    // For other players, only check the target's consent setting
-                    var hasTargetConsent = _consentSystem.HasConsent(args.Target, GenitalMarkingsConsent);
-                    if (!hasTargetConsent)
-                    {
-                        continue;
-                    }
-                }
+                // Skip based on consent
+                if (!_consentSystem.HasConsent(args.User, GenitalMarkingsConsent))
+                    continue;
             }
-            
+
+            // Don't show the option to toggle penis visibility if we're not wearing underwear
+            if (mProt.BodyPart == HumanoidVisualLayers.Penis
+                && humApp.MarkingSet.TryGetCategory(MarkingCategories.UndergarmentBottom, out var undies)
+                && undies.All(undie => humApp.HiddenMarkings.Contains(undie.MarkingId)))
+                continue;
+
             var localizedName = Loc.GetString($"marking-{mProt.ID}");
             var partSlot = mProt.BodyPart;
             var isVisible = !humApp.HiddenMarkings.Contains(mProt.ID);
@@ -87,14 +91,15 @@ public sealed class ModifyUndiesSystem : EntitySystem
             {
                 HumanoidVisualLayers.UndergarmentTop => new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/bra.png")),
                 HumanoidVisualLayers.UndergarmentBottom => new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/underpants.png")),
-                HumanoidVisualLayers.Genital => new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/love.png")),
+                HumanoidVisualLayers.Penis => new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/love.png")),
                 _ => new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/undies.png"))
             };
+            var genitalSuffix = mProt.MarkingCategory == MarkingCategories.Genital ? "-genital" : "";
             // add the verb
             Verb verb = new()
             {
                 Text = Loc.GetString(
-                    "modify-undies-verb-text",
+                    "modify-undies-verb-text" + genitalSuffix,
                     ("undies", localizedName),
                     ("isVisible", isVisible),
                     ("isMine", isMine),
@@ -127,9 +132,9 @@ public sealed class ModifyUndiesSystem : EntitySystem
                     string gString;
                     if (args.User == args.Target)
                     {
-                        gString = isVisible
+                        gString = (isVisible
                             ? "undies-removed-self-start"
-                            : "undies-equipped-self-start";
+                            : "undies-equipped-self-start") + genitalSuffix;
                         _popupSystem.PopupCoordinates(
                             Loc.GetString(
                                 gString,
@@ -144,9 +149,9 @@ public sealed class ModifyUndiesSystem : EntitySystem
                     else
                     {
                         // to the user
-                        gString = isVisible
+                        gString = (isVisible
                             ? "undies-removed-user-start"
-                            : "undies-equipped-user-start";
+                            : "undies-equipped-user-start") + genitalSuffix;
                         _popupSystem.PopupCoordinates(
                             Loc.GetString(
                                 gString,
@@ -157,9 +162,9 @@ public sealed class ModifyUndiesSystem : EntitySystem
                             true,
                             PopupType.Medium);
                         // to the target
-                        gString = isVisible
+                        gString = (isVisible
                             ? "undies-removed-target-start"
-                            : "undies-equipped-target-start";
+                            : "undies-equipped-target-start") + genitalSuffix;
                         _popupSystem.PopupCoordinates(
                             Loc.GetString(
                                 gString,
@@ -198,12 +203,26 @@ public sealed class ModifyUndiesSystem : EntitySystem
         if (!TryComp<HumanoidAppearanceComponent>(args.Target, out var humApp))
             return;
 
+        // If we're putting on or taking off underwear, force penises to the opposite state
+        if (mProt.MarkingCategory == MarkingCategories.UndergarmentBottom
+            && humApp.MarkingSet.TryGetCategory(MarkingCategories.Genital, out var genitals))
+        {
+            foreach (var genital in genitals)
+            {
+                if (!_markingManager.TryGetMarking(genital, out var genitalProt))
+                    continue;
+                if (genitalProt.BodyPart == HumanoidVisualLayers.Penis)
+                    _humanoid.SetMarkingVisibility(uid, humApp, genitalProt.ID, args.IsVisible);
+            }
+        }
+
         _humanoid.SetMarkingVisibility(
             uid,
             humApp,
             mProt.ID,
             !args.IsVisible
         );
+        var genitalSuffix = mProt.MarkingCategory == MarkingCategories.Genital ? "-genital" : "";
         // then make a text bubble!
         // one for the doer, one for the target
         // and one if the doer is the target
@@ -212,9 +231,9 @@ public sealed class ModifyUndiesSystem : EntitySystem
         string gString;
         if (args.User == args.Target.Value)
         {
-            gString = args.IsVisible
+            gString = (args.IsVisible
                 ? "undies-removed-self"
-                : "undies-equipped-self";
+                : "undies-equipped-self") + genitalSuffix;
             _popupSystem.PopupCoordinates(
                 Loc.GetString(
                     gString,
@@ -229,9 +248,9 @@ public sealed class ModifyUndiesSystem : EntitySystem
         else
         {
             // to the user
-            gString = args.IsVisible
+            gString = (args.IsVisible
                 ? "undies-removed-user"
-                : "undies-equipped-user";
+                : "undies-equipped-user") + genitalSuffix;
             _popupSystem.PopupCoordinates(
                 Loc.GetString(
                     gString,

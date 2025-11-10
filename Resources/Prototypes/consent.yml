@@ -24,16 +24,20 @@
   priority: 4
 
 - type: consentToggle
-  id: Aphrodisiacs
+  id: ModifyUndies
   priority: 5
 
 - type: consentToggle
-  id: SizeManipulation
+  id: Aphrodisiacs
   priority: 6
 
 - type: consentToggle
-  id: Transformation
+  id: SizeManipulation
   priority: 7
+
+- type: consentToggle
+  id: Transformation
+  priority: 8
 
 #- type: consentToggle
 #  id: Cum

@@ -1,6 +1,7 @@
 using Content.Client.DisplacementMap;
-using Content.Shared.CCVar;
 using System.Numerics;
+using Content.Client.Consent;
+using Content.Shared.Consent;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
@@ -19,14 +20,17 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
     [Dependency] private readonly MarkingManager _markingManager = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
     [Dependency] private readonly DisplacementMapSystem _displacement = default!;
+    [Dependency] private readonly IClientConsentManager _consentManager = default!;
+
+    private static readonly ProtoId<ConsentTogglePrototype> GenitalMarkingsConsent = "GenitalMarkings";
+
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<HumanoidAppearanceComponent, AfterAutoHandleStateEvent>(OnHandleState);
-        Subs.CVar(_configurationManager, CCVars.AccessibilityClientCensorNudity, OnCvarChanged, true);
-        Subs.CVar(_configurationManager, CCVars.AccessibilityServerCensorNudity, OnCvarChanged, true);
+        _consentManager.OnServerDataLoaded += OnConsentChanged;
     }
 
     private void OnHandleState(EntityUid uid, HumanoidAppearanceComponent component, ref AfterAutoHandleStateEvent args)
@@ -34,12 +38,11 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         UpdateSprite(component, Comp<SpriteComponent>(uid));
     }
 
-    private void OnCvarChanged(bool value)
+    private void OnConsentChanged()
     {
-        var humanoidQuery = EntityManager.AllEntityQueryEnumerator<HumanoidAppearanceComponent, SpriteComponent>();
-        while (humanoidQuery.MoveNext(out var _, out var humanoidComp, out var spriteComp))
+        foreach (var (humanoid, sprite) in EntityQuery<HumanoidAppearanceComponent, SpriteComponent>())
         {
-            UpdateSprite(humanoidComp, spriteComp);
+            UpdateSprite(humanoid, sprite);
         }
     }
 
@@ -359,6 +362,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                 RemoveMarking(marking, sprite);
             }
         }
+
+        humanoid.HiddenMarkings.Clear();
     }
 
     private void RemoveMarking(Marking marking, SpriteComponent spriteComp)
@@ -455,8 +460,16 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         // lets just kinda sorta do that ourselves
         var layerDict = new Dictionary<string, int>();
 
+        MarkingAdded(markingPrototype, humanoid);
+
         visible &= !humanoid.HiddenMarkings.Contains(markingPrototype.ID); // FLOOF ADD
         // FLOOF ADD END
+
+        // Coyote: genital markings consent toggle
+        if (!(_consentManager.GetConsent().Toggles.TryGetValue(GenitalMarkingsConsent, out var consent) && consent == "on"))
+        {
+            visible &= markingPrototype.MarkingCategory != MarkingCategories.Genital;
+        }
 
         for (var j = 0; j < markingPrototype.Sprites.Count; j++)
         {

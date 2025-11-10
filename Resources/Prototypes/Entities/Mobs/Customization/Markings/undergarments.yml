@@ -643,8 +643,8 @@
 
 - type: marking
   id: UndershirtSwimsuitblue
-  bodyPart: UndergarmentTop
-  markingCategory: UndergarmentTop
+  bodyPart: UndergarmentBottom # Coyote: bottom undergarments hide penis
+  markingCategory: UndergarmentBottom
   speciesRestriction: [Human]
   kindAllowance: [BasicHumanlike, BasicFurry]
   coloring:
@@ -658,8 +658,8 @@
 
 - type: marking
   id: UndershirtSwimsuitred
-  bodyPart: UndergarmentTop
-  markingCategory: UndergarmentTop
+  bodyPart: UndergarmentBottom # Coyote: bottom undergarments hide penis
+  markingCategory: UndergarmentBottom
   speciesRestriction: [Human]
   kindAllowance: [BasicHumanlike, BasicFurry]
   coloring:
@@ -673,8 +673,8 @@
 
 - type: marking
   id: UndershirtSwimsuitblack
-  bodyPart: UndergarmentTop
-  markingCategory: UndergarmentTop
+  bodyPart: UndergarmentBottom # Coyote: bottom undergarments hide penis
+  markingCategory: UndergarmentBottom
   speciesRestriction: [Human]
   kindAllowance: [BasicHumanlike, BasicFurry]
   coloring:
