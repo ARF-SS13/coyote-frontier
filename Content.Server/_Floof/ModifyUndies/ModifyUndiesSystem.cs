@@ -203,19 +203,6 @@ public sealed class ModifyUndiesSystem : EntitySystem
         if (!TryComp<HumanoidAppearanceComponent>(args.Target, out var humApp))
             return;
 
-        // If we're putting on or taking off underwear, force penises to the opposite state
-        if (mProt.MarkingCategory == MarkingCategories.UndergarmentBottom
-            && humApp.MarkingSet.TryGetCategory(MarkingCategories.Genital, out var genitals))
-        {
-            foreach (var genital in genitals)
-            {
-                if (!_markingManager.TryGetMarking(genital, out var genitalProt))
-                    continue;
-                if (genitalProt.BodyPart is HumanoidVisualLayers.Penis or HumanoidVisualLayers.Testicles)
-                    _humanoid.SetMarkingVisibility(uid, humApp, genitalProt.ID, args.IsVisible);
-            }
-        }
-
         _humanoid.SetMarkingVisibility(
             uid,
             humApp,

@@ -725,6 +725,24 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         else
             humanoid.HiddenMarkings.Add(markingId);
 
+        // If we're putting on or taking off underwear, force penises to the opposite state
+        if (prototype.MarkingCategory == MarkingCategories.UndergarmentBottom
+            && humanoid.MarkingSet.TryGetCategory(MarkingCategories.Genital, out var genitals))
+        {
+            foreach (var genital in genitals)
+            {
+                if (!_markingManager.TryGetMarking(genital, out var genitalProt))
+                    continue;
+                if (genitalProt.BodyPart is not (HumanoidVisualLayers.Penis or HumanoidVisualLayers.Testicles))
+                    continue;
+
+                if (visible)
+                    humanoid.HiddenMarkings.Add(genitalProt.ID);
+                else
+                    humanoid.HiddenMarkings.Remove(genitalProt.ID);
+            }
+        }
+
         Dirty(uid, humanoid);
     }
     // Floofstation section end

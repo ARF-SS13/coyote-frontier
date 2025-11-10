@@ -35,21 +35,22 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 
     private void OnHandleState(EntityUid uid, HumanoidAppearanceComponent component, ref AfterAutoHandleStateEvent args)
     {
-        UpdateSprite(component, Comp<SpriteComponent>(uid));
+        UpdateSprite(uid, component, Comp<SpriteComponent>(uid));
     }
 
     private void OnConsentChanged()
     {
-        foreach (var (humanoid, sprite) in EntityQuery<HumanoidAppearanceComponent, SpriteComponent>())
+        var query = EntityQueryEnumerator<HumanoidAppearanceComponent, SpriteComponent>();
+        while (query.MoveNext(out var uid, out var humanoid, out var sprite))
         {
-            UpdateSprite(humanoid, sprite);
+            UpdateSprite(uid, humanoid, sprite);
         }
     }
 
-    private void UpdateSprite(HumanoidAppearanceComponent component, SpriteComponent sprite)
+    private void UpdateSprite(EntityUid uid, HumanoidAppearanceComponent component, SpriteComponent sprite)
     {
         UpdateLayers(component, sprite);
-        ApplyMarkingSet(component, sprite);
+        ApplyMarkingSet(uid, component, sprite);
         // TODO: make this thing a more versatulate proc
         var speciesPrototype = _prototypeManager.Index(component.Species);
 
@@ -308,14 +309,14 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         humanoid.Height = profile.Height;
         humanoid.Width = profile.Width;
 
-        UpdateSprite(humanoid, Comp<SpriteComponent>(uid));
+        UpdateSprite(uid, humanoid, Comp<SpriteComponent>(uid));
     }
 
-    private void ApplyMarkingSet(HumanoidAppearanceComponent humanoid, SpriteComponent sprite)
+    private void ApplyMarkingSet(EntityUid uid, HumanoidAppearanceComponent humanoid, SpriteComponent sprite)
     {
         // I am lazy and I CBF resolving the previous mess, so I'm just going to nuke the markings.
         // Really, markings should probably be a separate component altogether.
-        ClearAllMarkings(humanoid, sprite);
+        ClearAllMarkings(uid, humanoid, sprite);
 
         // var censorNudity = _configurationManager.GetCVar(CCVars.AccessibilityClientCensorNudity) ||
         //                    _configurationManager.GetCVar(CCVars.AccessibilityServerCensorNudity);
@@ -329,7 +330,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             {
                 if (_markingManager.TryGetMarking(marking, out var markingPrototype))
                 {
-                    ApplyMarking(markingPrototype, marking.MarkingColors, marking.Visible, humanoid, sprite);
+                    ApplyMarking(uid, markingPrototype, marking.MarkingColors, marking.Visible, humanoid, sprite);
                     // if (markingPrototype.BodyPart == HumanoidVisualLayers.UndergarmentTop)
                     //     applyUndergarmentTop = false;
                     // else if (markingPrototype.BodyPart == HumanoidVisualLayers.UndergarmentBottom)
@@ -343,7 +344,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         // AddUndergarments(humanoid, sprite, applyUndergarmentTop, applyUndergarmentBottom);
     }
 
-    private void ClearAllMarkings(HumanoidAppearanceComponent humanoid, SpriteComponent sprite)
+    private void ClearAllMarkings(EntityUid uid, HumanoidAppearanceComponent humanoid, SpriteComponent sprite)
     {
         foreach (var markingList in humanoid.ClientOldMarkings.Markings.Values)
         {
@@ -363,7 +364,9 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             }
         }
 
-        humanoid.HiddenMarkings.Clear();
+        // If it's a client side dummy doll, we have to handle refreshing the hidden markings ourselves.
+        if (EntityManager.IsClientSide(uid))
+            humanoid.HiddenMarkings.Clear();
     }
 
     private void RemoveMarking(Marking marking, SpriteComponent spriteComp)
@@ -391,31 +394,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         }
     }
 
-    private void AddUndergarments(HumanoidAppearanceComponent humanoid, SpriteComponent sprite, bool undergarmentTop, bool undergarmentBottom)
-    {
-        if (undergarmentTop && humanoid.UndergarmentTop != null)
-        {
-            var marking = new Marking(humanoid.UndergarmentTop, new List<Color> { new Color() });
-            if (_markingManager.TryGetMarking(marking, out var prototype))
-            {
-                // Markings are added to ClientOldMarkings because otherwise it causes issues when toggling the feature on/off.
-                humanoid.ClientOldMarkings.Markings.Add(MarkingCategories.UndergarmentTop, new List<Marking>{ marking });
-                ApplyMarking(prototype, null, true, humanoid, sprite);
-            }
-        }
-
-        if (undergarmentBottom && humanoid.UndergarmentBottom != null)
-        {
-            var marking = new Marking(humanoid.UndergarmentBottom, new List<Color> { new Color() });
-            if (_markingManager.TryGetMarking(marking, out var prototype))
-            {
-                humanoid.ClientOldMarkings.Markings.Add(MarkingCategories.UndergarmentBottom, new List<Marking>{ marking });
-                ApplyMarking(prototype, null, true, humanoid, sprite);
-            }
-        }
-    }
-
-    private void ApplyMarking(MarkingPrototype markingPrototype,
+    private void ApplyMarking(EntityUid uid,
+        MarkingPrototype markingPrototype,
         IReadOnlyList<Color>? colors,
         bool visible,
         HumanoidAppearanceComponent humanoid,
@@ -460,7 +440,10 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         // lets just kinda sorta do that ourselves
         var layerDict = new Dictionary<string, int>();
 
-        MarkingAdded(markingPrototype, humanoid);
+        // If the entity is client side (like the lobby preview dummy), handle hiding markings ourselves.
+        // Otherwise, this will cause a desync.
+        if (EntityManager.IsClientSide(uid))
+            MarkingAdded(markingPrototype, humanoid);
 
         visible &= !humanoid.HiddenMarkings.Contains(markingPrototype.ID); // FLOOF ADD
         // FLOOF ADD END
@@ -615,7 +598,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             foreach (var marking in markingList)
             {
                 if (_markingManager.TryGetMarking(marking, out var markingPrototype) && markingPrototype.BodyPart == layer)
-                    ApplyMarking(markingPrototype, marking.MarkingColors, marking.Visible, ent, sprite);
+                    ApplyMarking(ent, markingPrototype, marking.MarkingColors, marking.Visible, ent, sprite);
             }
         }
     }
