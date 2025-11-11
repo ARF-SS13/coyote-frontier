@@ -1,0 +1,37 @@
+# Author Info
+# GitHub: SimplyPoodle
+
+# was originally going to be named "gjallarhorn" but i read the heimdall authors wishes in the file and decided that if i did that, it wouldn't be right
+# so, birb it is
+- type: vessel
+  id: Huginn
+  name: TSF Huginn
+  parent: BaseVessel
+  description: A small detective runabout for intelligence gathering and forensic work.
+  price: 32350 # its a bit bigger than the heimdall and has a lot more little bits inside of it, so its marked up a tad
+  category: Medium
+  group: Security
+  access: Detective
+  shuttlePath: /Maps/_NF/Shuttles/Nfsd/huginn.yml
+  guidebookPage: Null
+  class:
+  - Detective
+  engine:
+  - APU
+
+- type: gameMap
+  id: Huginn
+  mapName: 'TSF Huginn'
+  mapPath: /Maps/_NF/Shuttles/Nfsd/huginn.yml
+  minPlayers: 0
+  stations:
+    Huginn:
+      stationProto: StandardFrontierSecurityVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Huginn {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs: {}
