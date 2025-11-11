@@ -4,8 +4,8 @@ meta:
   engineVersion: 261.2.0
   forkId: ""
   forkVersion: ""
-  time: 11/11/2025 04:53:59
-  entityCount: 606
+  time: 11/11/2025 05:07:06
+  entityCount: 607
 maps: []
 grids:
 - 1
@@ -297,18 +297,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 1.5,-2.5
       parent: 1
-- proto: AirlockGlassShuttleNfsdLocked
-  entities:
-  - uid: 10
-    components:
-    - type: Transform
-      pos: 1.5,-5.5
-      parent: 1
-  - uid: 384
-    components:
-    - type: Transform
-      pos: -0.5,-5.5
-      parent: 1
 - proto: AirlockNfsdGlassLocked
   entities:
   - uid: 348
@@ -345,6 +333,11 @@ entities:
       parent: 1
 - proto: AirlockShuttleNfsdLocked
   entities:
+  - uid: 10
+    components:
+    - type: Transform
+      pos: 1.5,-5.5
+      parent: 1
   - uid: 150
     components:
     - type: Transform
@@ -356,6 +349,11 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 7.5,0.5
+      parent: 1
+  - uid: 384
+    components:
+    - type: Transform
+      pos: -0.5,-5.5
       parent: 1
   - uid: 555
     components:
@@ -1029,6 +1027,11 @@ entities:
     components:
     - type: Transform
       pos: -0.5,-4.5
+      parent: 1
+  - uid: 607
+    components:
+    - type: Transform
+      pos: 1.5,-2.5
       parent: 1
 - proto: CableHV
   entities:
