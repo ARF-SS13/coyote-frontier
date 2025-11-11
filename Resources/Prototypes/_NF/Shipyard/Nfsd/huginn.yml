@@ -7,7 +7,7 @@
   id: Huginn
   name: TSF Huginn
   parent: BaseVessel
-  description: A small detective runabout for intelligence gathering and forensic work.
+  description: An eye for all of your necessary forensics work. Comes with various record-keeping computers to track down suspects!
   price: 32350 # its a bit bigger than the heimdall and has a lot more little bits inside of it, so its marked up a tad
   category: Medium
   group: Security
