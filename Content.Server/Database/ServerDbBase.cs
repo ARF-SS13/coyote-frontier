@@ -266,6 +266,8 @@ namespace Content.Server.Database
             return new HumanoidCharacterProfile(
                 profile.CharacterName,
                 profile.FlavorText,
+                profile.NsfwFlavorText,
+                profile.CharacterConsent,
                 profile.Species,
                 profile.Customspeciesname,
                 profile.Height,

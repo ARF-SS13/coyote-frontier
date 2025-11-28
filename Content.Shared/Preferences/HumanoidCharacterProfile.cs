@@ -157,6 +157,8 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile(
             string name,
             string flavortext,
+            string nsfwFlavorText, // DEN: nsfw flavor text
+            string characterConsent, // DEN: per-character consents
             string species,
             string customspeciesname,
             float height,
@@ -175,6 +177,8 @@ namespace Content.Shared.Preferences
         {
             Name = name;
             FlavorText = flavortext;
+            NsfwFlavorText = nsfwFlavorText;
+            CharacterConsent = characterConsent;
             Species = species;
             Customspeciesname = customspeciesname;
             Height = height;
@@ -201,6 +205,8 @@ namespace Content.Shared.Preferences
             Dictionary<string, RoleLoadout> loadouts)
             : this(other.Name,
                 other.FlavorText,
+                other.NsfwFlavorText,
+                other.CharacterConsent,
                 other.Species,
                 other.Customspeciesname,
                 other.Height,
@@ -223,6 +229,8 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile(HumanoidCharacterProfile other)
             : this(other.Name,
                 other.FlavorText,
+                other.NsfwFlavorText,
+                other.CharacterConsent,
                 other.Species,
                 other.Customspeciesname,
                 other.Height,
