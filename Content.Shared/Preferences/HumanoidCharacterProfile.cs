@@ -80,6 +80,14 @@ namespace Content.Shared.Preferences
         [DataField]
         public string FlavorText { get; set; } = string.Empty;
 
+        /// DEN: Detailed text that can appear for the character if <see cref="CCVars.FlavorText"/> and the viewer consent is enabled
+        [DataField]
+        public string NsfwFlavorText { get; set; } = string.Empty;
+
+        /// DEN: Detailed text that can appear allowing for character by character consent
+        [DataField]
+        public string CharacterConsent { get; set; } = string.Empty;
+
         /// <summary>
         /// Associated <see cref="SpeciesPrototype"/> for this profile.
         /// </summary>
@@ -322,6 +330,14 @@ namespace Content.Shared.Preferences
         {
             return new(this) { FlavorText = flavorText };
         }
+
+        // DEN - NSFW flavor text
+        public HumanoidCharacterProfile WithNsfwFlavorText(string flavorText) =>
+            new(this) { NsfwFlavorText = flavorText };
+
+        public HumanoidCharacterProfile WithCharacterConsent(string content) =>
+            new(this) { CharacterConsent = content };
+        // DEN
 
         public HumanoidCharacterProfile WithAge(int age)
         {

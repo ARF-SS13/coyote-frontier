@@ -553,22 +553,23 @@ namespace Content.Client.Lobby.UI
             IsDirty = false;
         }
 
-        /// <summary>
-        /// Refreshes the flavor text editor status.
-        /// </summary>
+        /// Refreshes the flavor text editor status
         public void RefreshFlavorText()
         {
-            if (_allowFlavorText)
+            if (_cfgManager.GetCVar(CCVars.FlavorText))
             {
                 if (_flavorText != null)
                     return;
 
-                _flavorText = new FlavorText.FlavorText();
+                _flavorText = new();
+
+                _flavorText.OnSfwFlavorTextChanged += OnSfwFlavorTextChange;
+                _flavorText.OnNsfwFlavorTextChanged += OnNsfwFlavorTextChange;
+                _flavorText.OnCharacterConsentChanged += OnCharacterConsentChange;
+
+
                 TabContainer.AddChild(_flavorText);
                 TabContainer.SetTabTitle(TabContainer.ChildCount - 1, Loc.GetString("humanoid-profile-editor-flavortext-tab"));
-                _flavorTextEdit = _flavorText.CFlavorTextInput;
-
-                _flavorText.OnFlavorTextChanged += OnFlavorTextChange;
             }
             else
             {
@@ -576,10 +577,9 @@ namespace Content.Client.Lobby.UI
                     return;
 
                 TabContainer.RemoveChild(_flavorText);
-                _flavorText.OnFlavorTextChanged -= OnFlavorTextChange;
-                _flavorText.Dispose();
-                _flavorTextEdit?.Dispose();
-                _flavorTextEdit = null;
+
+                _flavorText.OnSfwFlavorTextChanged -= OnSfwFlavorTextChange;
+                _flavorText.OnNsfwFlavorTextChanged -= OnNsfwFlavorTextChange;
                 _flavorText = null;
             }
         }
@@ -1240,7 +1240,8 @@ namespace Content.Client.Lobby.UI
             UpdateJobPriorities();
         }
 
-        private void OnFlavorTextChange(string content)
+        // DEN - Flavor text update
+        private void OnSfwFlavorTextChange(string content)
         {
             if (Profile is null)
                 return;
@@ -1248,6 +1249,25 @@ namespace Content.Client.Lobby.UI
             Profile = Profile.WithFlavorText(content);
             SetDirty();
         }
+
+        private void OnNsfwFlavorTextChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithNsfwFlavorText(content);
+            SetDirty();
+        }
+
+        private void OnCharacterConsentChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithCharacterConsent(content);
+            SetDirty();
+        }
+        // DEN
 
         private void OnMarkingChange(MarkingSet markings)
         {
