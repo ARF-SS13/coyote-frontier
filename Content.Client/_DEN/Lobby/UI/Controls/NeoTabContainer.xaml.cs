@@ -13,7 +13,7 @@ using Robust.Shared.Utility;
 using static Content.Client.Stylesheets.StyleBase;
 using static Robust.Shared.Maths.Direction;
 
-namespace Content.Client.UserInterface.Controls;
+namespace Content.Client._DEN.Lobby.UI.Controls;
 
 /// <summary>
 ///     A simple yet good-looking tab container using normal UI elements with multiple styles

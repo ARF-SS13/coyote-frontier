@@ -6,7 +6,7 @@
 using static Robust.Client.UserInterface.Controls.BoxContainer.LayoutOrientation;
 using static Robust.Shared.Maths.Direction;
 
-namespace Content.Client.UserInterface.Controls;
+namespace Content.Client._DEN.Lobby.UI.Controls;
 
 public sealed partial class NeoTabContainer
 {

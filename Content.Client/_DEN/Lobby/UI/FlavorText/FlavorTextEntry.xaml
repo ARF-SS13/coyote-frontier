@@ -6,7 +6,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 <BoxContainer
     xmlns="https://spacestation14.io"
-    xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:ui="clr-namespace:Content.Client._DEN.Lobby.UI.Controls"
     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     HorizontalExpand="True"
     Orientation="Vertical"
