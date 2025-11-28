@@ -923,6 +923,16 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("flavor_text");
 
+                    b.Property<string>("NsfwFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("nsfw_flavor_text");
+
+                    b.Property<string>("CharacterConsent")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("character_consent");
+
                     b.Property<string>("Gender")
                         .IsRequired()
                         .HasColumnType("text")
