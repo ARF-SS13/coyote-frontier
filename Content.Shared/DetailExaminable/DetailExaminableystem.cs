@@ -1,52 +1,102 @@
+using Content.Shared.Consent;
 using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Verbs;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Shared.DetailExaminable;
-
-public sealed class DetailExaminableSystem : EntitySystem
+namespace Content.Shared.DetailExaminable
 {
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
-
-    public override void Initialize()
+    public sealed class DetailExaminableSystem : EntitySystem
     {
-        base.Initialize();
+        [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
 
-        SubscribeLocalEvent<DetailExaminableComponent, GetVerbsEvent<ExamineVerb>>(OnGetExamineVerbs);
-    }
+        // DEN - Icons
+        private SpriteSpecifier _detailVerbIcon =
+            new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/examine.svg.192dpi.png"));
 
-    private void OnGetExamineVerbs(Entity<DetailExaminableComponent> ent, ref GetVerbsEvent<ExamineVerb> args)
-    {
-        if (Identity.Name(args.Target, EntityManager) != MetaData(args.Target).EntityName)
-            return;
+        private SpriteSpecifier _lewdVerbIcon =
+            new SpriteSpecifier.Texture(new("/Textures/_DEN/Interface/VerbIcons/lewd.svg.192dpi.png"));
+        // End DEN
 
-        var detailsRange = _examine.IsInDetailsRange(args.User, ent);
-
-        var user = args.User;
-
-        var verb = new ExamineVerb
+        public override void Initialize()
         {
-            Act = () =>
-            {
-                var markup = new FormattedMessage();
-                markup.AddMarkupPermissive(ent.Comp.Content);
-                _examine.SendExamineTooltip(user, ent, markup, false, false);
-                var examineCompletedEvent = new ExamineCompletedEvent(
-                    markup,
-                    ent,
-                    user,
-                    false, // Secondary info is false because this is the main examine verb
-                    "flavor text:");
-                RaiseLocalEvent(ent, examineCompletedEvent);
-            },
-            Text = Loc.GetString("detail-examinable-verb-text"),
-            Category = VerbCategory.Examine,
-            Disabled = !detailsRange,
-            Message = detailsRange ? null : Loc.GetString("detail-examinable-verb-disabled"),
-            Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/examine.svg.192dpi.png"))
-        };
+            base.Initialize();
 
-        args.Verbs.Add(verb);
+            SubscribeLocalEvent<DetailExaminableComponent, GetVerbsEvent<ExamineVerb>>(OnGetExamineVerbs);
+        }
+
+        private void OnGetExamineVerbs(EntityUid uid, DetailExaminableComponent component, GetVerbsEvent<ExamineVerb> args)
+        {
+            if (Identity.Name(args.Target, EntityManager) != MetaData(args.Target).EntityName)
+                return;
+
+            var contentVerb = GetContentExamine(uid, component, args);
+            if (contentVerb != null) // DEN: Have to null-check becuase GetContentExamine is now nullable
+                args.Verbs.Add(contentVerb);
+
+            var nsfwContentVerb = GetNsfwContentExamine(uid, component, args);
+            if (nsfwContentVerb != null)
+                args.Verbs.Add(nsfwContentVerb);
+        }
+
+        // DEN start: Common function for building examine verbs
+        private ExamineVerb? GetExamineVerb(EntityUid uid,
+            string content,
+            string verbText,
+            SpriteSpecifier? icon,
+            GetVerbsEvent<ExamineVerb> args,
+            ProtoId<ConsentTogglePrototype>? requiredConsent = null,
+            bool hideIfEmpty = false)
+        {
+            if (hideIfEmpty && string.IsNullOrWhiteSpace(content))
+                return null;
+
+            var verb = new ExamineVerb
+            {
+                Act = () =>
+                {
+                    var markup = new FormattedMessage();
+                    markup.AddMarkupPermissive(content);
+                    _examineSystem.SendExamineTooltip(args.User, uid, markup, getVerbs: false, centerAtCursor: false);
+                },
+                Text = verbText,
+                Category = VerbCategory.Examine,
+                Icon = icon
+            };
+
+            return verb;
+        }
+        // End DEN
+
+        private ExamineVerb? GetContentExamine(
+            EntityUid uid,
+            DetailExaminableComponent component,
+            GetVerbsEvent<ExamineVerb> args
+        )
+        {
+            // DEN: Use shared detail examine system for this
+            return GetExamineVerb(uid,
+                content: component.Content,
+                verbText: Loc.GetString("detail-examinable-verb-text"),
+                icon: _detailVerbIcon,
+                args: args,
+                hideIfEmpty: false);
+        }
+
+        private ExamineVerb? GetNsfwContentExamine(
+            EntityUid uid,
+            DetailExaminableComponent component,
+            GetVerbsEvent<ExamineVerb> args
+        )
+        {
+            // DEN: Use shared detail examine system for this
+            return GetExamineVerb(uid,
+                content: component.NsfwContent,
+                verbText: Loc.GetString("detail-nsfw-examinable-verb-text"),
+                icon: _lewdVerbIcon,
+                args: args,
+                hideIfEmpty: true);
+        }
     }
 }

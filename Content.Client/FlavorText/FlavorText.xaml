@@ -5,7 +5,6 @@
     <denLobby:NeoTabContainer Name="FlavorTextTabs" VerticalExpand="True" HScrollEnabled="False" VScrollEnabled="False">
         <BoxContainer Name="TabSFW" Orientation="Vertical" HorizontalExpand="True">
             <denLobby:FlavorTextEntry Name="FlavorTextSFWDetail" />
-            <denLobby:FlavorTextEntry Name="FlavorTextSelfDetail" />
         </BoxContainer>
         <BoxContainer Name="TabNSFW" Orientation="Vertical" HorizontalExpand="True">
             <denLobby:FlavorTextEntry Name="FlavorTextNSFWDetail" />

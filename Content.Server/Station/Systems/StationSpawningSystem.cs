@@ -282,6 +282,9 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         var gearEquippedEv = new StartingGearEquippedEvent(entity.Value);
         RaiseLocalEvent(entity.Value, ref gearEquippedEv);
 
+        // DEN
+        UpdateFlavorText(entity.Value, profile);
+
         if (prototype != null && TryComp(entity.Value, out MetaDataComponent? metaData))
         {
             SetPdaAndIdCardData(entity.Value, metaData.EntityName, prototype, station);
@@ -291,6 +294,22 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         _identity.QueueIdentityUpdate(entity.Value);
         return entity.Value;
     }
+
+    // DEN
+    private void UpdateFlavorText(EntityUid uid, HumanoidCharacterProfile? profile)
+    {
+        if (profile == null)
+            return;
+
+        var detail = EnsureComp<DetailExaminableComponent>(uid);
+
+        if (!string.IsNullOrWhiteSpace(profile.FlavorText))
+            detail.Content = profile.FlavorText;
+
+        if (!string.IsNullOrWhiteSpace(profile.NsfwFlavorText))
+            detail.NsfwContent = profile.NsfwFlavorText;
+    }
+    // DEN
 
     private void DoJobSpecials(ProtoId<JobPrototype>? job, EntityUid entity)
     {
