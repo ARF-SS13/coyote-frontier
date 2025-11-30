@@ -927,7 +927,7 @@ namespace Content.Client.Lobby.UI
 
             UpdateNameEdit();
             UpdateCustomSpeciesEdit();
-            UpdateFlavorTextEdit();
+            _flavorText?.SetProfile(Profile);
             UpdateSexControls();
             // Changing species provides inaccurate sliders without these
             UpdateHeightControls();

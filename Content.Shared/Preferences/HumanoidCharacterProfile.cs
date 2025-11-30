@@ -570,6 +570,8 @@ namespace Content.Shared.Preferences
             if (!_traitPreferences.SequenceEqual(other._traitPreferences)) return false;
             if (!Loadouts.SequenceEqual(other.Loadouts)) return false;
             if (FlavorText != other.FlavorText) return false;
+            if (NsfwFlavorText != other.NsfwFlavorText) return false;
+            if (CharacterConsent != other.CharacterConsent) return false;
             return Appearance.MemberwiseEquals(other.Appearance);
         }
 
@@ -841,6 +843,8 @@ namespace Content.Shared.Preferences
             hashCode.Add(_loadouts);
             hashCode.Add(Name);
             hashCode.Add(FlavorText);
+            hashCode.Add(NsfwFlavorText);
+            hashCode.Add(CharacterConsent);
             hashCode.Add(Species);
             hashCode.Add(Height);
             hashCode.Add(Width);

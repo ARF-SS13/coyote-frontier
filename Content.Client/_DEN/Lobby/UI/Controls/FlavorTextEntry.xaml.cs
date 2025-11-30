@@ -4,7 +4,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Utility;
 
-namespace Content.Client._DEN.Lobby.UI.FlavorText;
+namespace Content.Client._DEN.Lobby.UI.Controls;
 
 [GenerateTypedNameReferences]
 public sealed partial class FlavorTextEntry : BoxContainer

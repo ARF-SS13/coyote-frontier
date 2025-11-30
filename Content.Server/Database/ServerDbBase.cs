@@ -308,6 +308,8 @@ namespace Content.Server.Database
 
             profile.CharacterName = humanoid.Name;
             profile.FlavorText = humanoid.FlavorText;
+            profile.NsfwFlavorText = humanoid.NsfwFlavorText;
+            profile.CharacterConsent = humanoid.CharacterConsent;
             profile.Species = humanoid.Species;
             profile.Customspeciesname = humanoid.Customspeciesname;
             profile.Age = humanoid.Age;
