@@ -1876,6 +1876,7 @@
     FoodBerries: 2
   reagents:
     Milk: 10
+  recipeType: Assembler # Coyote
 
 - type: microwaveMealRecipe
   id: RecipeBreadDog
