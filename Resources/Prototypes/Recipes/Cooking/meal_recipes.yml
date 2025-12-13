@@ -2679,7 +2679,7 @@
   name: full american breakfast recipe
   result: FoodBreakfastAmerican
   time: 30
-  group: Savory
+  group: Breakfast
   reagents:
     Egg: 12
   solids:
@@ -2693,7 +2693,7 @@
   name: full english breakfast recipe
   result: FoodBreakfastEnglish
   time: 30
-  group: Savory
+  group: Breakfast
   reagents:
     Egg: 12
   solids:
