@@ -2713,7 +2713,7 @@
     SpaceCleaner: 15
   solids:
     MobMothroach: 1
-    OrganAnimalHeart: 1
+    #OrganAnimalHeart: 1 # Coyote: Commented Out
     MoproachShoes: 1
   recipeType: MedicalAssembler # Frontier
 
