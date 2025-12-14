@@ -1876,6 +1876,7 @@
     FoodBerries: 2
   reagents:
     Milk: 10
+  recipeType: Assembler # Coyote
 
 - type: microwaveMealRecipe
   id: RecipeBreadDog
@@ -2678,20 +2679,21 @@
   name: full american breakfast recipe
   result: FoodBreakfastAmerican
   time: 30
-  group: Savory
+  group: Breakfast # Coyote: "Savory" > "Breakfast"
   reagents:
     Egg: 12
   solids:
     FoodMeatBacon: 2
     FoodPotato: 1
     FoodBakedPancake: 2
+  recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
   id: RecipeBreakfastEnglish
   name: full english breakfast recipe
   result: FoodBreakfastEnglish
   time: 30
-  group: Savory
+  group: Breakfast # Coyote: "Savory" > "Breakfast"
   reagents:
     Egg: 12
   solids:
@@ -2699,6 +2701,7 @@
     FoodMeat: 1
     FoodTomato: 1
     FoodSoybeans: 2 # replace these with green beans once those become a thing
+  recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
   id: RecipeCottonCake
@@ -2710,3 +2713,4 @@
     Fiber: 10
   solids:
     FoodCakePlain: 1
+  recipeType: Assembler # Frontier
