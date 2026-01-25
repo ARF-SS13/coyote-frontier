@@ -46,7 +46,7 @@
 
 - type: entity
   id: NFBaseWeaponFrameRifleAssaultCybersun
-  parent: [ BaseC4Contraband, NFBaseWeaponFrameRifleAssault ]
+  parent: [ NFBaseWeaponFrameRifleAssault ] # coyote
   abstract: true
   components:
   - type: Gun

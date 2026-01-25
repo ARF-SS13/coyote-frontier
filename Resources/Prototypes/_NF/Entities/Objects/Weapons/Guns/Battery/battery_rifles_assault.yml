@@ -7,6 +7,8 @@
   description: |-
     A high tech energy carbine favoured by the NT-ERT operatives. On the handle is a label that says 'for authorized use only.'
   components:
+  - type: Redeemable
+    preset: NFSDGearExtremeValuable
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi
   - type: Clothing
@@ -24,6 +26,8 @@
   description: |-
     A turbo laser ripped from the guardian unit. Appears to be a rather old model. Doesn't seem to be working properly. Supposedly highly illegal.
   components:
+  - type: Redeemable
+    preset: ContraLvl2
   - type: Gun
     soundGunshot:
       path: /Audio/_DV/Weapons/Guns/Gunshots/laser.ogg

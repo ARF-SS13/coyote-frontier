@@ -558,6 +558,8 @@
   name: NFSD hoverbike
   description: An NFSD issued turbine with bike handles. Very safe.
   components:
+  - type: Redeemable
+    preset: NFSDGearValuable
   - type: Vehicle
     sirenSound:
       collection: PoliceSiren
@@ -652,6 +654,8 @@
   name: pirate hoverbike
   description: A sovereign space shuttle, fitting only for the most sovereigh of citizens. Freedom for Freelancers!
   components:
+  - type: Redeemable
+    preset: FreelancerGearValuable
   - type: Storage
     grid:
     - 0,0,5,3
@@ -732,6 +736,8 @@
   name: syndicate hoverbike
   description: This thing screams style. And war crimes.
   components:
+  - type: Redeemable
+    preset: SyndieLvl1
   - type: Storage
     grid:
     - 0,0,8,4

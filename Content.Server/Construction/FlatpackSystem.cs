@@ -8,7 +8,8 @@ using Content.Shared.Power;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Shared._NF.BindToStation; // Frontier: station binding
-using Content.Server._NF.BindToStation; // Frontier: station binding
+using Content.Server._NF.BindToStation;
+using Content.Shared._Coyote.RedeemableStuff; // Frontier: station binding
 
 namespace Content.Server.Construction;
 

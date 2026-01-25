@@ -1,8 +1,9 @@
 using System.Linq; // Frontier
 using Content.Server._NF.BindToStation; // Frontier
 using Content.Server.Construction.Components;
-using Content.Server.Station.Systems; // Frontier
-using Content.Shared._NF.BindToStation; // Frontier
+using Content.Server.Station.Systems;
+using Content.Shared._Coyote.RedeemableStuff; // Frontier
+using Content.Shared._NF.BindToStation;       // Frontier
 using Content.Shared.Construction.Components;
 using Content.Shared.Construction.Prototypes;
 using Robust.Shared.Containers;
@@ -32,6 +33,8 @@ public sealed partial class ConstructionSystem
         {
             if (TryComp<StationBoundObjectComponent>(board, out var binding))
                 _bindToStation.BindToStation(uid, binding.BoundStation, binding.Enabled);
+            if (HasComp<UnRedeemableComponent>(board) && !HasComp<UnRedeemableComponent>(uid))
+                AddComp<UnRedeemableComponent>(uid);
         }
         // End Frontier
     }
@@ -66,7 +69,7 @@ public sealed partial class ConstructionSystem
             throw new Exception($"Entity with prototype {component.Board} doesn't have a {nameof(MachineBoardComponent)}!");
         }
 
-        // Frontier: Only bind the board if the machine itself has the BindToStationComponent and the board doesn't already have BindToStationComponent  
+        // Frontier: Only bind the board if the machine itself has the BindToStationComponent and the board doesn't already have BindToStationComponent
         if (HasComp<BindToStationComponent>(uid) && board != null)
         {
             var machineStation = _station.GetOwningStation(uid);
@@ -76,6 +79,11 @@ public sealed partial class ConstructionSystem
             }
         }
         // End Frontier
+
+        if (board is not null && HasComp<UnRedeemableComponent>(uid))
+        {
+            AddComp<UnRedeemableComponent>(board.Value);
+        }
 
         foreach (var (stackType, amount) in machineBoard.StackRequirements)
         {

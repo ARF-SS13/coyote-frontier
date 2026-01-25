@@ -1,7 +1,7 @@
 #region frame
 - type: entity
   id: NFBaseWeaponFrameEnergyPistol
-  parent: [ NFBaseWeaponEncumbrancePistol, BaseWeaponBatterySmall, BaseC1ContrabandUnredeemable ]
+  parent: [ NFBaseWeaponEncumbrancePistol, BaseWeaponBatterySmall ] #Coyote
   suffix: Frontier
   abstract: true
   components:

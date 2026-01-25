@@ -19,6 +19,8 @@
   name: NFSD helmet
   description: An NFSD issued helmet to protect your head.
   components:
+  - type: Redeemable
+    preset: NFSDGear
   - type: Sprite
     sprite: _NF/Clothing/Head/Helmets/nfsd.rsi
   - type: Clothing

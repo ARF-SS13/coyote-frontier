@@ -16,6 +16,7 @@ using Content.Shared.Mobs.Components;
 using Robust.Shared.Prototypes;
 using Content.Server._NF.Cargo.Systems;
 using Content.Server.Hands.Systems;
+using Content.Shared._Coyote.RedeemableStuff;
 
 namespace Content.Server._NF.Contraband.Systems;
 
@@ -149,15 +150,24 @@ public sealed partial class ContrabandTurnInSystem : SharedContrabandTurnInSyste
                 if (_blacklistQuery.HasComponent(ent))
                     continue;
 
-                if (TryComp<ContrabandComponent>(ent, out var comp))
+                // if (TryComp<ContrabandComponent>(ent, out var comp))
+                // {
+                //     if (!comp.TurnInValues.ContainsKey(console.RewardType))
+                //         continue;
+                //
+                //     toSell.Add(ent);
+                //     var value = comp.TurnInValues[console.RewardType];
+                //     if (value <= 0)
+                //         continue;
+                //     amount += value;
+                // }
+                GetRedeemValueEvent ev = new ();
+                RaiseLocalEvent(ent, ref ev);
+                if (ev.Values.TryGetValue(console.RewardType, out int value))
                 {
-                    if (!comp.TurnInValues.ContainsKey(console.RewardType))
-                        continue;
-
-                    toSell.Add(ent);
-                    var value = comp.TurnInValues[console.RewardType];
                     if (value <= 0)
                         continue;
+                    toSell.Add(ent);
                     amount += value;
                 }
             }

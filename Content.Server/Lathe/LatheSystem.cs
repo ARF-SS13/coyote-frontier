@@ -35,7 +35,8 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Shared.Cargo.Components; // Frontier
-using Content.Server._NF.Contraband.Systems; // Frontier
+using Content.Server._NF.Contraband.Systems;
+using Content.Shared._Coyote.RedeemableStuff; // Frontier
 using Robust.Shared.Containers;
 using Content.Shared._NF.Lathe; // Frontier
 
@@ -531,6 +532,8 @@ namespace Content.Server.Lathe
             || !float.IsFinite(component.ProductValueModifier.Value)
             || component.ProductValueModifier < 0f)
                 return;
+
+            EnsureComp<UnRedeemableComponent>(target); // Make unredeemable
 
             if (TryComp<StackPriceComponent>(target, out var stackPrice))
             {

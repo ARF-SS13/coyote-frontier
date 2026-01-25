@@ -134,8 +134,10 @@
   id: SpaceBladeSec
   parent:
   - SpaceBlade
-  - BaseC1Contraband # COYOTE: BaseC2ContrabandUnredeemable -> BaseC4ContrabandUnredeemable
+  - BaseC4ContrabandUnredeemable # COYOTE: BaseC2ContrabandUnredeemable -> BaseC4ContrabandUnredeemable
   components:
+  - type: Redeemable
+    preset: NFSDGear
   - type: Sprite
     state: secblade
   - type: StaminaDamageOnCollide
@@ -150,6 +152,8 @@
   - BaseC1Contraband
   description: Let it reap.
   components:
+  - type: Redeemable
+    preset: SyndieLvl1
   - type: Sprite
     state: contraband
   - type: DamageOtherOnHit

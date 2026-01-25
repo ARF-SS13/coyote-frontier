@@ -1,0 +1,152 @@
+# Redeemable Presets for Coyote FUC System
+- type: redeemablePreset
+  id: Example
+  fucValue: 0
+  denBullionValue: 1
+
+- type: redeemablePreset
+  id: Example2
+  fucValue: 1
+  denBullionValue: 0
+
+- type: redeemablePreset
+  id: Valueless
+  fucValue: 0
+  denBullionValue: 0
+
+- type: redeemablePreset
+  id: NFSDGear
+  fucValue: 0
+  denBullionValue: 1
+
+- type: redeemablePreset
+  id: NFSDGearValuable
+  fucValue: 0
+  denBullionValue: 3
+
+- type: redeemablePreset
+  id: NFSDGearExtremeValuable
+  fucValue: 0
+  denBullionValue: 6
+
+- type: redeemablePreset
+  id: ExpedNFSDLvl1
+  fucValue: 1
+  denBullionValue: 2
+
+- type: redeemablePreset
+  id: ExpedNFSDLvl2
+  fucValue: 1
+  denBullionValue: 3
+
+- type: redeemablePreset
+  id: ExpedNFSDLvl3
+  fucValue: 1
+  denBullionValue: 4
+
+- type: redeemablePreset
+  id: ExpedNFSDLvl4
+  fucValue: 1
+  denBullionValue: 5
+
+- type: redeemablePreset
+  id: FreelancerGear
+  fucValue: 0
+  denBullionValue: 1
+
+- type: redeemablePreset
+  id: FreelancerGearValuable
+  fucValue: 0
+  denBullionValue: 3
+
+- type: redeemablePreset
+  id: FreelancerGearExtremeValuable
+  fucValue: 0
+  denBullionValue: 6
+
+- type: redeemablePreset
+  id: ExpedFreelancerLvl1
+  fucValue: 2
+  denBullionValue: 1
+
+- type: redeemablePreset
+  id: ExpedFreelancerLvl2
+  fucValue: 3
+  denBullionValue: 1
+
+- type: redeemablePreset
+  id: ExpedFreelancerLvl3
+  fucValue: 4
+  denBullionValue: 1
+
+- type: redeemablePreset
+  id: ExpedFreelancerLvl4
+  fucValue: 5
+  denBullionValue: 1
+
+- type: redeemablePreset
+  id: ContraLvl1
+  fucValue: 1
+  denBullionValue: 1
+
+- type: redeemablePreset
+  id: ContraLvl2
+  fucValue: 2
+  denBullionValue: 2
+
+- type: redeemablePreset
+  id: ContraLvl3
+  fucValue: 3
+  denBullionValue: 3
+
+- type: redeemablePreset
+  id: ContraLvl4
+  fucValue: 4
+  denBullionValue: 4
+
+- type: redeemablePreset
+  id: WizardLvl1
+  fucValue: 1
+  denBullionValue: 2
+
+- type: redeemablePreset
+  id: WizardLvl2
+  fucValue: 1
+  denBullionValue: 3
+
+- type: redeemablePreset
+  id: WizardLvl3
+  fucValue: 1
+  denBullionValue: 4
+
+- type: redeemablePreset
+  id: WizardLvl4
+  fucValue: 1
+  denBullionValue: 5
+
+- type: redeemablePreset
+  id: SyndieLvl1
+  fucValue: 2
+  denBullionValue: 1
+
+- type: redeemablePreset
+  id: SyndieLvl2
+  fucValue: 3
+  denBullionValue: 1
+
+- type: redeemablePreset
+  id: SyndieLvl3
+  fucValue: 4
+  denBullionValue: 1
+
+- type: redeemablePreset
+  id: SyndieLvl4
+  fucValue: 5
+  denBullionValue: 1
+
+- type: redeemablePreset
+  id: ContrabandCrate
+  fucValue: 6
+  denBullionValue: 2
+
+

@@ -3,6 +3,8 @@
   parent: [BaseC4ContrabandUnredeemable, EnergyShield] # COYOTE: BaseC2ContrabandUnredeemable -> BaseC4ContrabandUnredeemable
   id: EnergyShieldNfsd
   components:
+  - type: Redeemable
+    preset: NFSDGearValuable
   - type: Sprite
     sprite: _NF/Objects/Weapons/Melee/e_shield.rsi
   - type: Item
@@ -16,6 +18,8 @@
   id: NFMetalShield
   description: A sturdy metal shield. It has a window so you can wink at whatever is hitting you.
   components:
+  - type: Redeemable
+    preset: ContraLvl1
   - type: Sprite
     sprite: _NF/Objects/Weapons/Melee/shields.rsi
     state: metal-icon
@@ -28,6 +32,8 @@
   parent: [ BaseC1Contraband, RiotLaserShield ]
   name: reflective shield
   components:
+  - type: Redeemable
+    preset: ContraLvl1
   - type: Sprite
     sprite: _NF/Objects/Weapons/Melee/shields.rsi
     state: reflective-icon
@@ -54,6 +60,8 @@
   parent: [ BaseC1Contraband, RiotBulletShield ]
   name: bullet resistant shield
   components:
+  - type: Redeemable
+    preset: ContraLvl1
   - type: Sprite
     sprite: _NF/Objects/Weapons/Melee/shields.rsi
     state: bullet-icon

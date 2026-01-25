@@ -34,6 +34,8 @@
   name: NFSD glasses
   description: Upgraded sunglasses that provide flash immunity and a security HUD.
   components:
+  - type: Redeemable
+    preset: NFSDGear
   - type: Sprite
     sprite: _NF/Clothing/Eyes/Glasses/nfsd_glasses.rsi
   - type: Clothing
@@ -45,6 +47,8 @@
   name: plant manager's goggles
   description: Green-tinted protective goggles with an integrated HUD for crew identification.
   components:
+  - type: Redeemable
+    preset: NFSDGear
   - type: Sprite
     sprite: _NF/Clothing/Eyes/Glasses/manager_meson.rsi
   - type: Clothing

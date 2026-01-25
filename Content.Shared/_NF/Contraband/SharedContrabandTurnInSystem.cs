@@ -1,3 +1,4 @@
+using Content.Shared._Coyote.RedeemableStuff;
 using Content.Shared.Contraband;
 using Robust.Shared.Containers;
 using Robust.Shared.Serialization;
@@ -15,7 +16,7 @@ public abstract class SharedContrabandTurnInSystem : EntitySystem
     public void ClearContrabandValue(EntityUid item)
     {
         // Clear contraband value for printed items
-        if (TryComp<ContrabandComponent>(item, out var contraband))
+        if (TryComp<RedeemableComponent>(item, out var contraband))
         {
             foreach (var valueKey in contraband.TurnInValues.Keys)
             {

@@ -6,6 +6,8 @@
   name: NFSD hud
   description: A heads-up display that scans the humanoids in view and provides accurate data about their ID status and criminal records.
   components:
+  - type: Redeemable
+    preset: NFSDGear
   - type: Sprite
     sprite: _NF/Clothing/Eyes/Hud/nfsd_hud.rsi
   - type: Clothing
@@ -29,6 +31,8 @@
   name: brigmedic hud
   description: An eye display that looks like a mixture of medical and nfsd huds.
   components:
+  - type: Redeemable
+    preset: NFSDGear
   - type: Sprite
     sprite: _NF/Clothing/Eyes/Hud/nfsd_hud.rsi
   - type: Clothing
@@ -45,6 +49,8 @@
   name: NFSD hud eyepatch
   description: A heads-up display that scans the humanoids in view and provides accurate data about their ID status and criminal records.
   components:
+  - type: Redeemable
+    preset: NFSDGear
   - type: Sprite
     sprite: _NF/Clothing/Eyes/Hud/nfsd_patch.rsi
   - type: Clothing

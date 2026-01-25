@@ -1,8 +1,9 @@
 using Content.Server._NF.BindToStation; // Frontier
 using Content.Server.Construction.Components;
 using Content.Server.Power.Components;
-using Content.Server.Station.Systems; // Frontier
-using Content.Shared._NF.BindToStation; // Frontier
+using Content.Server.Station.Systems;
+using Content.Shared._Coyote.RedeemableStuff; // Frontier
+using Content.Shared._NF.BindToStation;       // Frontier
 using Content.Shared.Computer;
 using Content.Shared.Power;
 using Robust.Shared.Containers;
@@ -85,6 +86,10 @@ public sealed partial class ConstructionSystem
             }
         }
         // End Frontier
+        if (HasComp<UnRedeemableComponent>(ent.Owner))
+        {
+            AddComp<UnRedeemableComponent>(board);
+        }
 
         if (!_container.Insert(board, container))
             Log.Warning($"Couldn't insert board {board} to computer {ent}!");

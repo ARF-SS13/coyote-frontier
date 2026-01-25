@@ -32,6 +32,8 @@
   description: |-
     A small, easily concealable machine pistol. An illegal firearm often used by Syndicate agents.
   components:
+  - type: Redeemable
+    preset: SyndieLvl1
   - type: Sprite
     sprite: Objects/Weapons/Guns/Pistols/viper.rsi
   - type: Clothing

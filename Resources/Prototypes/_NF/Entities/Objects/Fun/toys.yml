@@ -985,12 +985,14 @@
     clumsyProof: true
 
 - type: entity
-  parent: [BaseC1Contraband, NFBaseWeaponFrameRevolverFoamForce, NFBaseWeaponRevolverChamber45Cap]
+  parent: [BaseC4Contraband, NFBaseWeaponFrameRevolverFoamForce, NFBaseWeaponRevolverChamber45Cap]
   id: NFRevolverCapGunFake
   suffix: Fake, Frontier
   name: cap gun
   description: Looks almost like the real thing! Ages 8 and up.
   components:
+  - type: Redeemable
+    preset: SyndieLvl4
   - type: Sprite
     sprite: Objects/Fun/toys.rsi
     layers:

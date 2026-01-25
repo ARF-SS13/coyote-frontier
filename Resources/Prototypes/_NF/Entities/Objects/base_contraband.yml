@@ -68,9 +68,10 @@
   abstract: true
   components:
   - type: Contraband
+    severity: Class2Expedition
     turnInValues: &noFUCs
-      FrontierUplinkCoin: 0
-      Doubloon: 0
+      FrontierUplinkCoin: 1
+      Doubloon: 1
 # endregion
 
 # region Class 3 Objects
@@ -99,7 +100,10 @@
   abstract: true
   components:
   - type: Contraband
-    turnInValues: *oneFUC
+    severity: Class3Expedition
+    turnInValues:
+      FrontierUplinkCoin: 2
+      Doubloon: 2
 
 - type: entity
   parent: BaseC3ContrabandUnredeemable

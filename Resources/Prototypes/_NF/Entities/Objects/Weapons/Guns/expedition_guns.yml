@@ -100,72 +100,99 @@
   - NFWeaponPistolMk58
   categories: [ HideSpawnMenu ]
   id: NFWeaponPistolMk58Expedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier1
   - NFWeaponPistolPollockHighCapacityMag
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponPistolPollockExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier1
   - NFWeaponPistolUniversal
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponPistolUniversalExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 ## Revolvers
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier1
   - NFWeaponRevolverArgenti
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRevolverArgentiExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier1
   - NFWeaponRevolverFaith
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRevolverFaithExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier1
   - NFWeaponRevolverDeckard
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRevolverDeckardExpedition
+  components:
+  - type: Redeemable
+    preset: ExpedNFSDLvl1
 
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier1Syndicate
   - NFWeaponRevolverRitland45
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRevolverRitland45Expedition
+  components:
+  - type: Redeemable
+    preset: SyndieLvl1
 
 ## Rifles
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier1Syndicate
   - NFWeaponRifleBarlowsBolt
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleBarlowsBoltExpedition
+  components:
+  - type: Redeemable
+    preset: SyndieLvl1
 
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier1
   - NFWeaponRifleCeremonial
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleCeremonialExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 - type: entity
   parent:
@@ -173,121 +200,171 @@
   - NFWeaponRifleRepeater
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleRepeaterExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 # region Tier 2
 ## Pistols
 - type: entity
   parent:
+  - BaseC4Contraband
   - BaseExpeditionWeaponTier2Syndicate
   - NFWeaponPistolCobra
-  - BaseC4Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponPistolCobraExpedition
+  components:
+  - type: Redeemable
+    preset: SyndieLvl4
 
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier2
   - NFWeaponPistolN1984
   categories: [ HideSpawnMenu ]
   id: NFWeaponPistolN1984Expedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier2Syndicate
   - NFWeaponPistolViper
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponPistolViperExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 ## Revolvers
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier2
   - NFWeaponRevolverFitz
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRevolverFitzExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier2
   - NFWeaponRevolverLucky
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRevolverLuckyExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier2Pirate
   - NFWeaponRevolverPirate
   categories: [ HideSpawnMenu ]
   id: NFWeaponRevolverPirateExpedition
+  components:
+  - type: Redeemable
+    preset: ExpedFreelancerLvl1
 
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier2
   - NFWeaponRevolverWard45
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRevolverWard45Expedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 ## Shotguns
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier2
   - NFWeaponShotgunKammerer
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponShotgunKammererExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 ## SMGs
 - type: entity
   parent:
+  - BaseC2Contraband
   - BaseExpeditionWeaponTier2Syndicate
   - NFWeaponSubMachineGunC20r
-  - BaseC2Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponSubMachineGunC20rExpedition
+  components:
+  - type: Redeemable
+    preset: SyndieLvl2
 
 ## Assault Rifles
 - type: entity
   parent:
+  - BaseC2Contraband
   - BaseExpeditionWeaponTier2
   - NFWeaponRifleAssaultNovaliteC1
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleAssaultNovaliteC1Expedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl2
 
 - type: entity
   parent:
+  - BaseC2Contraband
   - BaseExpeditionWeaponTier2
   - NFWeaponRifleAssaultJackdaw
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleAssaultJackdawExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl2
 
 - type: entity
   parent:
+  - BaseC2Contraband
   - BaseExpeditionWeaponTier2
   - NFWeaponRifleAssaultGestio
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleAssaultGestioExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl2
 
 ## Rifles
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier2
   - NFWeaponRifleSVS
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleSVSExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 ## Energy
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier2
   - NFWeaponEnergyPistolLaser
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponEnergyPistolLaserExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 # region Tier 3
 ## Assault Rifles
@@ -297,31 +374,43 @@
   - NFWeaponRifleAssaultLecter
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleAssaultLecterExpedition
+  components:
+  - type: Redeemable
+    preset: ExpedNFSDLvl2
 
 - type: entity
   parent:
+  - BaseC2Contraband
   - BaseExpeditionWeaponTier3Syndicate
   - NFWeaponRifleAssaultM90GrenadeLauncher
-  - BaseC2Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleAssaultM90GrenadeLauncherExpedition
+  components:
+  - type: Redeemable
+    preset: SyndieLvl2
 
 ## Snipers
 - type: entity
   parent:
+  - BaseC3Contraband
   - BaseExpeditionWeaponTier3Syndicate
   - NFWeaponRifleSniperHristov
-  - BaseC3Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleSniperHristovExpedition
+  components:
+  - type: Redeemable
+    preset: SyndieLvl3
 
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier3Pirate
   - NFWeaponRifleMusket
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleMusketExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 ## SMGs
 - type: entity
@@ -330,6 +419,9 @@
   - NFWeaponSubMachineGunWt550
   categories: [ HideSpawnMenu ]
   id: NFWeaponSubMachineGunWt550Expedition
+  components:
+  - type: Redeemable
+    preset: ExpedNFSDLvl2
 
 - type: entity
   parent:
@@ -337,6 +429,9 @@
   - NFWeaponSubMachineGunDrozd
   categories: [ HideSpawnMenu ]
   id: NFWeaponSubMachineGunDrozdExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl2
 
 - type: entity
   parent:
@@ -344,6 +439,9 @@
   - NFWeaponSubMachineGunAtreides
   categories: [ HideSpawnMenu ]
   id: NFWeaponSubMachineGunAtreidesExpedition
+  components:
+  - type: Redeemable
+    preset: SyndieLvl2
 
 - type: entity
   parent:
@@ -351,42 +449,57 @@
   - NFWeaponSubMachineGunTypewriter
   categories: [ HideSpawnMenu ]
   id: NFWeaponSubMachineGunTypewriterExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl2
 
 ## Energy
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier3
   - NFWeaponEnergyPistolLaserSvalinn
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponEnergyPistolLaserSvalinnExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 # region Tier 4
 ## Shotguns
 - type: entity
   parent:
+  - BaseC1Contraband
   - BaseExpeditionWeaponTier4
   - NFWeaponShotgunEnforcer
-  - BaseC1Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponShotgunEnforcerExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 - type: entity
   parent:
+  - BaseC3Contraband
   - BaseExpeditionWeaponTier4Syndicate
   - NFWeaponShotgunBulldog
-  - BaseC3Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponShotgunBulldogExpedition
+  components:
+  - type: Redeemable
+    preset: SyndieLvl3
 
 ## Rifles
 - type: entity
   parent:
+  - BaseC2Contraband
   - BaseExpeditionWeaponTier4Syndicate
   - NFWeaponRifleAssaultSm
-  - BaseC2Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleAssaultSmExpedition
+  components:
+  - type: Redeemable
+    preset: SyndieLvl2
 
 - type: entity
   parent:
@@ -394,6 +507,9 @@
   - NFWeaponRifleAssaultVulcan
   categories: [ HideSpawnMenu ]
   id: NFWeaponRifleAssaultVulcanExpedition
+  components:
+  - type: Redeemable
+    preset: ExpedNFSDLvl2
 
 ## Energy
 - type: entity
@@ -402,6 +518,9 @@
   - NFWeaponEnergyRifleCarbine
   categories: [ HideSpawnMenu ]
   id: NFWeaponEnergyRifleCarbineExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 - type: entity
   parent:
@@ -409,14 +528,20 @@
   - NFWeaponEnergyPistolLaserAdvanced
   categories: [ HideSpawnMenu ]
   id: NFWeaponEnergyPistolLaserAdvancedExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl1
 
 - type: entity
   parent:
+  - BaseC2Contraband
   - BaseExpeditionWeaponTier4
   - NFWeaponEnergyPistolLaserAntique
-  - BaseC2Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponEnergyPistolLaserAntiqueExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl2
 
 # region Tier 5
 # Turrets
@@ -426,6 +551,9 @@
   - WeaponTurretAsmgtHostileUniversallyPacked
   categories: [ HideSpawnMenu ]
   id: WeaponTurretAsmgtHostileUniversallyPackedExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl2
 
 # Launchers
 - type: entity
@@ -434,53 +562,74 @@
   - NFWeaponLauncherRocket
   categories: [ HideSpawnMenu ]
   id: NFWeaponLauncherRocketExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl3
 
 - type: entity
   parent:
+  - BaseC3Contraband
   - BaseExpeditionWeaponTier5Syndicate
   - NFWeaponLauncherChinaLake
-  - BaseC3Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponLauncherChinaLakeExpedition
+  components:
+  - type: Redeemable
+    preset: SyndieLvl3
 
 # LMGs
 - type: entity
   parent:
+  - BaseC3Contraband
   - BaseExpeditionWeaponTier5Syndicate
   - NFWeaponLightMachineGunL6
-  - BaseC3Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponLightMachineGunL6Expedition
+  components:
+  - type: Redeemable
+    preset: SyndieLvl3
 
 # Energy
 - type: entity
   parent:
+  - BaseC2Contraband
   - BaseExpeditionWeaponTier5
   - NFWeaponEnergySubMachineGunDeltaV
-  - BaseC2Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponEnergySubMachineGunDeltaVExpedition
+  components:
+  - type: Redeemable
+    preset: ExpedNFSDLvl2
 
 - type: entity
   parent:
+  - BaseC4Contraband
   - BaseExpeditionWeaponTier5
   - NFWeaponEnergyRifleSniperXrayCannon
-  - BaseC4Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponEnergyRifleSniperXrayCannonExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl4
 
 - type: entity
   parent:
+  - BaseC2Contraband
   - BaseExpeditionWeaponTier5
   - NFWeaponEnergyRifleSniperCannon
-  - BaseC2Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponEnergyRifleSniperCannonExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl2
 
 - type: entity
   parent:
+  - BaseC2Contraband
   - BaseExpeditionWeaponTier5
   - NFWeaponEnergyRifleTemperature
-  - BaseC2Contraband
   categories: [ HideSpawnMenu ]
   id: NFWeaponEnergyRifleTemperatureExpedition
+  components:
+  - type: Redeemable
+    preset: ContraLvl2

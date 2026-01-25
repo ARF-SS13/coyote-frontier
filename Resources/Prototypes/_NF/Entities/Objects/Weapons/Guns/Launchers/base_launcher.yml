@@ -46,7 +46,7 @@
 
 - type: entity
   id: NFBaseWeaponFrameLauncherGorlex
-  parent: [ BaseC4Contraband, NFBaseWeaponFrameLauncher ]
+  parent: [ NFBaseWeaponFrameLauncher ] #coyote
   abstract: true
   components:
   - type: Gun
@@ -59,7 +59,7 @@
 
 - type: entity
   id: NFBaseWeaponFrameLauncherSteelbolt
-  parent: [ BaseC3Contraband, NFBaseWeaponFrameLauncher ]
+  parent: [ NFBaseWeaponFrameLauncher ] #coyote
   abstract: true
   components:
   - type: Gun

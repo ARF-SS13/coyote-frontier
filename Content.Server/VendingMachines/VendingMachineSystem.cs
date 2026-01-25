@@ -30,9 +30,10 @@ using Content.Shared.Database; // Frontier
 using Content.Shared._NF.Bank.BUI; // Frontier
 using Content.Server._NF.Contraband.Systems; // Frontier
 using Content.Shared.Stacks; // Frontier
-using Content.Server.Stack; // Frontier
-using Robust.Shared.Containers; // Frontier
-using Content.Shared._NF.Bank.Components; // Frontier
+using Content.Server.Stack;
+using Content.Shared._Coyote.RedeemableStuff; // Frontier
+using Robust.Shared.Containers;               // Frontier
+using Content.Shared._NF.Bank.Components;     // Frontier
 
 namespace Content.Server.VendingMachines
 {
@@ -284,6 +285,8 @@ namespace Content.Server.VendingMachines
             }
 
             var ent = Spawn(vendComponent.NextItemToEject, spawnCoordinates);
+
+            AddComp<UnRedeemableComponent>(ent); // Frontier
 
             _contraband.ClearContrabandValue(ent); // Frontier
 

@@ -5,6 +5,8 @@
   suffix: Antag
   description: A modified access configurator sold on the black market.
   components:
+  - type: Redeemable
+    preset: FreelancerGearValuable
   - type: Sprite
     sprite: _NF/Objects/Tools/antag_access_configurator.rsi
   - type: Clothing

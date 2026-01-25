@@ -6,6 +6,8 @@
   name: NFSD medal case
   description: This polished oak case hides medals to be given for distinguished service.
   components:
+  - type: Redeemable
+    preset: NFSDGear
   - type: Sprite
     sprite: _NF/Objects/Storage/nfsdmedalcase.rsi
   - type: Item

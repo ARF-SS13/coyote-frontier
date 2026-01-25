@@ -21,6 +21,8 @@
   suffix: Unlimited
   description: The all-in-one unhacking solution. The last bastion of order. The iconic DEMAG.
   components:
+  - type: Redeemable
+    preset: NFSDGearExtremeValuable
   - type: Emag
     emagType: [Interaction, Access, StationBound]
     demag: true
@@ -45,6 +47,8 @@
   suffix: Unlimited
   description: A portable package for machine DRM removal. Freebooter approved and tested.
   components:
+  - type: Redeemable
+    preset: FreelancerGearValuable
   - type: Emag
     emagType: [StationBound]
   - type: Sprite

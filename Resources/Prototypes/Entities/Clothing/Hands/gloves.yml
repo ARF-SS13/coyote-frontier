@@ -425,6 +425,18 @@
     tags:
     - Kangaroo
     - WhitelistChameleon
+  - type: Redeemable
+    preset: Example
+
+- type: entity
+  parent: ClothingHandsGlovesNorthStar
+  id: ClothingHandsGlovesNorthStarDebug
+  name: gloves of the north star (debug)
+  suffix: Debug
+  description: These gloves are worth a different
+  components:
+  - type: Redeemable
+    preset: Example2
 
 - type: entity
   parent: [ClothingHandsBase, BaseC4ContrabandUnredeemable] # Frontier: BaseSecurityContraband<BaseC2ContrabandUnredeemable

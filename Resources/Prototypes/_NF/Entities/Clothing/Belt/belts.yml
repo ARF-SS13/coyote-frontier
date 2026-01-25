@@ -68,6 +68,8 @@
   name: NFSD belt
   description: A tactical assault belt.
   components:
+  - type: Redeemable
+    preset: NFSDGear
   - type: Sprite
     sprite: _NF/Clothing/Belt/nfsd_belt.rsi
   - type: Clothing
@@ -79,6 +81,8 @@
   name: NFSD webbing
   description: A tactical assault webbing.
   components:
+  - type: Redeemable
+    preset: NFSDGear
   - type: Sprite
     sprite: _NF/Clothing/Belt/nfsd_webbing.rsi
   - type: Clothing

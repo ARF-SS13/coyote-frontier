@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._Coyote.RedeemableStuff;
 using Content.Shared.Examine;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -120,6 +121,11 @@ namespace Content.Shared.Stacks
                 return false;
 
             if (string.IsNullOrEmpty(recipientStack.StackTypeId) || !recipientStack.StackTypeId.Equals(donorStack.StackTypeId))
+                return false;
+
+            bool mecomp = HasComp<UnRedeemableComponent>(donor);
+            bool youcomp = HasComp<UnRedeemableComponent>(recipient);
+            if (mecomp != youcomp)
                 return false;
 
             transferred = Math.Min(donorStack.Count, GetAvailableSpace(recipientStack));

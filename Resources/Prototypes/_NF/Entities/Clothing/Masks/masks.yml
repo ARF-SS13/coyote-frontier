@@ -48,6 +48,8 @@
   name: NFSD gas mask
   description: A standard issue NFSD gas mask.
   components:
+  - type: Redeemable
+    preset: NFSDGear
   - type: Sprite
     sprite: _NF/Clothing/Mask/nfsd.rsi
   - type: Clothing
@@ -60,6 +62,8 @@
   name: NFSD sheriff gas mask
   description: A gas mask worthy of a sheriff.
   components:
+  - type: Redeemable
+    preset: NFSDGearValuable
   - type: Sprite
     sprite: _NF/Clothing/Mask/nfsd_sheriff.rsi
   - type: Clothing
@@ -71,6 +75,8 @@
   name: cult janitor mask
   description: A close-fitting, imposing breath mask designed for accursed custodians who value style.
   components:
+  - type: Redeemable
+    preset: SyndieLvl1
   - type: Sprite
     sprite: _NF/Clothing/Mask/cult_janitor_mask.rsi
   - type: Clothing

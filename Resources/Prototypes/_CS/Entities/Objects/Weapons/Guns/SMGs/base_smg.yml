@@ -48,7 +48,7 @@
 
 - type: entity
   id: CSBaseWeaponFrameHeavySubMachineGunCybersun
-  parent: [ BaseC4Contraband, CSBaseWeaponFrameHeavySubMachineGun ]
+  parent: [ CSBaseWeaponFrameHeavySubMachineGun ] #coyote
   abstract: true
   components:
   - type: GunWieldBonus

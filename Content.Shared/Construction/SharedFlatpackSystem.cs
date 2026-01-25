@@ -1,3 +1,4 @@
+using Content.Shared._Coyote.RedeemableStuff;
 using Content.Shared.Construction.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Containers.ItemSlots;
@@ -98,6 +99,10 @@ public abstract class SharedFlatpackSystem : EntitySystem
                 spawnXform.LocalRotation = xform.LocalRotation.GetCardinalDir().ToAngle(); // Frontier: rotatable flatpacks
             if (TryComp<StationBoundObjectComponent>(uid, out var bound)) // Frontier: station binding
                 BindToStation(spawn, bound); // Frontier: station binding
+            if (HasComp<UnRedeemableComponent>(uid))
+            {
+                AddComp<UnRedeemableComponent>(spawn);
+            }
 
             _adminLogger.Add(LogType.Construction,
                 LogImpact.Low,
@@ -126,6 +131,11 @@ public abstract class SharedFlatpackSystem : EntitySystem
         var meta = MetaData(ent);
         _metaData.SetEntityName(ent, Loc.GetString("flatpack-entity-name", ("name", machinePrototype.Name)), meta);
         _metaData.SetEntityDescription(ent, Loc.GetString("flatpack-entity-description", ("name", machinePrototype.Name)), meta);
+
+        if (HasComp<UnRedeemableComponent>(board))
+        {
+            AddComp<UnRedeemableComponent>(ent.Owner);
+        }
 
         if (TryComp<StationBoundObjectComponent>(board, out var bound)) // Frontier: station binding
             BindToStation(ent, bound); // Frontier: station binding

@@ -46,7 +46,7 @@
 
 - type: entity
   id: NFBaseWeaponFrameRifleSteelbolt
-  parent: [ BaseC3Contraband, NFBaseWeaponFrameRifle ]
+  parent: NFBaseWeaponFrameRifle #coyote
   abstract: true
   components:
   - type: Gun

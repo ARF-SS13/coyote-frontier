@@ -3,6 +3,8 @@
   id: DoorRemoteNfsd
   name: NFSD door remote
   components:
+  - type: Redeemable
+    preset: NFSDGearExtremeValuable
   - type: Sprite
     layers:
     - state: door_remotebase

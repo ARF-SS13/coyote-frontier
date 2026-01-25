@@ -1,10 +1,12 @@
 # Organs with boosted metabolizm
 - type: entity
   id: OrganSyntheticHeart
-  parent: [BaseHumanOrgan, NotContraband] # Frontier: add BaseC4Contraband
+  parent: [BaseHumanOrgan, BaseC4Contraband] # Frontier: add BaseC4Contraband
   name: synthetic heart
   description: "Whirrs and pumps blood."
   components:
+  - type: Redeemable
+    preset: ContraLvl2
   - type: Sprite
     state: heart-on
   - type: Metabolizer
@@ -19,10 +21,12 @@
 
 - type: entity
   id: OrganSyntheticLiver
-  parent: [BaseHumanOrgan, NotContraband] # Frontier: add BaseC4Contraband
+  parent: [BaseHumanOrgan, BaseC4Contraband] # Frontier: add BaseC4Contraband
   name: synthetic liver
   description: "Filters toxins from the bloodstream at higher rate than old 'ganic liver."
   components:
+  - type: Redeemable
+    preset: ContraLvl2
   - type: Sprite
     state: liver
   - type: Metabolizer
@@ -40,10 +44,12 @@
 
 - type: entity
   id: OrganSyntheticKidneys
-  parent: [BaseHumanOrgan, NotContraband] # Frontier: add BaseC4Contraband
+  parent: [BaseHumanOrgan, BaseC4Contraband] # Frontier: add BaseC4Contraband
   name: synthetic kidneys
   description: "Filters toxins from the bloodstream at higher rate than old 'ganic liver."
   components:
+  - type: Redeemable
+    preset: ContraLvl2
   - type: Sprite
     layers:
       - state: kidney-l

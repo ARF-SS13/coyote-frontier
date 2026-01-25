@@ -8,6 +8,8 @@
   name: laser cannon blueprint
   description: A blueprint with a schematic of a laser cannon. It can be inserted into a mercenary or NFSD techfab.
   components:
+  - type: Redeemable
+    preset: ContraLvl2
   - type: Blueprint
     providedRecipes:
     - NFWeaponEnergyRifleSniperCannon
@@ -20,6 +22,8 @@
   name: x-ray cannon blueprint
   description: A blueprint with a schematic of an x-ray cannon. It can be inserted into a mercenary or NFSD techfab.
   components:
+  - type: Redeemable
+    preset: ContraLvl4
   - type: Blueprint
     providedRecipes:
     - NFWeaponEnergyRifleSniperXrayCannon
@@ -32,6 +36,8 @@
   name: temperature gun blueprint
   description: A blueprint with a schematic of a temperature gun. It can be inserted into a mercenary or NFSD techfab.
   components:
+  - type: Redeemable
+    preset: ContraLvl2
   - type: Blueprint
     providedRecipes:
     - NFWeaponEnergyRifleTemperature
@@ -46,6 +52,8 @@
   name: holopickaxe blueprint
   description: A blueprint with a schematic of a holopickaxe. It can be inserted into a salvage techfab.
   components:
+  - type: Redeemable
+    preset: ContraLvl1
   - type: Blueprint
     providedRecipes:
     - NFEnergyPickaxe

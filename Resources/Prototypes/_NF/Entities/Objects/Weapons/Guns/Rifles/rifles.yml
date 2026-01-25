@@ -1,10 +1,12 @@
 #region WizDen
 - type: entity
   id: NFWeaponRifleBarlowsBolt
-  parent: [ BaseC4Contraband, NFBaseWeaponRifleChamber30, NFBaseWeaponFrameRifleSteelbolt, BaseGunMelee, BaseC1Contraband ]
+  parent: [ BaseC1Contraband, NFBaseWeaponRifleChamber30, NFBaseWeaponFrameRifleSteelbolt, BaseGunMelee ]
   name: Barlows bolt-action rifle # Renamed: real brand name
   description: A weapon for hunting, or endless trench warfare. Equipped with bayonet.
   components:
+  - type: Redeemable
+    preset: SyndieLvl1
   - type: Sprite
     sprite: Objects/Weapons/Guns/Snipers/bolt_gun_wood.rsi
   - type: Clothing
@@ -14,10 +16,12 @@
 
 - type: entity
   id: NFWeaponRifleMusket
-  parent: [ NFBaseWeaponRifleChamber60, NFBaseWeaponFrameRifleSteelbolt, BaseC1Contraband ]
+  parent: [ BaseC1Contraband, NFBaseWeaponRifleChamber60, NFBaseWeaponFrameRifleSteelbolt, ]
   name: musket
   description: This should've been in a museum long before you were born.
   components:
+  - type: Redeemable
+    preset: ContraLvl1
   - type: Sprite
     sprite: Objects/Weapons/Guns/Snipers/musket.rsi
   - type: Clothing
