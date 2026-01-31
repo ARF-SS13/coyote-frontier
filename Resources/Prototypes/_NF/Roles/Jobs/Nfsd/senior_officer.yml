@@ -32,6 +32,10 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
+  - !type:AddComponentSpecial
+    components:
+    - type: IsNfsd
+      worth: 2
 
 - type: startingGear
   id: SeniorOfficerGear

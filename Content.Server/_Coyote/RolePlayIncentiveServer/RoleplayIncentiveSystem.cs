@@ -6,6 +6,7 @@ using Content.Server.Chat.Systems;
 using Content.Server.Hands.Systems;
 using Content.Server.Popups;
 using Content.Server.Stack;
+using Content.Server.Store.Components;
 using Content.Shared._Coyote;
 using Content.Shared._Coyote.RolePlayIncentiveShared;
 using Content.Shared._Coyote.RolePlayIncentiveShared.Components;
@@ -20,6 +21,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Paper;
 using Content.Shared.Popups;
 using Content.Shared.SSDIndicator;
+using Content.Shared.Store;
 using Content.Shared.Tag;
 using Content.Shared.Verbs;
 using Robust.Server.GameObjects;
@@ -133,10 +135,11 @@ public sealed class RoleplayIncentiveSystem : EntitySystem
     private void OnComponentInit(EntityUid uid, RoleplayIncentiveComponent component, ComponentInit args)
     {
         // set the next payward time
-        component.NextPayward = _timing.CurTime + component.PaywardInterval;
-        component.NextProxyCheck = _timing.CurTime + component.ProxyCheckInterval;
-        component.NextProxySync = _timing.CurTime + component.ProxySyncInterval;
-        component.NextAuraCheck = _timing.CurTime + component.AuraCheckInterval;
+        component.NextPayward                    = _timing.CurTime + component.PaywardInterval;
+        component.NextProxyCheck                 = _timing.CurTime + component.ProxyCheckInterval;
+        component.NextProxySync                  = _timing.CurTime + component.ProxySyncInterval;
+        component.NextAuraCheck                  = _timing.CurTime + component.AuraCheckInterval;
+        component.FlarpiDatacore.LastFlarpiCheck = _timing.CurTime + component.FlarpiDatacore.FlarpiCheckInterval;
     }
 
     /// <summary>
@@ -293,13 +296,20 @@ public sealed class RoleplayIncentiveSystem : EntitySystem
         )
     {
         if (args.User == args.Target
-            && HasComp<IsPirateComponent>(args.User)
+            && CanFlarpi(uid, rpic)
             && rpic.FlarpiDatacore.BankedFlarpis >= 1)
         {
+            _prototype.TryIndex(rpic.FlarpiDatacore.DatacoreType, out FlarpiSettingsPrototype? flarpiProto);
+            string vervoid = flarpiProto != null
+                ? flarpiProto.FlarpiNameToken
+                : "flompy";
+            string flarpiName = Loc.GetString(
+                $"coyote-rpi-flarpi-withdrawverb-{vervoid}",
+                ("amount", rpic.FlarpiDatacore.BankedFlarpis));
             // flarpi withdraw!
             Verb vorb = new()
             {
-                Text = $"Withdraw Den Bullion - {rpic.FlarpiDatacore.BankedFlarpis} DB",
+                Text = flarpiName,
                 Act = () =>
                 {
                     FlarpiWithdraw(
@@ -1479,8 +1489,9 @@ public sealed class RoleplayIncentiveSystem : EntitySystem
         bool justChecking
         )
     {
-        if (!HasComp<IsPirateComponent>(uid))
+        if (!CanFlarpi(uid, rpic))
             return; // only pirates care about flarpies
+        ConditionFlarpi(uid, rpic);
         FlarpiDatacore myFlarpy = rpic.FlarpiDatacore;
         if (!_prototype.TryIndex(myFlarpy.DatacoreType, out var flarpiProto))
         {
@@ -1497,29 +1508,97 @@ public sealed class RoleplayIncentiveSystem : EntitySystem
         TimeSpan timeSinceLastCheck = _timing.CurTime - myFlarpy.LastFlarpiCheck;
         myFlarpy.LastFlarpiCheck = _timing.CurTime;
 
-        // tick flarpi
-        var numPeopleAround = 1; // starts at 1 to count ourselves
+        // FLARPI CALC
+        // Base flarpi per hour: baseFlarpi
+        // people around calc: freelancers and or nfsd
+        // then modify that number into the modes of whatever
+        // then use that to multiply the base flarpi per hour
+        // then turn that into flarpi per millisecond
+        // then multiply that by the time since last check
+        // then add that to current progress
+        // eat my flarpi
+
+        decimal flarpiPerHour = flarpiProto.BaseFlarpi;
+        var freelancersNearby = 0;
+        var nfsdNearby = 0;
         MapCoordinates myCoords = _tf.GetMapCoordinates(uid);
-        var entityQuery = EntityQueryEnumerator<IsPirateComponent>();
-        while (entityQuery.MoveNext(out var otherUid, out var _))
+
+        if (flarpiProto.FreelancerCountMode != FlarpiCountMode.Nope)
         {
-            if (otherUid == uid)
-                continue; // dont check ourselves, we kinda already did
-            if (!myCoords.InRange(_tf.GetMapCoordinates(otherUid), flarpiProto.NearbyRadius))
-                continue; // too far away
-            if (!ValidForRPI(otherUid))
-                continue; // not connected or alive or somesuch
-            numPeopleAround++;
+            var entityQuery = EntityQueryEnumerator<IsPirateComponent>();
+            while (entityQuery.MoveNext(out EntityUid otherUid, out IsPirateComponent? _))
+            {
+                if (otherUid == uid)
+                    continue; // dont check ourselves, we kinda already did
+                if (!ValidForRPI(otherUid))
+                    continue; // not connected or alive or somesuch
+                if (flarpiProto.FreelancerCountMode == FlarpiCountMode.Nearby)
+                    if (!myCoords.InRange(_tf.GetMapCoordinates(otherUid), flarpiProto.NearbyRadius))
+                        continue; // too far away
+                freelancersNearby++;
+                if (freelancersNearby >= flarpiProto.MaxFreelancersConsidered)
+                    break; // reached max count, stop checking
+            }
+            // apply freelancer count mode
+            switch (flarpiProto.FreelancerCalculationMode)
+            {
+                case FlarpiCalculationMode.Linear:
+                    flarpiPerHour += flarpiProto.BaseFlarpi * freelancersNearby;
+                    break;
+                case FlarpiCalculationMode.Doubling:
+                    flarpiPerHour *= (decimal)Math.Pow(2, freelancersNearby);
+                    break;
+                case FlarpiCalculationMode.LinearDoubled:
+                    flarpiPerHour += flarpiProto.BaseFlarpi * 2 * freelancersNearby;
+                    break;
+                case FlarpiCalculationMode.Nope:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
-        // calculate flarpi gain
-        decimal flarpiPerHour = numPeopleAround switch
+        // once more, now for Nfsd
+        if (flarpiProto.NfsdCountMode != FlarpiCountMode.Nope)
         {
-            1 => flarpiProto.FlarpiesPerHourAlone,
-            2 => flarpiProto.FlarpiesPerHourOneNearby,
-            3 => flarpiProto.FlarpiesPerHourTwoNearby,
-            _ => flarpiProto.FlarpiesPerHourThreeOrMoreNearby,
-        };
+            var entityQuery = EntityQueryEnumerator<IsNfsdComponent>();
+            while (entityQuery.MoveNext(out EntityUid otherUid, out IsNfsdComponent? n))
+            {
+                if (otherUid == uid)
+                    continue; // dont check ourselves, we kinda already did
+                if (!ValidForRPI(otherUid))
+                    continue; // not connected or alive or somesuch
+                if (flarpiProto.NfsdCountMode == FlarpiCountMode.Nearby)
+                    if (!myCoords.InRange(_tf.GetMapCoordinates(otherUid), flarpiProto.NearbyRadius))
+                        continue; // too far away
+                nfsdNearby += n.Worth;
+                if (nfsdNearby >= flarpiProto.MaxNfsdsConsidered)
+                    break; // reached max count, stop checking
+            }
+            // apply nfsd count mode
+            switch (flarpiProto.NfsdCalculationMode)
+            {
+                case FlarpiCalculationMode.Linear:
+                    flarpiPerHour += flarpiProto.BaseFlarpi * nfsdNearby;
+                    break;
+                case FlarpiCalculationMode.Doubling:
+                    flarpiPerHour *= (decimal)Math.Pow(2, nfsdNearby);
+                    break;
+                case FlarpiCalculationMode.LinearDoubled:
+                    flarpiPerHour += flarpiProto.BaseFlarpi * 2 * nfsdNearby;
+                    break;
+                case FlarpiCalculationMode.Nope:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        // now we have our flarpi per hour! floor at minimum 1, cus youre there, right?
+        if (flarpiPerHour < 1m)
+            flarpiPerHour = 1m;
+        if (TryComp<IsNfsdComponent>(uid, out var nfsdComp) && flarpiPerHour < nfsdComp.Worth)
+            flarpiPerHour = nfsdComp.Worth; // nfsd get at least their worth in flarpies
 
         decimal flarpiPointsPerHour  = flarpiPerHour * flarpiProto.PointsPerFlarpi;
         decimal flarpiPerMillisecond = flarpiPointsPerHour / 3600000m;
@@ -1537,7 +1616,7 @@ public sealed class RoleplayIncentiveSystem : EntitySystem
         PayoutDetails payDetails
     )
     {
-        if (!HasComp<IsPirateComponent>(uid))
+        if (!CanFlarpi(uid, rpic))
             return; // only pirates care about flarpies
         FlarpiDatacore myFlarpy = rpic.FlarpiDatacore;
         if (!_prototype.TryIndex(myFlarpy.DatacoreType, out var flarpiProto))
@@ -1583,14 +1662,14 @@ public sealed class RoleplayIncentiveSystem : EntitySystem
         {
             var newFlarpis = myFlarpy.BankedFlarpis - lastCount;
             message = Loc.GetString(
-                "coyote-rpi-flarpi-got-more",
+                $"coyote-rpi-flarpi-got-more-{flarpiProto.FlarpiNameToken.ToLower()}",
                 ("amount", newFlarpis),
                 ("totalAmount", myFlarpy.BankedFlarpis));
         }
         else
         {
             message = Loc.GetString(
-                "coyote-rpi-flarpi-has-banked",
+                $"coyote-rpi-flarpi-has-banked-{flarpiProto.FlarpiNameToken.ToLower()}",
                 ("amount", myFlarpy.BankedFlarpis));
         }
         if (_playerManager.TryGetSessionByEntity(uid, out ICommonSession? session))
@@ -1613,19 +1692,28 @@ public sealed class RoleplayIncentiveSystem : EntitySystem
         RoleplayIncentiveComponent rpic
     )
     {
-        if (!HasComp<IsPirateComponent>(uid))
+        if (!CanFlarpi(uid, rpic))
             return; // only pirates care about flarpies
         FlarpiDatacore myFlarpy = rpic.FlarpiDatacore;
         if (myFlarpy.BankedFlarpis <= 0)
             return; // no flarpies to payout
+        if (!_prototype.TryIndex(myFlarpy.DatacoreType, out FlarpiSettingsPrototype? flarpiProto))
+        {
+            Log.Warning($"FlarpiDatacoreProto {myFlarpy.DatacoreType} not found!");
+            return;
+        }
+        if (!_prototype.TryIndex(flarpiProto.FlarpiCurrencyPrototype, out CurrencyPrototype? _))
+        {
+            Log.Warning($"FlarpiCurrencyPrototype {flarpiProto.FlarpiCurrencyPrototype} not found!");
+            return;
+        }
         // where we dropping, boys?
         int toGive = myFlarpy.BankedFlarpis;
 
         myFlarpy.BankedFlarpis = 0;
-
         MapCoordinates coords  = _tf.GetMapCoordinates(Transform(uid));
         List<EntityUid> ents   = _stack.SpawnMultiple(
-            "Doubloon",
+            flarpiProto.FlarpiCurrencyPrototype,
             toGive,
             _tf.ToCoordinates(coords));
         foreach (EntityUid coigne in ents)
@@ -1636,7 +1724,7 @@ public sealed class RoleplayIncentiveSystem : EntitySystem
 
         // show popup
         var message = Loc.GetString(
-            "coyote-rpi-flarpi-payout-message",
+            $"coyote-rpi-flarpi-payout-message-{flarpiProto.FlarpiNameToken.ToLower()}",
             ("amount", toGive));
         _popupSystem.PopupEntity(
             message,
@@ -1652,14 +1740,50 @@ public sealed class RoleplayIncentiveSystem : EntitySystem
     public void HousekeepFlarpi(
         EntityUid uid,
         RoleplayIncentiveComponent rpic,
-        float frameTime)
+        float frameTime
+        )
     {
-        if (!HasComp<IsPirateComponent>(uid))
+        if (!CanFlarpi(uid, rpic))
             return; // only pirates care about flarpies
         FlarpiDatacore myFlarpy = rpic.FlarpiDatacore;
         if (_timing.CurTime < myFlarpy.LastFlarpiCheck + myFlarpy.FlarpiCheckInterval)
             return; // too soon to check again
         myFlarpy.LastFlarpiCheck = _timing.CurTime;
+    }
+
+    public bool CanFlarpi(
+        EntityUid uid,
+        RoleplayIncentiveComponent rpic
+        )
+    {
+        if (HasComp<IsPirateComponent>(uid))
+            return true; // only pirates care about flarpies
+        if (HasComp<IsNfsdComponent>(uid))
+            return true; // nfsd too
+        return false;
+    }
+
+    public void ConditionFlarpi(
+        EntityUid uid,
+        RoleplayIncentiveComponent rpic
+        )
+    {
+        // set the right prototype if needed
+        FlarpiDatacore myFlarpy = rpic.FlarpiDatacore;
+        if (HasComp<IsPirateComponent>(uid)
+            && !HasComp<IsNfsdComponent>(uid))
+        {
+            myFlarpy.DatacoreType = "FlarpiSettings_Default";
+        }
+        else if (HasComp<IsNfsdComponent>(uid)
+            && !HasComp<IsPirateComponent>(uid))
+        {
+            myFlarpy.DatacoreType = "FlarpiSettings_NFSD";
+        }
+        else
+        {
+            myFlarpy.DatacoreType = "FlarpiSettings_Default";
+        }
     }
 
     #endregion

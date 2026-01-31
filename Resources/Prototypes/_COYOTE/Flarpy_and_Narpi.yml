@@ -1,0 +1,133 @@
+- type: entity
+  id: MobCatFlarpy
+  parent: [NFMobPet, MobCatGhost]
+  name: Flarpy
+  description: Its Flarpy, the accountant sister of Clarpy the pirate cat! She's here to help file your taxes and achieve peak friendship with your fellow ne'er-do-wells!
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _NF/Mobs/Pets/cat.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: piratecat
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: piratecat
+      Critical:
+        Base: piratecat
+      Dead:
+        Base: piratecat
+  - type: GhostRole
+    name: ghost-role-information-flarpy-name
+    description: ghost-role-information-flarpy-description
+    rules: ghost-role-information-flarpy-rules
+    prototype: CatFlarpy
+    mindRoles: [ MindRoleGhostRoleNFPirate ]
+  - type: Loadout
+    prototypes: [ MobClarpyGear ]
+  - type: ReplacementAccent
+    accent: pirateCat
+  - type: AutoImplant
+    implants:
+    - FreelanceTrackingImplant
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Freelance
+  - type: ActiveRadio
+    channels:
+    - Freelance
+  - type: NpcFactionMember
+    factions:
+    - Cat # Shouldn't be innately hostile to NT-aligned mobs
+  - type: PirateAccent
+  - type: Speech
+    audioParams:
+      volume: 3
+      rolloffFactor: 4.5
+      pitch: 0.7
+  - type: IsPirate
+
+- type: ghostRole
+  id: CatFlarpy
+  name: ghost-role-information-flarpy-name
+  description: ghost-role-information-flarpy-description
+  rules:  ghost-role-information-emotional-support-rules
+  entityPrototype: MobCatFlarpy
+  whitelisted: false
+
+# Narpi
+
+- type: entity
+  id: MobCatNarpy
+  parent: [NFMobPet, MobCatGhost, ShowSecurityIcons]
+  name: Narpy
+  description: It's Narpy, the accountant brother of Cappy! He's NFSD's answer to all your tax-related questions, and is always ready to help you maximize your deductions! He's a bean counter with the cutest little beans!
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _NF/Mobs/Pets/cat.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: nfsdcat
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: nfsdcat
+  - type: GhostRole
+    name: ghost-role-information-narpy-name
+    description: ghost-role-information-narpy-description
+    rules: ghost-role-information-nonantagonist-rules
+    prototype: CatNarpy
+    mindRoles: [ MindRoleGhostRoleNeutral ]
+  - type: Loadout
+    prototypes: [ MobCappyGear ]
+  - type: ReplacementAccent
+    accent: nfsdCat
+  - type: RandomMetadata
+    nameSegments: null
+  - type: AutoImplant
+    implants:
+    - MindShieldImplant
+    - TrackingImplant
+    - LightImplant
+  - type: FlashImmunity
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Nfsd
+  - type: ActiveRadio
+    channels:
+    - Nfsd
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 0 # Declawed cat
+  - type: StaminaDamageOnHit
+    damage: 18
+  - type: NpcFactionMember
+    factions:
+    - Cat
+    - NanoTrasen
+  - type: Speech
+    speechSounds: NfsdCat
+    speechVerb: SmallMob
+  - type: Vocal
+    sounds:
+      Male: NfsdCat
+      Female: NfsdCat
+      Unsexed: NfsdCat
+  - type: InteractionPopup
+    interactSuccessSound:
+      path: /Audio/_NF/Animals/nfsdcat_meow.ogg
+  - type: PirateBountyItem
+    id: Cappy
+  - type: SouthernAccent
+
+- type: ghostRole
+  id: CatNarpy
+  name: ghost-role-information-narpy-name
+  description: ghost-role-information-narpy-description
+  rules: ghost-role-information-emotional-support-rules
+  entityPrototype: MobCatNarpy
+  whitelisted: false
+
