@@ -1,3 +1,4 @@
+using Content.Shared.Store;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Coyote;
@@ -13,6 +14,18 @@ public sealed partial class FlarpiSettingsPrototype : IPrototype
     public string ID { get; } = default!;
 
     /// <summary>
+    /// Name token for the flarpi
+    /// </summary>
+    [DataField("flarpiName")]
+    public string FlarpiNameToken { get; set; } = "flompy";
+
+    /// <summary>
+    /// The currency prototype ID for the flarpies we get out of the thing
+    /// </summary>
+    [DataField("flarpiCurrencyPrototype")]
+    public ProtoId<CurrencyPrototype> FlarpiCurrencyPrototype { get; set; } = "Doubloon";
+
+    /// <summary>
     /// How many points to give one Flarpi.
     /// </summary>
     [DataField("pointsPerFlarpi")]
@@ -23,32 +36,102 @@ public sealed partial class FlarpiSettingsPrototype : IPrototype
     // this scales with the number of freelancers are around you and online
 
     /// <summary>
-    /// How many flarpies to give per 1 hour of RPI generation, alone.
+    /// The base FLARPI generation rate, before multipliers.
     /// </summary>
-    [DataField("flarpiesPerHourAlone")]
-    public decimal FlarpiesPerHourAlone { get; set; } = 4m;
-
-    /// <summary>
-    /// How many flarpies to give per 1 hour of RPI generation, with one person nearby.
-    /// </summary>
-    [DataField("flarpiesPerHourOneNearby")]
-    public decimal FlarpiesPerHourOneNearby { get; set; } = 8m;
-
-    /// <summary>
-    /// How many flarpies to give per 1 hour of RPI generation, with two people nearby.
-    /// </summary>
-    [DataField("flarpiesPerHourTwoNearby")]
-    public decimal FlarpiesPerHourTwoNearby { get; set; } = 16m;
-
-    /// <summary>
-    /// How many flarpies to give per 1 hour of RPI generation, with three or more people nearby.
-    /// </summary>
-    [DataField("flarpiesPerHourThreeOrMoreNearby")]
-    public decimal FlarpiesPerHourThreeOrMoreNearby { get; set; } = 32m;
+    [DataField("baseFlarpi")]
+    public int BaseFlarpi { get; set; } = 1; // 1000 points / 3600 seconds
 
     /// <summary>
     /// The radius to check for nearby freelancers.
     /// </summary>
     [DataField("nearbyRadius")]
     public float NearbyRadius { get; set; } = 25f;
+
+    /// <summary>
+    /// Mode of counting freelancers
+    /// </summary>
+    [DataField("freelancerCountMode")]
+    public FlarpiCountMode FreelancerCountMode { get; set; } = FlarpiCountMode.Nearby;
+
+    /// <summary>
+    /// Mode of calculating freelancer flarpi maths
+    /// </summary>
+    [DataField("freelancerCalcMode")]
+    public FlarpiCalculationMode FreelancerCalculationMode { get; set; } = FlarpiCalculationMode.Doubling;
+
+    /// <summary>
+    /// Max freelancers to consider for FLARPI generation
+    /// </summary>
+    [DataField("maxFreelancersConsidered")]
+    public int MaxFreelancersConsidered { get; set; } = 0; // 0 means no limit
+
+    /// <summary>
+    /// Mode of counting NFSDs
+    /// </summary>
+    [DataField("nfsdCountMode")]
+    public FlarpiCountMode NfsdCountMode { get; set; } = FlarpiCountMode.Nope;
+
+    /// <summary>
+    /// Mode of calculating NFSD flarpi maths
+    /// </summary>
+    [DataField("nfsdCalcMode")]
+    public FlarpiCalculationMode NfsdCalculationMode { get; set; } = FlarpiCalculationMode.Nope;
+
+    /// <summary>
+    /// Max NFSDs to consider for FLARPI generation
+    /// </summary>
+    [DataField("maxNfsdsConsidered")]
+    public int MaxNfsdsConsidered { get; set; } = 0; // 0 also means no limit
 }
+
+/// <summary>
+/// Mode of counting players and such for FLARPI generation
+/// </summary>
+public enum FlarpiCountMode
+{
+    /// <summary>
+    /// Do not count this role
+    /// </summary>
+    Nope,
+
+    /// <summary>
+    /// Count only nearby players
+    /// </summary>
+    Nearby,
+
+    /// <summary>
+    /// Count all online players
+    /// </summary>
+    Online,
+}
+
+/// <summary>
+/// Mode of calculating FLARPI generation based on counted players
+/// </summary>
+public enum FlarpiCalculationMode
+{
+    /// <summary>
+    /// No scaling
+    /// </summary>
+    Nope,
+
+    /// <summary>
+    /// Linear scaling
+    /// X * N
+    /// </summary>
+    Linear,
+
+    /// <summary>
+    /// Linear, but double the effect
+    /// (X * 2) * N
+    /// </summary>
+    LinearDoubled,
+
+    /// <summary>
+    /// Doubling scaling
+    /// X * (2^N)
+    /// </summary>
+    Doubling,
+}
+
+

@@ -35,7 +35,9 @@
     - rpiJobModifierBailiff
   - !type:AddComponentSpecial
     components:
-      - type: CommandStaff
+    - type: CommandStaff
+    - type: IsNfsd
+      worth: 2
 
 
 - type: startingGear

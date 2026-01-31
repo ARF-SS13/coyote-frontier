@@ -26,6 +26,9 @@
   - !type:AddRpiJobModifierSpecial
     modifiersToAdd:
     - rpiJobModifierCadet
+  - !type:AddComponentSpecial
+    components:
+    - type: IsNfsd
 
 - type: startingGear
   id: CadetGear

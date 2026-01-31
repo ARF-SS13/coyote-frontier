@@ -29,7 +29,9 @@
     implants: [ MindShieldImplant, TrackingImplant ]
   - !type:AddComponentSpecial
     components:
-      - type: CommandStaff
+    - type: CommandStaff
+    - type: IsNfsd
+      worth: 2
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift

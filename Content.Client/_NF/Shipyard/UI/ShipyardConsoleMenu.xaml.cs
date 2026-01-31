@@ -1,6 +1,5 @@
 using System.Linq;
 using Content.Client.UserInterface.Controls;
-using Content.Client._NF.Shipyard.BUI;
 using Content.Shared._NF.Bank;
 using Content.Shared._NF.Shipyard.BUI;
 using Content.Shared._NF.Shipyard.Prototypes;
@@ -43,7 +42,6 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
         Engines.OnItemSelected += OnEngineItemSelected;
         SellShipButton.OnPressed += (args) => { OnSellShip?.Invoke(args); };
     }
-
 
     private void OnCategoryItemSelected(OptionButton.ItemSelectedEventArgs args)
     {
@@ -139,17 +137,19 @@ public sealed partial class ShipyardConsoleMenu : FancyWindow
             else
                 priceText = BankSystemExtensions.ToSpesoString(prototype!.Price);
 
-            var vesselEntry = new VesselRow
+            if (prototype != null)
             {
-                Vessel = prototype,
-                VesselName = { Text = prototype!.Name },
-                Purchase = { Text = Loc.GetString("shipyard-console-purchase-available"), Disabled = !canPurchase },
-                Guidebook = { Disabled = prototype.GuidebookPage is null, TooltipDelay = 0.2f, ToolTip = prototype.Description },
-                Price = { Text = priceText },
-            };
-            vesselEntry.Purchase.OnConfirming += OnStartConfirmingPurchase;
-            vesselEntry.Purchase.OnPressed += (args) => { _currentlyConfirmingButton = null; OnOrderApproved?.Invoke(args); };
-            Vessels.AddChild(vesselEntry);
+                var vesselEntry = new VesselRow(prototype)
+                {
+                    VesselName = { Text = prototype!.Name },
+                    Purchase = { Text = Loc.GetString("shipyard-console-purchase-available"), Disabled = !canPurchase },
+                    Guidebook = { TooltipDelay = 0.2f, ToolTip = prototype.Description },
+                    Price = { Text = priceText },
+                };
+                vesselEntry.Purchase.OnConfirming += OnStartConfirmingPurchase;
+                vesselEntry.Purchase.OnPressed += (args) => { _currentlyConfirmingButton = null; OnOrderApproved?.Invoke(args); };
+                Vessels.AddChild(vesselEntry);
+            }
         }
     }
 

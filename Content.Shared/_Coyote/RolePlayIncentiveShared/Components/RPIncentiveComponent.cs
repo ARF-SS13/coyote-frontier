@@ -69,6 +69,7 @@ public sealed partial class RoleplayIncentiveComponent : Component
 
     ///  <summary>
     ///  FreeLAncer RPI milker contrainer!!!
+    ///  Its also the Nfsd Aux RPI datacore, named NARPI
     ///  </summary>
     [DataField]
     [ViewVariables(VVAccess.ReadWrite)]

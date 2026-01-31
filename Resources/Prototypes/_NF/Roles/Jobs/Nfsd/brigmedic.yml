@@ -28,6 +28,9 @@
   - !type:AddRpiJobModifierSpecial
     modifiersToAdd:
     - rpiJobModifierBrigMedic
+  - !type:AddComponentSpecial
+    components:
+    - type: IsNfsd
 
 - type: startingGear
   id: BrigmedicGear

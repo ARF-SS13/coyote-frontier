@@ -58,4 +58,5 @@ frontier-lobby-crew-class-prefix = [bold][color=#A88B5E]Classes:[/color][/bold]{
 frontier-lobby-crew-size = [bold][color=#A88B5E]Size:[/color][/bold] {$size}
 frontier-lobby-crew-class-advertisement = [bold][color=#A88B5E]Advertisement:[/color][/bold]
 frontier-lobby-crew-current-crew = [bold][color=#A88B5E]Current Crew:[/color][/bold]
-frontier-lobby-crew-only-hide-jobless = Hide jobless ships
+frontier-lobby-crew-only-hide-jobless = Hide non-advertising ships
+frontier-lobby-crew-search-placeholder = Search for ship/crew name

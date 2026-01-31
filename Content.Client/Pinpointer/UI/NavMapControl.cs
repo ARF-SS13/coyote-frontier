@@ -1,7 +1,9 @@
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
+using Content.Shared.Atmos;
 using Content.Shared.Input;
 using Content.Shared.Pinpointer;
+using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
@@ -14,11 +16,9 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Timing;
-using System.Numerics;
-using JetBrains.Annotations;
-using Content.Shared.Atmos;
-using System.Linq;
 using Robust.Shared.Utility;
+using System.Linq;
+using System.Numerics;
 
 namespace Content.Client.Pinpointer.UI;
 
@@ -49,6 +49,8 @@ public partial class NavMapControl : MapGridControl
     public List<(Vector2, Vector2)> TileRects = new();
     public List<(Vector2[], Color)> TilePolygons = new();
     public List<NavMapRegionOverlay> RegionOverlays = new();
+    public bool MaintainRelativeTextboxSize = true;
+
 
     // Default colors
     public Color WallColor = new(102, 217, 102);
@@ -435,16 +437,50 @@ public partial class NavMapControl : MapGridControl
             var rectBuffer = new Vector2(5f, 3f);
 
             // Calculate font size for current zoom level
-            var fontSize = (int)Math.Round(1 / WorldRange * DefaultDisplayedRange * UIScale * _targetFontsize, 0);
+            var worldRange = MaintainRelativeTextboxSize ? WorldRange : 1;
+            var displayRange = MaintainRelativeTextboxSize ? DefaultDisplayedRange : 1;
+            var fontSize = (int)Math.Round(1 / worldRange * displayRange * UIScale * _targetFontsize, 0);
             var font = new VectorFont(_cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Bold.ttf"), fontSize);
+            Dictionary<SharedNavMapSystem.NavMapBeacon, float> OffsetTable = new();
 
+            // Nudge textboxes up or down to avoid overlap
+            foreach (var beacon in _navMap.Beacons.Values.OrderBy(x => x.Position.X))
+            {
+                var position = beacon.Position - offset;
+                position = ScalePosition(position with { Y = -position.Y });
+                var textDimensions = handle.GetDimensions(font, beacon.Text, 1f);
+                if (!OffsetTable.ContainsKey(beacon)) OffsetTable.Add(beacon, 0);
+                int conflicts = 0;
+                foreach (var conflictBeacon in _navMap.Beacons.Values.Where(x => beacon.Position.Y == x.Position.Y && beacon != x))
+                {
+                    if (conflictBeacon.Position.Y != beacon.Position.Y || conflictBeacon == beacon) continue;
+                    var conflicPos = conflictBeacon.Position - offset;
+                    var conflictTextDimensions = handle.GetDimensions(font, conflictBeacon.Text, 1f);
+
+                    conflicPos = ScalePosition(conflicPos with { Y = -conflicPos.Y });
+                    if (conflicPos.X > position.X && conflicPos.X < position.X + Math.Max(textDimensions.X, conflictTextDimensions.X))
+                    {
+                        if (!OffsetTable.ContainsKey(conflictBeacon)) {
+                            OffsetTable[conflictBeacon] = OffsetTable[beacon] + ++conflicts;
+                        }
+                    }
+                }
+            }
             foreach (var beacon in _navMap.Beacons.Values)
             {
                 var position = beacon.Position - offset;
                 position = ScalePosition(position with { Y = -position.Y });
 
+                handle.DrawCircle(position, 1 / WorldRange * DefaultDisplayedRange * UIScale * 1.8f, Color.Black);
+                handle.DrawCircle(position, 1 / WorldRange * DefaultDisplayedRange * UIScale * 1.7f, beacon.Color);
+                float nearBeaconOffset = -1 / WorldRange * DefaultDisplayedRange * UIScale * 4f;
                 var textDimensions = handle.GetDimensions(font, beacon.Text, 1f);
+
+                nearBeaconOffset += (textDimensions.Y + 3f) * OffsetTable[beacon];
+
+                position.Y += nearBeaconOffset;
                 handle.DrawRect(new UIBox2(position - textDimensions / 2 - rectBuffer, position + textDimensions / 2 + rectBuffer), BackgroundColor);
+
                 handle.DrawString(font, position - textDimensions / 2, beacon.Text, beacon.Color);
             }
         }

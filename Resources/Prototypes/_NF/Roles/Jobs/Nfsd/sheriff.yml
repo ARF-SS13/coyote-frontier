@@ -28,7 +28,9 @@
     - rpiJobModifierSheriff
   - !type:AddComponentSpecial
     components:
-      - type: CommandStaff
+    - type: CommandStaff
+    - type: IsNfsd
+      worth: 5
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift

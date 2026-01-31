@@ -26,6 +26,9 @@
   - !type:AddRpiJobModifierSpecial
     modifiersToAdd:
     - rpiJobModifierDeputy
+  - !type:AddComponentSpecial
+    components:
+    - type: IsNfsd
 
 - type: startingGear
   id: DeputyGear

@@ -89,3 +89,11 @@ nf-ghost-role-information-derelict-cyborg-description = You are a cyborg that's 
 
 nf-ghost-role-information-buddy-name = Buddy
 nf-ghost-role-information-buddy-description = You were constructed from a Build-A-Buddy kit. Become someone's best friend today!
+
+ghost-role-information-flarpy-name = Flarpy
+ghost-role-information-flarpy-description = A cute Freelancer cat here to run evil finances and foster evil friendship.
+ghost-role-information-flarpy-rules = You are an old [color={role-type-pirate-color}][bold]{role-type-pirate-name}[/bold][/color] cat, help the Freelancers, and count the beans on your paws.
+
+ghost-role-information-narpy-name = Narpy
+ghost-role-information-narpy-description = A cute NFSD cat here to run evil finances and foster evil friendship.
+

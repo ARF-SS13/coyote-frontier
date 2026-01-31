@@ -31,4 +31,9 @@
   </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
   <Import Project="..\RobustToolbox\MSBuild\XamlIL.targets" />
+  <ItemGroup>
+    <Compile Update="_NF\Shipyard\UI\ShipDetailsPopup.xaml.cs">
+      <DependentUpon>ShipDetailsPopup.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

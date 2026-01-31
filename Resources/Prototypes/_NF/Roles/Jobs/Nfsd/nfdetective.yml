@@ -25,6 +25,9 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
+  - !type:AddComponentSpecial
+    components:
+    - type: IsNfsd
 
 - type: startingGear
   id: NFDetectiveGear

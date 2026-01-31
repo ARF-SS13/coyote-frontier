@@ -1,9 +1,26 @@
 - type: flarpiSettings
   id: FlarpiSettings_Default
   pointsPerFlarpi: 1000
-  flarpiesPerHourAlone: 5
-  flarpiesPerHourOneNearby: 10
-  flarpiesPerHourTwoNearby: 20
-  flarpiesPerHourThreeOrMoreNearby: 40
+  flarpiCurrencyPrototype: Doubloon
+  flarpiName: freelancer
+  baseFlarpi: 5
   nearbyRadius: 25
+  freelancerCountMode: Nearby
+  freelancerCalcMode: Doubling
+  maxFreelancersConsidered: 4
+  nfsdCountMode: Nope
+  nfsdCalcMode: Nope
+
+- type: flarpiSettings
+  id: FlarpiSettings_NFSD
+  flarpiCurrencyPrototype: FrontierUplinkCoin
+  pointsPerFlarpi: 1000
+  flarpiName: nfsd
+  baseFlarpi: 5
+  nearbyRadius: 25
+  freelancerCalcMode: Linear
+  freelancerCountMode: Online
+  maxFreelancersConsidered: 5
+  nfsdCalcMode: Linear
+  nfsdCountMode: Online
 
