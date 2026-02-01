@@ -70,7 +70,7 @@
     - state: mode-lethal
       map: ["Firemode"]
       shader: unshaded
-    - state: mag-unshaded-4
+    - state: charge4
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Gun
