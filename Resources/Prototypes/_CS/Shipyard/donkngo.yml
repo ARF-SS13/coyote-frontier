@@ -1,9 +1,9 @@
 # Author Info
-# GitHub: Chokovit
+# GitHub: Minty-Moo, Chokovit
 
 # Maintainer Info
 # GitHub: Chokovit (https://github.com/Chokovit)
-# Discord: Chokovit
+# Discord: Minty-Moo, Chokovit
 
 # Shuttle Notes:
 # A "floating restraunt" style shuttle highly inspired by the McCargo. Players are meant to make donk pockets
@@ -12,7 +12,7 @@
   id: DonknGo
   parent: BaseVessel
   name: LL1 Donk n Go
-  description: "Donk co's new franchise package includes your very own floating restraunt to craft homemade donk pockets!"
+  description: "Donk co's new franchise package includes your very own floating restaurant to craft homemade donk pockets!"
   price: 80000
   category: Medium
   group: Shipyard
