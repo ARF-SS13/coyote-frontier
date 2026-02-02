@@ -45,7 +45,7 @@
 
 #Power Cell fed weapons
 - type: entity
-  id: CSBaseWeaponPowerCell
+  id: CSBaseWeaponSMGPowerCell
   parent: BaseItem
   abstract: true
   components:
@@ -54,7 +54,7 @@
     size: Huge
   - type: AmmoCounter
   - type: Gun
-    fireRate: 2
+    fireRate: 6
     selectedMode: FullAuto
     availableModes:
     - FullAuto
