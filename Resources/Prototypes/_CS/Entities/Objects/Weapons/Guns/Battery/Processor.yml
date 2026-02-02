@@ -1,7 +1,7 @@
 
 - type: entity
   id: CSWeaponEnergySubMachineGunProcessor
-  parent: [ CSBaseWeaponFrameEnergyPistolNanotrasen, BaseWeaponBattery, BaseGunWieldable ]
+  parent: [ CSBaseWeaponFrameEnergyPistolNanotrasen, BaseWeaponPowerCellSmall, BaseGunWieldable ]
   name: Processor
   description: The Typewriter's battery operated variant. Fry 'em, fella's.
   components:
