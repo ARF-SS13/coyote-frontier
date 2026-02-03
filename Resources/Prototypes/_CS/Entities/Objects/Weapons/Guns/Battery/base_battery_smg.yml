@@ -54,7 +54,11 @@
     size: Huge
   - type: AmmoCounter
   - type: Gun
-    fireRate: 8
+    minAngle: 2.5
+    maxAngle: 20.0
+    angleIncrease: 1.0
+    angleDecay: 3.5
+    fireRate: 3.8
     selectedMode: FullAuto
     availableModes:
     - FullAuto
