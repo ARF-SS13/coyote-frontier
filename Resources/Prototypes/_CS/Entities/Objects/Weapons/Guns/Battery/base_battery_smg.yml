@@ -54,7 +54,7 @@
     size: Huge
   - type: AmmoCounter
   - type: Gun
-    fireRate: 6
+    fireRate: 8
     selectedMode: FullAuto
     availableModes:
     - FullAuto
@@ -76,6 +76,8 @@
           - PowerCellSmall
   - type: PowerCellSlot
     cellSlotId: cell_slot
+  - type: BatterySelfRecharger
+    autoRecharge: false
   - type: Appearance
   - type: StaticPrice
     price: 500
