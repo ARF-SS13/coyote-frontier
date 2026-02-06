@@ -1,0 +1,47 @@
+# Author Info
+# GitHub: Jorgon2000 (https://github.com/Jorgon2000)
+# Discord: Gorgee
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+
+# Shuttle Notes:
+# Archetypes = Service
+# Halftypes = mercenary
+# Domestic Areas = Full
+- type: vessel
+  id: wager
+  parent: BaseVessel
+  name: LL1 Wager
+  description: A lounge/casino for the posh and wealthy. Full service bar, poker, blackjack, craps, stripper bar.
+  price: 200000 #80000, 24000(LL1(30%) + 96625(price per tile)(772) = 200625(rounded down to 200k for accuracy in console.)
+  category: Medium
+  group: Shipyard
+  shuttlePath: /Maps/_CS/Shuttles/wager.yml
+  guidebookPage: Null
+  class:
+  - Civilian
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: wager
+  mapName: 'wager'
+  mapPath: /Maps/_CS/Shuttles/wager.yml
+  minPlayers: 0
+  stations:
+    wager:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'SLI Wager {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            ContractorInterview: [ 2, 2 ]
+            CompanionInterview: [ 2, 2 ]
+            PilotInterview: [ 2, 2 ]
+            MercenaryInterview: [ 2, 2 ]
