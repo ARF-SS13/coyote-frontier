@@ -7,7 +7,7 @@
     duration: 1
     reoccurrenceDelay: 240 # Once per four hours.
     startAudio:
-      path: /Audio/Announcements/attention.ogg
+      path: /Audio/_COYOTE/EventBoops/generic.ogg
   - type: RandomSentienceRule
     minSentiences: 2
     maxSentiences: 5

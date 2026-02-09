@@ -24,7 +24,7 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_vent_critters.ogg # Frontier
+      path: /Audio/_COYOTE/EventBoops/pests.ogg
     earliestStart: 15
     weight: 6
     duration: 50
@@ -47,7 +47,7 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
-      path: /Audio/Announcements/attention.ogg
+      path: /Audio/_COYOTE/EventBoops/pests.ogg
     earliestStart: 15
     weight: 6
     duration: 50
@@ -73,7 +73,7 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
-      path: /Audio/Announcements/attention.ogg
+      path: /Audio/_COYOTE/EventBoops/pests.ogg
     weight: 6
     duration: 50
   - type: VentCrittersRule
@@ -92,7 +92,7 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
-      path: /Audio/Announcements/attention.ogg
+      path: /Audio/_COYOTE/EventBoops/pests.ogg
     weight: 6
     duration: 50
   - type: VentCrittersRule
@@ -111,7 +111,7 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
-      path: /Audio/Announcements/attention.ogg
+      path: /Audio/_COYOTE/EventBoops/pests.ogg
     earliestStart: 15
     weight: 6
     duration: 50

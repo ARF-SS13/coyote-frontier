@@ -8,10 +8,16 @@
     # TODO: add path to  start warning and end Voiceover
     startRadioAnnouncement: station-event-bluespace-scrap-start-announcement
     startRadioAnnouncementChannel: Engineering
+#    startAudio:
+#      path: /Audio/_COYOTE/EventBoops/derelict_arrive.ogg
     warningRadioAnnouncement: station-event-bluespace-scrap-warning-announcement
     warningRadioAnnouncementChannel: Engineering
+#    warningAudio:
+#      path: /Audio/_COYOTE/EventBoops/derelict_almost_gone.ogg
     endRadioAnnouncement: station-event-bluespace-scrap-end-announcement
     endRadioAnnouncementChannel: Engineering
+#    endAudio:
+#      path: /Audio/_COYOTE/EventBoops/derelict_left.ogg
     weight: 5
     duration: 1800 # 30 minutes
     maxDuration: 1800 # 30 minutes

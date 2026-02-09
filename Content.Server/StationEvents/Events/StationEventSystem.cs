@@ -8,6 +8,7 @@ using Content.Server.StationEvents.Components;
 using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -60,7 +61,7 @@ public abstract class StationEventSystem<T> : GameRuleSystem<T> where T : ICompo
             RadioSystem.SendRadioMessage(uid, message, stationEvent.StartRadioAnnouncementChannel, mapUid, escapeMarkup: false);
         }
 
-        Audio.PlayGlobal(stationEvent.StartAudio, allPlayersInGame, true);
+        Audio.PlayGlobal(stationEvent.StartAudio, allPlayersInGame, true, AudioParams.Default.WithVolume(-3f));
     }
 
     /// <inheritdoc/>
@@ -108,7 +109,7 @@ public abstract class StationEventSystem<T> : GameRuleSystem<T> where T : ICompo
         }
         // End Frontier
 
-        Audio.PlayGlobal(stationEvent.EndAudio, allPlayersInGame, true);
+        Audio.PlayGlobal(stationEvent.EndAudio, allPlayersInGame, true, AudioParams.Default.WithVolume(-3f));
     }
 
     /// <summary>
@@ -146,7 +147,7 @@ public abstract class StationEventSystem<T> : GameRuleSystem<T> where T : ICompo
                     var mapUid = MapSystem.GetMap(GameTicker.DefaultMap); // Hack: need a reference to a valid entity on the default map - the map itself works.
                     RadioSystem.SendRadioMessage(uid, message, stationEvent.WarningRadioAnnouncementChannel, mapUid, escapeMarkup: false);
                 }
-                Audio.PlayGlobal(stationEvent.WarningAudio, allPlayersInGame, true);
+                Audio.PlayGlobal(stationEvent.WarningAudio, allPlayersInGame, true, AudioParams.Default.WithVolume(-3f));
                 stationEvent.WarningAnnounced = true;
             }
             // End Frontier

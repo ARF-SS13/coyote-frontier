@@ -69,6 +69,9 @@ public sealed partial class StationEventComponent : Component
     [DataField]
     public ProtoId<RadioChannelPrototype> EndRadioAnnouncementChannel = "Supply"; // Frontier
 
+    [DataField]
+    public string? FilterTag;
+
     /// <summary>
     ///     In minutes, when is the first round time this event can start
     /// </summary>

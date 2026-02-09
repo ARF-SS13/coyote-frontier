@@ -9,4 +9,4 @@
 - type: soundCollection
   id: PowerOn
   files:
-  - /Audio/_NF/Announcements/PocketSizedAndy/andy1_power_onnf.ogg # Frontier
+  - /Audio/_COYOTE/EventBoops/power_check_over.ogg # Frontier

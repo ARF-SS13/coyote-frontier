@@ -20,7 +20,7 @@
   components:
   - type: StationEvent
     startAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_breaker_flip.ogg
+      path: /Audio/_COYOTE/EventBoops/power_check.ogg
     weight: 7
     earliestStart: 15 # Frontier
     duration: 1
@@ -38,7 +38,7 @@
     startAudio:
       params:
         volume: -0
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy1_power_offnf.ogg
+      path: /Audio/_COYOTE/EventBoops/power_check.ogg
   #  endAudio:
   #    path: /Audio/_NF/Announcements/PocketSizedAndy/andy1_power_onnf.ogg  ##PowerGridCheckRule handles end audio, leaving this incase that breaks
   #    params:
@@ -54,14 +54,14 @@
   components:
   - type: StationEvent
     startAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_solar_flare_start.ogg
+      path: /Audio/_COYOTE/EventBoops/solar_flare.ogg
     weight: 4
     earliestStart: 15
     reoccurrenceDelay: 45
     startAnnouncement: station-event-solar-flare-nf-start-announcement
     endAnnouncement: station-event-solar-flare-nf-end-announcement
     endAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_solar_flare_end.ogg
+      path: /Audio/_COYOTE/EventBoops/solar_flare_over.ogg
     duration: 120
     maxDuration: 240
   - type: SolarFlareRule
@@ -76,7 +76,7 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-clog-nf-start-announcement # Frontier: add nf-
     startAudio:
-      path: /Audio/_NF/Announcements/PocketSizedAndy/andy2_vent_clog.ogg
+      path: /Audio/_COYOTE/EventBoops/generic_bad2.ogg
     earliestStart: 15
     minimumPlayers: 15
     weight: 5
