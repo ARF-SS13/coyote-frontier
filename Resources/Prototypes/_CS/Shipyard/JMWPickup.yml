@@ -1,0 +1,45 @@
+# Author Info
+# GitHub: Wolfhauler/Carriedavis
+
+# Maintainer Info
+# GitHub: Wolfhauler/Carriedavis (https://github.com/Wolfhauler , https://github.com/EkatrinaFC)
+# Discord: Wolfhauler/Carriedavis
+
+# Shuttle Notes:
+# A simple pickup truck. Nothing in it is cutting edge or next generation. It is simple and idiot proof, fully future proofed.
+
+- type: vessel
+  id: JMWPickup
+  parent: BaseVessel
+  name: LL0 JMW Pickup
+  description: "A simple pickup truck. Nothing in it is cutting edge or next generation. It is simple and idiot proof, fully future proofed."
+  price: 15000
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_CS/Shuttles/JMWPickup.yml
+  guidebookPage: Null
+  class:
+  - Civilian
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: JMWPickup
+  mapName: 'JMW Pickup'
+  mapPath: /Maps/_CS/Shuttles/JMWPickup.yml
+  minPlayers: 0
+  stations:
+    DonknGo:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'JMW Pickup {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            ContractorInterview: [ 2, 2 ]
+            PilotInterview: [ 2, 2 ]
+            MercenaryInterview: [ 2, 2 ]
+            CompanionInterview: [ 2, 2 ]
