@@ -1,8 +1,0 @@
-- type: loadoutGroup
-  id: DoCInHand
-  name: loadout-group-contractor-hand-items
-  minLimit: 0
-  loadouts:
-  - DoCHypo
-  subgroups:
-  - ContractorHandItems

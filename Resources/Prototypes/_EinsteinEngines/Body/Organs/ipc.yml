@@ -33,9 +33,6 @@
     maxReagents: 5
     metabolizerTypes: [ Human ]
     groups:
-    - id: Poison
-      rateModifier: 5
-      skipEffects: true
     - id: Food
       rateModifier: 5
       skipEffects: true

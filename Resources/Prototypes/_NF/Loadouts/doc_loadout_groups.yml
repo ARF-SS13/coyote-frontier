@@ -81,5 +81,6 @@
   - StcClothingShoesBootsLaceup # reused purposefully
   subgroups:
   - ContractorShoes
+  - CoyoteShoes
   fallbacks:
   - DocClothingShoesColorWhite

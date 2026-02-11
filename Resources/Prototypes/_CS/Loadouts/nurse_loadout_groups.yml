@@ -6,3 +6,12 @@
   - MercenaryClothingBeltMilitaryWebbingMed
   subgroups:
   - ContractorBelt
+
+- type: loadoutGroup
+  id: NurseInHand
+  name: loadout-group-contractor-hand-items
+  minLimit: 0
+  loadouts:
+  - LoadoutExperimentalHypo
+  subgroups:
+  - ContractorHandItems

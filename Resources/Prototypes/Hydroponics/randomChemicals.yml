@@ -1,14 +1,9 @@
 - type: weightedRandomFillSolution
   id: RandomPickBotanyReagent
   fills:
-  - quantity: 10
+  - quantity: 5
     weight: 0.5
     reagents:
-    - OmnizinePrecursor1 # COYOTE: Omnizine -> OmnizineReagent1 - 5
-    - OmnizinePrecursor2
-    - OmnizinePrecursor3
-    - OmnizinePrecursor4
-    - OmnizinePrecursor5
     - Nocturine
     - Lexorin
     - Honk

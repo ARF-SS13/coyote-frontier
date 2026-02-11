@@ -1,7 +1,7 @@
 - type: entity
   id: ClothingMaskArcadia
   name: arcadia battle mask
-  parent: [ ClothingMaskGasExplorer, BaseC1ContrabandUnredeemable, ContrabandClothing ]
+  parent: [ ClothingMaskGasExplorer, BaseC1ContrabandUnredeemable] # Coyote: We changed contraband levels and made this C1, removed the ContrabandClothing tag to stop CDETs from shooting people with this
   description: A close-fitting high tech mask designed by Arcadia Industries for spacefaring operators.
   components:
   - type: Sprite

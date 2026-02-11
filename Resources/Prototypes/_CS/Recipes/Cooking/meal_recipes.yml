@@ -43,7 +43,7 @@
 # Prepped Donk Pocket
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepBananaDIY
+  id: RecipeDonkpocketPrepBananaDIY
   name: Prepped Banana Donk Pocket
   result: FoodDonkpocketPrepBananaDIY
   time: 5
@@ -56,9 +56,9 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepBananaSplitDIY
+  id: RecipeDonkpocketPrepBananaSplitDIY
   name: Prepped Banana Split Donk Pocket
-  result: FoodDonkpocketPrepBananaDIY
+  result: FoodDonkpocketPrepBananaSplitDIY
   time: 5
   group: Dessert
   solids:
@@ -71,7 +71,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepBbqDIY
+  id: RecipeDonkpocketPrepBbqDIY
   name: Prepped Bbq Donk Pocket
   result: FoodDonkpocketPrepBbqDIY
   time: 5
@@ -84,7 +84,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepBerryDIY
+  id: RecipeDonkpocketPrepBerryDIY
   name: Prepped Berry Donk Pocket
   result: FoodDonkpocketPrepBerryDIY
   time: 5
@@ -97,7 +97,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepCherryDIY
+  id: RecipeDonkpocketPrepCherryDIY
   name: Prepped Cherry Donk Pocket
   result: FoodDonkpocketPrepCherryDIY
   time: 5
@@ -110,7 +110,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepChocolateDIY
+  id: RecipeDonkpocketPrepChocolateDIY
   name: Prepped Chocolate Donk Pocket
   result: FoodDonkpocketPrepChocolateDIY
   time: 5
@@ -123,7 +123,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepDankDIY
+  id: RecipeDonkpocketPrepDankDIY
   name: Prepped Dank Pocket
   result: FoodDonkpocketPrepDankDIY
   time: 5
@@ -136,7 +136,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepHoneyDIY
+  id: RecipeDonkpocketPrepHoneyDIY
   name: Prepped Honey Donk Pocket
   result: FoodDonkpocketPrepHoneyDIY
   time: 5
@@ -149,7 +149,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepMothDIY
+  id: RecipeDonkpocketPrepMothDIY
   name: Prepped Moth Pocket
   result: FoodDonkpocketPrepMothDIY
   time: 5
@@ -162,7 +162,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepOrangeDIY
+  id: RecipeDonkpocketPrepOrangeDIY
   name: Prepped Orange Donk Pocket
   result: FoodDonkpocketPrepOrangeDIY
   time: 5
@@ -175,7 +175,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepPizzaDIY
+  id: RecipeDonkpocketPrepPizzaDIY
   name: Prepped Pizza Donk Pocket
   result: FoodDonkpocketPrepPizzaDIY
   time: 5
@@ -189,7 +189,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepPlainDIY
+  id: RecipeDonkpocketPrepPlainDIY
   name: Prepped Plain Donk Pocket
   result: FoodDonkpocketPrepPlainDIY
   time: 5
@@ -202,7 +202,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepSpicyDIY
+  id: RecipeDonkpocketPrepSpicyDIY
   name: Prepped Spicy Donk Pocket
   result: FoodDonkpocketPrepSpicyDIY
   time: 5
@@ -216,7 +216,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepTeriyakiDIY
+  id: RecipeDonkpocketPrepTeriyakiDIY
   name: Prepped Teriyaki Donk Pocket
   result: FoodDonkpocketPrepTeriyakiDIY
   time: 5
@@ -230,7 +230,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepPirozhkiDIY
+  id: RecipeDonkpocketPrepPirozhkiDIY
   name: Prepped Pirozhki Donk Pocket
   result: FoodDonkpocketPrepPirozhkiDIY
   time: 5
@@ -245,7 +245,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepMushroomDIY
+  id: RecipeDonkpocketPrepMushroomDIY
   name: Prepped Mushroom Donk Pocket
   result: FoodDonkpocketPrepMushroomDIY
   time: 5
@@ -258,7 +258,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepCheddarDIY
+  id: RecipeDonkpocketPrepCheddarDIY
   name: Prepped Cheddar Donk Pocket
   result: FoodDonkpocketPrepCheddarDIY
   time: 5
@@ -272,7 +272,7 @@
   recipeType: Assembler # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPrepMozzarellaDIY
+  id: RecipeDonkpocketPrepMozzarellaDIY
   name: Prepped Mozzarella Donk Pocket
   result: FoodDonkpocketPrepMozzarellaDIY
   time: 5
@@ -288,7 +288,7 @@
 # Homemade Donk Pockets
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketBananaDIY
+  id: RecipeDonkpocketBananaDIY
   name: Banana Donk Pocket
   result: FoodDonkpocketBananaDIY
   time: 5
@@ -298,7 +298,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketBananaSplitDIY
+  id: RecipeDonkpocketBananaSplitDIY
   name: Banana Split Donk Pocket
   result: FoodDonkpocketBananaSplitDIY
   time: 5
@@ -308,7 +308,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketBbqDIY
+  id: RecipeDonkpocketBbqDIY
   name: Bbq Donk Pocket
   result: FoodDonkpocketBbqDIY
   time: 5
@@ -318,7 +318,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketBerryDIY
+  id: RecipeDonkpocketBerryDIY
   name: Berry Donk Pocket
   result: FoodDonkpocketBerryDIY
   time: 5
@@ -328,7 +328,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketCherryDIY
+  id: RecipeDonkpocketCherryDIY
   name: Cherry Donk Pocket
   result: FoodDonkpocketCherryDIY
   time: 5
@@ -338,7 +338,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketChocolateDIY
+  id: RecipeDonkpocketChocolateDIY
   name: Chocolate Donk Pocket
   result: FoodDonkpocketChocolateDIY
   time: 5
@@ -348,7 +348,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketDankDIY
+  id: RecipeDonkpocketDankDIY
   name: Dank Donk Pocket
   result: FoodDonkpocketDankDIY
   time: 5
@@ -358,7 +358,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketHoneyDIY
+  id: RecipeDonkpocketHoneyDIY
   name: Honey Donk Pocket
   result: FoodDonkpocketHoneyDIY
   time: 5
@@ -368,7 +368,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketMothDIY
+  id: RecipeDonkpocketMothDIY
   name: Moth Donk Pocket
   result: FoodDonkpocketMothDIY
   time: 5
@@ -378,7 +378,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketOrangeDIY
+  id: RecipeDonkpocketOrangeDIY
   name: Orange Donk Pocket
   result: FoodDonkpocketOrangeDIY
   time: 5
@@ -388,7 +388,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPizzaDIY
+  id: RecipeDonkpocketPizzaDIY
   name: Pizza Donk Pocket
   result: FoodDonkpocketPizzaDIY
   time: 5
@@ -398,7 +398,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPlainDIY
+  id: RecipeDonkpocketPlainDIY
   name: Plain Donk Pocket
   result: FoodDonkpocketPlainDIY
   time: 5
@@ -408,7 +408,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketSpicyDIY
+  id: RecipeDonkpocketSpicyDIY
   name: Spicy Donk Pocket
   result: FoodDonkpocketSpicyDIY
   time: 5
@@ -418,7 +418,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketTeriyakiDIY
+  id: RecipeDonkpocketTeriyakiDIY
   name: Teriyaki Donk Pocket
   result: FoodDonkpocketTeriyakiDIY
   time: 5
@@ -428,7 +428,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketPirozhkiDIY
+  id: RecipeDonkpocketPirozhkiDIY
   name: Pirozhki Donk Pocket
   result: FoodDonkpocketPirozhkiDIY
   time: 5
@@ -438,7 +438,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketMushroomDIY
+  id: RecipeDonkpocketMushroomDIY
   name: Mushroom Donk Pocket
   result: FoodDonkpocketMushroomDIY
   time: 5
@@ -448,7 +448,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketCheddarDIY
+  id: RecipeDonkpocketCheddarDIY
   name: Cheddar Donk Pocket
   result: FoodDonkpocketCheddarDIY
   time: 5
@@ -458,7 +458,7 @@
   recipeType: Oven # Frontier
 
 - type: microwaveMealRecipe
-  id: FoodDonkpocketMozzarellaDIY
+  id: RecipeDonkpocketMozzarellaDIY
   name: Mozzarella Donk Pocket
   result: FoodDonkpocketMozzarellaDIY
   time: 5

@@ -1,0 +1,8 @@
+- type: loadout
+  id: LoadoutExperimentalHypo
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ContractorT3
+  price: 50000
+  inhand:
+    - HypoExperimental

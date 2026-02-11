@@ -1,21 +1,4 @@
 - type: reaction
-  id: CSOmnizine
-  minTemp: 400
-  reactants:
-    OmnizinePrecursor1:
-      amount: 1
-    OmnizinePrecursor2:
-      amount: 1
-    OmnizinePrecursor3:
-      amount: 1
-    OmnizinePrecursor4:
-      amount: 1
-    OmnizinePrecursor5:
-      amount: 1
-  products:
-    Omnizine: 5
-
-- type: reaction
   id: Oxidant
   reactants:
     Iron:

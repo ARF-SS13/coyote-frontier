@@ -59,6 +59,7 @@
   - type: ShowHealthBars
     damageContainers:
     - Biological
+    - IPC # CS - Add IPC damage container
 
 - type: entity
   parent: ClothingEyesEyepatchHudSecurity
@@ -69,3 +70,4 @@
   - type: ShowHealthBars
     damageContainers:
     - Biological
+    - IPC # CS - Add IPC damage container

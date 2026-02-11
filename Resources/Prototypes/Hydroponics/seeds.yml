@@ -1324,7 +1324,7 @@
       Min: 1
       Max: 2
       PotencyDivisor: 10
-    OmnizinePrecursor1: # Don't kill me  # COYOTE: Omnizine -> OmnizinePrecursor1
+    Omnizine:
       Min: 1
       Max: 3
       PotencyDivisor: 35

@@ -65,7 +65,7 @@
   - ContractorCartridge
   - ContractorImplanter
   - ContractorBackpackItems
-  - ContractorHandItems
+  - NurseInHand # Coyote ContractorHandItems < NurseInHand (Inherits ContractorHandItems)
   - ContractorInstruments
   - NFSpeciesSpecific
 

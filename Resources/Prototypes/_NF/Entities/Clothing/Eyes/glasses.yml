@@ -1,7 +1,7 @@
 - type: entity
   id: ClothingEyesArcadiaVisor
   name: arcadia visor
-  parent: [ ClothingEyesBase, BaseC1ContrabandUnredeemable, ContrabandClothing ]
+  parent: [ ClothingEyesBase, BaseC1ContrabandUnredeemable] # Coyote: We changed contraband levels and made this C1, removed the ContrabandClothing tag to stop CDETs from shooting people with this
   description: A visor produced by Arcadia Industries, with some high tech optics systems built in.
   components:
   - type: Sprite

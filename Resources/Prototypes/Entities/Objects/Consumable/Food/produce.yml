@@ -1705,7 +1705,7 @@
       food:
         maxVol: 20
         reagents:
-        - ReagentId: OmnizinePrecursor1 # COYOTE: Omnizine -> OmnizinePrecursor1
+        - ReagentId: Omnizine
           Quantity: 3
         - ReagentId: SpaceDrugs
           Quantity: 5

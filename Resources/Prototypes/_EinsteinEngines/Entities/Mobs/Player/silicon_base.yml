@@ -136,6 +136,8 @@
           sprite: "Effects/creampie.rsi"
           state: "creampie_human"
           visible: false
+    - type: StatusIcon
+      bounds: -0.5,-0.5,0.5,0.5
     - type: Flammable
       fireSpread: true
       canResistFire: true
@@ -263,6 +265,7 @@
         - Pacified
         # - PsionicsDisabled
         # - PsionicallyInsulated
+        - Flashed
     - type: Blindable
     - type: FireVisuals
       alternateState: Standing

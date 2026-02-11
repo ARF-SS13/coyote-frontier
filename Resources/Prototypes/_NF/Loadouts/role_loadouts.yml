@@ -241,7 +241,7 @@
   - ContractorImplanter
   - ContractorEncryptionKey
   - ContractorBackpackItems
-  - DoCInHand # Coyote ContractorHandItems < DoCInHand (Inherits DocHandItems)
+  - ContractorHandItems
   - ContractorInstruments # Coyote
   - NFSpeciesSpecific
 
@@ -371,7 +371,7 @@
   - ContractorImplanter
   - ContractorEncryptionKey
   - ContractorBackpackItems
-  - ContractorHandItems
+  - NurseInHand # Coyote ContractorHandItems < NurseInHand (Inherits ContractorHandItems)
   - ContractorInstruments # Coyote
   - NfsdSpeciesSpecific
 

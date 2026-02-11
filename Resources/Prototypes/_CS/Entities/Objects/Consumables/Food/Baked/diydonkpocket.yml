@@ -9,6 +9,14 @@
     flavors:
       - banana
       - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: banana
@@ -24,6 +32,14 @@
     - banana
     - creamy
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: banana_split
@@ -39,6 +55,14 @@
     - savory
     - bbq
     - bread
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: bbq
@@ -53,6 +77,14 @@
     flavors:
     - fruity
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: berry
@@ -67,6 +99,14 @@
     flavors:
     - cherry
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: cherry
@@ -81,6 +121,14 @@
     flavors:
     - chocolate
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: chocolate
@@ -95,6 +143,14 @@
     flavors:
     - mysterious
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: dank
@@ -109,6 +165,14 @@
     flavors:
     - honey
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: honey
@@ -123,6 +187,16 @@
     flavors:
     - cotton
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Fiber
+          Quantity: 5
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: moth
@@ -137,6 +211,14 @@
     flavors:
     - fruity
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: orange
@@ -152,6 +234,14 @@
     - tomato
     - cheesy
     - bread
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: pizza
@@ -166,6 +256,14 @@
     flavors:
     - meaty
     - bread
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: plain
@@ -181,6 +279,14 @@
     - spicy
     - meaty
     - bread
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: spicy
@@ -196,6 +302,14 @@
     - sweet
     - savory
     - bread
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: teriyaki
@@ -211,6 +325,14 @@
     - meaty
     - veggies
     - bread
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: plain
@@ -226,6 +348,14 @@
     - mushroom
     - meaty
     - bread
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: plain
@@ -241,6 +371,14 @@
     - cheesy
     - meaty
     - bread
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: banana
@@ -256,6 +394,14 @@
     - cheesy
     - tomato
     - bread
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 4
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: plain
@@ -271,6 +417,12 @@
   - type: FlavorProfile
     flavors:
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -284,6 +436,12 @@
   - type: FlavorProfile
     flavors:
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -297,6 +455,12 @@
   - type: FlavorProfile
     flavors:
     - dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -310,6 +474,12 @@
   - type: FlavorProfile
     flavors:
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -323,6 +493,12 @@
   - type: FlavorProfile
     flavors:
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -336,6 +512,12 @@
   - type: FlavorProfile
     flavors:
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -349,6 +531,12 @@
   - type: FlavorProfile
     flavors:
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -362,6 +550,12 @@
   - type: FlavorProfile
     flavors:
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -375,6 +569,14 @@
   - type: FlavorProfile
     flavors:
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Fiber
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -388,6 +590,12 @@
   - type: FlavorProfile
     flavors:
     - sweet-dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -401,6 +609,12 @@
   - type: FlavorProfile
     flavors:
     - dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -414,6 +628,12 @@
   - type: FlavorProfile
     flavors:
     - dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -427,6 +647,12 @@
   - type: FlavorProfile
     flavors:
     - dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -440,6 +666,12 @@
   - type: FlavorProfile
     flavors:
     - dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -453,6 +685,12 @@
   - type: FlavorProfile
     flavors:
     - dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -466,6 +704,12 @@
   - type: FlavorProfile
     flavors:
     - dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -479,6 +723,12 @@
   - type: FlavorProfile
     flavors:
     - dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep
@@ -492,6 +742,12 @@
   - type: FlavorProfile
     flavors:
     - dough
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
   - type: Sprite
     sprite: _CS/Objects/Consumable/Food/Baked/diydonkpocket.rsi
     state: prep

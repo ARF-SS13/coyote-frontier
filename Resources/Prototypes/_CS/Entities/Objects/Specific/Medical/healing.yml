@@ -138,7 +138,7 @@
     ModifyBloodLevel: 90
 
 - type: entity
-  name: synthetic emergency autoinjector
+  name: synthetic emergency auto-injector
   parent: ChemicalMedipen
   id: RepairAutoinjector
   description: Prevents system failure and instantly restores the system partially. Always seek medical attention after averted system failure.
@@ -170,28 +170,85 @@
     onlyAffectsMobs: false
     injectOnly: true
   - type: StaticPrice
-    vendPrice: 5000
+    vendPrice: 3000
   - type: SolutionContainerManager
     solutions:
       pen:
         maxVol: 15
         reagents:
         - ReagentId: Autosolder
-          Quantity: 20
-        - ReagentId: Sylexalin
           Quantity: 10
+        - ReagentId: Sylexalin
+          Quantity: 5
+
+- type: entity
+  name: sylashizine auto-injector
+  parent: ChemicalMedipen
+  id: SylashizineAutoinjector
+  description: A rapid injection of sylashizine, intended for combat applications.
+  components:
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: base-needle-inhand-left
+      - state: base-colorA-inhand-left
+        color: "#72519c"
+      - state: base-colorB-inhand-left
+      right:
+      - state: base-needle-inhand-right
+      - state: base-colorA-inhand-right
+        color: "#72519c"
+      - state: base-colorB-inhand-right
+  - type: Sprite
+    sprite: _CS/Objects/Specific/Medical/robotopicals.rsi
+    layers:
+    - state: sylash
+      map: ["enum.SolutionContainerLayers.Fill"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    changeColor: false
+    emptySpriteName: robor0
+  - type: Hypospray
+    solutionName: pen
+    transferAmount: 15
+    onlyAffectsMobs: false
+    injectOnly: true
+  - type: StaticPrice
+    vendPrice: 5000
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 15
+        reagents:
+        - ReagentId: Sylashizine
+          Quantity: 10
+        - ReagentId: Sylexalin
+          Quantity: 5
 
 - type: microwaveMealRecipe
   id: RecipeRepairAutoinjector
-  name: Synthetic Emergency Autoinjector
+  name: synthetic emergency auto-injector
   result: RepairAutoinjector
   time: 5
   group: Medicinal
   solids:
     BlankMediPen: 1
   reagents:
-    Autosolder: 20
-    Sylexalin: 10
+    Autosolder: 10
+    Sylexalin: 5
+  recipeType: MedicalAssembler
+
+- type: microwaveMealRecipe
+  id: RecipeSylashizineAutoinjector
+  name: sylashizine auto-injector
+  result: SylashizineAutoinjector
+  time: 5
+  group: Medicinal
+  solids:
+    BlankMediPen: 1
+  reagents:
+    Sylashizine: 10
+    Sylexalin: 5
   recipeType: MedicalAssembler
 
 - type: microwaveMealRecipe
@@ -243,3 +300,75 @@
     Silver: 500
   result: RepairSpray
   completetime: 10
+
+- type: entity
+  name: director's hypospray # Essentially the same as the original hypospray, but cannot be found in loot and can only spawn with the DoC.
+  parent: [ BaseItem, BaseC4ContrabandUnredeemable ] # Puts it at the same level as a faction encryption key.
+  description: A sterile injector for rapid administration of drugs to patients, seemingly made for a sector's regional director of care.
+  id: DoCHypospray
+  components:
+  - type: Sprite
+    sprite: _CS/Objects/Specific/Medical/dochypospray.rsi
+    layers:
+      - state: hypo
+        map: ["enum.SolutionContainerLayers.Base"]
+      - state: hypo_fill1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+  - type: Item
+    sprite: _CS/Objects/Specific/Medical/dochypospray.rsi
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        maxVol: 30
+  - type: RefillableSolution
+    solution: hypospray
+  - type: ExaminableSolution
+    solution: hypospray
+  - type: Hypospray
+    onlyAffectsMobs: false
+  - type: UseDelay
+    delay: 0.5
+  - type: StaticPrice
+    price: 750
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 6
+    fillBaseName: hypo_fill
+    solutionName: hypospray
+
+- type: entity
+  name: NTCS-104 experimental hypospray
+  parent: [ BaseItem, BaseC1Contraband ]
+  description: A commercial hypospray, presumably designed by Nanotrasen Chemical Supply, although the sticker underneath the label seem to suggest otherwise. It has two built in safety features for the consumer market, featuring a slightly bigger chemical reservoir and a shorter injection delay.
+  id: HypoExperimental
+  components:
+  - type: Sprite
+    sprite: _CS/Objects/Specific/Medical/hypomini104.rsi
+    layers:
+    - state: hypo
+      map: ["enum.SolutionContainerLayers.Base"]
+    - state: hypo_fill1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+  - type: Item
+    sprite: _CS/Objects/Specific/Medical/hypomini104.rsi
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        maxVol: 15
+  - type: RefillableSolution
+    solution: hypospray
+  - type: ExaminableSolution
+    solution: hypospray
+  - type: Hypospray
+    onlyAffectsMobs: false
+  - type: UseDelay
+    delay: 0.75
+  - type: StaticPrice
+    price: 700
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: hypo_fill
+    solutionName: hypospray

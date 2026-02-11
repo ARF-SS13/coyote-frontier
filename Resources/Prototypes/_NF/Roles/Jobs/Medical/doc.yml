@@ -41,7 +41,7 @@
 - type: startingGear
   id: DocGear
   equipment:
-    pocket1: HypoMini
+    pocket1: DoCHypospray # Coyote: Change to the big one.
     pocket2: MedicalAppraisalTool
   storage:
     back:
