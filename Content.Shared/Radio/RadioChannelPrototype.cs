@@ -45,6 +45,14 @@ public sealed partial class RadioChannelPrototype : IPrototype
     // End Frontier
 
     /// <summary>
+    /// ImpStation port, if a channel is read-only, radio cannot be sent through it
+    /// Intercomms still can
+    /// Supermatter throws errors without this
+    /// </summary>
+    [DataField("intercomOnly")]
+    public bool IntercomOnly = false;
+
+    /// <summary>
     /// Maximum distance in meters this channel can transmit. If 0 or null, range is unlimited except by map boundaries.
     /// </summary>
     [DataField("maxRange"), ViewVariables]
