@@ -1,3 +1,21 @@
+// SPDX-FileCopyrightText: 2022 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Tadeo <td12233a@gmail.com>
+// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Tay <td12233a@gmail.com>
+// SPDX-FileCopyrightText: 2025 VMSolidus <evilexecutive@gmail.com>
+// SPDX-FileCopyrightText: 2025 corresp0nd <46357632+corresp0nd@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 taydeo <td12233a@gmail.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Numerics;
 using Content.Server.Singularity.Components;
 using Content.Shared.Atmos.Components;
@@ -73,7 +91,7 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
     /// <param name="frameTime">The time elapsed since the last set of updates.</param>
     public override void Update(float frameTime)
     {
-        if(!_timing.IsFirstTimePredicted)
+        if (!_timing.IsFirstTimePredicted)
             return;
 
         var query = EntityQueryEnumerator<GravityWellComponent, TransformComponent>();
@@ -108,7 +126,7 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
     /// <param name="xform">The transform of the gravity well to make pulse.</param>
     private void Update(EntityUid uid, TimeSpan frameTime, GravityWellComponent? gravWell = null, TransformComponent? xform = null)
     {
-        if(!Resolve(uid, ref gravWell))
+        if (!Resolve(uid, ref gravWell))
             return;
 
         gravWell.NextPulseTime += gravWell.TargetPulsePeriod;
@@ -130,7 +148,7 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
     {
         if (_physicsQuery.TryComp(entity, out var physics))
         {
-            if (physics.CollisionLayer == (int) CollisionGroup.GhostImpassable)
+            if (physics.CollisionLayer == (int)CollisionGroup.GhostImpassable)
                 return false;
         }
 
@@ -151,7 +169,13 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
     public void GravPulse(EntityUid uid, float maxRange, float minRange, in Matrix3x2 baseMatrixDeltaV, TransformComponent? xform = null)
     {
         if (Resolve(uid, ref xform))
+        {
             GravPulse(xform.Coordinates, maxRange, minRange, in baseMatrixDeltaV);
+
+            // Supermatter pulse edit from imp
+            var ev = new GravPulseEvent();
+            RaiseLocalEvent(uid, ref ev);
+        }
     }
 
     /// <summary>
@@ -166,7 +190,13 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
     public void GravPulse(EntityUid uid, float maxRange, float minRange, float baseRadialDeltaV = 0.0f, float baseTangentialDeltaV = 0.0f, TransformComponent? xform = null)
     {
         if (Resolve(uid, ref xform))
+        {
             GravPulse(xform.Coordinates, maxRange, minRange, baseRadialDeltaV, baseTangentialDeltaV);
+
+            // Supermatter pulse edit from imp
+            var ev = new GravPulseEvent();
+            RaiseLocalEvent(uid, ref ev);
+        }
     }
 
     /// <summary>
@@ -221,7 +251,7 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
             if (TryComp<MovedByPressureComponent>(entity, out var movedPressure) && !movedPressure.Enabled) //Ignore magboots users
                 continue;
 
-            if(!CanGravPulseAffect(entity))
+            if (!CanGravPulseAffect(entity))
                 continue;
 
             var displacement = epicenter - _transform.GetWorldPosition(entity);
@@ -258,7 +288,7 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
     /// <param name="gravWell">The state of the gravity well to set the pulse period for.</param>
     public void SetPulsePeriod(EntityUid uid, TimeSpan value, GravityWellComponent? gravWell = null)
     {
-        if(!Resolve(uid, ref gravWell))
+        if (!Resolve(uid, ref gravWell))
             return;
 
         if (MathHelper.CloseTo(gravWell.TargetPulsePeriod.TotalSeconds, value.TotalSeconds))
@@ -274,3 +304,9 @@ public sealed class GravityWellSystem : SharedGravityWellSystem
 
     #endregion Getters/Setters
 }
+
+/// <summary>
+/// Raised after each gravity pulse, supermatter
+/// </summary>
+[ByRefEvent]
+public readonly record struct GravPulseEvent();

@@ -24,3 +24,13 @@
     path: /Audio/Voice/Talk/speak_1_ask.ogg
   exclaimSound:
     path: /Audio/Voice/Talk/speak_1_exclaim.ogg
+# Supermatter talking over radio sounds
+- type: speechSounds
+  id: SupermatterSilent
+  variation: 0
+  saySound:
+    path: /Audio/_EE/Supermatter/status/empty.ogg
+  askSound:
+    path: /Audio/_EE/Supermatter/status/empty.ogg
+  exclaimSound:
+    path: /Audio/_EE/Supermatter/status/empty.ogg

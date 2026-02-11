@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Content.Server.Beam.Components;
 using Content.Shared.Beam;
 using Content.Shared.Beam.Components;
@@ -175,5 +175,20 @@ public sealed class BeamSystem : SharedBeamSystem
 
         var ev = new CreateBeamSuccessEvent(user, target);
         RaiseLocalEvent(user, ev);
+    }
+
+    internal void TryCreateBeam(MapCoordinates coordinates, EntityUid target, string lightningPrototype, string spriteState)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void TryCreateBeam(MapCoordinates coordinates, MapCoordinates targetCoordinates, string lightningPrototype, string spriteState)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void TryCreateBeam(EntityUid user, MapCoordinates targetCoordinates, string lightningPrototype, string spriteState)
+    {
+        throw new NotImplementedException();
     }
 }
