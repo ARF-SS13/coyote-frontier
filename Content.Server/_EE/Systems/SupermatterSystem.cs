@@ -24,6 +24,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Audio;
 using Content.Shared.Damage.Components;
 using Content.Shared.Database;
+using Content.Shared.DeviceLinking;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
 using Content.Shared.Interaction;
@@ -42,7 +43,6 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.DeviceLinking;
 
 namespace Content.Server._EE.Supermatter.Systems;
 
@@ -84,7 +84,6 @@ public sealed partial class SupermatterSystem : EntitySystem
         SubscribeLocalEvent<SupermatterComponent, InteractHandEvent>(OnHandInteract);
         SubscribeLocalEvent<SupermatterComponent, InteractUsingEvent>(OnItemInteract);
         SubscribeLocalEvent<SupermatterComponent, ExaminedEvent>(OnExamine);
-        SubscribeLocalEvent<SupermatterComponent, SupermatterDoAfterEvent>(OnGetSliver);
         SubscribeLocalEvent<SupermatterComponent, GravPulseEvent>(OnGravPulse);
     }
 
@@ -244,22 +243,6 @@ public sealed partial class SupermatterSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnGetSliver(EntityUid uid, SupermatterComponent sm, ref SupermatterDoAfterEvent args)
-    {
-        if (args.Cancelled)
-            return;
-
-        // Your criminal actions will not go unnoticed
-        sm.Damage += sm.DamageDelaminationPoint / 10;
-
-        var integrity = GetIntegrity(sm).ToString("0.00");
-        SendSupermatterAnnouncement(uid, sm, Loc.GetString("supermatter-announcement-cc-tamper", ("integrity", integrity)));
-
-        Spawn(sm.SliverPrototype, Transform(args.User).Coordinates);
-        _popup.PopupClient(Loc.GetString("supermatter-tamper-end"), uid, args.User);
-
-        sm.DelamTimer /= 2;
-    }
 
     private void OnGravPulse(Entity<SupermatterComponent> ent, ref GravPulseEvent args)
     {
