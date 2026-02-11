@@ -112,10 +112,10 @@
   - type: RadiationSource
   - type: DeviceLinkSource
     ports:
-    - SupermatterInactive
-    - SupermatterNormal
-    - SupermatterCaution
-    - SupermatterWarning
-    - SupermatterDanger
-    - SupermatterEmergency
-    - SupermatterDelaminating
+    - Inactive
+    - Normal
+    - Caution
+    - Warning
+    - Danger
+    - rEmergency
+    - Delaminating
