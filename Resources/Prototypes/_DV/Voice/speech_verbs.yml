@@ -26,6 +26,15 @@
   - chat-speech-verb-harpy-3
   - chat-speech-verb-harpy-4
 
+# Supermatter verbs for sending warnings when damaged or delaming.
+- type: speechVerb
+  id: Supermatter
+  name: chat-speech-verb-supermatter
+  speechVerbStrings:
+  - beeps-worryingly
+  - crackles-ominously
+  - shimmers-menacingly
+
 - type: speechVerb
   id: Rodentia
   name: chat-speech-verb-name-rodentia

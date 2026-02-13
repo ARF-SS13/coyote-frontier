@@ -1,4 +1,5 @@
-﻿using Robust.Shared.Audio;
+using Robust.Shared.Audio;
+using Robust.Shared.Map;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Beam.Components;
@@ -75,6 +76,15 @@ public sealed class CreateBeamSuccessEvent : EntityEventArgs
         User = user;
         Target = target;
     }
+
+    public CreateBeamSuccessEvent(EntityUid user, MapCoordinates targetCoordinates)
+    {
+        User1 = user;
+        TargetCoordinates = targetCoordinates;
+    }
+
+    public EntityUid User1 { get; }
+    public MapCoordinates TargetCoordinates { get; }
 }
 
 /// <summary>
