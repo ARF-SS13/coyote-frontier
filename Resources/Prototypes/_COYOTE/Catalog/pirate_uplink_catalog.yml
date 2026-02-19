@@ -168,62 +168,62 @@
     whitelist:
     - Smuggler
 
-- type: listing #Coyote
-  id: UplinkChemicalsCrateD
-  name:  uplink-chemicals-crate-d-name
-  description: uplink-chemicals-crate-d-name
-  productEntity: CrateChemistryD
-  icon: { sprite: Structures/Storage/Crates/medicalcrate_secure.rsi, state: base }
-  cost:
-    Doubloon: 4
-  categories:
-  - UplinkPirateMedical
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - PirateUplink
-  - !type:BuyerJobCondition
-    whitelist:
-    - RipperDoc
+#- type: listing #Coyote
+#  id: UplinkChemicalsCrateD
+#  name:  uplink-chemicals-crate-d-name
+#  description: uplink-chemicals-crate-d-name
+#  productEntity: CrateChemistryD
+#  icon: { sprite: Structures/Storage/Crates/medicalcrate_secure.rsi, state: base }
+#  cost:
+#    Doubloon: 4
+#  categories:
+#  - UplinkPirateMedical
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - PirateUplink
+#  - !type:BuyerJobCondition
+#    whitelist:
+#    - RipperDoc
 
-- type: listing #Coyote
-  id: UplinkChemicalsCrateP
-  name:  uplink-chemicals-crate-p-name
-  description: uplink-chemicals-crate-p-name
-  productEntity: CrateChemistryP
-  icon: { sprite: Structures/Storage/Crates/medicalcrate_secure.rsi, state: base }
-  cost:
-    Doubloon: 4
-  categories:
-  - UplinkPirateMedical
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - PirateUplink
-  - !type:BuyerJobCondition
-    whitelist:
-    - RipperDoc
+#- type: listing #Coyote
+#  id: UplinkChemicalsCrateP
+#  name:  uplink-chemicals-crate-p-name
+#  description: uplink-chemicals-crate-p-name
+#  productEntity: CrateChemistryP
+#  icon: { sprite: Structures/Storage/Crates/medicalcrate_secure.rsi, state: base }
+#  cost:
+#    Doubloon: 4
+#  categories:
+#  - UplinkPirateMedical
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - PirateUplink
+#  - !type:BuyerJobCondition
+#    whitelist:
+#    - RipperDoc
 
-- type: listing #Coyote
-  id: UplinkChemicalsCrateS
-  name:  uplink-chemicals-crate-s-name
-  description: uplink-chemicals-crate-s-name
-  productEntity: CrateChemistryS
-  icon: { sprite: Structures/Storage/Crates/medicalcrate_secure.rsi, state: base }
-  cost:
-    Doubloon: 4
-  categories:
-  - UplinkPirateMedical
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - PirateUplink
-  - !type:BuyerJobCondition
-    whitelist:
-    - RipperDoc
+#- type: listing #Coyote
+#  id: UplinkChemicalsCrateS
+#  name:  uplink-chemicals-crate-s-name
+#  description: uplink-chemicals-crate-s-name
+#  productEntity: CrateChemistryS
+#  icon: { sprite: Structures/Storage/Crates/medicalcrate_secure.rsi, state: base }
+#  cost:
+#    Doubloon: 4
+#  categories:
+#  - UplinkPirateMedical
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - PirateUplink
+#  - !type:BuyerJobCondition
+#    whitelist:
+#    - RipperDoc
 
 - type: listing
   id: UplinkFreelancerHardsuit
@@ -489,23 +489,23 @@
     whitelist:
     - Smuggler
 
-- type: listing
-  id: UplinkFreelancerMedsBundle
-  name: uplink-meds-bundle-name
-  description: uplink-meds-bundle-desc
-  productEntity: ClothingBackpackDuffelSyndicateMedicalBundleFilled
-  cost:
-    Doubloon: 48
-  categories:
-  - UplinkPirateMedical
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - PirateUplink
-  - !type:BuyerJobCondition # Coyote
-    whitelist:
-    - RipperDoc
+#- type: listing
+#  id: UplinkFreelancerMedsBundle
+#  name: uplink-meds-bundle-name
+#  description: uplink-meds-bundle-desc
+#  productEntity: ClothingBackpackDuffelSyndicateMedicalBundleFilled
+#  cost:
+#    Doubloon: 48
+#  categories:
+#  - UplinkPirateMedical
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - PirateUplink
+#  - !type:BuyerJobCondition # Coyote
+#    whitelist:
+#    - RipperDoc
 
 - type: listing
   id: UplinkFreelancerCash5000
@@ -582,43 +582,43 @@
       tags:
       - PirateUplink
 
-- type: listing
-  id: UplinkFreelancerStimkit
-  name: uplink-stimkit-name
-  description: uplink-stimkit-desc
-  productEntity: StimkitFilled
-  cost:
-    Doubloon: 24
-  categories:
-  - UplinkPirateMedical
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - PirateUplink
-  - !type:BuyerJobCondition # Coyote
-    whitelist:
-    - RipperDoc
-    - Smuggler
+#- type: listing
+#  id: UplinkFreelancerStimkit
+#  name: uplink-stimkit-name
+#  description: uplink-stimkit-desc
+#  productEntity: StimkitFilled
+#  cost:
+#    Doubloon: 24
+#  categories:
+#  - UplinkPirateMedical
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - PirateUplink
+#  - !type:BuyerJobCondition # Coyote
+#    whitelist:
+#    - RipperDoc
+#    - Smuggler
 
-- type: listing
-  id: UplinkFreelancerStimpack
-  name: uplink-stimpack-name
-  description: uplink-stimpack-desc
-  productEntity: Stimpack
-  cost:
-    Doubloon: 8
-  categories:
-  - UplinkPirateMedical
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - PirateUplink
-  - !type:BuyerJobCondition # Coyote
-    whitelist:
-    - RipperDoc
-    - Smuggler
+#- type: listing
+#  id: UplinkFreelancerStimpack
+#  name: uplink-stimpack-name
+#  description: uplink-stimpack-desc
+#  productEntity: Stimpack
+#  cost:
+#    Doubloon: 8
+#  categories:
+#  - UplinkPirateMedical
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - PirateUplink
+#  - !type:BuyerJobCondition # Coyote
+#    whitelist:
+#    - RipperDoc
+#    - Smuggler
 
 - type: listing
   id: UplinkFreelancerNocturineChemistryBottle
@@ -638,42 +638,42 @@
     whitelist:
     - RipperDoc
 
-- type: listing
-  id: UplinkFreelancerCombatMedkit
-  name: uplink-combat-medkit-name
-  description: uplink-combat-medkit-desc
-  productEntity: MedkitCombatFilled
-  cost:
-    Doubloon: 10
-  categories:
-  - UplinkPirateMedical
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - PirateUplink
-  - !type:BuyerJobCondition # Coyote
-    whitelist:
-    - RipperDoc
+#- type: listing
+#  id: UplinkFreelancerCombatMedkit
+#  name: uplink-combat-medkit-name
+#  description: uplink-combat-medkit-desc
+#  productEntity: MedkitCombatFilled
+#  cost:
+#    Doubloon: 10
+#  categories:
+#  - UplinkPirateMedical
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - PirateUplink
+#  - !type:BuyerJobCondition # Coyote
+#    whitelist:
+#    - RipperDoc
 
-- type: listing
-  id: UplinkFreelancerChemistryKitBundle
-  name: uplink-chemistry-kit-name
-  description: uplink-chemistry-kit-desc
-  icon: { sprite: /Textures/Objects/Storage/boxicons.rsi, state: vials }
-  productEntity: ChemicalSynthesisKit
-  cost:
-    Doubloon: 8
-  categories:
-  - UplinkPirateMedical
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - PirateUplink
-  - !type:BuyerJobCondition # Coyote
-    whitelist:
-    - RipperDoc
+#- type: listing
+#  id: UplinkFreelancerChemistryKitBundle
+#  name: uplink-chemistry-kit-name
+#  description: uplink-chemistry-kit-desc
+#  icon: { sprite: /Textures/Objects/Storage/boxicons.rsi, state: vials }
+#  productEntity: ChemicalSynthesisKit
+#  cost:
+#    Doubloon: 8
+#  categories:
+#  - UplinkPirateMedical
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - PirateUplink
+#  - !type:BuyerJobCondition # Coyote
+#    whitelist:
+#    - RipperDoc
 
 - type: listing
   id: UplinkFreelancerHypopen

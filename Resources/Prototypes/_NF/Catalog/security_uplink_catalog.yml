@@ -684,22 +684,22 @@
       whitelist:
         - Brigmedic
         - Sheriff
-
-- type: listing # Coyote removed job restrictions for this gear
-  id: UplinkSecurityMedkit
-  name:  uplink-security-medkit-name
-  description: uplink-security-medkit-desc
-  productEntity: MedkitCombatFilled
-  icon: { sprite: _NF/Objects/Specific/Medical/firstaidkits.rsi, state: blackkit } # Frontier: _NF prefix
-  cost:
-    FrontierUplinkCoin: 2
-  categories:
-    - UplinkSecurityUtility
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
+#
+#- type: listing # Coyote removed job restrictions for this gear
+#  id: UplinkSecurityMedkit
+#  name:  uplink-security-medkit-name
+#  description: uplink-security-medkit-desc
+#  productEntity: MedkitCombatFilled
+#  icon: { sprite: _NF/Objects/Specific/Medical/firstaidkits.rsi, state: blackkit } # Frontier: _NF prefix
+#  cost:
+#    FrontierUplinkCoin: 2
+#  categories:
+#    - UplinkSecurityUtility
+#  conditions:
+#    - !type:StoreWhitelistCondition
+#      whitelist:
+#        tags:
+#          - SecurityUplink
 
 - type: listing
   id: UplinkSecurityInspector
