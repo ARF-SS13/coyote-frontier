@@ -248,6 +248,13 @@ namespace Content.Shared.VendingMachines
         [DataField]
         public int CashSlotBalance;
         // End Frontier: taxes, cash slot
+
+        /// <summary>
+        /// Custom prices for items in the vending machine.
+        /// Optional!
+        /// </summary>
+        [DataField]
+        public Dictionary<string, uint> CustomPrices = new();
     }
 
     [Serializable, NetSerializable, DataDefinition]
@@ -259,11 +266,14 @@ namespace Content.Shared.VendingMachines
         public string ID;
         [ViewVariables(VVAccess.ReadWrite), DataField]
         public uint Amount;
-        public VendingMachineInventoryEntry(InventoryType type, string id, uint amount)
+        [ViewVariables(VVAccess.ReadWrite), DataField]
+        public uint? CustomPrice;
+        public VendingMachineInventoryEntry(InventoryType type, string id, uint amount, uint? customPrice = null)
         {
             Type = type;
             ID = id;
             Amount = amount;
+            CustomPrice = customPrice;
         }
 
         public VendingMachineInventoryEntry(VendingMachineInventoryEntry entry)
@@ -271,6 +281,7 @@ namespace Content.Shared.VendingMachines
             Type = entry.Type;
             ID = entry.ID;
             Amount = entry.Amount;
+            CustomPrice = entry.CustomPrice;
         }
     }
 
@@ -340,6 +351,8 @@ namespace Content.Shared.VendingMachines
         public Dictionary<string, VendingMachineInventoryEntry> EmaggedInventory = new();
 
         public Dictionary<string, VendingMachineInventoryEntry> ContrabandInventory = new();
+
+        public Dictionary<string, uint> CustomPrices = new();
 
         public bool Contraband;
 

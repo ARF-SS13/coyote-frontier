@@ -80,16 +80,25 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
             contrabandInventory[weh.Key] = new(weh.Value);
         }
 
+        PrototypeManager.TryIndex(component.PackPrototypeId, out VendingMachineInventoryPrototype? packPrototype);
+
+        Dictionary<string, uint> customPrices = new();
+        if (packPrototype?.CustomPrices != null)
+        {
+            customPrices = packPrototype.CustomPrices;
+        }
+
         args.State = new VendingMachineComponentState()
         {
-            Inventory = inventory,
-            EmaggedInventory = emaggedInventory,
+            Inventory           = inventory,
+            EmaggedInventory    = emaggedInventory,
             ContrabandInventory = contrabandInventory,
-            Contraband = component.Contraband,
-            EjectEnd = component.EjectEnd,
-            DenyEnd = component.DenyEnd,
-            DispenseOnHitEnd = component.DispenseOnHitEnd,
-            CashSlotBalance = component.CashSlotBalance, // Frontier
+            Contraband          = component.Contraband,
+            EjectEnd            = component.EjectEnd,
+            DenyEnd             = component.DenyEnd,
+            DispenseOnHitEnd    = component.DispenseOnHitEnd,
+            CashSlotBalance     = component.CashSlotBalance, // Frontier
+            CustomPrices        = customPrices,
         };
     }
 
@@ -369,6 +378,17 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
 
         if (component.Contraband)
             inventory.AddRange(component.ContrabandInventory.Values);
+
+        if (component.CustomPrices.Count > 0)
+        {
+            foreach (var entry in inventory)
+            {
+                if (component.CustomPrices.TryGetValue(entry.ID, out var price))
+                {
+                    entry.CustomPrice = price;
+                }
+            }
+        }
 
         return inventory;
     }

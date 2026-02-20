@@ -1,0 +1,115 @@
+# 4294967295 = infinity. janky~
+- type: vendingMachineInventory
+  id: CoolMedicalVendInventory
+  startingInventory:
+    Jug:                            4294967295
+    JugAluminium:                   4294967295
+    JugCarbon:                      4294967295
+    JugChlorine:                    4294967295
+    JugCopper:                      4294967295
+    JugEthanol:                     4294967295
+    JugFluorine:                    4294967295
+    JugHydrogen:                    4294967295
+    JugIodine:                      4294967295
+    JugIron:                        4294967295
+    JugLithium:                     4294967295
+    JugMercury:                     4294967295
+    JugNitrogen:                    4294967295
+    JugOxygen:                      4294967295
+    JugPhosphorus:                  4294967295
+    JugPotassium:                   4294967295
+    JugRadium:                      4294967295
+    JugSilicon:                     4294967295
+    JugSodium:                      4294967295
+    JugSugar:                       4294967295
+    JugSulfur:                      4294967295
+    HandheldHealthAnalyzer:         4294967295
+    Brutepack:                      4294967295
+    Ointment:                       4294967295
+    Bloodpack:                      4294967295
+    Gauze:                          4294967295
+    EmergencyMedipen:               4294967295
+    BodyBagFolded:                  4294967295
+    ClothingEyesHudMedical:         4294967295
+    ClothingEyesEyepatchHudMedical: 4294967295
+    MedicalTrackingImplanter:       4294967295
+    SadTromboneImplanter:           4294967295
+    BikeHornImplanter:              4294967295
+    LightImplanter:                 4294967295
+    MedTekCartridge:                4294967295
+    BoxFolderMedicalDoctor:         4294967295
+    WheelchairFlatpack:             4294967295
+    Cane:                           4294967295
+    RepairPatch:                    4294967295
+    RepairSpray:                    4294967295
+    RepairAutoinjector:             4294967295
+    DrinkLithiumFlask:              4294967295
+    StrangePill:                    4294967295
+  customPrices:
+    JugAluminium:                   2000
+    JugCarbon:                      2000
+    JugChlorine:                    2000
+    JugCopper:                      2000
+    JugEthanol:                     2000
+    JugFluorine:                    2000
+    JugHydrogen:                    2000
+    JugIodine:                      2000
+    JugIron:                        2000
+    JugLithium:                     2000
+    JugMercury:                     2000
+    JugNitrogen:                    2000
+    JugOxygen:                      2000
+    JugPhosphorus:                  2000
+    JugPotassium:                   2000
+    JugRadium:                      2000
+    JugSilicon:                     2000
+    JugSodium:                      2000
+    JugSugar:                       2000
+    JugSulfur:                      2000
+    StrangePill:                    10000
+
+# and the machjine
+- type: entity
+  parent: [BaseStructureDisableScrewing, BaseStructureIndestructible, BaseStructureAccessReaderImmuneToEmag, VendingMachineCart]
+  id: VendingMachineCoolMedical
+  name: Moxie Medical Import Downlink Station
+  description: |
+    This is Moxie. Say hi to Moxie! She's here to provide you with unlimited chemicals and medical supplies, 
+    sourced straight from the manufacturers! Chemical supplies are expensive, as she has to pay for the shipping, 
+    handling, and synthesis from the factory, but she'll make sure you'll never need a restock!
+    Requires Director of Care access to use.
+  components:
+  - type: VendingMachine
+    pack: CoolMedicalVendInventory
+    taxAccounts: # Frontier
+      Medical: 0.1 # Frontier
+    offState: off
+    brokenState: broken
+    normalState: normal
+    denyState: deny
+    ejectDelay: 2
+    soundVend: /Audio/_COYOTE/Moxi.ogg
+    soundDeny: /Audio/_COYOTE/MoxiNo.ogg
+  - type: AccessReader
+    access: [["ChiefMedicalOfficer"]]
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/chemvend.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: GuideHelp
+    guides:
+    - Chemicals
+    - Chemist
+  - type: Advertise
+    pack: MoxiVendAds
+
+- type: localizedDataset
+  id: MoxiVendAds
+  values:
+    prefix: advertisement-moxi-
+    count: 7

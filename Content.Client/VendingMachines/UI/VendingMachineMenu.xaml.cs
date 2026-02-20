@@ -141,7 +141,7 @@ namespace Content.Client.VendingMachines.UI
                     _dummies.Add(entry.ID, dummy);
                 }
 
-                var cost = GetPrototypePrice(prototype, priceModifier); // Frontier: item pricing
+                var cost = GetPrototypePrice(prototype, priceModifier, entry); // Frontier: item pricing
 
                 var itemName = Identity.Name(dummy, _entityManager);
 
@@ -199,20 +199,25 @@ namespace Content.Client.VendingMachines.UI
                     continue;
                 var amount = entry.Amount;
                 // Could be better? Problem is all inventory entries get squashed.
-                var text = GetItemText(dummy, amount, priceModifier);
+                var text = GetItemText(dummy, amount, priceModifier, entry);
 
                 button.Item.SetText(text);
                 button.Button.Disabled = !enabled || amount == 0;
             }
         }
 
-        private string GetItemText(EntityUid dummy, uint amount, float priceModifier) // Frontier: add priceModifier
+        private string GetItemText(
+            EntityUid dummy,
+            uint amount,
+            float priceModifier,
+            VendingMachineInventoryEntry entry
+        ) // Frontier: add priceModifier
         {
             // Frontier: lookup price from entity, finite output
             var cost = (int)(20 * priceModifier);
             if (_entityManager.TryGetComponent(dummy, out MetaDataComponent? component) && component.EntityPrototype != null)
             {
-                cost = GetPrototypePrice(component.EntityPrototype, priceModifier);
+                cost = GetPrototypePrice(component.EntityPrototype, priceModifier, entry);
             }
 
             var itemName = Identity.Name(dummy, _entityManager);
@@ -230,11 +235,19 @@ namespace Content.Client.VendingMachines.UI
         }
 
         // Frontier: get item price
-        private int GetPrototypePrice(EntityPrototype prototype, float priceModifier)
+        private int GetPrototypePrice(
+            EntityPrototype prototype,
+            float priceModifier,
+            VendingMachineInventoryEntry entry
+        )
         {
             // Check for vending price - if anything sets it explicitly, use that number as-is.
             double vendPrice = 0;
-            if (prototype.TryGetComponent<StaticPriceComponent>(out var staticComp, _componentFactory) && staticComp.VendPrice > 0.0)
+            if (entry.CustomPrice != null)
+            {
+                vendPrice = entry.CustomPrice.Value;
+            }
+            else if (prototype.TryGetComponent<StaticPriceComponent>(out var staticComp, _componentFactory) && staticComp.VendPrice > 0.0)
             {
                 vendPrice += staticComp.VendPrice;
             }

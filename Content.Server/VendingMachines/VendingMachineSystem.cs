@@ -408,6 +408,12 @@ namespace Content.Server.VendingMachines
             if (priceVend > 0.0) // if vending price exists, overwrite it.
                 totalPrice = (int)priceVend;
 
+            // and if the vending machine has a custom price for this item, use that instead of everything else.
+            if (PrototypeManager.TryIndex<VendingMachineInventoryPrototype>(component.PackPrototypeId, out var inventoryProto)
+                && inventoryProto.CustomPrices != null
+                && inventoryProto.CustomPrices.TryGetValue(itemId, out var customPrice))
+                totalPrice = (int)customPrice;
+
             if (IsAuthorized(uid, sender, component))
             {
                 int bankBalance = 0;
