@@ -46,26 +46,26 @@
     DrinkLithiumFlask:              4294967295
     StrangePill:                    4294967295
   customPrices:
-    JugAluminium:                   2000
-    JugCarbon:                      2000
-    JugChlorine:                    2000
-    JugCopper:                      2000
-    JugEthanol:                     2000
-    JugFluorine:                    2000
-    JugHydrogen:                    2000
-    JugIodine:                      2000
-    JugIron:                        2000
-    JugLithium:                     2000
-    JugMercury:                     2000
-    JugNitrogen:                    2000
-    JugOxygen:                      2000
-    JugPhosphorus:                  2000
-    JugPotassium:                   2000
-    JugRadium:                      2000
-    JugSilicon:                     2000
-    JugSodium:                      2000
-    JugSugar:                       2000
-    JugSulfur:                      2000
+    JugAluminium:                   3000
+    JugCarbon:                      3000
+    JugChlorine:                    3000
+    JugCopper:                      3000
+    JugEthanol:                     3000
+    JugFluorine:                    3000
+    JugHydrogen:                    3000
+    JugIodine:                      3000
+    JugIron:                        3000
+    JugLithium:                     3000
+    JugMercury:                     3000
+    JugNitrogen:                    3000
+    JugOxygen:                      3000
+    JugPhosphorus:                  3000
+    JugPotassium:                   3000
+    JugRadium:                      3000
+    JugSilicon:                     3000
+    JugSodium:                      3000
+    JugSugar:                       3000
+    JugSulfur:                      3000
     StrangePill:                    10000
 
 # and the machjine
