@@ -59,6 +59,33 @@
     selectedBorgType: engineering
 
 - type: entity
+  id: DogBorgChassisEngineer
+  parent: BorgChassisSelectable
+  name: engineer dogborg
+  components:
+  - type: BorgTransponder
+    name: engineering dogborg
+    sprite:
+      sprite: _CS/Mob/Silicons/dog_vale.rsi
+      state: engineeringd
+  - type: BorgSwitchableType
+    selectedBorgType: engineeringd
+  - type: Sprite
+    sprite: _CS/Mob/Silicons/dog_vale.rsi
+    layers:
+    - state: engineeringd
+    - state: engineeringd
+      map: ["enum.BorgVisualLayers.Body", "movement"]
+    - state: engineeringd_e_r
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: engineeringd_l
+      shader: unshaded
+      map: ["light","enum.BorgVisualLayers.LightStatus"]
+      visible: false
+
+- type: entity
   id: BorgChassisJanitor
   parent: BorgChassisSelectable
   name: janitor cyborg
