@@ -63,17 +63,11 @@
   parent: BorgChassisSelectable
   name: engineer dogborg
   components:
-  - type: BorgTransponder
-    name: engineering dogborg
-    sprite:
-      sprite: _CS/Mob/Silicons/dog_vale.rsi
-      state: engineeringd
   - type: BorgSwitchableType
     selectedBorgType: engineeringd
   - type: Sprite
     sprite: _CS/Mob/Silicons/dog_vale.rsi
     layers:
-    - state: engineeringd
     - state: engineeringd
       map: ["enum.BorgVisualLayers.Body", "movement"]
     - state: engineeringd_e_r
