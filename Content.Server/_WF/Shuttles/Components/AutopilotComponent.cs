@@ -21,10 +21,10 @@ public sealed partial class AutopilotComponent : Component
     public MapCoordinates? TargetCoordinates;
 
     /// <summary>
-    /// Speed multiplier when autopilot is active (60% of max speed).
+    /// Speed multiplier when autopilot is active (80% of max speed).
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float SpeedMultiplier = 0.6f;
+    public float SpeedMultiplier = 1f;
 
     /// <summary>
     /// Distance at which autopilot will automatically disable (in meters).

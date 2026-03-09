@@ -107,8 +107,8 @@ public sealed class AutopilotSystem : EntitySystem
                 ApplyBraking(uid, shuttle, physics, xform, frameTime);
 
                 // Park the shuttle by setting it to Anchor mode (same as UI "Park" button)
-                const float AnchorDampingStrength = 2.5f;
-                shuttle.BodyModifier = AnchorDampingStrength;
+                const float anchorDampingStrength = 2.5f;
+                shuttle.BodyModifier = anchorDampingStrength;
                 if (shuttle.DampingModifier != 0)
                     shuttle.DampingModifier = shuttle.BodyModifier;
                 shuttle.EBrakeActive = false;
@@ -120,14 +120,14 @@ public sealed class AutopilotSystem : EntitySystem
             }
 
             // Calculate steering force using Reynolds steering behaviors
-            var maxSpeed = CalculateMaxSpeed(shuttle, physics.LinearVelocity) * autopilot.SpeedMultiplier;
+            var maxSpeed = 100;
             var currentVelocity = physics.LinearVelocity;
 
             // Obstacle avoidance: check for obstacles first (highest priority)
             var (avoidanceForce, threatLevel) = CalculateObstacleAvoidance(uid, xform, physics, autopilot, uid, maxSpeed);
 
             // Reduce max speed based on threat level (slow down when obstacles are near)
-            var effectiveMaxSpeed = maxSpeed * (1f - threatLevel * 0.7f);
+            var effectiveMaxSpeed = maxSpeed * (1f - threatLevel * 0.8f);
 
             // Arrival behavior: seek with slowdown near target
             var arrivalForce = CalculateArrivalSteering(currentPos, targetPos, currentVelocity, effectiveMaxSpeed, autopilot.SlowdownDistance);
@@ -315,7 +315,7 @@ public sealed class AutopilotSystem : EntitySystem
             var forwardComponent = Vector2.Dot(toObstacle, forward);
 
             // Obstacle behind us? Skip it (but allow slightly behind for safety)
-            if (forwardComponent < -combinedRadius * 0.5f)
+            if (forwardComponent < -combinedRadius * 0.1f)
                 continue;
 
             // Obstacle too far ahead? Skip it
@@ -430,7 +430,7 @@ public sealed class AutopilotSystem : EntitySystem
 
         // Calculate target velocity based on threat level
         // Higher threat = lower allowed speed
-        var baseMaxVelocity = CalculateMaxSpeed(shuttle, physics.LinearVelocity) * 0.6f;
+        var baseMaxVelocity = CalculateMaxSpeed(shuttle, physics.LinearVelocity) * 1f;
         var threatSpeedMultiplier = 1f - threatLevel * 0.9f; // At max threat, only 10% speed allowed
         var targetMaxVelocity = baseMaxVelocity * threatSpeedMultiplier;
 
@@ -543,14 +543,14 @@ public sealed class AutopilotSystem : EntitySystem
         var currentAngularVelocity = physics.AngularVelocity;
 
         // Apply angular damping to reduce oscillation
-        if (MathF.Abs(currentAngularVelocity) > 0.01f)
+        if (MathF.Abs(currentAngularVelocity) > 0.025f)
         {
             var dampingTorque = -currentAngularVelocity * shuttle.AngularThrust * 0.6f;
             _physics.ApplyAngularImpulse(uid, dampingTorque * frameTime, body: physics);
         }
 
         // Dead zone - don't rotate if we're close enough
-        if (MathF.Abs(angleDiff) < 0.15f)
+        if (MathF.Abs(angleDiff) < 0.1f)
         {
             _thruster.SetAngularThrust(shuttle, false);
             return;
