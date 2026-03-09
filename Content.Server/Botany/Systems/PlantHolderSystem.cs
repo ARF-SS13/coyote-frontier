@@ -664,8 +664,8 @@ public sealed class PlantHolderSystem : EntitySystem
 
         CheckHealth(uid, component);
 
-        if (component.Harvest && component.Seed.HarvestRepeat == HarvestType.SelfHarvest)
-            AutoHarvest(uid, component);
+        // if (component.Harvest && component.Seed.HarvestRepeat == HarvestType.SelfHarvest)
+        //     AutoHarvest(uid, component); // Coyote: Kill with hammers
 
         // If enough time has passed since the plant was harvested, we're ready to harvest again!
         if (!component.Dead && component.Seed.ProductPrototypes.Count > 0)
@@ -770,14 +770,14 @@ public sealed class PlantHolderSystem : EntitySystem
 
     public void AutoHarvest(EntityUid uid, PlantHolderComponent? component = null)
     {
-        if (!Resolve(uid, ref component))
-            return;
-
-        if (component.Seed == null || !component.Harvest)
-            return;
-
-        _botany.AutoHarvest(component.Seed, Transform(uid).Coordinates);
-        AfterHarvest(uid, component);
+        // if (!Resolve(uid, ref component)) // Coyote: Kill with hammers
+        //     return;
+        //
+        // if (component.Seed == null || !component.Harvest)
+        //     return;
+        //
+        // _botany.AutoHarvest(component.Seed, Transform(uid).Coordinates);
+        // AfterHarvest(uid, component);
     }
 
     private void AfterHarvest(EntityUid uid, PlantHolderComponent? component = null)

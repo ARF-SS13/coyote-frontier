@@ -111,7 +111,6 @@ public sealed partial class ShuttleSystem
         }
         // Wayfarer end
 
-        if (SetInertiaDampening(uid, physicsComponent, shuttleComponent, transform, args.Mode) && args.Mode != InertiaDampeningMode.Query)
         if (SetInertiaDampening(
                 uid,
                 physicsComponent,
