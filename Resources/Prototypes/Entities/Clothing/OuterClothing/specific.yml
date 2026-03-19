@@ -1,5 +1,5 @@
 ﻿- type: entity
-  parent: ClothingOuterBase
+  parent: ClothingOuterStorageBase # Coyote: ClothingOuterBase < ClothingOuterStorageBase
   id: ClothingOuterChameleon
   name: vest
   description: A thick vest with a rubbery, water-resistant shell.
