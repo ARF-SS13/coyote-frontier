@@ -124,10 +124,8 @@
       collection: VulpkaninSnarls
     Bark:
       collection: VulpkaninBarks
-    Yip: # Coyote - yip & whine [
-      collection: VulpkaninYips
     Whine:
-      collection: VulpkaninWhines  # Coyote - yip & whine ]
+      collection: VulpkaninWhines
     Howl:
       collection: VulpkaninHowls
     Awoo:
@@ -180,10 +178,8 @@
       collection: VulpkaninSnarls
     Bark:
       collection: VulpkaninBarks
-    Yip: # Coyote - yip & whine [
-      collection: VulpkaninYips
     Whine:
-      collection: VulpkaninWhines  # Coyote - yip & whine ]
+      collection: VulpkaninWhines
     Howl:
       collection: VulpkaninHowls
     Awoo:
@@ -214,10 +210,8 @@
       collection: VulpkaninSnarls
     Bark:
       collection: VulpkaninBarks
-    Yip: # Coyote - yip & whine [
-      collection: VulpkaninYips
     Whine:
-      collection: VulpkaninWhines  # Coyote - yip & whine ]
+      collection: VulpkaninWhines
     Howl:
       collection: VulpkaninHowls
     Awoo:

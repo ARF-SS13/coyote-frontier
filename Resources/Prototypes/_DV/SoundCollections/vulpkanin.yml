@@ -23,7 +23,7 @@
   - /Audio/_DV/Voice/Vulpkanin/dog_snarl3.ogg
 
 - type: soundCollection
-  id: VulpkaninWhimpers # Coyote: Renamed to whimper
+  id: VulpkaninWhines
   files:
   - /Audio/_DV/Voice/Vulpkanin/dog_whine.ogg
 

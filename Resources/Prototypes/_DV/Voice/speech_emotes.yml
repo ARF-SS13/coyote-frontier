@@ -163,7 +163,7 @@
     - snarling
 
 - type: emote
-  id: Whimper # Coyote: Renamed to whimper
+  id: Whine
   name: delta-chat-emote-name-whine
   category: Vulp
   available: false
@@ -173,13 +173,12 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [whimper.] # Coyote: Renamed to whimper
+  chatMessages: [whines.]
   chatTriggers:
-    - whimper
-    - whimpers
-    - whimpered
-    - whimpering
-
+    - whine
+    - whines
+    - whined
+    - whining
 
 - type: emote
   id: Howl
