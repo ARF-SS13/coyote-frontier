@@ -9,7 +9,6 @@
   id: BaseMobSpecies
   abstract: true
   components:
-  - type: Wagging # Coyote: Wagging my tail :3
   - type: Sprite
     layers:
     - map: [ "enum.HumanoidVisualLayers.TailBehind" ]
