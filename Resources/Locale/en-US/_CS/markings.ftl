@@ -1,5 +1,3 @@
-marking-DraconicWings = Draconic Wings
-
 marking-TailAussieShep = Australian Shepherd Tail
 marking-TailAussieShep-m_tail_australianshepherd_BEHIND_primary = Australian Shepherd Tail (Primary)
 marking-TailAussieShep-m_tail_australianshepherd_BEHIND_secondary = Australian Shepherd Tail (Secondary)
