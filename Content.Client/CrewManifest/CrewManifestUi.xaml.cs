@@ -16,13 +16,13 @@ public sealed partial class CrewManifestUi : DefaultWindow
         StationName.AddStyleClass("LabelBig");
     }
 
-    public void Populate(CrewManifestEntries? entries) // Coyote: Remove name
+    public void Populate(string name, CrewManifestEntries? entries)
     {
         CrewManifestListing.DisposeAllChildren();
         CrewManifestListing.RemoveAllChildren();
 
         StationNameContainer.Visible = entries != null;
-        StationName.Text = "Crew Manifest"; // Coyote: Remove name
+        StationName.Text = name;
 
         if (entries == null)
             return;
