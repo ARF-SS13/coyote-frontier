@@ -77,6 +77,7 @@ public sealed class WaggingSystem : EntitySystem
             return false;
 
         wagging.Wagging = !wagging.Wagging;
+
         for (var idx = 0; idx < markings.Count; idx++) // Coyote: Improved wagging system
         {
             string? target;
@@ -91,12 +92,11 @@ public sealed class WaggingSystem : EntitySystem
 
             if (target == null)
             {
-                Log.Error($"Unable to find corresponding wagging or static ID for {markings[idx].MarkingId}?");
+                Log.Error($"Unable to find corresponding wagging or static ID for {markings[0].MarkingId}?");
+                return false;
             }
-            else
-            {
-                _humanoidAppearance.SetMarkingId(uid, MarkingCategories.Tail, idx, target, humanoid: humanoid);
-            }
+
+            _humanoidAppearance.SetMarkingId(uid, MarkingCategories.Tail, idx, target, humanoid: humanoid);
         } // Coyote end
 
         return true;
