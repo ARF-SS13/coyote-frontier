@@ -551,10 +551,10 @@
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
   # BluespaceStorage
-  - ClothingBackpackHolding # Coyote: Unify into single chameleon item
-  # - ClothingBackpackSatchelHolding
-  # - ClothingBackpackDuffelHolding
-  # - ClothingBackpackMessengerHolding
+  - ClothingBackpackHolding
+  - ClothingBackpackSatchelHolding
+  - ClothingBackpackDuffelHolding
+  - ClothingBackpackMessengerHolding
   # PortableFission
   - PowerCellMicroreactor
   # HardsuitsBasic

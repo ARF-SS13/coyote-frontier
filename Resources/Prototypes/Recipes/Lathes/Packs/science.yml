@@ -38,8 +38,8 @@
   - NFClothingShoesBootsMoon # Frontier: use NF variant
   - ClothingShoesBootsSpeed
   - ClothingBackpackHolding
-  # - ClothingBackpackSatchelHolding # Coyote: Unify into chameleon
-  # - ClothingBackpackDuffelHolding # Coyote: Unify into chameleon
+  - ClothingBackpackSatchelHolding
+  - ClothingBackpackDuffelHolding
 
 - type: latheRecipePack
   id: PowerCells
