@@ -24,16 +24,16 @@
         - !type:Consent
           consentId: Aphrodisiacs
           desc: "aphrodisiacs"
-      # - !type:HealthChange # Coyote removal
-      #   conditions:
-      #   - !type:ReagentThreshold
-      #     min: 10.0
-      #   - !type:Consent
-      #     consentId: Aphrodisiacs
-      #     desc: "aphrodisiacs"
-      #   damage:
-      #     types:
-      #       Poison: 0.05
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          min: 10.0
+        - !type:Consent
+          consentId: Aphrodisiacs
+          desc: "aphrodisiacs"
+        damage:
+          types:
+            Poison: 0.05
       - !type:PopupMessage
         type: Local
         visualType: LargeCaution

@@ -111,16 +111,16 @@
         - !type:Consent
           consentId: Aphrodisiacs
           desc: "aphrodisiacs"
-      # - !type:Emote # Coyote removal
-      #   conditions:
-      #   - !type:ReagentThreshold
-      #     min: 16.5
-      #   - !type:Consent
-      #     consentId: Aphrodisiacs
-      #     desc: "aphrodisiacs"
-      #   emote: Yawn
-      #   showInChat: true
-      #   probability: 0.02
+      - !type:Emote
+        conditions:
+        - !type:ReagentThreshold
+          min: 16.5
+        - !type:Consent
+          consentId: Aphrodisiacs
+          desc: "aphrodisiacs"
+        emote: Yawn
+        showInChat: true
+        probability: 0.02
       - !type:MovespeedModifier
         walkSpeedModifier: 0.8
         sprintSpeedModifier: 0.8
@@ -130,28 +130,28 @@
         - !type:Consent
           consentId: Aphrodisiacs
           desc: "aphrodisiacs"
-      # - !type:GenericStatusEffect # Coyote removal
-      #   conditions:
-      #   - !type:ReagentThreshold
-      #     min: 30.0
-      #   - !type:Consent
-      #     consentId: Aphrodisiacs
-      #     desc: "aphrodisiacs"
-      #   key: ForcedSleep
-      #   component: ForcedSleeping
-      #   refresh: false
-      #   type: Add
-      #   probability: 0.1
-      # - !type:HealthChange # poisons you if you take way too much
-      #   conditions:
-      #   - !type:ReagentThreshold
-      #     min: 30
-      #   - !type:Consent
-      #     consentId: Aphrodisiacs
-      #     desc: "aphrodisiacs"
-      #   damage:
-      #     types:
-      #       Poison: 1
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          min: 30.0
+        - !type:Consent
+          consentId: Aphrodisiacs
+          desc: "aphrodisiacs"
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+        probability: 0.1
+      - !type:HealthChange # poisons you if you take way too much
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+        - !type:Consent
+          consentId: Aphrodisiacs
+          desc: "aphrodisiacs"
+        damage:
+          types:
+            Poison: 1
       - !type:PopupMessage
         type: Local
         visualType: Small
