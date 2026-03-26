@@ -167,41 +167,7 @@
     ClothingUniformJumpsuitRDClassical: 4
     ClothingUniformJumpsuitVampir: 4
     ClothingUniformDama235123: 4
-    ClothingUniformBootsVampir: 4
-    ClothingShoesBootsSalvage1208134: 4
-    ClothingUniformDama0965: 4
-    ClothingUniformShinelVampir: 4
-    ClothingNeckTieGeoffroyblack12: 4
-    RedRegaliaCloak: 4
-    ClothingHeadBase0121: 4
-    RedRegaliaHat: 4
-    BodysuitJeansUniformSuit: 4
-    CamoUniformSuit: 4
-    CandyClownUniformSuit: 4
-    CoolTanktopUniformSuit: 4
-    DruidRobesUniformSuit: 4
-    FlamboyantUniformSuit: 4
-    FlamencoUniformSuit: 4
-    FlyCaptainUniformSuit: 4
-    KiltUniformSuit: 4
-    LilacDressUniformSuit: 4
-    LittleBlackDressUniformSuit: 4
-    LumberjackOverallsUniformSuit: 4
-    MechanicOverallsUniformSuit: 4
-    MessyDressShirtUniformSuit: 4
-    MimeFrillsUniformSuit: 4
-    OldWomanUniformSuit: 4
-    PunkJeansUniformSuit: 4
-    RefereeUniformSuit: 4
-    SailorUniformSuit: 4
-    StripedClownUniformSuit: 4
-    SundressUniformSuit: 4
-    TatteredClothesUniformSuit: 4
-    TieDyeUniformSuit: 4
-    TogaUniformSuit: 4
-    VintageUniformSuit: 4
-    CargoOverallsUniformSuit: 4
-    RedRegaliaSuit: 4
+
   contrabandInventory:
     ClothingMaskNeckGaiter: 2
     ClothingUniformJumpsuitTacticool: 1

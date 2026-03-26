@@ -8,25 +8,3 @@
     sprite: _CS/Clothes/Head/Hats/donkcohat.rsi
   - type: Clothing
     sprite: _CS/Clothes/Head/Hats/donkcohat.rsi
-
-- type: entity
-  parent: ClothingHeadBase
-  id: ClothingHeadBase0121
-  name: wide-brimmed gilded hat
-  description: A cream-white wide-brimmed hat with large white feathers and golden trim.
-  components:
-    - type: Sprite
-      sprite: _CS/Clothes/Head/Hats/belpero.rsi
-    - type: Clothing
-      sprite: _CS/Clothes/Head/Hats/belpero.rsi
-
-- type: entity
-  parent: ClothingHeadBase
-  id: RedRegaliaHat
-  name: red regalia Hat
-  description: A fancy red hat like a mafiaoso would wear.
-  components:
-  - type: Sprite
-    sprite: _CS/Clothes/Head/Hats/red_regalia.rsi
-  - type: Clothing
-    sprite: _CS/Clothes/Head/Hats/red_regalia.rsi
