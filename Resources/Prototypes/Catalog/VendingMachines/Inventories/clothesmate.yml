@@ -115,59 +115,7 @@
     ClothingUniformloinclothWhite: 2
     ClothingOuterBeltedWear: 2
     ClothingOuterTransparentOuterwear: 2
-    ClothingShoesHighheelShoes: 6 # Coyote start
-    ClothingUniformJumpskirtGothic: 4
-    ClothingUniformJumpskirtMaid: 4
-    ClothingUniformJumpskirtDressRed: 4
-    ClothingUniformJumpskirtTango: 4
-    ClothingUniformJumpskirtVictorianBlack: 4
-    ClothingUniformJumpskirtReporter: 4
-    ClothingUniformJumpskirtJournalist: 4
-    ClothingUniformJumpskirtVictorianrRed: 4
-    ClothingUniformJumpskirtSuitNurse: 4
-    ClothingUniformJumpskirtPencilTan: 4
-    ClothingUniformJumpskirtPencilCentcomOfficial: 4
-    ClothingUniformJumpskirtPencilSpecialOperationsOfficer: 4
-    ClothingUniformJumpskirtCargoSalvage: 4
-    ClothingUniformJumpskirtCargoSalvageFormal: 4
-    ClothingUniformJumpskirtSalvageLead: 4
-    ClothingUniformJumpskirtMiningSpecialist: 4
-    ClothingUniformJumpskirtCargoFormal: 4
-    ClothingUniformJumpskirtScientistFormal: 4
-    ClothingUniformJumpskirtCoroner: 4
-    ClothingUniformJumpskirtCentcomOfficial: 4
-    ClothingUniformJumpskirtCentcomOfficer: 4
-    ClothingUniformJumpskirtElegantMaid: 4
-    ClothingUniformColorJumpskirtRainbow: 4
-    ClothingUniformJumpskirtSchool: 4
-    ClothingUniformJumpskirtCapTurtleneck: 4
-    ClothingUniformJumpskirtHoPTurtleneck: 4
-    ClothingUniformJumpskirtHoSBlack: 4
-    ClothingUniformJumpskirtRDClassical: 4
-    ClothingUniformJulianneVA11HALLA: 4
-    ClothingUniformElegantLadyDress: 4
-    ClothingUniformPastryDress: 4
-    ClothingUniformJumpsuitSuitCheckered: 4
-    ClothingUniformJumpsuitSuitTan: 4
-    ClothingUniformJumpsuitSuitWaiter: 4
-    ClothingUniformJumpsuitMimeSexyWhite: 4
-    ClothingUniformJumpsuitMimeSexyBlack: 4
-    ClothingUniformJumpsuitCargoAlt: 4
-    ClothingUniformJumpsuitCargoFormal: 4
-    ClothingUniformJumpsuitSalvageFormal: 4
-    ClothingUniformJumpsuitCoroner: 4
-    ClothingUniformJumpsuitCoronerAlt: 4
-    ClothingUniformJumpsuitSuperstarCop: 4
-    ClothingUniformJumpsuitAerostatic: 4
-    ClothingUniformJumpsuitCentcomOfficerBlack: 4
-    ClothingUniformJumpsuitCapTurtleneck: 4
-    ClothingUniformJumpsuitCaptainNoble: 4
-    ClothingUniformJumpsuitHoPTurtleneck: 4
-    ClothingUniformJumpsuitHoSBlack: 4
-    ClothingUniformJumpsuitRDClassical: 4
-    ClothingUniformJumpsuitVampir: 4
-    ClothingUniformDama235123: 4
-
+    ClothingShoesHighheelShoes: 6 # Coyote
   contrabandInventory:
     ClothingMaskNeckGaiter: 2
     ClothingUniformJumpsuitTacticool: 1
