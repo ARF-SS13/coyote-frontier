@@ -164,7 +164,7 @@
       drink:
         reagents:
         - ReagentId: Milk
-          Quantity: 120 # Coyote: 100 -> 120u
+          Quantity: 100
   - type: Sprite
     sprite: Objects/Consumable/Drinks/milk.rsi
 
