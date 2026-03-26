@@ -1,8 +1,0 @@
-- type: loadout
-  id: LoadoutHighHeels
-  hideEffects:
-  - !type:GroupLoadoutEffect
-    proto: ShoesCapableNF
-  price: 600
-  equipment:
-    shoes: ClothingShoesHighheelShoes
