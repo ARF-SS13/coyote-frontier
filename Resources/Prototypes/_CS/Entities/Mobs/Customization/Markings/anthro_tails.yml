@@ -6,7 +6,6 @@
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Rodentia, SlimePerson, Human, Harpy, IPC, Arachne, Felinid, Oni, Kitsune]
   kindAllowance: [BasicHumanlike, BasicFurry]
-  waggingId: TailAussieShepWag #If tail wag toggle PR:#957 is ever reverted remove this line!!!
   layering:
     m_tail_australianshepherd_BEHIND_primary: TailBehind
     m_tail_australianshepherd_BEHIND_secondary: TailBehind
@@ -31,7 +30,6 @@
   markingCategory: Tail
   speciesRestriction: [Vulpkanin, Rodentia, SlimePerson, Human, Harpy, IPC, Arachne, Felinid, Oni, Kitsune]
   kindAllowance: [BasicHumanlike, BasicFurry]
-  staticId: TailAussieShep #If tail wag toggle PR:#957 is ever reverted remove this line!!!
   layering:
     m_waggingtail_australianshepherd_BEHIND_primary: TailBehind
     m_waggingtail_australianshepherd_BEHIND_secondary: TailBehind
