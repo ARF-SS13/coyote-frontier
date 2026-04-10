@@ -947,23 +947,23 @@
     whitelist:
     - Escort
 
-- type: listing
-  id: UplinkFreelancerClothingThievingGloves
-  name: uplink-clothing-chameleon-thieving-gloves-name
-  description: uplink-clothing-chameleon-thieving-gloves-desc
-  productEntity: ClothingHandsChameleonThief
-  cost:
-    Doubloon: 10
-  categories:
-  - UplinkPirateDeception
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - PirateUplink
-  - !type:BuyerJobCondition # Coyote
-    whitelist:
-    - Escort
+#- type: listing # Remove rationale: Wizden did not code this thing to be modular/tweakable/adjustable/etc, so rather than spending hours of my time to figure out the C# to adjust a ban bait item like 4 people use, I'm just gonna remove it until someone does.
+# id: UplinkFreelancerClothingThievingGloves
+#  name: uplink-clothing-chameleon-thieving-gloves-name
+#  description: uplink-clothing-chameleon-thieving-gloves-desc
+#  productEntity: ClothingHandsChameleonThief
+#  cost:
+#    Doubloon: 10
+#  categories:
+#  - UplinkPirateDeception
+#  conditions:
+#  - !type:StoreWhitelistCondition
+#    whitelist:
+#      tags:
+#      - PirateUplink
+#  - !type:BuyerJobCondition # Coyote
+#    whitelist:
+#    - Escort
 
 - type: listing
   id: UplinkFreelancerClothingOuterVestWeb
