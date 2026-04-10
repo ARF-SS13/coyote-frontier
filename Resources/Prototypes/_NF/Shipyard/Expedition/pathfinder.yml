@@ -7,15 +7,13 @@
 # Discord: ???
 
 # Shuttle Notes:
-# Archetypes = Salvage
-# Halftypes = None
-# Domestic Areas = Minimal
+#
 - type: vessel
   id: Pathfinder
   parent: BaseVessel
-  name: LL1 KC Pathfinder
+  name: KC Pathfinder
   description: Once a scout ship serving with the Nanotrasen Marine Expeditionary Forces, this now decommissioned expedition capable ship can be yours!
-  price: 105000 #34200, +50k(exped) LL1 x1.2 = 101040, but let's round it to make it prettier.
+  price: 50000 # 34200 0.3 44460 Still short of 50k, but slightly less 
   category: Small
   group: Expedition
   shuttlePath: /Maps/_NF/Shuttles/Expedition/pathfinder.yml
@@ -30,7 +28,7 @@
   mapName: 'KC Pathfinder'
   mapPath: /Maps/_NF/Shuttles/Expedition/pathfinder.yml
   minPlayers: 0
-  stations:
+  stations: 
     Pathfinder:
       stationProto: StandardFrontierExpeditionVessel
       components:
@@ -41,7 +39,6 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            ContractorInterview: [ 2, 2 ]
-            CompanionInterview: [ 2, 2 ]
-            PilotInterview: [ 2, 2 ]
-            MercenaryInterview: [ 2, 2 ]
+            ContractorInterview: [ 0, 0 ]
+            PilotInterview: [ 0, 0 ]
+            MercenaryInterview: [ 0, 0 ]

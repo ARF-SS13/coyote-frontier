@@ -1,16 +1,17 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "adder, ambition, bocadillo, brigand, bulker, ceres, chisel, comet, construct, copperhead, garden, gasbender, harbormaster, investigator, kestrel, kilderkin, stringer, legman, liquidator, loader, pathfinder, prospector, searchlight and vagabond by erhardsteinhauer (discord/github), used font from https://github.com/tgstation/tgstation/blob/master/icons/obj/signs.dmi.",
+    "copyright": "adder, ambition, bocadillo, brigand, broom, bulker, chisel, comet, construct, copperhead, garden, gasbender, harbormaster, investigator, kestrel, kilderkin, stringer, lantern-mk2, liquidator, loader, pathfinder, prospector, searchlight and vagabond by erhardsteinhauer (discord/github), used font from https://github.com/tgstation/tgstation/blob/master/icons/obj/signs.dmi.",
     "extra_copyright": [
         "spirit by iNoahGuy/actualcatmoment (discord/github).",
         "apothecary, caladrius, charon, courier, druid, pulsar, retort, stasis, surveyor by dustylens (discord/github).",
         "barge, eagle, hauler, phoenix, placebo, skipper by Mygnol (discord/github)",
-        "aegis, apothecary, charon, caladrius, dragoon, dragonfly, gaslight, druid, pulsar, retort, stasis, surveyor by dustylens (discord/github).",
+        "aegis, apothecary, charon, caladrius, crescent, dragoon, dragonfly, gaslight, druid, mcdelivery, pulsar, retort, stasis, stellaris, surveyor by dustylens (discord/github).",
         "barge, eagle, hauler, phoenix, placebo, skipper, sparrow by Mygnol (discord/github)",
-        "izakaya by AF-Buyrcsp2 (discord/github)",
+        "izakaya by AmbitiousFailure (discord/github)",
         "nook by Chervjakys (discord/github)",
-        "albatross, petrel by UBlueberry (discord/github)"
+        "anchor, crossroads, firefighter, hound, mccargo, stronghold by bartholomew_dingleberry/Bartholemew-Dingleberry (discord/github)",
+        "baroness, bodkin, bookworm, ceres, hammer, lyrae, tyne by Arimah (discord/github)"
     ],
     "metaAtlas": false,
     "size": {
@@ -25,7 +26,10 @@
             "name": "ambition"
         },
         {
-            "name": "albatross"
+            "name": "anchor"
+        },
+        {
+            "name": "aegis"
         },
         {
             "name": "apothecary"
@@ -34,13 +38,22 @@
             "name": "barge"
         },
         {
-            "name": "bazaar"
+            "name": "baroness"
         },
         {
             "name": "bocadillo"
         },
         {
+            "name": "bodkin"
+        },
+        {
+            "name": "bookworm"
+        },
+        {
             "name": "brigand"
+        },
+        {
+            "name": "broom"
         },
         {
             "name": "bulker"
@@ -70,6 +83,18 @@
             "name": "courier"
         },
         {
+            "name": "crescent"
+        },
+        {
+            "name": "crossroads"
+        },
+        {
+            "name": "dove"
+        },
+        {
+            "name": "dragoon"
+        },
+        {
             "name": "dragonfly"
         },
         {
@@ -79,10 +104,19 @@
             "name": "eagle"
         },
         {
+            "name": "firefighter"
+        },
+        {
             "name": "garden"
         },
         {
             "name": "gasbender"
+        },
+        {
+            "name": "gaslight"
+        },
+        {
+            "name": "hammer"
         },
         {
             "name": "harbormaster"
@@ -92,6 +126,9 @@
         },
         {
             "name": "honker"
+        },
+        {
+            "name": "hound"
         },
         {
             "name": "investigator"
@@ -106,7 +143,7 @@
             "name": "kilderkin"
         },
         {
-            "name": "legman"
+            "name": "lantern-mk2"
         },
         {
             "name": "liquidator"
@@ -115,13 +152,19 @@
             "name": "loader"
         },
         {
+            "name": "lyrae"
+        },
+        {
+            "name": "mccargo"
+        },
+        {
+            "name": "mcdelivery"
+        },
+        {
             "name": "nightlight"
         },
         {
             "name": "pathfinder"
-        },
-        {
-            "name": "petrel"
         },
         {
             "name": "phoenix"
@@ -148,16 +191,25 @@
             "name": "spirit"
         },
         {
+            "name": "stellaris"
+        },
+        {
             "name": "stasis"
         },
         {
             "name": "stringer"
         },
         {
+            "name": "stronghold"
+        },
+        {
             "name": "surveyor"
         },
         {
             "name": "tide"
+        },
+        {
+            "name": "tyne"
         },
         {
             "name": "vagabond"

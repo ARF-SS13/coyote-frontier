@@ -1,4 +1,4 @@
-using Content.Shared.Atmos;
+﻿using Content.Shared.Atmos;
 using Content.Shared.Explosion.EntitySystems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;

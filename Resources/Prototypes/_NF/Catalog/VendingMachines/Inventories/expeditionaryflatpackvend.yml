@@ -5,7 +5,7 @@
     TelecomServerFlatpack: 4294967295 # Infinite
     WeaponCapacitorRechargerFlatpack: 4294967295 # Infinite
     BorgChargerFlatpack: 4294967295 # Infinite
-    MercenaryTechFabFlatpack: 4294967295 # Infinite
+    #MercenaryTechFabFlatpack: 4294967295 # Infinite
     NFHolopadShipFlatpack: 4294967295 # Infinite
     GeneratorCoolRTGFlatpack: 4294967295 # Infinite
     EngineeringTechFabFlatpack: 4294967295 # Infinite

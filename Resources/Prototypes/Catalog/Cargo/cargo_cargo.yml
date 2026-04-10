@@ -14,7 +14,7 @@
     sprite:  /Textures/Structures/Storage/orebox.rsi
     state: orebox
   product: NFMagnetBoxOre # Frontier: OreBox<NFMagnetBoxOre
-  cost: 5000 # Coyote: 500<5000
+  cost: 1000 # Frontier - original price 500
   category: cargoproduct-category-name-cargo
   group: market
 
@@ -39,7 +39,6 @@
   cost: 750
   category: cargoproduct-category-name-cargo
   group: market
-
 # frontier: Unused
 # - type: cargoProduct
 #   id: CargoCrusherDagger

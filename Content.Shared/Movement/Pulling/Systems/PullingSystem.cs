@@ -109,16 +109,12 @@ public sealed class PullingSystem : EntitySystem
 
         // Try find hand that is doing this pull.
         // and clear it.
-        foreach (var hand in component.Hands.Values)
+        foreach (var held in _handsSystem.EnumerateHeld((uid, component)))
         {
-            if (hand.HeldEntity == null
-                || !TryComp(hand.HeldEntity, out VirtualItemComponent? virtualItem)
-                || virtualItem.BlockingEntity != args.PulledUid)
-            {
+            if (!TryComp(held, out VirtualItemComponent? virtualItem) || virtualItem.BlockingEntity != args.PulledUid)
                 continue;
-            }
 
-            _handsSystem.TryDrop(args.PullerUid, hand, handsComp: component);
+            _handsSystem.TryDrop((args.PullerUid, component), held);
             break;
         }
     }
@@ -230,7 +226,7 @@ public sealed class PullingSystem : EntitySystem
         if (component.Pulling != args.BlockingEntity)
             return;
 
-        if (EntityManager.TryGetComponent(args.BlockingEntity, out PullableComponent? comp))
+        if (TryComp(args.BlockingEntity, out PullableComponent? comp))
         {
             TryStopPull(args.BlockingEntity, comp);
         }
@@ -252,8 +248,7 @@ public sealed class PullingSystem : EntitySystem
             {
                 Text = Loc.GetString("pulling-verb-get-data-text-stop-pulling"),
                 Act = () => TryStopPull(uid, component, user: args.User),
-                DoContactInteraction = false, // pulling handle its own contact interaction.
-                Category = VerbCategory.Actions
+                DoContactInteraction = false // pulling handle its own contact interaction.
             };
             args.Verbs.Add(verb);
         }
@@ -263,8 +258,7 @@ public sealed class PullingSystem : EntitySystem
             {
                 Text = Loc.GetString("pulling-verb-get-data-text"),
                 Act = () => TryStartPull(args.User, args.Target),
-                DoContactInteraction = false, // pulling handle its own contact interaction.
-                Category = VerbCategory.Actions
+                DoContactInteraction = false // pulling handle its own contact interaction.
             };
             args.Verbs.Add(verb);
         }
@@ -430,7 +424,7 @@ public sealed class PullingSystem : EntitySystem
             return false;
         }
 
-        if (!EntityManager.TryGetComponent<PhysicsComponent>(pullableUid, out var physics))
+        if (!TryComp<PhysicsComponent>(pullableUid, out var physics))
         {
             return false;
         }

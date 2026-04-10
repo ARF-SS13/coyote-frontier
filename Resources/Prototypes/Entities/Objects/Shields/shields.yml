@@ -320,7 +320,7 @@
 
 - type: entity
   name: mirror shield
-  parent: [ BaseShield, NotContraband] # Frontier: BaseMagicalContraband<NotContraband
+  parent: [ BaseShield, BaseC3WizardContraband] # Frontier: BaseMagicalContraband<BaseC3WizardContraband
   id: MirrorShield
   description: Eerily glows red... you hear the geometer whispering
   components:
@@ -368,7 +368,7 @@
 
 - type: entity
   name: energy shield
-  parent: [BaseItem, BaseC2Contraband] # Frontier: BaseSyndicateContraband<BaseC4Contraband
+  parent: [BaseItem, BaseC3SyndicateContraband] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband
   id: EnergyShield
   description: Exotic energy shield, when folded, can even fit in your pocket.
   components:
@@ -549,4 +549,4 @@
                   min: 2
                   max: 2
     - type: StaticPrice
-      price: 250
+      price: 150

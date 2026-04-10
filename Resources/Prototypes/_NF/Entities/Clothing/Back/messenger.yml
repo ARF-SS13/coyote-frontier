@@ -2,7 +2,7 @@
 - type: entity
   parent: NFClothingMessenger
   id: ClothingBackpackMessengerContractor
-  name: resident messenger bag
+  name: contractor messenger bag
   description: A trendy looking messenger bag in tasteful colors.
   components:
   - type: Sprite
@@ -52,7 +52,7 @@
   parent: ClothingBackpackMessengerContractor
   id: ClothingBackpackMessengerCaptain
   name: captain's messenger bag
-  description: An exclusive messenger bag for Nanotrasen officers.
+  description: An exclusive messenger bag for Nanotrasen-contracted captains.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Back/Messenger/color.rsi
@@ -632,9 +632,6 @@
   name: messenger bag of holding
   description: A messenger bag that opens into a localized pocket of bluespace.
   components:
-  - type: ChameleonClothing # Coyote start
-    slot: [back]
-    default: ClothingBackpackMessengerHolding # Coyote end
   - type: Sprite
     sprite: _NF/Clothing/Back/Messenger/holding.rsi
     state: icon
@@ -663,7 +660,7 @@
 #region Antagonists / Contraband
 - type: entity
   parent:
-  - BaseC1ContrabandUnredeemable
+  - BaseC3SyndicateContrabandUnredeemable
   - ClothingBackpackMessengerContractor
   - ContrabandClothing
   id: ClothingBackpackMessengerSyndicate
@@ -704,7 +701,7 @@
 
 - type: entity
   parent:
-  - BaseC1ContrabandUnredeemable
+  - BaseC3CultContrabandUnredeemable
   - ClothingBackpackMessengerContractor
   - ContrabandClothing
   id: ClothingBackpackMessengerBloodCult
@@ -746,7 +743,7 @@
 - type: entity
   id: ClothingBackpackMessengerArcadia
   name: arcadia messenger bag
-  parent: ClothingBackpackMessengerContractor
+  parent: [ ClothingBackpackMessengerContractor, BaseC3ContrabandNoValue, ContrabandClothing ]
   components:
   - type: Sprite
     sprite: _NF/Clothing/Back/Messenger/color.rsi
@@ -797,8 +794,10 @@
         color: "#1f1f1f"
 
 - type: entity
-  parent: # Coyote: C3 to nothing. Not contraband clothing. It's just a bag.
+  parent:
+  - BaseC3WizardContrabandUnredeemable
   - ClothingBackpackMessengerContractor
+  - ContrabandClothing
   id: ClothingBackpackMessengerWizardBlue
   name: blue wizard messenger bag
   description: A stylish messenger bag fit for a blue wizard.

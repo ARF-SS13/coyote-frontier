@@ -54,9 +54,10 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Content.Shared._NF.Kitchen.Components; // Frontier
-using Content.Server._NF.Kitchen.Components; // Frontier
 using Content.Shared.Cargo; // Frontier
 using Content.Shared.NameModifier.EntitySystems; // Frontier
+using Content.Shared.Construction.Components; // Frontier
+using Content.Shared.Nutrition.Components; // Frontier
 
 namespace Content.Server.Nyanotrasen.Kitchen.EntitySystems;
 
@@ -113,6 +114,7 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
         SubscribeLocalEvent<DeepFryerComponent, SolutionChangedEvent>(OnSolutionChange);
         SubscribeLocalEvent<DeepFryerComponent, ContainerRelayMovementEntityEvent>(OnRelayMovement);
         SubscribeLocalEvent<DeepFryerComponent, InteractUsingEvent>(OnInteractUsing);
+        SubscribeLocalEvent<DeepFryerComponent, UpgradeExamineEvent>(OnUpgradeExamine);// Frontier: deep fryier upgrade status popup
 
         SubscribeLocalEvent<DeepFryerComponent, BeforeActivatableUIOpenEvent>(OnBeforeActivatableUIOpen);
         SubscribeLocalEvent<DeepFryerComponent, DeepFryerRemoveItemMessage>(OnRemoveItem);
@@ -126,6 +128,7 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
         SubscribeLocalEvent<DeepFriedComponent, ExaminedEvent>(OnExamineFried);
         SubscribeLocalEvent<DeepFriedComponent, PriceCalculationEvent>(OnPriceCalculation);
         SubscribeLocalEvent<DeepFriedComponent, FoodSlicedEvent>(OnSliceDeepFried);
+        SubscribeLocalEvent<DeepFriedComponent, RefreshNameModifiersEvent>(OnRefreshNameModifiers); // Frontier: use name modifiers properly
     }
 
     private void UpdateUserInterface(EntityUid uid, DeepFryerComponent component)
@@ -255,27 +258,10 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
         }
     }
 
-    private void UpdateDeepFriedName(EntityUid uid, DeepFriedComponent component, CrispinessLevelSetPrototype? crispinessLevels = null) // Frontier: add crispinessLevelSet
+    private void UpdateDeepFriedName(EntityUid uid, DeepFriedComponent component)
     {
-        if (component.OriginalName == null)
-            return;
-
-        // Frontier: assign crispiness levels to a prototype
-        if (crispinessLevels == null && !_prototypeManager.TryIndex<CrispinessLevelSetPrototype>(component.CrispinessLevelSet, out crispinessLevels))
-            return;
-
-        if (crispinessLevels.Levels.Count <= 0)
-            return;
-
-        int crispiness = int.Max(0, component.Crispiness);
-        {
-            string name;
-            if (crispiness < crispinessLevels.Levels.Count)
-                name = crispinessLevels.Levels[crispiness].Name;
-            else
-                name = crispinessLevels.Levels[^1].Name;
-            _metaDataSystem.SetEntityName(uid, Loc.GetString(name, ("entity", component.OriginalName)));
-        }
+        // Frontier: use name modifiers properly
+        _nameModifier.RefreshNameModifiers(uid);
         // End Frontier
     }
 
@@ -335,13 +321,13 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
             {
                 maxCrispiness = int.Max(0, crispinessLevels.Levels.Count - 1);
             }
-            if (deepFriedComponent.Crispiness > MaximumCrispiness)
+            if (deepFriedComponent.Crispiness > maxCrispiness)
             {
                 BurnItem(uid, component, item);
                 return;
             }
 
-            UpdateDeepFriedName(item, deepFriedComponent, crispinessLevels);
+            UpdateDeepFriedName(item, deepFriedComponent);
             return;
         }
 
@@ -507,6 +493,13 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
                                        (int)(component.StoragePerPartRating * (ratingStorage - 1));
     }
 
+    // Frontier: deep fryier upgrade status popup
+    private void OnUpgradeExamine(Entity<DeepFryerComponent> entity, ref UpgradeExamineEvent args)
+    {
+        args.AddNumberUpgrade("deep-fryier-component-upgrade-storage", entity.Comp.StorageMaxEntities - entity.Comp.BaseStorageMaxEntities);
+    }
+    //End Frontier
+
     /// <summary>
     ///     Allow thrown items to land in a basket.
     /// </summary>
@@ -625,9 +618,9 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
         if (!TryComp<HandsComponent>(user, out var handsComponent))
             return false;
 
-        heldItem = handsComponent.ActiveHandEntity;
+        // heldItem = handsComponent.ActiveHandEntity; // Frontier: reformat to use the hand system
 
-        if (heldItem == null ||
+        if (!_handsSystem.TryGetActiveItem(user, out heldItem) || // Frontier: reformat to use the hand system
             !TryComp<SolutionTransferComponent>(heldItem, out var solutionTransferComponent) ||
             !_solutionContainerSystem.TryGetRefillableSolution(heldItem.Value, out var solEnt, out var _) ||
             !solutionTransferComponent.CanReceive)
@@ -746,7 +739,6 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
 
     private void OnInitDeepFried(EntityUid uid, DeepFriedComponent component, ComponentInit args)
     {
-        component.OriginalName = _nameModifier.GetBaseName(uid); // Frontier: prevent reapplying name modifiers
         UpdateDeepFriedName(uid, component);
     }
 
@@ -800,6 +792,24 @@ public sealed partial class DeepFryerSystem : SharedDeepfryerSystem
             sliceFlavorProfileComponent.IgnoreReagents.UnionWith(sourceFlavorProfileComponent.IgnoreReagents);
         }
     }
+
+    // Frontier: use name modifiers properly
+    private void OnRefreshNameModifiers(EntityUid uid, DeepFriedComponent component, ref RefreshNameModifiersEvent args)
+    {
+        if (_prototypeManager.TryIndex(component.CrispinessLevelSet, out var crispinessLevels))
+        {
+            int crispiness = int.Max(0, component.Crispiness);
+            string modifierString;
+            if (crispiness < crispinessLevels.Levels.Count)
+                modifierString = crispinessLevels.Levels[crispiness].Name;
+            else
+                modifierString = crispinessLevels.Levels[^1].Name;
+            // High modifier ensures it's applied after other modifiers, which in our case
+            // means the adjective comes *before* the rest of the name.
+            args.AddModifier(modifierString, 100);
+        }
+    }
+    // End Frontier
 
     public void SetDeepFriedCrispinessLevelSet(EntityUid uid, DeepFriedComponent component, ProtoId<CrispinessLevelSetPrototype> crispiness)
     {

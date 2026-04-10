@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
 using Content.Server._NF.Shuttles.Components; // Frontier: FTL knockdown immunity
+using Content.Shared._NF.Atmos.Components; // Frontier
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Station.Events;
@@ -9,10 +10,7 @@ using Content.Shared.Body.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Ghost;
-using Content.Shared.Implants;
-using Content.Shared.Implants.Components;
 using Content.Shared.Maps;
-using Content.Shared.Mobs.Components;
 using Content.Shared.Parallax;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
@@ -145,6 +143,8 @@ public sealed partial class ShuttleSystem
         var mapUid = _mapSystem.CreateMap(out var mapId);
         var ftlMap = AddComp<FTLMapComponent>(mapUid);
 
+        EnsureComp<AtmosEnabledMapComponent>(mapUid); // Frontier
+
         _metadata.SetEntityName(mapUid, "FTL");
         Log.Debug($"Setup hyperspace map at {mapUid}");
         DebugTools.Assert(!_mapSystem.IsPaused(mapId));
@@ -245,7 +245,7 @@ public sealed partial class ShuttleSystem
         {
 
             // Too large to FTL
-            if (FTLMassLimit > 0 &&  shuttlePhysics.Mass > FTLMassLimit)
+            if (FTLMassLimit > 0 && shuttlePhysics.Mass > FTLMassLimit)
             {
                 reason = Loc.GetString("shuttle-console-mass");
                 return false;
@@ -570,23 +570,6 @@ public sealed partial class ShuttleSystem
 
         var ftlEvent = new FTLCompletedEvent(uid, _mapSystem.GetMap(mapId));
         RaiseLocalEvent(uid, ref ftlEvent, true);
-
-        // COYOTE: when the shuttle arrives, go through all the mobs on the grid
-        // and attempt to set off their deathrattle implants
-        var shuttleGridId = xform.GridUid;
-        var implantedQuery = EntityQueryEnumerator<ImplantedComponent, MobStateComponent, TransformComponent>();
-        while (implantedQuery.MoveNext(
-           out var mobUid,
-           out var implanted,
-           out var mobState,
-           out var mobXform))
-        {
-            if (mobXform.GridUid != shuttleGridId)
-                continue;
-
-            var deathrattleEvent = new ReTriggerRattleImplantEvent(mobUid, mobState.CurrentState);
-            RaiseLocalEvent(mobUid, deathrattleEvent);
-        }
     }
 
     private void UpdateFTLCooldown(Entity<FTLComponent, ShuttleComponent> entity)
@@ -654,11 +637,8 @@ public sealed partial class ShuttleSystem
         {
             foreach (var child in toKnock)
             {
-                if (!_statusQuery.TryGetComponent(child, out var status))
-                    continue;
-
                 if (!HasComp<FTLKnockdownImmuneComponent>(child)) // Frontier: FTL knockdown immunity
-                    _stuns.TryParalyze(child, _hyperspaceKnockdownTime, true, status);
+                    _stuns.TryUpdateParalyzeDuration(child, _hyperspaceKnockdownTime);
 
                 // If the guy we knocked down is on a spaced tile, throw them too
                 if (grid != null)
@@ -718,7 +698,7 @@ public sealed partial class ShuttleSystem
         // only toss if its on lattice/space
         var tile = _mapSystem.GetTileRef(shuttleEntity, shuttleGrid, childXform.Coordinates);
 
-        if (!tile.IsSpace(_tileDefManager))
+        if (!_turf.IsSpace(tile))
             return;
 
         var throwDirection = childXform.LocalPosition - shuttleBody.LocalCenter;
@@ -738,10 +718,9 @@ public sealed partial class ShuttleSystem
         ShuttleComponent component,
         EntityUid targetUid,
         string? priorityTag = null,
-        DockType dockType = DockType.Airlock, // Frontier
-        int? maxShuttleDocks = null) // Coyote
+        DockType dockType = DockType.None) // Frontier
     {
-        return TryFTLDock(shuttleUid, component, targetUid, out _, priorityTag, dockType, maxShuttleDocks); // Frontier: add dockType // Coyote: add maxShuttleDocks
+        return TryFTLDock(shuttleUid, component, targetUid, out _, priorityTag, dockType); // Frontier: add dockType
     }
 
     /// <summary>
@@ -754,8 +733,7 @@ public sealed partial class ShuttleSystem
         EntityUid targetUid,
         [NotNullWhen(true)] out DockingConfig? config,
         string? priorityTag = null,
-        DockType dockType = DockType.Airlock, // Frontier
-        int? maxShuttleDocks = null) // Coyote
+        DockType dockType = DockType.None) // Frontier
     {
         config = null;
 
@@ -767,7 +745,7 @@ public sealed partial class ShuttleSystem
             return false;
         }
 
-        config = _dockSystem.GetDockingConfig(shuttleUid, targetUid, priorityTag, dockType, maxShuttleDocks); // Frontier: add dockType // Coyote: add maxShuttleDocks
+        config = _dockSystem.GetDockingConfig(shuttleUid, targetUid, priorityTag, dockType); // Frontier: add dockType
 
         if (config != null)
         {

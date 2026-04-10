@@ -204,7 +204,7 @@
 
 #region knock scroll
 - type: entity
-  parent: [BaseC3WizardContraband, SpellScrollRolled] # Coyote: From nothing to C3
+  parent: SpellScrollRolled
   id: SpellScrollRolledKnock
   name: scroll of knock
   description: |-

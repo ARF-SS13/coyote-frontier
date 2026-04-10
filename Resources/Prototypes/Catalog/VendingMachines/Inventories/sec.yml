@@ -1,21 +1,21 @@
 - type: vendingMachineInventory
   id: SecTechInventory
   startingInventory:
-    SecurityWhistle: 4294967295 # Infinite
-    Handcuffs: 2 # Infinite
+    SecurityWhistle: 1 # Frontier 5<1
+    Handcuffs: 3 # Frontier 8<3
     GrenadeFlashBang: 1 # Frontier 4<1
     TearGasGrenade: 1 # Frontier 4<1
     ClusterBangFull: 1 # Frontier 2<1
     GrenadeStinger: 1 # Frontier 4<1
     Flash: 1 # Frontier 5<1
-    Tourniquet: 3 # Frontier 5<1
-    FlashlightSeclite: 2 # Frontier 5<1
+    Tourniquet: 1 # Frontier 5<1
+    FlashlightSeclite: 1 # Frontier 5<1
     ClothingEyesGlassesSunglasses: 1 # Frontier 2<1
     ClothingEyesHudSecurity: 1 # Frontier 2<1
     ClothingEyesEyepatchHudSecurity: 1 # Frontier 2<1
     ClothingBeltSecurityWebbing: 1 # Frontier 5<1
     CombatKnife: 1 # Frontier 3<1
-    Zipties: 4294967295 # Infinite
+    Zipties: 4 # Frontier 12<4
     RiotShield: 1 # Frontier 2<1
     RiotLaserShield: 1 # Frontier 2<1
     RiotBulletShield: 1 # Frontier 2<1
@@ -23,9 +23,8 @@
     ForensicScanner: 1 # Frontier
     BoxForensicPad: 1 # Frontier
     ContrabandAppraisalTool: 1 # Frontier
-    ClothingOuterHardsuitSecurity: 1 # Coyote
-    ClothingShoesBootsMagSecurity: 1 # Coyote
 #    RadioHandheldSecurity: 5 # Frontier
+    Bola: 2 # Frontier 6<2
   # security officers need to follow a diet regimen!
   # contrabandInventory: # Frontier
   #   WeaponMeleeNeedle: 2 # Frontier

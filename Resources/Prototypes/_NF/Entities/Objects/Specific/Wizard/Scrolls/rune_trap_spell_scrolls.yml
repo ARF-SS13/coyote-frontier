@@ -62,7 +62,7 @@
 
 #region ignite rune scroll
 - type: entity
-  parent: [BaseC3WizardContraband, SpellScrollRolled] # Coyote: From nothing to C3
+  parent: SpellScrollRolled
   id: SpellScrollRolledRuneIgnite
   name: scroll of ignite rune
   description: |-
@@ -186,7 +186,7 @@
 
 #region explosion rune scroll
 - type: entity
-  parent: [BaseC3WizardContraband, SpellScrollRolled] # Coyote: From nothing to C3
+  parent: SpellScrollRolled
   id: SpellScrollRolledRuneExplosion
   name: scroll of explosion rune
   description: |-

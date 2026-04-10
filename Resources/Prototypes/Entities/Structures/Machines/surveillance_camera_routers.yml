@@ -35,9 +35,9 @@
             False: { visible: false }
     - type: Appearance
     - type: AmbientOnPowered
-    - type: AmbientSound #Coyote -9>-12 5>3.5
-      volume: -12
-      range: 3.5
+    - type: AmbientSound
+      volume: -9
+      range: 5
       enabled: false
       sound:
         path: /Audio/Ambience/Objects/server_fans.ogg
@@ -170,9 +170,9 @@
             False: { visible: false }
     - type: Appearance
     - type: AmbientOnPowered
-    - type: AmbientSound #Coyote -9>-12 5>3.5
-      volume: -12
-      range: 3.5
+    - type: AmbientSound
+      volume: -9
+      range: 5
       enabled: false
       sound:
         path: /Audio/Ambience/Objects/server_fans.ogg

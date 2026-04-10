@@ -46,9 +46,6 @@
       whitelist:
         tags:
           - SecurityUplink
-    - !type:BuyerJobCondition # Coyote added Brigmedic as a job requirement for the hardsuit
-      whitelist:
-        - Brigmedic
 
 - type: listing
   id: UplinkSecurityHardsuitWarden
@@ -57,7 +54,7 @@
   productEntity: ClothingOuterHardsuitNfsdGold
   icon: { sprite: _NF/Clothing/OuterClothing/Hardsuits/nfsd_gold.rsi, state: icon }
   cost:
-    FrontierUplinkCoin: 2
+    FrontierUplinkCoin: 3
   categories:
     - UplinkSecurityHardsuits
   conditions:
@@ -78,7 +75,7 @@
   productEntity: ClothingOuterHardsuitNfsdCombat
   icon: { sprite: _NF/Clothing/OuterClothing/Hardsuits/nfsd_combat.rsi, state: icon }
   cost:
-    FrontierUplinkCoin: 15 # COYOTE: Just a little cheaper and better than the pirates' to outfit NFSD better.
+    FrontierUplinkCoin: 10
   categories:
     - UplinkSecurityHardsuits
   conditions:
@@ -127,14 +124,14 @@
       whitelist:
         - Sheriff
 
-- type: listing # Coyote removed job restrictions for this hardsuit
+- type: listing
   id: UplinkSecurityHardsuitSyndieReverseEngineered
   name:  uplink-security-hardsuit-experimental-name
   description: uplink-security-hardsuit-experimental-desc
   productEntity: ClothingOuterHardsuitNfsdExperimental
   icon: { sprite: _NF/Clothing/OuterClothing/Hardsuits/nfsd_experimental.rsi, state: icon }
   cost:
-    FrontierUplinkCoin: 30 # Coyote: It's juiced now.
+    FrontierUplinkCoin: 20
   categories:
     - UplinkSecurityHardsuits
   conditions:
@@ -142,6 +139,9 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Sheriff
 
 #region weapons
 - type: listing
@@ -208,7 +208,7 @@
         tags:
           - SecurityUplink
 
-- type: listing # Coyote removed job restrictions for this weapon
+- type: listing
   id: UplinkSecurityEnforcer
   name:  uplink-security-enforcer-name
   description: uplink-security-enforcer-desc
@@ -223,8 +223,13 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
-- type: listing # Coyote removed job restrictions for this weapon
+- type: listing
   id: UplinkSecurityLecter
   name:  uplink-security-lecter-name
   description: uplink-security-lecter-desc
@@ -239,8 +244,13 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
-- type: listing # Coyote removed job restrictions for this weapon
+- type: listing
   id: UplinkSecurityVulcan
   name:  uplink-security-vulcan-name
   description: uplink-security-vulcan-desc
@@ -255,32 +265,18 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
-- type: listing # Coyote: Added Chort
-  id: UplinkSecurityChort
-  name: uplink-security-chort-name
-  description: uplink-security-chort-desc
-  productEntity: ShuttleGunChortMachineGunCircuitboard
-  icon: { sprite: _NF/Objects/Misc/module.rsi, state: nfsd }
-  cost:
-    FrontierUplinkCoin: 30
-  categories:
-  - UplinkSecurityWeapons
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - SecurityUplink
-  - !type:BuyerJobCondition # Coyote
-    whitelist:
-    - Sheriff
-
-- type: listing #Coyote added hristov to NFSD uplink
-  id: UplinkSecurityHristov
-  name:  uplink-security-hristov-name
-  description: uplink-security-hristov-desc
-  productEntity: NFWeaponRifleSniperHristovNFSD
-  icon: { sprite: Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
+- type: listing
+  id: UplinkSecurityLaserCarbine
+  name:  uplink-security-lasercarbine-name
+  description: uplink-security-lasercarbine-desc
+  productEntity: NFWeaponEnergyRifleCarbine
+  icon: { sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi, state: icon }
   cost:
     FrontierUplinkCoin: 5
   categories:
@@ -292,20 +288,20 @@
           - SecurityUplink
     - !type:BuyerJobCondition
       whitelist:
-        - Sheriff
         - Bailiff
         - SeniorOfficer
+        - Sheriff
 
-- type: listing # Coyote added hristov ammo to NFSD uplink
-  id: UplinkSecurityHristovAmmo
-  name:  uplink-security-hristov-ammo-name
-  description: uplink-security-hristov-ammo-desc
-  productEntity: NFAmmunitionBoxRifle60
-  icon: { sprite: _NF/Objects/Weapons/Guns/Ammunition/Boxes/rifle.rsi, state: icon-60 }
+- type: listing
+  id: UplinkSecurityLaserCannon
+  name:  uplink-security-lasercanon-name
+  description: uplink-security-lasercanon-desc
+  productEntity: NFWeaponEnergyRifleSniperCannon
+  icon: { sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi, state: icon }
   cost:
-    FrontierUplinkCoin: 2
+    FrontierUplinkCoin: 10
   categories:
-    - UplinkSecurityAmmo
+    - UplinkSecurityWeapons
   conditions:
     - !type:StoreWhitelistCondition
       whitelist:
@@ -314,49 +310,15 @@
     - !type:BuyerJobCondition
       whitelist:
         - Sheriff
-        - Bailiff
-        - SeniorOfficer
 
-- type: listing # Coyote removed job restrictions for this weapon
-  id: UplinkSecurityLaserCarbine
-  name:  uplink-security-lasercarbine-name
-  description: uplink-security-lasercarbine-desc
-  productEntity: NFWeaponEnergyRifleCarbine
-  icon: { sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi, state: icon }
-  cost:
-    FrontierUplinkCoin: 8
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing # Coyote removed job restrictions for this weapon
-  id: UplinkSecurityLaserCannon
-  name:  uplink-security-lasercanon-name
-  description: uplink-security-lasercanon-desc
-  productEntity: NFWeaponEnergyRifleSniperCannon
-  icon: { sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi, state: icon }
-  cost:
-    FrontierUplinkCoin: 14
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing #Coyote removed job restrictions for this weapon
+- type: listing
   id: UplinkSecurityDisablerSMG
   name:  uplink-security-disablersmg-name
   description: uplink-security-disablersmg-desc
   productEntity: NFWeaponEnergySubMachineGunDisabler
   icon: { sprite: Objects/Weapons/Guns/Battery/disabler_smg.rsi, state: base }
   cost:
-    FrontierUplinkCoin: 6
+    FrontierUplinkCoin: 4
   categories:
     - UplinkSecurityWeapons
   conditions:
@@ -364,8 +326,33 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
-- type: listing # Coyote removed job restrictions for this weapon
+- type: listing
+  id: UplinkSecurityDrozd
+  name:  uplink-security-drozd-name
+  description: uplink-security-drozd-desc
+  productEntity: NFWeaponSubMachineGunDrozd
+  icon: { sprite: Objects/Weapons/Guns/SMGs/drozd.rsi, state: icon }
+  cost:
+    FrontierUplinkCoin: 4
+  categories:
+    - UplinkSecurityWeapons
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - Sheriff
+
+- type: listing
   id: UplinkSecurityWT550
   name:  uplink-security-wt550-name
   description: uplink-security-wt550-desc
@@ -380,15 +367,18 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Sheriff
 
-- type: listing # Coyote removed job restrictions for this weapon
+- type: listing
   id: UplinkSecurityEnergyGun
   name:  uplink-security-energygun-name
   description: uplink-security-energygun-desc
   productEntity: NFWeaponEnergySubMachineGunDeltaV
   icon: { sprite: _DV/Objects/Weapons/Guns/Battery/energygun.rsi, state: icon }
   cost:
-    FrontierUplinkCoin: 8
+    FrontierUplinkCoin: 5
   categories:
     - UplinkSecurityWeapons
   conditions:
@@ -396,8 +386,12 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - Sheriff
 
-- type: listing # Coyote removed job restrictions for this weapon
+- type: listing
   id: UplinkSecurityEmpRpg
   name:  uplink-security-emprpg-name
   description: uplink-security-emprpg-desc
@@ -412,6 +406,9 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Sheriff
 
 #region utililty
 - type: listing
@@ -462,7 +459,7 @@
         tags:
           - SecurityUplink
 
-- type: listing # Coyote added bailiff and sergeant to the list of people who can get this
+- type: listing
   id: UplinkNfsdTechfab
   name:  uplink-security-techfab-name
   description: uplink-security-techfab-desc
@@ -480,10 +477,8 @@
     - !type:BuyerJobCondition
       whitelist:
         - Sheriff
-        - Bailiff
-        - SeniorOfficer
 
-- type: listing # Coyote added bailiff and sergeant to the list of people who can get this
+- type: listing
   id: UplinkSecurityKey
   name:  uplink-security-key-name
   description: uplink-security-key-desc
@@ -501,10 +496,8 @@
     - !type:BuyerJobCondition
       whitelist:
         - Sheriff
-        - Bailiff
-        - SeniorOfficer
 
-- type: listing # Coyote removed job restrictions for this ammo
+- type: listing
   id: UplinkSecurityEmpRocket
   name:  uplink-security-emprocket-name
   description: uplink-security-emprocket-desc
@@ -519,9 +512,12 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Sheriff
 
 - type: listing
-  id: UplinkSecurityThrusterKit # Coyote removed job restrictions for this gear
+  id: UplinkSecurityThrusterKit
   name:  uplink-security-thrusterkit-name
   description: uplink-security-thrusterkit-desc
   productEntity: BoxT3SuperCapacitor
@@ -535,13 +531,18 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
 #region magazines
 - type: listing
   id: UplinkSecurityMagazineHighCapacityPistol35Overpressure
-  name:  uplink-security-magazinepistol-40-name # Coyote uplink-security-magazinepistol-name < uplink-security-magazinepistol-40-name
-  description: uplink-security-magazinepistol-40-desc # Coyote uplink-security-magazinepistol-desc < uplink-security-magazinepistol-40-desc
-  productEntity: CSBoxMagazinePistol40Overpressure # Coyote .40 conversion
+  name:  uplink-security-magazinepistol-name
+  description: uplink-security-magazinepistol-desc
+  productEntity: NFBoxMagazineHighCapacityPistol35Overpressure
   icon: { sprite: _NF/Objects/Storage/boxes.rsi, state: icon-magazine }
   cost:
     FrontierUplinkCoin: 1
@@ -553,7 +554,7 @@
         tags:
           - SecurityUplink
 
-- type: listing # Coyote removed job restrictions for this ammo
+- type: listing
   id: UplinkSecurityMagazineRifle20Overpressure
   name:  uplink-security-20riflemagazine-name
   description: uplink-security-20riflemagazine-desc
@@ -568,8 +569,13 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
-- type: listing # Coyote removed job restrictions for this ammo
+- type: listing
   id: UplinkSecurityMagazineRifle30Overpressure
   name:  uplink-security-30riflemagazine-name
   description: uplink-security-30riflemagazine-desc
@@ -584,12 +590,56 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
-- type: listing # Coyote removed job restrictions for this ammo
+- type: listing
+  id: UplinkSecurityMagazineSubMachineGun35Overpressure
+  name:  uplink-security-smgmagazine-name
+  description: uplink-security-smgmagazine-desc
+  productEntity: NFBoxMagazinePistolSubMachineGun35Overpressure
+  icon: { sprite: _NF/Objects/Storage/boxes.rsi, state: icon-magazine }
+  cost:
+    FrontierUplinkCoin: 1
+  categories:
+    - UplinkSecurityAmmo
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - Sheriff
+
+- type: listing
   id: UplinkSecurityMagazineSubMachineGunTopMounted35Overpressure
   name:  uplink-security-wt550magazine-name
   description: uplink-security-wt550magazine-desc
-  productEntity: NFMagazineSubMachineGunTopMounted35Overpressure
+  productEntity: NFBoxMagazineTopMountedSubMachineGun35Overpressure
+  icon: { sprite: _NF/Objects/Storage/boxes.rsi, state: icon-magazine }
+  cost:
+    FrontierUplinkCoin: 1
+  categories:
+    - UplinkSecurityAmmo
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Sheriff
+
+- type: listing
+  id: UplinkSecurityPistolMagazineRubber
+  name:  uplink-security-magazinepistol-rubber-name
+  description: uplink-security-magazinepistol-rubber-desc
+  productEntity: NFBoxMagazinePistol35Rubber
   icon: { sprite: _NF/Objects/Storage/boxes.rsi, state: icon-magazine }
   cost:
     FrontierUplinkCoin: 1
@@ -602,22 +652,6 @@
           - SecurityUplink
 
 - type: listing
-  id: UplinkSecurityPistolMagazineRubber
-  name:  uplink-security-magazinepistol-rubber-40-name # Coyote uplink-security-magazinepistol-rubber-name < uplink-security-magazinepistol-rubber-40-name
-  description: uplink-security-magazinepistol-rubber-40-desc # Coyote uplink-security-magazinepistol-rubber-desc < uplink-security-magazinepistol-rubber-40-desc
-  productEntity: CSBoxMagazinePistol40Rubber
-  icon: { sprite: _NF/Objects/Storage/boxes.rsi, state: icon-magazine }
-  cost:
-    FrontierUplinkCoin: 1
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing # Coyote removed job restrictions for this ammo
   id: UplinkSecurity20RifleMagazineRubber
   name: uplink-security-20riflemagazine-rubber-name
   description: uplink-security-20riflemagazine-rubber-desc
@@ -632,8 +666,13 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
-- type: listing # Coyote removed job restrictions for this ammo
+- type: listing
   id: UplinkSecurity30RifleMagazineRubber
   name: uplink-security-30riflemagazine-rubber-name
   description: uplink-security-30riflemagazine-rubber-desc
@@ -648,6 +687,31 @@
       whitelist:
         tags:
         - SecurityUplink
+    - !type:BuyerJobCondition
+        whitelist:
+          - Bailiff
+          - SeniorOfficer
+          - Sheriff
+
+- type: listing
+  id: UplinkSecurityMagazineSubMachineGunRubber
+  name:  uplink-security-smgmagazine-rubber-name
+  description: uplink-security-smgmagazine-rubber-desc
+  productEntity: NFBoxMagazinePistolSubMachineGun35Rubber
+  icon: { sprite: _NF/Objects/Storage/boxes.rsi, state: icon-magazine }
+  cost:
+    FrontierUplinkCoin: 1
+  categories:
+    - UplinkSecurityAmmo
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - Sheriff
 
 - type: listing
   id: UplinkSecurityHypo
@@ -689,14 +753,14 @@
         - Brigmedic
         - Sheriff
 
-- type: listing # Coyote removed job restrictions for this gear
+- type: listing
   id: UplinkSecurityMedkit
   name:  uplink-security-medkit-name
   description: uplink-security-medkit-desc
   productEntity: MedkitCombatFilled
   icon: { sprite: _NF/Objects/Specific/Medical/firstaidkits.rsi, state: blackkit } # Frontier: _NF prefix
   cost:
-    FrontierUplinkCoin: 10
+    FrontierUplinkCoin: 2
   categories:
     - UplinkSecurityUtility
   conditions:
@@ -707,6 +771,7 @@
     - !type:BuyerJobCondition
       whitelist:
         - Brigmedic
+        - Sheriff
 
 - type: listing
   id: UplinkSecurityInspector
@@ -756,28 +821,12 @@
         tags:
           - SecurityUplink
 
-- type: listing # Coyote removed job restrictions for this weapon
+- type: listing
   id: UplinkSecurityCaptainSword
   name:  uplink-security-captainsword-name
   description: uplink-security-captainsword-desc
   productEntity: ClothingBeltSheathFilled
   icon: { sprite: Objects/Weapons/Melee/captain_sabre.rsi, state: icon }
-  cost:
-    FrontierUplinkCoin: 5 #Coyote changed 5>8
-  categories:
-    - UplinkSecurityWeapons
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
-- type: listing # Coyote added NFSD esword. for some reason this was here and didnt work...
-  id: UplinkSecurityEnergySword
-  name:  uplink-security-energysword-name
-  description: uplink-security-energysword-desc
-  productEntity: EnergySwordNfsd
-  icon: { sprite: Objects/Weapons/Melee/e_sword.rsi, state: icon }
   cost:
     FrontierUplinkCoin: 8
   categories:
@@ -787,8 +836,13 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
-- type: listing # Coyote removed job restrictions for this gear
+- type: listing
   id: UplinkSecurityHammer
   name:  uplink-security-hammer-name
   description: uplink-security-hammer-desc
@@ -803,6 +857,11 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
 - type: listing
   id: UplinkSecurityTeleShield
@@ -820,7 +879,7 @@
         tags:
           - SecurityUplink
 
-- type: listing # Coyote removed job restrictions for this gear
+- type: listing
   id: UplinkSecurityEnergyShield
   name:  uplink-security-energyshield-name
   description: uplink-security-energyshield-desc
@@ -835,8 +894,13 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
-- type: listing # Coyote removed job restrictions for this gear
+- type: listing
   id: UplinkSecuritySwat
   name:  uplink-security-swat-name
   description: uplink-security-swat-desc
@@ -851,6 +915,11 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
 - type: listing
   id: UplinkSecuritySpeedloader
@@ -932,55 +1001,23 @@
         tags:
           - SecurityUplink
 
-#- type: listing
-#  id: UplinkSecurityCash1000
-#  name:  uplink-security-cash1000-name
-#  description: uplink-security-cash1000-desc
-#  productEntity: SpaceCash1000
-#  icon: { sprite: Objects/Economy/cash.rsi, state: cash_1000 }
-#  cost:
-#    FrontierUplinkCoin: 1
-#  categories:
-#    - UplinkSecurityUtility
-#  conditions:
-#    - !type:StoreWhitelistCondition
-#      whitelist:
-#        tags:
-#          - SecurityUplink
+- type: listing
+  id: UplinkSecurityCash1000
+  name:  uplink-security-cash1000-name
+  description: uplink-security-cash1000-desc
+  productEntity: SpaceCash1000
+  icon: { sprite: Objects/Economy/cash.rsi, state: cash_1000 }
+  cost:
+    FrontierUplinkCoin: 1
+  categories:
+    - UplinkSecurityUtility
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - SecurityUplink
 
-#- type: listing #coyote offering better selling options
-#  id: UplinkSecurityCash10000
-#  name:  uplink-security-cash10000-name
-#  description: uplink-security-cash10000-desc
-#  productEntity: SpaceCash10000
-#  icon: { sprite: Objects/Economy/cash.rsi, state: cash_10000 }
-#  cost:
-#    FrontierUplinkCoin: 10 # bulk sell fucs
-#  categories:
-#    - UplinkSecurityUtility
-#  conditions:
-#    - !type:StoreWhitelistCondition
-#      whitelist:
-#        tags:
-#          - SecurityUplink
-
-#- type: listing #coyote offering better selling options
-#  id: UplinkSecurityCash100000
-#  name:  uplink-security-cash100000-name
-#  description: uplink-security-cash100000-desc
-#  productEntity: SpaceCash100000
-#  icon: { sprite: Objects/Economy/cash.rsi, state: cash_100000 }
-#  cost:
-#    FrontierUplinkCoin: 100 # bulk sell fucs
-#  categories:
-#    - UplinkSecurityUtility
-#  conditions:
-#    - !type:StoreWhitelistCondition
-#      whitelist:
-#        tags:
-#          - SecurityUplink
-
-- type: listing # Coyote removed job restrictions from this gear
+- type: listing
   id: UplinkSecurityEmpGrenadeBox
   name:  uplink-security-empgrenade-box-name
   description: uplink-security-empgrenade-box-desc
@@ -995,6 +1032,11 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
 - type: listing
   id: UplinkSecuritySmokeGrenadeBox
@@ -1044,7 +1086,7 @@
         tags:
           - SecurityUplink
 
-- type: listing # Coyote removed job restriction from this gear
+- type: listing
   id: UplinkSecurityBreachingChargesBox
   name:  uplink-security-breachingcharge-box-name
   description: uplink-security-breachingcharge-box-desc
@@ -1059,15 +1101,20 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
-- type: listing # Coyote removed job restriction from this gear
+- type: listing
   id: UplinkSecurityHoverbikeNfsdFlatpack
   name:  uplink-security-hoverbike-name
   description: uplink-security-hoverbike-desc
   productEntity: HoverbikeNfsdFlatpack
   icon: { sprite: _NF/Objects/Vehicles/hoverbike.rsi, state: vehicle }
   cost:
-    FrontierUplinkCoin: 3
+    FrontierUplinkCoin: 10
   categories:
     - UplinkSecurityUtility
   conditions:
@@ -1075,6 +1122,11 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Bailiff
+        - SeniorOfficer
+        - Sheriff
 
 - type: listing
   id: UplinkSecurityLethalArmory
@@ -1166,22 +1218,6 @@
         tags:
           - SecurityUplink
 
-- type: listing # Coyote added EMP grenade mags for ship weapons
-  id: UplinkSecurityEmpGrenadeAmmoMags
-  name:  uplink-security-emp-ammo-mags-name
-  description: uplink-security-emp-ammo-mags-desc
-  productEntity: NFMagazineGrenadeEMP
-  icon: { sprite: Objects/Weapons/Guns/Ammunition/Magazine/Grenade/grenade_cartridge.rsi, state: icon}
-  cost:
-    FrontierUplinkCoin: 2
-  categories:
-    - UplinkSecurityAmmo
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - SecurityUplink
-
 - type: listing
   id: UplinkSecurityTrackingDartsAmmo
   name:  uplink-security-trackingdart-ammo-name
@@ -1214,7 +1250,7 @@
         tags:
           - SecurityUplink
 
-- type: listing # Coyote added Bailiff and Senior Officer jobs to this gear
+- type: listing
   id: UplinkSecurityContrabandForensicsModule
   name:  uplink-security-contraband-forensics-module-name
   description: uplink-security-contraband-forensics-module-desc
@@ -1232,5 +1268,3 @@
     - !type:BuyerJobCondition
       whitelist:
         - Sheriff
-        - Bailiff
-        - SeniorOfficer

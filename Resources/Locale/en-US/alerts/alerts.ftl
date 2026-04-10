@@ -33,6 +33,9 @@ alerts-walking-desc = You are walking, moving at a slow pace.
 alerts-stunned-name = [color=yellow]Stunned[/color]
 alerts-stunned-desc = You're [color=yellow]stunned[/color]! Something is impairing your ability to move or interact with objects.
 
+alerts-knockdown-name = [color=yellow]Knocked Down[/color]
+alerts-knockdown-desc = You're [color=yellow]Knocked Down[/color]! Something has slipped or pushed you over, encumbering your movement.
+
 alerts-handcuffed-name = [color=yellow]Handcuffed[/color]
 alerts-handcuffed-desc = You're [color=yellow]handcuffed[/color] and can't use your hands. If anyone drags you, you won't be able to resist.
 
@@ -63,23 +66,17 @@ alerts-internals-desc = Toggles your gas tank internals on or off.
 alerts-piloting-name = Piloting Shuttle
 alerts-piloting-desc = You are piloting a shuttle. Click the alert to stop.
 
-alerts-hunger-overfed-name = [color=green]Well Fed[/color]
-alerts-hunger-overfed-desc = You've had a big meal and are feeling great!
-
-alerts-hunger-name = [color=yellow]Hungry[/color]
-alerts-hunger-desc = You are hungry, and it's making you feel a bit sluggish
+alerts-hunger-name = [color=yellow]Peckish[/color]
+alerts-hunger-desc = Some food would be good right about now.
 
 alerts-stamina-name = Stamina
 alerts-stamina-desc = Stuns you if it is too low.
 
 alerts-starving-name = [color=red]Starving[/color]
-alerts-starving-desc = You're starving! The hunger pains make moving around a chore.
-
-alerts-thirsty-hydrated-name = [color=green]Hydrated[/color]
-alerts-thirsty-hydrated-desc = You're one well hydrated critter! Keep up the good work.
+alerts-starving-desc = You're severely malnourished. The hunger pains make moving around a chore.
 
 alerts-thirsty-name = [color=yellow]Thirsty[/color]
-alerts-thirsty-desc = You are thirsty, and it's making you feel a bit sluggish.
+alerts-thirsty-desc = Something to drink would be good right about now.
 
 alerts-parched-name = [color=red]Parched[/color]
 alerts-parched-desc = You're severely thirsty. The thirst makes moving around a chore.
@@ -122,3 +119,6 @@ alerts-revenant-corporeal-desc = You have manifested physically. People around y
 
 alerts-rooted-name = Rooted
 alerts-rooted-desc = You are attached to the ground. You can't slip, but you absorb fluids under you.
+
+alerts-stealthy-name = Pickpocketing
+alerts-stealthy-desc = Whether you are currently pickpocketing. Click to toggle.

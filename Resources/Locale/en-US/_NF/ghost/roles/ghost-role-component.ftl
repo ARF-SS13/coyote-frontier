@@ -12,7 +12,7 @@ ghost-role-information-clugg-name = Clugg
 ghost-role-information-clugg-description = Ugg! Clugg love eat meat. Find new home off space rock, make big hunt.
 
 ghost-role-information-clarpy-name = Clarpy
-ghost-role-information-clarpy-description = Avast ye mail! wanted by the TSF for crimes against mice.
+ghost-role-information-clarpy-description = Avast ye mail! wanted by Nanotrasen for crimes against mice.
 ghost-role-information-clarpy-rules = You are an old [color={role-type-pirate-color}][bold]{role-type-pirate-name}[/bold][/color] cat, help out the other pirates, and remember to take your meds.
 
 ghost-role-information-cult-cat-name = Blood Cult Cat
@@ -27,6 +27,9 @@ ghost-role-information-cappy-description = Stop resisting! Certified in lethal-f
 
 ghost-role-information-elcapo-name = El Capo
 ghost-role-information-elcapo-description = Found himself in jail after years of cat crimes.
+
+ghost-role-information-curie-name = Curie
+ghost-role-information-curie-description = Walking goo, in the shape of a cat.
 
 ghost-role-information-crispy-name = Crispy
 ghost-role-information-crispy-description = Mistakes were made.
@@ -90,10 +93,8 @@ nf-ghost-role-information-derelict-cyborg-description = You are a cyborg that's 
 nf-ghost-role-information-buddy-name = Buddy
 nf-ghost-role-information-buddy-description = You were constructed from a Build-A-Buddy kit. Become someone's best friend today!
 
-ghost-role-information-flarpy-name = Flarpy
-ghost-role-information-flarpy-description = A cute Freelancer cat here to run evil finances and foster evil friendship.
-ghost-role-information-flarpy-rules = You are an old [color={role-type-pirate-color}][bold]{role-type-pirate-name}[/bold][/color] cat, help the Freelancers, and count the beans on your paws.
-
-ghost-role-information-narpy-name = Narpy
-ghost-role-information-narpy-description = A cute NFSD cat here to run evil finances and foster evil friendship.
+ghost-role-information-greenhornpai-rules = You are a [color=fuchsia][bold]{greenhornpai-system-role-name}[/bold][/color]. Guide your master the best you can.
+                                        You don't remember any of your previous life, and you don't remember anything you learned as a ghost.
+                                        You are allowed to remember knowledge about the game in general, such as how to cook, how to use objects, etc.
+                                        You are absolutely [color=red]NOT[/color] allowed to remember, say, the name, appearance, etc. of your previous character.
 

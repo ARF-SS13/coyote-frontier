@@ -514,13 +514,13 @@
     - id: ClothingOuterArmorBulletproof
       prob: 0.4
     # Items
-    - id: NFAmmunitionBoxBigRifle20Overpressure # Coyote: Align ammotype with weapon from this fill
+    - id: NFAmmunitionBoxBigRifle30Overpressure
       prob: 0.7
-    - id: NFAmmunitionBoxBigRifle20Overpressure # Coyote: Align ammotype with weapon from this fill
+    - id: NFAmmunitionBoxBigRifle30Overpressure
       prob: 0.3
     - id: ClothingNeckIFFNeutral
       prob: 0.2
-    - id: NFAmmunitionBoxBigRifle20Overpressure # Coyote: Align ammotype with weapon from this fill
+    - id: NFAmmunitionBoxBigRifle30Overpressure
       prob: 0.1
     - id: AmmoTechFabCircuitboard
       prob: 0.1

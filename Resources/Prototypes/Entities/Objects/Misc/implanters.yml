@@ -32,6 +32,7 @@
       - SadTromboneImplant
       - LightImplant
       - BikeHornImplant
+      - WehImplant # Frontier
       - TrackingImplant
       - StorageImplant
       - FreedomImplant
@@ -47,6 +48,7 @@
       - FakeMindShieldImplant
       - RadioImplant
       - RadioImplantFreelance # Frontier
+      - ChameleonControllerImplant
       deimplantFailureDamage:
         types:
           Cellular: 50
@@ -127,7 +129,7 @@
 
 - type: entity
   id: BaseImplantOnlyImplanterSyndi
-  parent: [BaseImplantOnlyImplanter, BaseC3Contraband] # Frontier: BaseSyndicateContraband<BaseC4Contraband # Coyote: BaseC4Contraband<BaseC3Contraband
+  parent: [BaseImplantOnlyImplanter, BaseC3SyndicateContraband] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband
   name: syndicate implanter
   description: A compact disposable syringe exclusively designed for the injection of subdermal implants. Make sure to scrub it with soap or a rag to remove residual DNA after use!
   abstract: true
@@ -189,7 +191,7 @@
 - type: entity
   id: TrackingImplanter
   name: tracking implanter
-  parent: [ BaseC4ContrabandUnredeemable, BaseImplantOnlyImplanter ] # Frontier: add BaseC2ContrabandUnredeemable
+  parent: [ BaseC2ContrabandUnredeemable, BaseImplantOnlyImplanter ] # Frontier: add BaseC2ContrabandUnredeemable
   components:
     - type: Implanter
       implant: TrackingImplant
@@ -199,19 +201,15 @@
 - type: entity
   id: StorageImplanter
   name: storage implanter
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - BaseC4Contraband
+  parent: BaseImplantOnlyImplanterSyndi
   components:
     - type: Implanter
       implant: StorageImplant
 
 - type: entity
   id: FreedomImplanter
-  name: freedomimplanter
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - BaseC4Contraband
+  name: freedom implanter
+  parent: BaseImplantOnlyImplanterSyndi
   components:
     - type: Implanter
       implant: FreedomImplant
@@ -219,9 +217,7 @@
 - type: entity
   id: RadioImplanter
   name: syndicate radio implanter
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - BaseC4Contraband
+  parent: BaseImplantOnlyImplanterSyndi
   components:
   - type: Implanter
     implant: RadioImplant
@@ -229,9 +225,7 @@
 - type: entity
   id: UplinkImplanter
   name: uplink implanter
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - BaseC4Contraband
+  parent: BaseImplantOnlyImplanterSyndi
   components:
   - type: Implanter
     implant: UplinkImplant
@@ -239,9 +233,7 @@
 - type: entity
   id: EmpImplanter
   name: EMP implanter
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - BaseC4Contraband
+  parent: BaseImplantOnlyImplanterSyndi
   components:
     - type: Implanter
       implant: EmpImplant
@@ -249,9 +241,7 @@
 - type: entity
   id: ScramImplanter
   name: scram implanter
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - BaseC4Contraband
+  parent: BaseImplantOnlyImplanterSyndi
   components:
     - type: Implanter
       implant: ScramImplant
@@ -259,19 +249,15 @@
 - type: entity
   id: DnaScramblerImplanter
   name: DNA scrambler implanter
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - BaseC4Contraband
+  parent: BaseImplantOnlyImplanterSyndi
   components:
     - type: Implanter
       implant: DnaScramblerImplant
 
 - type: entity
   id: ChameleonControllerImplanter
-  suffix: chameleon controller
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - BaseC4Contraband
+  name: chameleon controller implanter
+  parent: BaseImplantOnlyImplanterSyndi
   components:
   - type: Implanter
     implant: ChameleonControllerImplant
@@ -281,9 +267,7 @@
 - type: entity
   id: MicroBombImplanter
   name: micro-bomb implanter
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - BaseC3Contraband
+  parent: BaseImplantOnlyImplanterSyndi
   components:
     - type: Implanter
       implant: MicroBombImplant
@@ -291,9 +275,7 @@
 - type: entity
   id: MacroBombImplanter
   name: macro-bomb implanter
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - BaseC4Contraband
+  parent: BaseImplantOnlyImplanterSyndi
   components:
     - type: Implanter
       implant: MacroBombImplant
@@ -301,9 +283,7 @@
 - type: entity
   id: DeathRattleImplanter
   name: death rattle implanter
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - NotContraband
+  parent: BaseImplantOnlyImplanterSyndi
   components:
     - type: Implanter
       implant: DeathRattleImplant
@@ -311,9 +291,7 @@
 - type: entity
   id: DeathAcidifierImplanter
   name: death acidifier implanter
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - BaseC3Contraband
+  parent: BaseImplantOnlyImplanterSyndi
   components:
   - type: Implanter
     implant: DeathAcidifierImplant
@@ -321,9 +299,7 @@
 - type: entity
   id: FakeMindShieldImplanter
   name: fake mindshield implanter
-  parent:
-  - BaseImplantOnlyImplanterSyndi
-  - BaseC4Contraband
+  parent: BaseImplantOnlyImplanterSyndi
   components:
   - type: Implanter
     implant: FakeMindShieldImplant
@@ -333,7 +309,7 @@
 - type: entity
   id: MindShieldImplanter
   name: mindshield implanter
-  parent: [ NotContraband, BaseImplantOnlyImplanter ] # Frontier: add BaseC2ContrabandUnredeemable
+  parent: [ BaseC2ContrabandUnredeemable, BaseImplantOnlyImplanter ] # Frontier: add BaseC2ContrabandUnredeemable
   suffix: mindshield
   components:
     - type: Implanter
@@ -344,9 +320,7 @@
 - type: entity
   id: RadioImplanterCentcomm
   name: centcomm radio implanter
-  parent:
-  - BaseImplantOnlyImplanter
-  - BaseC4Contraband
+  parent: BaseImplantOnlyImplanter
   components:
   - type: Implanter
     implant: RadioImplantCentcomm
@@ -354,9 +328,7 @@
 - type: entity
   id: DeathRattleImplanterCentcomm
   name: centcomm death rattle implanter
-  parent:
-  - BaseImplantOnlyImplanter
-  - BaseC4Contraband
+  parent: BaseImplantOnlyImplanter
   components:
   - type: Implanter
     implant: DeathRattleImplantCentcomm

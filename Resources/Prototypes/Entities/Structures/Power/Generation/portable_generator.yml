@@ -131,10 +131,10 @@
   name: P.A.C.M.A.N. portable generator # Frontier: no -type
   description: |-
     A flexible backup generator for powering a variety of equipment.
-    Runs off solid plasma sheets and is rated for up to 32 kW.
+    Runs off solid plasma sheets and is rated for up to 25 kW.
   parent: PortableGeneratorSwitchableBase
   id: PortableGeneratorPacman
-  suffix: Plasma, 10-32(20) kW
+  suffix: Plasma, 20 kW #Fronter 20>15
   components:
     - type: Sprite
       layers:
@@ -157,17 +157,19 @@
     - type: Machine
       board: PortableGeneratorPacmanMachineCircuitboard
     - type: FuelGenerator
-      minTargetPower: 10000
-      maxTargetPower: 32000
-      targetPower: 20000
-      optimalPower: 20000
+      minTargetPower: 1000
+      maxTargetPower: 30000 #Frontier 25000<30000
+      targetPower: 20000 #Frontier 15000<20000
+      optimalPower: 20000 #Frontier 15000<20000
+      # 45 minutes at max output
       optimalBurnRate: 0.011111
-      clockstepConstant: 4000
+      # a decent curve
+      fuelEfficiencyConstant: 0.95
     - type: SolidFuelGeneratorAdapter
       fuelMaterial: FuelGradePlasma # Frontier: Plasma<FuelGradePlasma
       multiplier: 0.01
     - type: MaterialStorage
-      storageLimit: 120000 # 3000>12000 to let people see how much power they have in their silly stack of fuel
+      storageLimit: 3000
       materialWhiteList: [Plasma, FuelGradePlasma, RawPlasma, Skrungle] # Frontier: add FuelGradePlasma, RawPlasma, Scrungle
     - type: PortableGenerator
       startChance: 0.8
@@ -191,6 +193,7 @@
     # Frontier: magnet pickup, fuel adapter
     - type: MaterialStorageMagnetPickup
       range: 0.30
+      magnetEnabled: true # Frontier
     - type: FuelGradeAdapter
       conversions:
       - input: Plasma
@@ -208,10 +211,10 @@
   name: S.U.P.E.R.P.A.C.M.A.N. portable generator # Frontier: no -type
   description: |-
     An advanced generator for powering departments.
-    Runs off uranium sheets and is rated for up to 60 kW.
+    Runs off uranium sheets and is rated for up to 50 kW.
   parent: PortableGeneratorSwitchableBase
   id: PortableGeneratorSuperPacman
-  suffix: Uranium, 15-60(30) kW
+  suffix: Uranium, 30 kW
   components:
     - type: Sprite
       layers:
@@ -234,17 +237,19 @@
     - type: Machine
       board: PortableGeneratorSuperPacmanMachineCircuitboard
     - type: FuelGenerator
-      minTargetPower: 15000
-      maxTargetPower: 60000
+      minTargetPower: 5000
+      maxTargetPower: 50000
       targetPower: 30000
       optimalPower: 30000
+      # 45 minutes at full power
       optimalBurnRate: 0.0111111
-      clockstepConstant: 8000
+      # still decent power curve
+      fuelEfficiencyConstant: 0.75
     - type: SolidFuelGeneratorAdapter
       fuelMaterial: FuelGradeUranium # Frontier: Uranium<FuelGradeUranium
       multiplier: 0.01
     - type: MaterialStorage
-      storageLimit: 120000
+      storageLimit: 3000
       materialWhiteList: [Uranium, FuelGradeUranium, RawUranium, Skrungle] # Frontier: add FuelGradeUranium, RawUranium, Skrungle
     - type: PortableGenerator
     - type: UpgradePowerSupplier
@@ -263,6 +268,7 @@
     # Frontier: magnet pickup, fuel adapter
     - type: MaterialStorageMagnetPickup
       range: 0.30
+      magnetEnabled: true # Frontier
     - type: FuelGradeAdapter
       conversions:
       - input: Uranium
@@ -280,11 +286,11 @@
   name: J.R.P.A.C.M.A.N. portable generator # Frontier: no -type
   description: |-
     A small generator capable of powering individual rooms, in case of emergencies.
-    Runs off welding fuel or ethanol. It is rated for up to 15 kW.
+    Runs off welding fuel and is rated for up to 15 kW.
     Rated ages 3 and up.
   parent: PortableGeneratorBase
   id: PortableGeneratorJrPacman
-  suffix: Welding Fuel, 4-15(10) kW
+  suffix: Welding Fuel, 5 kW
   components:
     - type: AmbientSound
       range: 4
@@ -323,20 +329,22 @@
     - type: Machine
       board: PortableGeneratorJrPacmanMachineCircuitboard
     - type: FuelGenerator
-      targetPower: 10000
-      minTargetPower: 4000
-      optimalPower: 10000
+      targetPower: 6000 # Frontier - 2000<6000
+      minTargetPower: 1000
+      optimalPower: 6000 # Frontier - 2000<6000
       maxTargetPower: 15000
-      clockstepConstant: 8000
+      # 30~ minutes at full tank.
+      optimalBurnRate: 0.11111111
+      # Shallow curve
+      fuelEfficiencyConstant: 0.5
     - type: ChemicalFuelGeneratorAdapter
       solution: tank
       reagents:
-        Ethanol: 1 # coyote - ethically sourced fuel so botanists keep winning
         WeldingFuel: 1
     - type: SolutionContainerManager
       solutions:
         tank:
-          maxVol: 1000 # Frontier - 50<200, Coyote 400>1000 to let it run overnight
+          maxVol: 200 # Frontier - 50<200
     - type: RefillableSolution
       solution: tank
     - type: PortableGenerator

@@ -2,24 +2,24 @@
 # Sources: https://discord.com/channels/1123826877245694004/1182366744266932224/1182366744266932224
 #          https://docs.google.com/document/d/1jDX9numj-VHKBJ2FiiEo1GIlHESffOUIHIIXaqhEnls/edit?pli=1#heading=h.ru93r8n0fb7m
 # These forms should be kept up-to-date with changes to Space Law.
-#    - id: PaperWrittenNfsdContrabandAmnesty CS - Removed to comply with contra and spacelaw reworks
+
 # Filled Folder
 - type: entity
   id: FillNfsdForms
   abstract: true
   components:
   - type: StorageFill
-    contents: # CS - changed bailiff and sheriff to all senior staff on majority of papers, removed amnesty
+    contents:
     - id: PaperWrittenNfsdWarrant
     - id: PaperWrittenNfsdReport
     - id: PaperWrittenNfsdArrestWarrant
     - id: PaperWrittenNfsdArrestReport
     - id: PaperWrittenNfsdDutyLog
     - id: PaperWrittenNfsdAuthorization
-    - id: PaperWrittenNfsdContrabandTurnover # CS - added C4 contraband log
-    - id: PaperWrittenNfsdContrabandLicense
+    - id: PaperWrittenNfsdContrabandAmnesty
+    - id: PaperWrittenNfsdContrabandTurnover
     - id: PaperWrittenNfsdContrabandPermit
-    - id: PaperWrittenNfsdSelfDutyLog # CS - Add self report duty log
+    - id: PaperWrittenNFSDWritOfTheFrontier
     - id: Paper
       prob: 0.5
     - id: Paper
@@ -65,7 +65,7 @@
 
 
 
-      [color=#AAAAAA]This Warrant is only valid when requested by an agent of the NFSD and approved, signed, and stamped by a [italic]distinct[/italic] (unless impossible) senior ranked officer or a Station Representative.[/color]
+      [color=#AAAAAA]This Warrant is only valid when requested by an agent of the NFSD and approved, signed, and stamped by a [italic]distinct[/italic] (unless impossible) officer ranked Bailiff or above or a Station Representative.[/color]
 
 - type: entity # Creator: Starly (Shaw Clifflower)
   id: PaperWrittenNfsdReport
@@ -80,17 +80,17 @@
       [head=2]After Action Report[/head]
 
       [bold]Case #:[/bold]
-      [bold]Offending Vessel:[/bold]
+      [bold]Offending Vessel:[/bold] 
 
-      [bold]Suspect:[/bold]
-      [bold]Charges (list any escalations):[/bold]
+      [bold]Suspect:[/bold] 
+      [bold]Charges (list any escalations):[/bold] 
 
-      [bold]Suspect:[/bold]
-      [bold]Charges (list any escalations):[/bold]
+      [bold]Suspect:[/bold] 
+      [bold]Charges (list any escalations):[/bold] 
 
-      [bold]Responding Vessel:[/bold]
-      [bold]Time of Incident:[/bold]
-      [bold]Officers on Board:[/bold]
+      [bold]Responding Vessel:[/bold] 
+      [bold]Time of Incident:[/bold] 
+      [bold]Officers on Board:[/bold] 
 
       [head=3]Evidence Collected[/head]
       List all evidence collected below and the officer in possession.
@@ -109,7 +109,7 @@
 
 
 
-      [color=#AAAAAA]I, a [italic]senior officer[/italic] of the NFSD, or an agent acting on their behalf, certify that everything written in this report is correct and truthful. I am aware of the penalties should anything in this report be proven incorrect, falsified, or exaggerated.[/color]
+      [color=#AAAAAA]I, the [italic]Bailiff or Sheriff[/italic] of the NFSD, or an agent acting on their behalf, certify that everything written in this report is correct and truthful. I am aware of the penalties should anything in this report be proven incorrect, falsified, or exaggerated.[/color]
 
 - type: entity
   id: PaperWrittenNfsdArrestWarrant
@@ -124,29 +124,29 @@
       [head=2]Arrest Warrant[/head]
 
       [head=2]Defendant(s)[/head]
-      [bold]Name:[/bold]
-      [bold]Description:[/bold]
+      [bold]Name:[/bold] 
+      [bold]Description:[/bold] 
 
-      [bold]Name:[/bold]
-      [bold]Description:[/bold]
+      [bold]Name:[/bold] 
+      [bold]Description:[/bold] 
 
-      [bold]Name:[/bold]
-      [bold]Description:[/bold]
+      [bold]Name:[/bold] 
+      [bold]Description:[/bold] 
 
       [head=2]Offense Details[/head]
-      [bold]Case #:[/bold]
-      [bold]Approximate Time of Offense:[/bold]
-      [bold]Location of Offense:[/bold]
-      [bold]Charges:[/bold]
+      [bold]Case #:[/bold] 
+      [bold]Approximate Time of Offense:[/bold] 
+      [bold]Location of Offense:[/bold] 
+      [bold]Charges:[/bold] 
 
       [head=2]Requestor Information[/head]
-      [bold]Requesting Officer:[/bold]
-      [bold]Authorizing Officer:[/bold]
-      [bold]Time of Authorization:[/bold]
+      [bold]Requesting Officer:[/bold] 
+      [bold]Authorizing Officer:[/bold] 
+      [bold]Time of Authorization:[/bold] 
 
 
 
-      [color=#AAAAAA]This warrant is only valid when requested by an agent of the NFSD, and approved, signed and stamped by a distinct (unless impossible) senior ranked officer, or a Station Representative.[/color]
+      [color=#AAAAAA]This warrant is only valid when requested by an agent of the NFSD, and approved, signed and stamped by a distinct (unless impossible) officer ranked Bailiff or above, or a Station Representative.[/color]
 
 - type: entity # Creator: Kwentov (Vica)
   id: PaperWrittenNfsdArrestReport
@@ -161,23 +161,23 @@
       [head=2]Arrest Report[/head]
 
       [head=2]Incident Details[/head]
-      [bold]Case #:[/bold]
-      [bold]Time of Arrest:[/bold]
-      [bold]Location of Arrest:[/bold]
-      [bold]Charges:[/bold]
+      [bold]Case #:[/bold] 
+      [bold]Time of Arrest:[/bold] 
+      [bold]Location of Arrest:[/bold] 
+      [bold]Charges:[/bold] 
 
       [head=2]Arrested Person(s)[/head]
-      [bold]Name:[/bold]
-      [bold]Description:[/bold]
-      [bold]Fine or Punishment:[/bold]
+      [bold]Name:[/bold] 
+      [bold]Description:[/bold] 
+      [bold]Fine or Punishment:[/bold] 
 
-      [bold]Name:[/bold]
-      [bold]Description:[/bold]
-      [bold]Fine or Punishment:[/bold]
+      [bold]Name:[/bold] 
+      [bold]Description:[/bold] 
+      [bold]Fine or Punishment:[/bold] 
 
       [head=2]Arrestor[/head]
-      [bold]Arresting Officer:[/bold]
-      [bold]Supervisor:[/bold]
+      [bold]Arresting Officer:[/bold] 
+      [bold]Supervisor:[/bold] 
 
 
 
@@ -198,28 +198,28 @@
       [head=2]Duty Log[/head]
 
       [head=2]Sheriff[/head]
-      [bold]Name:[/bold]
-      [bold]Sign On Time:[/bold]
-      [bold]Sign Off Time:[/bold]
+      [bold]Name:[/bold] 
+      [bold]Sign On Time:[/bold] 
+      [bold]Sign Off Time:[/bold] 
 
       [head=2]Officers[/head]
-      [bold]Name:[/bold]
+      [bold]Name:[/bold] 
       [bold]Position:[/bold]
-      [bold]Sign On Time:[/bold]
-      [bold]Sign Off Time:[/bold]
+      [bold]Sign On Time:[/bold] 
+      [bold]Sign Off Time:[/bold] 
 
-      [bold]Name:[/bold]
+      [bold]Name:[/bold] 
       [bold]Position:[/bold]
-      [bold]Sign On Time:[/bold]
-      [bold]Sign Off Time:[/bold]
+      [bold]Sign On Time:[/bold] 
+      [bold]Sign Off Time:[/bold] 
 
-      [bold]Name:[/bold]
+      [bold]Name:[/bold] 
       [bold]Position:[/bold]
-      [bold]Sign On Time:[/bold]
-      [bold]Sign Off Time:[/bold]
+      [bold]Sign On Time:[/bold] 
+      [bold]Sign Off Time:[/bold] 
 
 
-      [color=#AAAAAA]This Form is considered TSF Sensitive Data, Class 2, and is for internal NFSD use only.[/color]
+      [color=#AAAAAA]This Form is considered NT Sensitive Data, Class 2, and is for internal NFSD use only.[/color]
 
 
 - type: entity # Based on form made by Blumbee (Aki Suboshi)
@@ -234,115 +234,84 @@
       [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Contraband Turnover Receipt[/head]
 
-      [bold]Contraband Holder:[/bold]
-      [bold]Total Contraband Value (FUC):[/bold]
+      [bold]Contraband Holder:[/bold] 
+      [bold]Total Contraband Value (FUC):[/bold] 
       [bold]Payout per FUC:[/bold] [color=#ff0000]$2,000[/color]
-      [bold]Payout Total:[/bold]
+      [bold]Payout Total:[/bold] 
 
       [bold]C2 Contraband:[/bold]
-          [bullet/]
-          [bullet/]
-          [bullet/]
+          [bullet/] 
+          [bullet/] 
+          [bullet/] 
 
       [bold]C3 Contraband:[/bold]
-          [bullet/]
-          [bullet/]
-          [bullet/]
+          [bullet/] 
+          [bullet/] 
+          [bullet/] 
 
-      [bold]C4 Contraband:[/bold]
-          [bullet/]
-          [bullet/]
-          [bullet/]
-
-      [bold]Shift Time:[/bold]
+      [bold]Shift Time:[/bold] 
 
 
 
-      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of either an NFSD senior officer or Frontier Civil Command.[/color]
+      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of Frontier Command (Sheriff or Station Representative).[/color]
 
-#- type: entity # Based on form made by Blumbee (Aki Suboshi)
-#  id: PaperWrittenNfsdContrabandAmnesty
-#  name: contraband amnesty agreement
-#  categories: [ HideSpawnMenu ]
-#  parent: Paper
-#  components:
-#  - type: Paper
-#    content: |2 # If updating this, update PaperWrittenFrontierContrabandAmnesty
-#      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Frontier Sheriff's Department[/bold][/color]
-#      [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
-#      [head=2]Contraband Amnesty Agreement[/head]
-#
-#      [head=3]Contraband Holder[/head]
-#          [bold]Name:[/bold]
-#          [bold]Species:[/bold]
-#          [bold]Vessel IFF:[/bold]
-#
-#      [bold]Payout per FUC:[/bold] [color=#ff0000]$2,000[/color]
-#      [bold]Shift Time:[/bold]
-#
-#      This document is a contract between the above Contraband Holder and Frontier Command.
-#
-#      Any crimes of contraband possession for the Contraband Holder will be waived so long as all class 3 contraband items, and any class 2 contraband items not subject to a Class 2 Contraband Permit are turned in within reasonable time (subject to the clause below), and not used for malicious purposes. Noncompliance with this document results in voiding any standing Class 2 Contraband Permits.
-#
-#      If the Contraband Holder is not paid in full at the above rate for any contraband turned in, they may remain in possession of the contraband without penalty at their discretion.
-#
-#
-#
-#      [color=#AAAAAA]This form is void without the signatures of both Parties and a stamp of Frontier Command (Sheriff or Station Representative).[/color]
-
-- type: entity # Based on form made by Blumbee (Aki Suboshi) CS - renamed to license
-  id: PaperWrittenNfsdContrabandLicense
-  name: class 2 contraband license
+- type: entity # Based on form made by Blumbee (Aki Suboshi)
+  id: PaperWrittenNfsdContrabandAmnesty
+  name: contraband amnesty agreement
   categories: [ HideSpawnMenu ]
   parent: Paper
   components:
   - type: Paper
-    content: |2 # If updating this, update PaperWrittenFrontierContrabandLicense
+    content: |2 # If updating this, update PaperWrittenFrontierContrabandAmnesty
       [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Frontier Sheriff's Department[/bold][/color]
       [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
-      [head=2]Class 2 Contraband License[/head]
+      [head=2]Contraband Amnesty Agreement[/head]
 
-      [bold]License Holder:[/bold]
-      [bold]Holder Crew:[/bold]
-          [bullet/]
-          [bullet/]
-          [bullet/]
+      [head=3]Contraband Holder[/head]
+          [bold]Name:[/bold] 
+          [bold]Species:[/bold] 
+          [bold]Vessel IFF:[/bold] 
 
-      [bold]Shift Time:[/bold]
+      [bold]Payout per FUC:[/bold] [color=#ff0000]$2,000[/color]
+      [bold]Shift Time:[/bold] 
 
-      This License allows the Holder and crew, as listed above, to possess and use class 2 contraband.
-      Unlawful use of any contraband may void this License.
+      This document is a contract between the above Contraband Holder and Frontier Command.
+
+      Any crimes of [bold]contraband possession[/bold] for the Contraband Holder [bold]will be waived so long as all[/bold] class 3 contraband items, and any class 2 contraband items not subject to a Class 2 Contraband Permit [bold]are turned in within reasonable time[/bold] (subject to the clause below), and [bold]not used for malicious purposes[/bold]. Noncompliance with this document results in voiding any standing Class 2 Contraband Permits.
+
+      If the Contraband Holder is not paid in full at the above rate for any contraband turned in, they may remain in possession of the contraband without penalty at their discretion.
 
 
 
-      [color=#AAAAAA]This License is void without the signature of the Holder and the signature and stamp of an NFSD senior officer or Frontier Civil Command.[/color]
+      [color=#AAAAAA]This form is void without the signatures of both Parties and a stamp of Frontier Command (Sheriff or Station Representative).[/color]
 
-- type: entity # Based on form made by Blumbee (Aki Suboshi) CS - added by fuzzy_fuzzy
+- type: entity # Based on form made by Blumbee (Aki Suboshi)
   id: PaperWrittenNfsdContrabandPermit
-  name: class 3 contraband permit
+  name: class 2 contraband permit
   categories: [ HideSpawnMenu ]
   parent: Paper
   components:
   - type: Paper
     content: |2 # If updating this, update PaperWrittenFrontierContrabandPermit
-             [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Frontier Sheriff's Department[/bold][/color]
-             [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
-             [head=2]Class 3 Contraband Permit[/head]
+      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Frontier Sheriff's Department[/bold][/color]
+      [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [head=2]Class 2 Contraband Permit[/head]
 
-             [bold]Permit Holder:[/bold]
-             [bold]Holder Crew:[/bold]
-             [bullet/]
-             [bullet/]
-             [bullet/]
+      [bold]Permit Holder:[/bold] 
+      [bold]Holder Crew:[/bold]
+          [bullet/] 
+          [bullet/] 
+          [bullet/] 
 
-             [bold]Shift Time:[/bold]
+      [bold]Shift Time:[/bold] 
 
-             This Permit allows the Holder and crew, as listed above, to possess and use a specified single piece of class 3 contraband and any quantity of compatible ammunition if applicable.
-            Unlawful use of any contraband may void this License.
+      This Permit allows the Holder and crew, as listed above, to [bold]possess and use class 2 contraband[/bold].
+      Non-compliance with a Contraband Amnesty agreement voids this Permit.
+      Refer to §6.1.4 of Space Law for a full definition of class 2 contraband.
 
 
 
-      [color=#AAAAAA]This permit is void without the signature of the Holder and the signature and stamp of an NFSD senior officer or Frontier Civil Command.[/color]
+      [color=#AAAAAA]This Permit is void without the signature of the Holder and the signature and stamp of the Sheriff[/color]
 
 - type: entity # Based on form made by Starly (Shaw Clifflower)
   id: PaperWrittenNfsdAuthorization
@@ -362,68 +331,75 @@
 
       [bold]Issuing Frontier Command:[/bold]
           [bullet]XXXXXXXX, Station Representative
-          [bullet]XXXXXXXX, NFSD senior staff
+          [bullet]XXXXXXXX, Sheriff
 
-      This document authorizes the above vessel and its captain to assist and cooperate with the NFSD and Frontier authorities in neutralizing hostile bluespace threats to Frontier. These include, but are not limited to
+      This document authorizes the above vessel and its captain to assist and [bold]cooperate with the NFSD and Frontier authorities[/bold] in neutralizing [bold]hostile bluespace threats[/bold] to Frontier. These include, but are not limited to:
           [bullet] Cultist vessels
           [bullet] Syndicate vessels
           [bullet] Wizard Federation vessels
           [bullet] Arcadia Industries vessels
 
-      This document does NOT deputize the authorized party. The authorized party is not granted special privileges to arrest, detain, and prosecute individuals associated with Nash Station or TSF.
+      This document [bold]does NOT deputize[/bold] the authorized party. The authorized party is not granted special privileges to arrest, detain, and prosecute individuals associated with Nanotrasen.
+
+      [bold]Any contraband[/bold] seized during operations aboard hostile vessels [bold]must be surrendered[/bold], either to the NFSD or the Station Representative, for a cash bounty. Failure to surrender contraband will lead to the forfeiture of this agreement, and the authorized party may be liable for criminal charges.
+
+      The authorized party is to [bold]keep a copy of this[/bold] document for inspection. The authorized party is expected to [bold]maintain contact with NFSD[/bold] command and/or the Station Representative to minimize casualties.
+
+      [bold]Before engaging[/bold] with hostile vessels, the authorized party is expected to [bold]follow any instructions given by the NFSD[/bold] for staging or other preparation prior to boarding.
+
+
+
+      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of Frontier Command (Sheriff or Station Representative).[/color]
+      
+- type: entity # Based on form made by Red
+  id: PaperWrittenNFSDWritOfTheFrontier
+  name: writ of the frontier
+  parent: Paper
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Paper
+    content: |2 
+      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Frontier Sheriff's Department[/bold][/color]
+      [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
+      [head=2]Writ of The Frontier[/head]
+      
+      [head=3]Contraband Holder[/head]
+          [bold]Name:[/bold] 
+          [bold]Species:[/bold] 
+          [bold]Vessel IFF:[/bold] 
+      
+      [bold]Holder Crew:[/bold]
+          [bullet/] 
+          [bullet/] 
+          [bullet/] 
+
+      [bold]Payout per FUC:[/bold] [color=#ff0000]$2,000[/color]
+      [bold]Shift Time:[/bold] 
+
+      This document is a contract between the above Contraband Holder and Frontier Command.
+
+      Any crimes of contraband possession for the Contraband Holder will be waived so long as all class 3 contraband items, and any class 2 contraband items not subject to a Class 2 Contraband Permit are turned in within reasonable time (subject to the clause below), and not used for malicious purposes. Noncompliance with this document results in voiding any standing Class 2 Contraband Permits.
+
+      If the Contraband Holder is not paid in full at the above rate for any contraband turned in, they may remain in possession of the contraband without penalty at their discretion.
+
+      This Permit allows the Holder and crew, as listed above, to possess and use class 2 contraband.
+      Non-compliance with a Contraband Amnesty agreement voids this Permit.
+      Refer to §6.1.4 of Space Law for a full definition of class 2 contraband.
+
+      This document authorizes the above vessel and its captain to assist and cooperate with the NFSD and Frontier authorities in neutralizing hostile bluespace threats to Frontier. These include, but are not limited to:
+         [bullet] Cultist vessels
+         [bullet] Syndicate vessels
+         [bullet] Wizard Federation vessels
+         [bullet] Arcadia Industries vessels
+
+      This document does NOT deputize the authorized party. The authorized party is not granted special privileges to arrest, detain, and prosecute individuals associated with Nanotrasen.
 
       [bold]Any contraband seized during operations aboard hostile vessels must be surrendered, either to the NFSD or the Station Representative, for a cash bounty. Failure to surrender contraband will lead to the forfeiture of this agreement, and the authorized party may be liable for criminal charges.[/bold]
 
-      The authorized party is to keep a copy of this document for inspection. The authorized party is expected to maintain contact with NFSD command and/or Frontier Civil Command to minimize casualties.
+      The authorized party is to keep a copy of this document for inspection. The authorized party is expected to maintain contact with NFSD command and/or the Station Representative to minimize casualties.
 
       Before engaging with hostile vessels, the authorized party is expected to follow any instructions given by the NFSD for staging or other preparation prior to boarding.
 
 
 
-      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of an NFSD senior officer or Frontier Civil Command.[/color]
-
-- type: entity # Creator: Flick (Coyote Frontier)
-  id: PaperWrittenNfsdSelfDutyLog
-  name: self clocking log
-  categories: [ HideSpawnMenu ]
-  parent: Paper
-  components:
-  - type: Paper
-    content: |2
-      [color=#CE8723]░████░[/color]
-      [color=#CE8723]░████░[/color] [head=1][color=#779148]NFSD Self-Clocking Form[/head][/color]
-      [color=#CE8723]░░██░░[/color] [head=3][color=#48562A]Internal - Administration use only[/head][/color]
-
-      [head=2][color=#779148]Officer name:[/color] OFFICER NAME[/head]
-      [head=3][color=#48562A]Departmental role:[/color] OFFICER ROLE[/head]
-      [italic][color=#DB0A2D]The above officer is to be paid at-request by NFSD senior staff when capable. The amount agreed upon payable per hour is:[/color][/italic] [bold][color=#FF0C39]$50,000[/color][/bold]
-
-      [head=2][color=#895A2D]First shift[/color][/head]
-        •    Clock-in time:
-        •    Clock-out time:
-        •    Total time worked (hours payable):
-        •    Senior staff commissioned:
-
-      [head=2][color=#895A2D]Second shift[/color][/head]
-        •    Clock-in time:
-        •    Clock-out time:
-        •    Total time worked (hours payable):
-        •    Senior staff commissioned:
-
-      [head=2][color=#895A2D]Third shift[/color][/head]
-        •    Clock-in time:
-        •    Clock-out time:
-        •    Total time worked (hours payable):
-        •    Senior staff commissioned:
-
-      [head=2][color=#895A2D]Fourth shift[/color][/head]
-        •    Clock-in time:
-        •    Clock-out time:
-        •    Total time worked (hours payable):
-        •    Senior staff commissioned:
-
-      [head=2][color=#895A2D]Fifth shift[/color][/head]
-        •    Clock-in time:
-        •    Clock-out time:
-        •    Total time worked (hours payable):
-        •    Senior staff commissioned:
+      [color=#AAAAAA]This Permit is void without the signature of the Holder and the signature and stamp of the Sheriff[/color]

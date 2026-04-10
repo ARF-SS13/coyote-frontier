@@ -2,7 +2,6 @@
   id: NfsdPracticeStatic
   recipes:
   - NFAmmunitionBoxPistol35Practice
-  - CSAmmunitionBoxPistol40Practice
   - NFAmmunitionBoxPistol45Practice
   - NFAmmunitionBoxRifle20Practice
   - NFAmmunitionBoxRifle30Practice
@@ -26,12 +25,12 @@
   - NFAmmunitionBoxPistol35
   - NFAmmunitionBoxPistol35Overpressure
   - NFAmmunitionBoxPistol35Rubber
-  - CSAmmunitionBoxPistol40
-  - CSAmmunitionBoxPistol40Overpressure
-  - CSAmmunitionBoxPistol40Rubber
   - NFAmmunitionBoxPistol45
   - NFAmmunitionBoxPistol45Overpressure
   - NFAmmunitionBoxPistol45Rubber
+  - NFMagazineGrenadeEmpty
+  - NFGrenadeFlash
+  - NFGrenadeEMP
 
 - type: latheRecipePack
   id: NfsdToolsStatic
@@ -53,6 +52,10 @@
   - PowerCageMedium
   - PowerCageSmall
   - PowerCageRechargerCircuitboard
+  - NFClothingNeckCardNfsdWrit
+  - NFBaseClothingNeckHolsterThighNfsd
+  - NFBaseClothingNeckSheathThighNfsd
+  - JetpackNfsd
 
 - type: latheRecipePack
   id: NfsdTargetsStatic
@@ -81,3 +84,12 @@
   recipes:
   - GyroscopeNfsdMachineCircuitboard
   - ThrusterNfsdMachineCircuitboard
+
+- type: latheRecipePack
+  id: NfsdReportingStatic
+  recipes:
+  - CassetteTape
+  - TapeRecorder
+  - ClothingNeckBodyCameraNFSD
+  - Gavel
+  - GavelBlock

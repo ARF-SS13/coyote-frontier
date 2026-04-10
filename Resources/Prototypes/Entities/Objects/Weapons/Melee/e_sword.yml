@@ -95,6 +95,8 @@
       map: [ "blade" ]
   - type: Item
     sprite: Objects/Weapons/Melee/e_sword-inhands.rsi
+  - type: StaticPrice
+    price: 2500
 
 - type: entity
   name: energy dagger
@@ -390,7 +392,7 @@
     size: Small
     sprite: Objects/Weapons/Melee/hypereutactic_blade_inhands.rsi
   - type: Reflect
-    reflectProb: 1.0
+    reflectProb: .75 #Frontier: 1 < 0.75, total reflection is too OP, already changed on upstream
     spread: 75
 
 # Borgs

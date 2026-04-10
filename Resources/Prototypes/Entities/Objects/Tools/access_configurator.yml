@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseItem, BaseC4Contraband] # Frontier: Added BaseC4Contraband
+  parent: [BaseItem, BaseCommandContraband] # Frontier: Added BaseCommandContraband
   id: AccessConfigurator
   name: access configurator
   description: Used to modify the access level requirements for airlocks and other lockable devices.
@@ -55,8 +55,8 @@
       - HeadOfPersonnel # Frontier: reordered for "Station Representative"
       - StationTrafficController # Frontier
       # - Theatre # Frontier
-      - GenpopEnter # coyote: so turnstiles can be fixed
-      - GenpopLeave # coyote: so turnstiles can be fixed
+      - GenpopEnter
+      - GenpopLeave
       privilegedIdSlot:
         name: id-card-console-privileged-id
         ejectSound: /Audio/Machines/id_swipe.ogg
@@ -85,9 +85,7 @@
         AccessOverrider-privilegedId: !type:ContainerSlot
 
 - type: entity
-  parent:
-  - AccessConfigurator
-  - BaseC4Contraband
+  parent: AccessConfigurator
   id: AccessConfiguratorUniversal
   name: universal access configurator
   suffix: Admin

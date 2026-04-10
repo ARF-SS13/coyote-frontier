@@ -14,9 +14,9 @@
   - type: Clothing
     sprite: _NF/Objects/Weapons/Guns/SMGs/atreides.rsi
 
-- type: entity # Coyote: Converted to .40 caliber
+- type: entity
   id: NFWeaponSubMachineGunC20r
-  parent: [ CSBaseWeaponHeavySubMachineGunChamber40, CSBaseWeaponFrameHeavySubMachineGunCybersun ]
+  parent: [ NFBaseWeaponSubMachineGunChamber35, NFBaseWeaponFrameSubMachineGunCybersun ]
   name: C-20r
   description: |-
     An illegal firearm that is often used by the infamous nuclear operatives.
@@ -35,9 +35,9 @@
     steps: 6
     zeroVisible: true
 
-- type: entity # Coyote: Converted to .40 caliber
+- type: entity
   id: NFWeaponSubMachineGunDrozd
-  parent: [ BaseC2Contraband, CSBaseWeaponHeavySubMachineGunChamber40, CSBaseWeaponFrameHeavySubMachineGunNanotrasen ]
+  parent: [ BaseC2ContrabandUnredeemable, NFBaseWeaponSubMachineGunChamber35, NFBaseWeaponFrameSubMachineGunNanotrasen ]
   name: Drozd
   description: A fully automatic SMG.
   components: &drozdComponents
@@ -49,9 +49,9 @@
   - type: Clothing
     sprite: _NF/Objects/Weapons/Guns/SMGs/drozd.rsi
 
-- type: entity # Coyote: Converted to .40 caliber
+- type: entity
   id: NFWeaponSubMachineGunDrozdLessLethal # Frontier-specific rubber variant
-  parent: [ BaseC2Contraband, CSBaseWeaponHeavySubMachineGunChamber40Rubber, CSBaseWeaponFrameHeavySubMachineGunNanotrasen ]
+  parent: [ BaseC2ContrabandUnredeemable, NFBaseWeaponSubMachineGunChamber35Rubber, NFBaseWeaponFrameSubMachineGunNanotrasen ]
   name: Drozd
   description: A fully automatic SMG.
   suffix: Frontier, Less-Lethal
@@ -87,9 +87,9 @@
     boltClosed: null
 
 #region DeltaV
-- type: entity # Coyote: Converted to .40 caliber
+- type: entity
   id: NFWeaponSubMachineGunTypewriter
-  parent: [ BaseC2Contraband, CSBaseWeaponHeavySubMachineGunChamber40, CSBaseWeaponFrameHeavySubMachineGunFrontierGunsmith ]
+  parent: [ NFBaseWeaponSubMachineGunChamber35, NFBaseWeaponFrameSubMachineGunFrontierGunsmith ]
   name: Typewriter
   description: |-
     A modern take on the classic design used by mobsters throughout space and time.

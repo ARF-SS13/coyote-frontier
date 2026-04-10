@@ -6,37 +6,26 @@
 # GitHub: crystalHex (https://github.com/crystalHex)
 # Discord: ???
 
-# Coyote Modifications
-# Github: R3N0mon
-# Discord: r3n0mon
-
 # Shuttle Notes:
-# Archetypes = Cargo/Salvage/Merc
-# Halftypes = Engineering
-# Domestic Areas = Moderate
-# Coyote - Updated Piping, Updated Air Alarms, Moved Hardsuit Storage, Moved Gas Tank Dispensor, Moved Medicine Wall Locker, Moved Defib Cabinet, Replaced Plastic Plants with Real Plants, Replaced 1 Salvage Suit with Private Security Suit
-# Added Right Facing Thruster, Added Shower, Added 5 Cargo Racks, Added Scrap Processor, Added Salvage Techfab, Added Merc Techfab, Added Emu, Added Gaslock, Added Mining Canons, Added Rear Exterior Lights, Added Wallmounted Freezer
-
+# 
 - type: vessel
   id: DecadeDove
   parent: BaseVessel
-  name: LL3 Dove
+  name: DYS Dove
   description: Versatile expedition-capable multi-purpose light freighter.
-  price: 329000 # Coyote pricing GridAppraisal 61604.86 + LL3 x2.5 + TileCost 124800(416x300) + Exped (50k) = 328812.15
+  price: 57000
   category: Medium
   group: Expedition
   shuttlePath: /Maps/_NF/Shuttles/Expedition/decadedove.yml
   guidebookPage: Null
   class:
   - Expedition
-  - Cargo #Coyote
-  - Salvage #Coyote
   engine:
   - AME
 
 - type: gameMap
   id: DecadeDove
-  mapName: 'Dove'
+  mapName: 'DYS Dove'
   mapPath: /Maps/_NF/Shuttles/Expedition/decadedove.yml
   minPlayers: 0
   stations:
@@ -50,7 +39,6 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            ContractorInterview: [ 2, 2 ]
-            CompanionInterview: [ 2, 2 ]
-            PilotInterview: [ 2, 2 ]
-            MercenaryInterview: [ 2, 2 ]
+            ContractorInterview: [ 0, 0 ]
+            PilotInterview: [ 0, 0 ]
+            MercenaryInterview: [ 0, 0 ]

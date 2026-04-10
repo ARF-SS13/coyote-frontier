@@ -360,16 +360,15 @@
       weight: 0.15
       children:
       - id: CrateAmmoBoxRubber20
-      #- id: CrateAmmoBoxRubber25 # Coyote: Remove .25 from tables
+      - id: CrateAmmoBoxRubber25
       - id: CrateAmmoBoxRubber30
       - id: CrateAmmoBoxRubber35
       - id: CrateAmmoBoxRubber45
       - id: CrateAmmoBoxRubberShotgun
       - id: CrateAmmoBoxLethal20
-      #- id: CrateAmmoBoxLethal25 # Coyote: Remove .25 from tables
+      - id: CrateAmmoBoxLethal25
       - id: CrateAmmoBoxLethal30
       - id: CrateAmmoBoxLethal35
-      - id: CrateAmmoBoxLethal40 # Coyote
       - id: CrateAmmoBoxLethal45
       - id: CrateAmmoBoxLethalShotgun
       - id: CrateAmmoBoxSlugShotgun
@@ -380,7 +379,6 @@
       - id: CrateAmmoBoxIncendiary20
       - id: CrateAmmoBoxIncendiary30
       - id: CrateAmmoBoxIncendiary35
-      - id: CrateAmmoBoxIncendiary40 # Coyote
       - id: CrateAmmoBoxIncendiary45
       - id: CrateAmmoBoxIncendiaryShotgun
     # T3 - Rare
@@ -391,7 +389,6 @@
       - id: CrateAmmoBoxUranium30
       - id: CrateAmmoBoxUranium35
       - id: CrateAmmoBoxEmp35
-      - id: CrateAmmoBoxUranium40 # Coyote
       - id: CrateAmmoBoxUranium45
       - id: CrateAmmoBoxUraniumShotgun
     # T4 - Epic
@@ -399,20 +396,19 @@
       weight: 0.15
       children:
       - id: CrateAmmoBoxBigLethal20
-      #- id: CrateAmmoBoxBigLethal25 # Coyote: Remove .25 from tables
+      - id: CrateAmmoBoxBigLethal25
       - id: CrateAmmoBoxBigLethal30
       - id: CrateAmmoBoxBigRubber20
-      #- id: CrateAmmoBoxBigRubber25 # Coyote: Remove .25 from tables
+      - id: CrateAmmoBoxBigRubber25
       - id: CrateAmmoBoxFlareShotgun
     # T5 - Legendary
     - !type:GroupSelector
       weight: 0.05
       children:
       - id: CrateAmmoBoxPractice20
-      #- id: CrateAmmoBoxPractice25 # Coyote: Remove .25 from tables
+      - id: CrateAmmoBoxPractice25
       - id: CrateAmmoBoxPractice30
       - id: CrateAmmoBoxPractice35
-      - id: CrateAmmoBoxPractice40 # Coyote
       - id: CrateAmmoBoxPractice45
       - id: CrateAmmoBoxPracticeShotgun
 

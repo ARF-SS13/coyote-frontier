@@ -2,8 +2,8 @@
 job-name-bailiff = Bailiff
 job-name-brigmedic = Brigmedic
 job-name-cadet-nf = Cadet
-job-name-contractor = Resident
-job-name-contractor-interview = Resident Applicant
+job-name-contractor = Contractor
+job-name-contractor-interview = Contractor Applicant
 job-name-deputy = Deputy
 job-name-nf-detective = Detective
 job-name-doc = Director of Care
@@ -15,7 +15,7 @@ job-name-mercenary-interview = Mercenary Applicant
 job-name-pal = Public Affairs Liaison
 job-name-pilot = Pilot
 job-name-pilot-interview = Pilot Applicant
-job-name-nf-pirate = Freelancer
+job-name-nf-pirate = Pirate
 job-name-nf-pirate-captain = Pirate Captain
 job-name-nf-pirate-first-mate = Pirate First Mate
 job-name-plant-manager = Plant Manager
@@ -30,7 +30,7 @@ job-name-valet = Valet
 job-title-ert-mail-carrier = ERT Mail Carrier
 
 # Role timers - Keep these alphabetical, please
-JobContractorInterview = Resident Applicant
+JobContractorInterview = Contractor Applicant
 JobERTMailCarrier = ERT Mail Carrier
 JobMercenary = Mercenary
 JobMercenaryInterview = Mercenary Applicant

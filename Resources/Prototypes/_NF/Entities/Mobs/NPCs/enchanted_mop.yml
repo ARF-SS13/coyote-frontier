@@ -1,6 +1,6 @@
 #region broom
 - type: entity
-  parent: [ MobCleanBot, BaseC1WizardContraband ] # Coyote: C3 to C1. It's a broom.
+  parent: [ MobCleanBot, BaseC3WizardContraband ]
   id: MobCleanBotWizard
   name: enchanted broom
   description: Magically animated broom with a simple goal in it's "not life" - cleaning.

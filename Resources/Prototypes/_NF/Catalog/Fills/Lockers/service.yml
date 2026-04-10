@@ -28,19 +28,19 @@
 
 - type: entity
   id: NFClosetChefFilled
-  name: Chef Freezer
+  name: chef's freezer
   suffix: Filled
   parent: LockerFreezer
   components:
   - type: StorageFill
     contents:
       - id: CrowbarPocket
-      - id: VariantCubeBox
+      - id: RuminantCubeBox
       - id: SprayBottleWater
       - id: ReagentContainerFlour
-        amount: 2
+        amount: 3
       - id: ReagentContainerRice
-        amount: 2
+        amount: 3
       - id: ReagentContainerSugar
       - id: ReagentContainerSalt
       - id: ReagentContainerPepper
@@ -48,3 +48,4 @@
       - id: DrinkMilkCarton
         amount: 2
       - id: DrinkSoyMilkCarton
+      - id: FoodContainerEgg

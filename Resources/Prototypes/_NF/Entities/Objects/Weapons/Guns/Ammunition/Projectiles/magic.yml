@@ -8,7 +8,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 5
+        Heat: 2
   - type: Sprite
     noRot: false
     sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
@@ -28,8 +28,8 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 7.5
-        Piercing: 7.5
+        Bloodloss: 3
+        Asphyxiation: 3
   - type: Sprite
     noRot: false
     sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
@@ -47,8 +47,8 @@
   - type: Projectile
     damage:
       types:
-        Bloodloss: 5
-        Slash: 10
+        Bloodloss: 2
+        Slash: 4
   - type: Sprite
     noRot: false
     sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
@@ -68,7 +68,7 @@
     damage:
       types:
         Asphyxiation: 2
-        Blunt: 10
+        Blunt: 5
   - type: Sprite
     noRot: false
     sprite: _NF/Effects/bloodcultprojectiles.rsi
@@ -111,7 +111,7 @@
   - type: Projectile
     damage:
       types:
-        Cold: 12
+        Cold: 5
     soundHit:
       collection: WeakHit
     forceSound: true
@@ -160,7 +160,7 @@
   id: BloodCultLaser
   damage:
     types:
-      Slash: 12
+      Slash: 8
   muzzleFlash:
     sprite: _NF/Effects/bloodcultbeams.rsi
     state: red_lightning
@@ -175,7 +175,7 @@
   id: WizardHitscanLightning
   damage:
     types:
-      Shock: 15
+      Shock: 10
   muzzleFlash:
     sprite: _NF/Effects/wizardbeams.rsi
     state: lightning-muzzle-01
@@ -190,7 +190,7 @@
   id: CausticBeam
   damage:
     types:
-      Caustic: 10
+      Caustic: 8
   muzzleFlash:
     sprite: _NF/Effects/wizardbeams.rsi
     state: green-beam-01

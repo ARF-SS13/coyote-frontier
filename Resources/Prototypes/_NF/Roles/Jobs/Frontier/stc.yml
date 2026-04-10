@@ -4,19 +4,19 @@
   description: job-description-stc
   playTimeTracker: JobStc
   startingGear: StcGear
-  setPreference: false # soft removed, cus they dont really anything, also secretary #27503
   alwaysUseSpawner: true
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 72000 # 20 hrs
     - !type:RoleTimeRequirement
-      role: JobStc # frontier: JobSecurityGuard -> CS: JobStc
-      time: 3600 # frontier: 3 hrs as security guard -> CS: 1 hr of itself
+      role: JobSecurityGuard
+      time: 10800 # 3 hrs as security guard
   canBeAntag: false
   icon: "JobIconStc"
   supervisors: job-supervisors-sr
   weight: 160
   displayWeight: 50 # Second from the top
+  setPreference: true
   access:
   - Service
   - Maintenance
@@ -24,15 +24,12 @@
   - Frontier
   - StationTrafficController
   special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant ]
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
-  - !type:AddRpiJobModifierSpecial
-    modifiersToAdd:
-    - rpiJobModifierStationTrafficController
-  - !type:AddComponentSpecial
-    components:
-    - type: CommandStaff
+
 - type: startingGear
   id: StcGear
   equipment:
@@ -41,10 +38,10 @@
     back:
     - Flash
     - RubberStampStc
-    - EncryptionKeyStationMaster
+    - BoxFolderStc
     - ShipVoucherFrontierStc
   encryptionKeys:
-  - BoxFolderStc
+  - EncryptionKeyStationMaster
 
 - type: chameleonOutfit
   id: StationTrafficControllerChameleonOutfit

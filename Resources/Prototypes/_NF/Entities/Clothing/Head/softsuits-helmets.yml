@@ -123,7 +123,7 @@
 - type: entity
   parent: ClothingHeadEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetContractor
-  name: resident EVA helmet
+  name: contractor EVA helmet
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -959,7 +959,7 @@
 - type: entity
   parent: [ ClothingHeadSuitWithLightBase, NFClothingHeadClearEVAHelmetBase ]
   id: ClothingHeadHelmetHardsuitFSB
-  name: far star biotech voidsuit helmet
+  name: Far Star Biotech voidsuit helmet
   description: A lightweight suit helmet that doesn't restrict your head movements. It has a light!
   categories: [ HideSpawnMenu ]
   components:
@@ -984,12 +984,18 @@
     - Hair
     - HeadTop
     - HeadSide
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - ScurretWearable
+    - MonkeyWearable
 
 - type: entity
   parent: ClothingHeadHelmetHardsuitFSB
   id: ClothingHeadHelmetHardsuitFSC
-  name: far star corporation voidsuit helmet
+  name: Far Star Commerce voidsuit helmet
   description: A lightweight suit helmet that doesn't restrict your head movements. It has a light!
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _NF/Clothing/Head/Helmets/fsc_eva_helmet.rsi
@@ -997,7 +1003,8 @@
 - type: entity
   parent: ClothingHeadHelmetHardsuitFSB
   id: ClothingHeadHelmetHardsuitFSA
-  name: far star arms voidsuit helmet
+  name: Far Star Arms voidsuit helmet
+  categories: [ HideSpawnMenu ]
   description: A lightweight suit helmet that doesn't restrict your head movements. It has a light!
   components:
   - type: Sprite

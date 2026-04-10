@@ -36,9 +36,7 @@ namespace Content.Client.PDA
 
         private string _balance = Loc.GetString("comp-pda-ui-unknown"); // Frontier
         private string _shuttleDeed = Loc.GetString("comp-pda-ui-unknown"); // Frontier
-
-        private TimeSpan? _shiftEndTime = null; // Absolute client RealTime when shift ends (calculated from server duration)
-
+        private TimeSpan? _roundEndTime = null; // Frontier
         private int _currentView;
 
         public event Action<EntityUid>? OnProgramItemPressed;
@@ -134,7 +132,7 @@ namespace Content.Client.PDA
             StationTimeButton.OnPressed += _ =>
             {
                 var stationTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
-                _clipboard.SetText((stationTime.ToString("d\\:hh\\:mm\\:ss")));
+                _clipboard.SetText((stationTime.ToString("hh\\:mm\\:ss")));
             };
 
             StationAlertLevelInstructionsButton.OnPressed += _ =>
@@ -193,23 +191,26 @@ namespace Content.Client.PDA
             var stationTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
-                ("time", stationTime.ToString("d\\:hh\\:mm\\:ss"))));
+                ("time", stationTime.ToString("hh\\:mm\\:ss"))));
 
-            // Server sends duration remaining; calculate absolute end time using client's RealTime
-            // This avoids clock synchronization issues between client and server
-            if (state.ShiftEndTime.HasValue && state.ShiftEndTime.Value > TimeSpan.Zero)
+            // Frontier
+            if (state.RoundEndTime is not null)
             {
-                _shiftEndTime = _gameTiming.RealTime + state.ShiftEndTime.Value;
-                var timeRemaining = state.ShiftEndTime.Value;
-                ShiftEndTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-shift-end-time",
-                    ("time", timeRemaining.ToString("d\\:hh\\:mm\\:ss"))));
-                ShiftEndTimeLabel.Visible = true;
+                // Synchronise ticking of the seconds place of the shift time and the roundend time
+                _roundEndTime = TimeSpan.FromSeconds(Math.Floor(state.RoundEndTime.Value.TotalSeconds))
+                                        .Add(TimeSpan.FromMilliseconds(_gameTicker.RoundStartTimeSpan.Milliseconds));
+
+                var remainingTime = _roundEndTime.Value.Subtract(_gameTiming.CurTime);
+                RemainingTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-remaining-time",
+                    ("time", remainingTime.ToString("hh\\:mm\\:ss"))));
             }
             else
             {
-                _shiftEndTime = null;
-                ShiftEndTimeLabel.Visible = false;
+                _roundEndTime = null;
             }
+
+            RemainingTimeLabel.Visible = _roundEndTime is not null;
+            // End Frontier
 
             var alertLevel = state.PdaOwnerInfo.StationAlertLevel;
             var alertColor = state.PdaOwnerInfo.StationAlertColor;
@@ -383,24 +384,20 @@ namespace Content.Client.PDA
             var stationTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
-                ("time", stationTime.ToString("d\\:hh\\:mm\\:ss"))));
+                ("time", stationTime.ToString("hh\\:mm\\:ss"))));
 
-            // Calculate and update remaining time until shift end in real-time
-            if (_shiftEndTime.HasValue)
+            // Frontier
+            if (_roundEndTime is not null)
             {
-                var timeRemaining = _shiftEndTime.Value - _gameTiming.RealTime;
-                if (timeRemaining > TimeSpan.Zero)
-                {
-                    ShiftEndTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-shift-end-time",
-                        ("time", timeRemaining.ToString("d\\:hh\\:mm\\:ss"))));
-                    ShiftEndTimeLabel.Visible = true;
-                }
-                else
-                {
-                    // Shift has ended, hide the label
-                    ShiftEndTimeLabel.Visible = false;
+                var remainingTime = _roundEndTime.Value.Subtract(_gameTiming.CurTime);
+                RemainingTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-remaining-time",
+                    ("time", remainingTime.ToString("hh\\:mm\\:ss"))));
+                if (remainingTime < TimeSpan.Zero){
+                    RemainingTimeLabel.Visible = false;
+                    _roundEndTime = null;
                 }
             }
+            // End Frontier
         }
     }
 }

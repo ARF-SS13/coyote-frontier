@@ -8,8 +8,9 @@
       weight: 50
       children:
       - id: DrinkTeapotEndless
+      - id: ClothingWalletInfiniteGreed
       - id: DrinkShakerShaking
-      #- id: NFRavenbar # Coyote: Probably too powerful to be on this list.
+      - id: NFRavenbar
       - id: ClothingNeckScarfWizardWarmth
       - id: SmokingPipeWizardNicotine
       - id: NFClothingNeckTieMetronome
@@ -18,7 +19,8 @@
       weight: 40
       children:
       - id: PottedPlantCoinTree
-      - id: ClothingWalletInfiniteGreed
+      - id: ClothingNeckCloakWizardHolding
+      - id: ClothingBeltWizardHolding
       - id: CrateWizardLuggageWhistle
       - id: SmokingPipeWizardThc
     # high impact items
@@ -28,8 +30,6 @@
       - id: NFGeneratorWizardInfernalCore6kW
       - id: GasTankWizardBottomless
       - id: FairyDragonWings
-      - id: ClothingNeckCloakWizardHolding
-      - id: ClothingBeltWizardHolding
 
 #region spawner
 - type: entity

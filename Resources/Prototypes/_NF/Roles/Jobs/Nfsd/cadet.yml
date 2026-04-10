@@ -5,17 +5,17 @@
   playTimeTracker: JobSecurityCadet
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 43200 # frontier = 6 hrs | CS = 12 hrs, TIME IN SECONDS
+      time: 21600 # 6 hours
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 3600 # frontier = 1 hr | CS = 6 hrs, TIME IN SECONDS
+      time: 64800 # 18 hours
+      inverted: true # Leave slots open for newer, less confident players.
   startingGear: CadetGear
   icon: JobIconCadetNF
   supervisors: job-supervisors-cadet
   weight: 70
   displayWeight: 10
   canBeAntag: false
-  consoleAdjustable: false
   accessGroups:
   - CadetNfsdAccess
   special:
@@ -24,12 +24,6 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
-  - !type:AddRpiJobModifierSpecial
-    modifiersToAdd:
-    - rpiJobModifierCadet
-  - !type:AddComponentSpecial
-    components:
-    - type: IsNfsd
 
 - type: startingGear
   id: CadetGear
@@ -39,10 +33,9 @@
   storage:
     back:
     - Flash
-    - CSMagazinePistol40 # Coyote NFMagazineHighCapacityPistol35 < CSMagazinePistol40
-    - CSMagazinePistol40Rubber # Coyote NFMagazineHighCapacityPistol35Rubber < CSMagazinePistol40Rubber
+    - NFMagazineHighCapacityPistol35
+    - NFMagazineHighCapacityPistol35Rubber
     - FrontierUplinkCoin10
-    - BaseSecurityUplinkRadioOfficer # Coyote added uplink for chunguses, removed their starting uplink coins
 
 - type: chameleonOutfit
   id: CadetChameleonOutfit

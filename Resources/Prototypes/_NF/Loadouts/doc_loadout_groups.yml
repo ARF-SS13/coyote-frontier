@@ -1,17 +1,15 @@
 - type: loadoutGroup
   id: DocJumpsuit
   name: loadout-group-contractor-jumpsuit
-  minLimit: 0 # Coyote
   loadouts:
   - ChiefMedicalOfficerJumpsuit
   - ChiefMedicalOfficerJumpskirt
   - ChiefMedicalOfficerTurtleneckJumpsuit
   - ChiefMedicalOfficerTurtleneckJumpskirt
+  - DocClothingUniformJumpsuitMilitaryCMO
   fallbacks:
   - ChiefMedicalOfficerJumpsuit
   - ChiefMedicalOfficerJumpskirt
-  subgroups:
-  - CoyoteJumpsuit
 
 - type: loadoutGroup
   id: DocGloves
@@ -24,7 +22,6 @@
 - type: loadoutGroup
   id: DocBackpack
   name: loadout-group-contractor-backpack
-  minLimit: 0 # Coyote
   loadouts:
   - DocClothingBackpackMedical
   - DocClothingBackpackDuffelMedical
@@ -61,7 +58,6 @@
   loadouts:
   - DocClothingCloakCmo
   - DocClothingNeckMantleCMO
-  - FloofClothingCollarMed # Flooftier
 
 - type: loadoutGroup
   id: DocPDA
@@ -75,12 +71,19 @@
 - type: loadoutGroup
   id: DocShoes
   name: loadout-group-contractor-shoes
-  minLimit: 0 # Coyote
   loadouts:
   - DocClothingShoesColorWhite
   - StcClothingShoesBootsLaceup # reused purposefully
   subgroups:
   - ContractorShoes
-  - CoyoteShoes
   fallbacks:
   - DocClothingShoesColorWhite
+
+- type: loadoutGroup
+  id: DocOuterClothing
+  name: loadout-group-contractor-outerclothing
+  minLimit: 0
+  loadouts:
+  - DocClothingLongcoatCMO
+  subgroups:
+  - ContractorOuterClothing

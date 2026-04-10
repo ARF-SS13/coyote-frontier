@@ -172,6 +172,7 @@
     - Snout
     - HeadTop
     - HeadSide
+  - type: CatWearable # Frontier
 
 - type: entity
   parent: ClothingHeadBase
@@ -204,6 +205,11 @@
   - type: HideLayerClothing
     slots:
     - Hair
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - ClothMade
+    - WhitelistChameleon
 
 - type: entity
   parent: ClothingHeadBase

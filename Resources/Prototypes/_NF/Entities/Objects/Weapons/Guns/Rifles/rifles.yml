@@ -1,7 +1,7 @@
 #region WizDen
 - type: entity
   id: NFWeaponRifleBarlowsBolt
-  parent: [ BaseC1Contraband, NFBaseWeaponRifleChamber30, NFBaseWeaponFrameRifleSteelbolt, BaseGunMelee ]
+  parent: [ BaseC3SyndicateContraband, NFBaseGunMeleeAttackBayonet, NFBaseWeaponRifleChamber30, NFBaseWeaponFrameRifleSteelbolt ]
   name: Barlows bolt-action rifle # Renamed: real brand name
   description: A weapon for hunting, or endless trench warfare. Equipped with bayonet.
   components:
@@ -14,7 +14,7 @@
 
 - type: entity
   id: NFWeaponRifleMusket
-  parent: [ BaseC1Contraband, NFBaseWeaponRifleChamber60, NFBaseWeaponFrameRifleSteelbolt ]
+  parent: [ NFBaseWeaponRifleChamber60, NFBaseWeaponFrameRifleSteelbolt ]
   name: musket
   description: This should've been in a museum long before you were born.
   components:
@@ -35,14 +35,14 @@
   suffix: Frontier
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Rifles/foam_rifle.rsi
+    sprite: Objects/Fun/Foam/foam_rifle.rsi
     layers:
     - state: icon
       map: [ "enum.GunVisualLayers.Base" ]
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Rifles/foam_rifle.rsi
+    sprite: Objects/Fun/Foam/foam_rifle.rsi
   - type: Item
-    sprite: Objects/Weapons/Guns/Rifles/foam_rifle_inhand_64x.rsi
+    sprite: Objects/Fun/Foam/foam_rifle_inhand_64x.rsi
 
 #region WizDen: Rubber
 - type: entity
@@ -56,7 +56,7 @@
 #region DeltaV
 - type: entity
   id: NFWeaponRifleCeremonial
-  parent: [ BaseC1Contraband, NFBaseWeaponRifleChamber20, NFBaseWeaponFrameRifleFrontierGunsmith ]
+  parent: [ NFBaseWeaponRifleChamber20, NFBaseWeaponFrameRifleFrontierGunsmith ]
   name: ceremonial rifle
   description: A ceremonial variant of the Mark 1 Rifle, in tasteful blue and white.
   components:
@@ -68,7 +68,7 @@
 #region Frontier
 - type: entity
   id: NFWeaponRifleRepeater
-  parent: [ BaseC1Contraband, NFBaseWeaponRifleChamber20, NFBaseWeaponFrameRifleFrontierGunsmith ]
+  parent: [ NFBaseWeaponRifleChamber20, NFBaseWeaponFrameRifleFrontierGunsmith ]
   name: N2524 pattern repeater
   description: A civilian grade lever action firearm, favored by space cowboys across the Frontier for its reliability.
   components:
@@ -81,7 +81,7 @@
 
 - type: entity
   id: NFWeaponRifleSVS
-  parent: [ BaseC1Contraband, BaseGunMelee, NFBaseItemWeaponGunMagazineFed, NFBaseWeaponRifleAssaultChamber30LowCapacity, NFBaseWeaponFrameRifleFrontierGunsmith ]
+  parent: [ NFBaseGunMeleeAttackBayonet, NFBaseItemWeaponGunMagazineFed, NFBaseWeaponRifleAssaultChamber30LowCapacity, NFBaseWeaponFrameRifleFrontierGunsmith ]
   name: SVS-42
   description: Originally designed by Samonov, this old surplus battle rifle looks like it's seen a few wars. Equipped with bayonet.
   components:
@@ -91,5 +91,3 @@
     sprite: _NF/Objects/Weapons/Guns/Rifles/svs42.rsi
   - type: AltFireMelee
     attackType: Light
-  - type: Item
-    size: Large

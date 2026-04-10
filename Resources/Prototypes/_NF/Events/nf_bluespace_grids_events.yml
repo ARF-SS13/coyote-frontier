@@ -37,7 +37,6 @@
           preventArtifactTriggers: true
         - type: PreventPilot
         - type: ForceAnchor # Added post-FTL, so anchoring is fine.
-        - type: DeletionCensusExempt
         paths:
         - /Maps/_NF/Bluespace/cache.yml
     rewardAccounts:
@@ -60,15 +59,7 @@
     weight: 5
     duration: 1020
     maxDuration: 1350
-    reoccurrenceDelay: 720 # 9 hours
-    requiredJobs:
-      Sheriff: 1
-      Deputy: 1
-      Bailiff: 1
-      Brigmedic: 1
-      NFDetective: 1
-      PublicAffairsLiaison: 1
-      SeniorOfficer: 1
+    reoccurrenceDelay: 360 # 6 hours
   - type: BluespaceErrorRule
     groups:
       grid: !type:GridSpawnGroup
@@ -87,12 +78,13 @@
           preventArtifactTriggers: true
         - type: PreventPilot
         - type: ForceAnchor
-        - type: DeletionCensusExempt
         paths:
         - /Maps/_NF/Bluespace/vault.yml
     rewardAccounts:
-      Nfsd: 4.0
-
+      Nfsd: 0.25
+      Frontier: 0.25
+      Medical: 0.25
+      Edison: 0.25
 - type: entity
   id: BluespaceVaultSmallError
   parent: BaseStationEventShortDelay
@@ -110,15 +102,7 @@
     weight: 5
     duration: 590
     maxDuration: 780
-    reoccurrenceDelay: 720 # 3 hours
-    requiredJobs:
-      Sheriff: 1
-      Deputy: 1
-      Bailiff: 1
-      Brigmedic: 1
-      NFDetective: 1
-      PublicAffairsLiaison: 1
-      SeniorOfficer: 1
+    reoccurrenceDelay: 360 # 6 hours
   - type: BluespaceErrorRule
     groups:
       grid: !type:GridSpawnGroup
@@ -137,12 +121,13 @@
           preventArtifactTriggers: true
         - type: PreventPilot
         - type: ForceAnchor
-        - type: DeletionCensusExempt
         paths:
         - /Maps/_NF/Bluespace/vaultsmall.yml
     rewardAccounts:
-      Nfsd: 4.0
-
+      Nfsd: 0.25
+      Frontier: 0.25
+      Medical: 0.25
+      Edison: 0.25
 - type: entity
   id: BluespaceSyndicateFTLInterception
   parent: BaseStationEventShortDelay
@@ -166,10 +151,8 @@
       grid: !type:GridSpawnGroup
         nameLoc:
         - station-event-bluespace-name-UnidentifiedVessel
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 3 # Coyote add: to three instances
-        minimumDistance: 2500 # Coyote add: 1500 -> 2500m
-        maximumDistance: 3500 # Coyote add: 2500 -> 3500m
+        minimumDistance: 1500
+        maximumDistance: 2500
         addComponents:
         - type: Gravity
           enabled: true
@@ -181,7 +164,6 @@
           preventArtifactTriggers: true
         - type: PreventPilot
         - type: ForceAnchor
-        - type: DeletionCensusExempt
         paths:
         - /Maps/_NF/Bluespace/syndieftlintercept.yml
 
@@ -208,10 +190,8 @@
       grid: !type:GridSpawnGroup
         nameLoc:
         - station-event-bluespace-name-UnidentifiedVessel
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 3 # Coyote add: to three instances
-        minimumDistance: 2500 # Coyote add: 1500 -> 2500m
-        maximumDistance: 3500 # Coyote add: 2500 -> 3500m
+        minimumDistance: 1500
+        maximumDistance: 2500
         addComponents:
         - type: Gravity
           enabled: true
@@ -223,7 +203,6 @@
           preventArtifactTriggers: true
         - type: PreventPilot
         - type: ForceAnchor
-        - type: DeletionCensusExempt
         paths:
         - /Maps/_NF/Bluespace/wizardtower.yml
 
@@ -250,10 +229,8 @@
       grid: !type:GridSpawnGroup
         nameLoc:
         - station-event-bluespace-name-UnidentifiedVessel
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 3 # Coyote add: to three instances
-        minimumDistance: 2500 # Coyote add: 1500 -> 2500m
-        maximumDistance: 3500 # Coyote add: 2500 -> 3500m
+        minimumDistance: 1500
+        maximumDistance: 2500
         addComponents:
         - type: Gravity
           enabled: true
@@ -265,7 +242,6 @@
           preventArtifactTriggers: true
         - type: PreventPilot
         - type: ForceAnchor
-        - type: DeletionCensusExempt
         paths:
         - /Maps/_NF/Bluespace/bloodmoon.yml
 
@@ -285,17 +261,14 @@
     weight: 1
     duration: 1800
     maxDuration: 2400
-#    maxOccurrences: 1 # Coyote remove: let the people eat dinos more than once a shift
-    reoccurrenceDelay: 240 # minutes Coyote Add: let the people eat dinos like once every 4 hours
+    maxOccurrences: 1
   - type: BluespaceErrorRule
     groups:
       grid: !type:GridSpawnGroup
         nameLoc:
         - station-event-bluespace-name-Cave
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 3 # Coyote add: to three instances
-        minimumDistance: 2500 # Coyote add: 1500 -> 2500m
-        maximumDistance: 3500 # Coyote add: 2500 -> 3500m
+        minimumDistance: 1500
+        maximumDistance: 2500
         addComponents:
         - type: Gravity
           enabled: true
@@ -306,7 +279,6 @@
           preventArtifactTriggers: true
         - type: PreventPilot
         - type: ForceAnchor
-        - type: DeletionCensusExempt
         paths:
         - /Maps/_NF/Bluespace/cave.yml
 
@@ -344,6 +316,5 @@
         - type: ProtectedGrid
           preventArtifactTriggers: true
         - type: PreventPilot
-        - type: DeletionCensusExempt
         paths:
         - /Maps/_NF/Bluespace/mcevent.yml

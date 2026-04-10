@@ -16,7 +16,6 @@
   icon: "JobIconPrisoner"
   supervisors: job-supervisors-prisoner
   displayWeight: 10 # Frontier
-  setPreference: false
   special:
   - !type:AddImplantSpecial
     implants: [ TrackingImplant ] # Frontier
@@ -27,8 +26,7 @@
 - type: startingGear
   id: PrisonerGear
   equipment:
-    shoes: ClothingShoesColorBlack
-    ears: ClothingHeadsetGrey
+    ears: ClothingHeadsetPrison
 
 - type: chameleonOutfit
   id: PrisonerChameleonOutfit

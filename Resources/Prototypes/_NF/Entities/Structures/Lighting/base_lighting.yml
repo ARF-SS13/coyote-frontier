@@ -18,7 +18,7 @@
   - type: Construction
     node: tubeLightShielded
   - type: PoweredLight
-    solarFlareShieldingCoefficient: 0.01 # COYOTE: changed, original = 0.001
+    solarFlareShieldingCoefficient: 0.001 # nothing is immune over time
 
 - type: entity
   id: NFPoweredSmallLightShieldedEmpty
@@ -32,4 +32,4 @@
   - type: Construction
     node: bulbLightShielded
   - type: PoweredLight
-    solarFlareShieldingCoefficient: 0.01 # COYOTE: changed, original = 0.001
+    solarFlareShieldingCoefficient: 0.001 # nothing is immune over time

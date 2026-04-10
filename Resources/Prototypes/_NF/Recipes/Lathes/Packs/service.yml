@@ -54,6 +54,7 @@
   - ButchCleaver
   - ServiceRollingPin
   - ServiceSpoon
+  - ServiceDrinkShaker
   - ServiceFork
   - ServicePairedChopsticks
   - FoodBowlBig
@@ -74,7 +75,6 @@
   - FoodCondimentSqueezeBottleClear
   - FoodFrozenPopsicleTrash
   - DrinkWaterCup
-  - BucketPaper # Mono
   - DrinkDisposableCup #imp
   - FreezerElectronics
   - Syringe
@@ -90,6 +90,7 @@
   - Mousetrap
   - PillCanister
   - ChemistryEmptyBottle01
+  - NFClothingNeckCardReporter
 
 - type: latheRecipePack
   id: NFPaperAndPaperAccessories
@@ -126,6 +127,7 @@
   - LightTubeCrystalCyan
   - LightTubeUltraviolet
 
+
 - type: latheRecipePack
   id: NFServiceArchetypeStatic
   recipes:
@@ -135,6 +137,8 @@
   - ServiceSelectiveDropper
   - PlantAnalyzer
   - HotplateMachineCircuitboard
+  - Gavel
+  - GavelBlock
 
 - type: latheRecipePack
   id: NFServiceTechfabEmagStatic
@@ -178,4 +182,40 @@
   - PlantAnalyzer # Frontier
   - JanicartFlatpack # Frontier
   - PlantBagOfHolding # Delta-V
-  - BluespaceTrashBag # Coyote
+
+- type: latheRecipePack
+  id: NFPietyStatic
+  recipes:
+  - NFServiceCenser
+  - NFServiceClothingNeckCrucifix
+  - NFServiceUrnMortuary
+  - NFServiceUrn
+  # Sash and mask are here and not in a uniform printer because other tech fabs have belts and masks
+  - ClothingBeltChaplainSash
+  - NFServiceClothingMaskPlague
+  # No bible because of the familiar
+  - NFSilverRingPrinted
+  - NFSilverRingGemPrinted
+  - NFSilverRingDiamondPrinted
+  - NFGoldRingPrinted
+  - NFGoldRingGemPrinted
+  - NFGoldRingDiamondPrinted
+  - NFPlasteelRingPrinted
+  - NFPlasteelRingGem
+  - NFPlasteelRingDiamond
+
+- type: latheRecipePack
+  id: NFCandlesStatic
+  recipes:
+  - Candle
+  - CandleBlack
+  - CandleBlue
+  - CandleGreen
+  - CandlePurple
+  - CandleRed
+  - CandleSmall
+  - CandleBlackSmall
+  - CandleBlueSmall
+  - CandleGreenSmall
+  - CandlePurpleSmall
+  - CandleRedSmall

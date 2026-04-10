@@ -3,7 +3,7 @@
 # Discord: wolfhauler
 
 # Maintainer Info
-# GitHub: ThatOneGoblin25
+# GitHub: ThatOneGoblin25 
 # Discord: thedaarkgoblin
 
 # Shuttle Notes:
@@ -11,9 +11,9 @@
 - type: vessel
   id: Spectre
   parent: BaseVessel
-  name: LL2 Spectre # set as LL2 until someone gets it updated. Priced as being midline.
+  name: NR Spectre
   description: A large, attractive but dated vessel with a pure focus on research and development. It is capable of generating anomalies.
-  price: 135000 # 93186 0.2 111823.2 # COYOTE: 99136 * (1.35) ^= 135,000 (133,833.6)
+  price: 111000 # 92237 0.2 110684.4
   category: Large
   group: Shipyard
   shuttlePath: /Maps/_NF/Shuttles/spectre.yml
@@ -39,7 +39,6 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            ContractorInterview: [ 2, 2 ]
-            CompanionInterview: [ 2, 2 ]
-            PilotInterview: [ 2, 2 ]
-            MercenaryInterview: [ 2, 2 ]
+            ContractorInterview: [ 0, 0 ]
+            PilotInterview: [ 0, 0 ]
+            MercenaryInterview: [ 0, 0 ]

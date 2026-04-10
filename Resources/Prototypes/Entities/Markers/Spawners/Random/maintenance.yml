@@ -56,7 +56,7 @@
       - id: ClothingHeadHatPaper
       - id: ClothingHeadHatPirate
       - id: ClothingMaskSterile
-      - id: ClothingNeckHeadphones
+      - id: ClothingMultipleHeadphones
       - id: ClothingNeckTieRed
       - id: ClothingOuterCoatGentle
       - !type:AllSelector
@@ -118,7 +118,6 @@
       - id: BalloonCorgi
       - id: MysteryFigureBox
       - id: RubberChicken
-      # - id: FoodSnackLollypopWrappedMysteryNeutral # Goobstation - Lollypops!
       # Cult
       - !type:AllSelector
         children:
@@ -175,7 +174,6 @@
       - id: RubberStampGreytide
       - id: MysteryLighterBox
       - id: GoldenPersonalAI
-      # - id: FoodSnackLollypopWrappedMysteryEvil # Goobstation - Lollypops!
 
 - type: entity
   name: Maint Loot Spawner
@@ -213,12 +211,6 @@
         - id: DoubleEmergencyNitrogenTankFilled
       # - id: EmergencyFunnyOxygenTankFilled # Frontier
       #   weight: 0.5 # Frontier
-      - !type:GroupSelector # DeltaV - Random water vapor tanks spawn too
-        children:
-        - !type:EntSelector
-          id: WaterVaporTankFilled
-        - !type:EntSelector
-          id: DoubleEmergencyWaterVaporTankFilled
       - !type:GroupSelector
         weight: 3
         children:

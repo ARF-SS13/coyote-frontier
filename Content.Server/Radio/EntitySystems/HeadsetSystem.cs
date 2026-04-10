@@ -1,9 +1,6 @@
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Radio.Components;
-using Content.Shared._Coyote.RadioNoises;
-using Content.Shared.Chat;
-using Content.Shared.Ghost;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
@@ -102,33 +99,20 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
 
     private void OnHeadsetReceive(EntityUid uid, HeadsetComponent component, ref RadioReceiveEvent args)
     {
-        EntityUid wearer = Transform(uid).ParentUid;
-        if (!TryComp(wearer, out ActorComponent? actor))
-            return;
-        if (HasComp<GhostHearingComponent>(wearer))
+        // TODO: change this when a code refactor is done
+        // this is currently done this way because receiving radio messages on an entity otherwise requires that entity
+        // to have an ActiveRadioComponent
+
+        var parent = Transform(uid).ParentUid;
+
+        if (parent.IsValid())
         {
-            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
-            return;
+            var relayEvent = new HeadsetRadioReceiveRelayEvent(args);
+            RaiseLocalEvent(parent, ref relayEvent);
         }
 
-        MsgChatMessage chatMess = _radio.MangleRadioMessage(
-            uid,
-            ref args,
-            out RadioDegradationParams dParams);
-
-        if (dParams.DropMessageEntirely || dParams.DropMessage)
-            return;
-        // do the KSSHHT
-        var staticEv = new DoRadioStaticEvent(
-            uid,
-            args.MessageSource,
-            actor.PlayerSession.AttachedEntity,
-            args.Channel.ID,
-            args.Message,
-            dParams);
-        RaiseLocalEvent(uid, ref staticEv);
-        // Send the message to the client
-        _netMan.ServerSendMessage(chatMess, actor.PlayerSession.Channel);
+        if (TryComp(parent, out ActorComponent? actor))
+            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
     }
 
     private void OnEmpPulse(EntityUid uid, HeadsetComponent component, ref EmpPulseEvent args)

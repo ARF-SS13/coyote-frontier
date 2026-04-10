@@ -32,7 +32,8 @@
         - Bloodpack
         - Gauze
         - Bottle
-        - RepairPatch # Coyote add
+        # Frontier: whitelist empty medipen in medical bag
+        - NFEmptyMedipen
   - type: Dumpable
   - type: MagnetPickup
     magnetEnabled: false

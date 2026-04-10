@@ -1,7 +1,6 @@
 - type: loadoutGroup
   id: ContractorJumpsuit
   name: loadout-group-contractor-jumpsuit
-  minLimit: 0 # Coyote
   loadouts:
   - ContractorClothingUniformJumpsuitColorGrey
   - ContractorClothingUniformJumpskirtColorGrey
@@ -219,18 +218,14 @@
   fallbacks:
   - ContractorClothingUniformJumpsuitColorGrey
   - ContractorClothingUniformJumpskirtColorGrey
-  subgroups:
-  - CoyoteJumpsuit
 
 - type: loadoutGroup
   id: ContractorBackpack
   name: loadout-group-contractor-backpack
-  minLimit: 0 # Coyote
   loadouts:
   - ContractorClothingBackpack
   - ContractorClothingBackpackDuffel
   - ContractorClothingBackpackSatchel
-  - ContractorClothingBackpackSatchelLeather # Coyote
   - ContractorClothingBackpackMessenger
   - ContractorClothingBackpackCaptain
   - ContractorClothingBackpackDuffelCaptain
@@ -317,6 +312,8 @@
   minLimit: 0
   loadouts:
   - ContractorClothingOuterHardsuitVoidParamed
+  - ContractorClothingOuterCoatRobesGoblin # Goblin specific item
+  - ContractorClothingOuterEVASuitGoblin # Goblin specific item
   - ContractorClothingOuterHoodieGrey
   - ContractorClothingOuterVestHazard
   - ContractorClothingOuterApron
@@ -361,6 +358,14 @@
   - ContractorClothingOuterWinterRD
 #  - ContractorClothingOuterWinterCMO # Temp removed for MOM. Will return if replaced.
   - ContractorClothingOuterWinterCE
+  - ContractorClothingLongcoatBlack
+  - ContractorClothingLongcoatBrown
+  - ContractorClothingLongcoatNanoTrasen
+  - ContractorClothingLongcoatArashiLabs
+  - ContractorClothingLongcoatQM
+  - ContractorClothingLongcoatRD
+  - ContractorClothingLongcoatCE
+  - ContractorClothingLongcoatCaptain
 #  - ContractorClothingOuterCoatLabCmo # Temp removed for MOM. Will return if replaced.
   - ContractorClothingOuterCoatLabSeniorPhysician
   - ContractorClothingOuterCoatRD
@@ -385,6 +390,7 @@
   - ContractorClothingOuterCoatJacketLettermanMagenta # Punkish (Static visuals)
   - ContractorClothingOuterCoatBomberPinkSleeves # Punkish (Static visuals)
   - ContractorClothingOuterCoatBomberRandomized # Punkish (Randomized visuals)
+  - ContractorClothingOuterCoatRandomized # Punkish (Randomized visuals)
   - ContractorClothingOuterCoatAcidRaincoat # Punkish (Static visuals)
   - ContractorClothingOuterCoatAcidRaincoatBlue # Punkish (Static visuals)
   - ContractorClothingOuterCoatAcidRaincoatGreen # Punkish (Static visuals)
@@ -393,7 +399,6 @@
   - ContractorClothingOuterCoatBishop
   - ContractorClothingOuterCoatWitchHunter
   - ContractorClothingOuterCoatCardinal
-  - ContractorClothingOuterEpiChaplainMantle # Coyote
   - ContractorClothingOuterPlagueSuit
   - ContractorWetFloorSign
   - ContractorClothingOuterCoatExpensive
@@ -424,6 +429,9 @@
   - ContractorClothingBeltHolster
   - ContractorClothingBeltChaplainSash
   - ContractorClothingBeltChaplainSashFilled
+  - ContractorTrashBagBlue
+  - ContractorTrashBag
+  - ContractorTrashBagBlueFilledTrash
   - ContractorBooksBag
   - ContractorChemBag
   - ContractorOreBag
@@ -438,7 +446,6 @@
 - type: loadoutGroup
   id: ContractorShoes
   name: loadout-group-contractor-shoes
-  minLimit: 0 # Coyote
   loadouts:
   - ContractorClothingShoesColorBlack
   - ContractorClothingShoesClothwrap
@@ -497,8 +504,6 @@
   - ContractorClothingShoesBling
   fallbacks:
   - ContractorClothingShoesColorBlack
-  subgroups:
-  - CoyoteShoes
 
 - type: loadoutGroup
   id: ContractorHead
@@ -642,7 +647,7 @@
   - ContractorClothingNeckTieRed
   - ContractorClothingNeckTieSci
   - ContractorClothingNeckLawyerbadge
-  - ContractorClothingNeckHeadphones
+  - ContractorClothingMultipleHeadphones
   - ContractorClothingNeckCrucifix
   - ContractorClothingNeckBellCollar
   - ContractorCDDogtags
@@ -663,27 +668,7 @@
   - ContractorClothingNeckCloakPan
   - ContractorClothingNeckCloakGay
   - ContractorClothingNeckCloakLesbian
-  - ContractorClothingNeckCloakPoly
   - ContractorBedsheetRainbow
-  - ClothingNeckLGBTPin
-  - ClothingNeckAllyPin
-  - ClothingNeckAromanticPin
-  - ClothingNeckAsexualPin
-  - ClothingNeckAroacePin
-  - ClothingNeckBisexualPin
-  - ClothingNeckGayPin
-  - ClothingNeckIntersexPin
-  - ClothingNeckLesbianPin
-  - ClothingNeckNonBinaryPin
-  - ClothingNeckPansexualPin
-  - ClothingNeckPluralPin
-  - ClothingNeckOmnisexualPin
-  - ClothingNeckGenderqueerPin
-  - ClothingNeckGenderfluidPin
-  - ClothingNeckTransPin
-  - ClothingNeckAutismPin
-  - ClothingNeckGoldAutismPin
-  - ClothingNeckPolyamoryPin
   - ContractorClothingNeckIFFNeutral
   - ContractorClothingNeckIFFGreen
   - ContractorClothingNeckIFFRed
@@ -691,8 +676,6 @@
   - ContractorClothingNeckIFFCyan
   - ContractorClothingNeckIFFOrange
   - ContractorClothingNeckIFFPurple
-  - ContractorClothingNeckMantle # Coyote
-  - ContractorClothingNeckTieGeoffroyblack12 # Coyote
   - ContractorClothingNeckMantleCap
   - ContractorClothingNeckCloakCap
   - ContractorClothingNeckCloakCapFormal
@@ -706,16 +689,6 @@
   - ContractorClothingNeckMantleCE
   - ContractorClothingNeckCloakVoid
   - ContractorClothingNeckBling
-  # Flooftier collars start
-  - FloofClothingCollarBlue
-  - FloofClothingCollarBlack
-  - FloofClothingCollarPink
-  - FloofClothingCollarEpi
-  - FloofClothingCollarEngi
-  - FloofClothingCollarLogi
-  - FloofClothingCollarCmd
-  - FloofClothingShockCollar
-  # Flooftier collars end
 
 - type: loadoutGroup
   id: ContractorPDA
@@ -806,8 +779,6 @@
   - ContractorDrinkFlaskOld
   - ContractorDrinkShinyFlask
   - ContractorDrinkFlask
-  - ContractorDrinkMREFlask # Coyote.
-  - ContractorDrinkFlaskBar # Coyote.
   - ContractorDrinkVacuumFlask
   - ContractorFlashlightLantern
   - ContractorCardBoxBlack
@@ -815,26 +786,43 @@
   - ContractorWristwatchGold
   - ContractorSilverRing
   - ContractorGoldRing
-  - ContractorAACTablet
+  - ContractorUrnMortuary
   - ContractorBasketball
-  - ContractorTennisball # Coyote. Woof.
   - ContractorFootball
   - ContractorBeachBall
   - ContractorCrayonBox
-  - ContractorClicker
   - ContractorSoapNT
   - PlushieLizard
-  - PlushieExperiment # Coyote: Add Expie plushie to loadout
   - ContractorPlushieSharkGrey
   - ContractorPlushieSharkBlue
   - ContractorPlushieSharkPink
+  - ContractorHarmonicaInstrument
+  - ContractorSaxophoneInstrument
+  - ContractorAcousticGuitarInstrument
   - ContractorPonderingOrb
   - ContractorPlushieRGBee
   - ContractorMysterySpaceBladeBox
   - ContractorHoloGraffitiProjector # Punkish (might be annoying)
   - ContractorCrayonMagic
   - ContractorSprayPainterMagic
-  - ContractorAccessConfigurator # Coyote: Add Civilian Access Configurator
+  - ClothingNeckLGBTPin
+  - ClothingNeckAllyPin
+  - ClothingNeckAromanticPin
+  - ClothingNeckAsexualPin
+  - ClothingNeckAroacePin
+  - ClothingNeckBisexualPin
+  - ClothingNeckGayPin
+  - ClothingNeckIntersexPin
+  - ClothingNeckLesbianPin
+  - ClothingNeckNonBinaryPin
+  - ClothingNeckPansexualPin
+  - ClothingNeckPluralPin
+  - ClothingNeckOmnisexualPin
+  - ClothingNeckGenderqueerPin
+  - ClothingNeckGenderfluidPin
+  - ClothingNeckTransPin
+  - ClothingNeckAutismPin
+  - ClothingNeckGoldAutismPin
     # Bureaucracy
   - ContractorBoxFolderMedicalDoctor
   - ContractorBrbSign
@@ -864,8 +852,8 @@
   - ContractorNTHandyFlag
   - ContractorBalloonNT
   - ContractorFlashlightUmbrella
+  - ContractorDawInstrumentFlatpack
   - ContractorHoverbikeFlatpack
-  - ContractorHoverchairFlatpack
   - ContractorEmotionalPetCarrier
   - ContractorAppraisalTool
   - ContractorPickaxe
@@ -883,12 +871,11 @@
   - ContractorHandheldCrewMonitor
   - ContractorHypoMini
   - ContractorBible
-  - ContractorBibleDruid # Coyote
+  - ContractorBodycam
 
 - type: loadoutGroup
   id: ContractorFace
   name: loadout-group-contractor-face
-  minLimit: 0 # Coyote
   loadouts:
   - ContractorClothingMaskBreath
   - ContractorClothingMaskBreathMedical
@@ -918,28 +905,10 @@
   - ContractorNFBoxSurvivalExtendedNitrogen
   - ContractorNFBoxSurvivalSheleg
   - ContractorNFBoxSurvivalExtendedSheleg
-  - ContractorNFBoxSurvivalDonk
-  - ContractorNFBoxSurvivalDonkSpicy
-  - ContractorNFBoxSurvivalDonkTeriyaki
-  - ContractorNFBoxSurvivalDonkDank
-  - ContractorNFBoxSurvivalDonkPizza
-  - ContractorNFBoxSurvivalDonkHonk
-  - ContractorNFBoxSurvivalDonkBerry
-  - ContractorNFBoxSurvivalDonkMoth
-  - ContractorNFBoxSurvivalDonkDink
   fallbacks:
   - ContractorNFBoxSurvival
   - ContractorNFBoxSurvivalNitrogen
   - ContractorNFBoxSurvivalSheleg
-  - ContractorNFBoxSurvivalDonk
-  - ContractorNFBoxSurvivalDonkSpicy
-  - ContractorNFBoxSurvivalDonkTeriyaki
-  - ContractorNFBoxSurvivalDonkDank
-  - ContractorNFBoxSurvivalDonkPizza
-  - ContractorNFBoxSurvivalDonkHonk
-  - ContractorNFBoxSurvivalDonkBerry
-  - ContractorNFBoxSurvivalDonkMoth
-  - ContractorNFBoxSurvivalDonkDink
 
 - type: loadoutGroup
   id: ContractorEncryptionKey
@@ -987,6 +956,7 @@
   - ContractorMedicalTrackingImplanter
   - ContractorLightImplanter
   - ContractorBikeHornImplanter
+  - ContractorWehImplanter
   - ContractorSadTromboneImplanter
   - ContractorMimePowersImplanter
   - ContractorBibleUserImplanter

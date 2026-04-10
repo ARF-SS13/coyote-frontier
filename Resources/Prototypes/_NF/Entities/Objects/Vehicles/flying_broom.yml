@@ -1,6 +1,6 @@
 #region vehicle
 - type: entity
-  parent: [ NFVehicleHoverbikeKeys, BaseC1WizardContraband ] # Coyote: C3 to C1
+  parent: [ NFVehicleHoverbikeKeys, BaseC3WizardContraband ]
   id: NFVehicleFlyingBroomWithKey
   name: flying broom
   suffix: With key

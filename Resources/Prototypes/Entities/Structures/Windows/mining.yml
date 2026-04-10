@@ -1,7 +1,7 @@
 - type: entity
   id: MiningWindow
   name: mining window
-  parent: Window
+  parent: Window  # Frontier: WindowRCDResistant<Window
   components:
   - type: Sprite
     drawdepth: WallTops
@@ -48,16 +48,13 @@
     trackAllDamage: true
     damageOverlay:
       sprite: Structures/Windows/cracks.rsi
-  - type: StaticPrice # Coyote
-    price: 70
-  - type: RCDDeconstructable # Coyote
-    cost: 6
-    delay: 8
-    fx: EffectRCDDeconstruct8
+  - type: StaticPrice
+    price: 100
 
 - type: entity
-  parent: MiningWindow # Coyote
+  parent: ShuttleWindow
   id: MiningWindowDiagonal
+  name: mining window # Frontier - Add a name
   suffix: diagonal
   placement:
     mode: SnapgridCenter

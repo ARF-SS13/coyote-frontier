@@ -18,17 +18,7 @@ public sealed class MachineConstruction : InteractionTest
         ClientAssertPrototype(Unfinished, Target);
         await Interact(Wrench, Cable);
         AssertPrototype(MachineFrame);
-        await Interact(
-            ProtolatheBoard,
-            Bin1,
-            Bin1,
-            Manipulator1,
-            Manipulator1,
-            Manipulator1,
-            Manipulator1,
-            Beaker,
-            Beaker,
-            Screw); // Frontier, use all parts
+        await Interact(ProtolatheBoard, Bin1, Bin1, Manipulator1, Manipulator1, Beaker, Beaker, Screw); // Frontier, use all parts
         AssertPrototype(Protolathe);
     }
 
@@ -46,7 +36,7 @@ public sealed class MachineConstruction : InteractionTest
             (Steel, 5),
             (Cable, 1),
             (Beaker, 2),
-            (Manipulator1, 4),
+            (Manipulator1, 2), // Frontier 4<2
             (Bin1, 2), // Frontier
             (ProtolatheBoard, 1));
     }
@@ -85,16 +75,7 @@ public sealed class MachineConstruction : InteractionTest
         AssertPrototype(MachineFrame);
 
         // Reconstruct with better parts.
-        await Interact(
-            ProtolatheBoard,
-            Bin4,
-            Bin4,
-            Manipulator4,
-            Manipulator4,
-            Manipulator4,
-            Manipulator4,
-            Beaker,
-            Beaker);
+        await Interact(ProtolatheBoard, Bin4, Bin4, Manipulator4, Manipulator4, Beaker, Beaker);
         await Interact(Screw);
         AssertPrototype(Protolathe);
 

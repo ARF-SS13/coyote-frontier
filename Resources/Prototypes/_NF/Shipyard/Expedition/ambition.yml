@@ -7,33 +7,30 @@
 # Discord: Tibels52
 
 # Shuttle Notes:
-# Archetypes = Engineering/Salvage
-# Halftypes = None
-# Domestic Areas = Full
+#
 - type: vessel
   id: Ambition
   parent: BaseVessel
-  name: LL3 Ambition
+  name: UAC Ambition
   description: Declassified gas production and distribution platform seized in a hostile takeover of an Atmosian conglomerate. For the ultimate insurgent.
-  price: 507000 #152819, +50k(exped) LL3 x2.5 = 507047
+  price: 190000 # 145890 1.3 189657
   category: Large
-  group: Expedition
-  shuttlePath: /Maps/_NF/Shuttles/Expedition/ambition.yml
+  group: Shipyard
+  shuttlePath: /Maps/_NF/Shuttles/ambition.yml
   guidebookPage: ShipyardAmbition
   class:
   - Atmospherics
-  - Expedition
   engine:
   - Bananium
 
 - type: gameMap
   id: Ambition
-  mapName: 'Ambition'
-  mapPath: /Maps/_NF/Shuttles/Expedition/ambition.yml
+  mapName: 'UAC Ambition'
+  mapPath: /Maps/_NF/Shuttles/ambition.yml
   minPlayers: 0
   stations:
     Ambition:
-      stationProto: StandardFrontierExpeditionVessel
+      stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Ambition {1}'
@@ -42,7 +39,6 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            ContractorInterview: [ 2, 2 ]
-            CompanionInterview: [ 2, 2 ]
-            PilotInterview: [ 2, 2 ]
-            MercenaryInterview: [ 2, 2 ]
+            ContractorInterview: [ 0, 0 ]
+            PilotInterview: [ 0, 0 ]
+            MercenaryInterview: [ 0, 0 ]

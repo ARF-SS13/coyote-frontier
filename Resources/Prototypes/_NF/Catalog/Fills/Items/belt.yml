@@ -5,19 +5,7 @@
 
 - type: entity
   id: ClothingBeltNfsdFilled
-  parent: ClothingBeltNfsd # Coyote: Removed ClothingBeltSecurityFilled parent to seperate the two's contents.
-  suffix: Filled # Coyote: Added this so the suffix still works.
-  components:
-  - type: StorageFill # Coyote: Added intended NFSD belt contents.
-    contents:
-      - id: Stunbaton
-        amount: 1
-      - id: Handcuffs
-        amount: 1
-      - id: Handcuffs
-        amount: 1
-      - id: ContrabandAppraisalTool
-        amount: 1
+  parent: [ClothingBeltNfsd, ClothingBeltSecurityFilled]
 
 - type: entity
   id: ClothingBeltNfsdWebbingFilledBrigmedic
@@ -115,3 +103,8 @@
     - id: Multitool
     - id: GasAnalyzer
     - id: trayScanner
+
+- type: entity
+  parent: [ TrashBagBlue, StorageFillGenericTrashItems ]
+  id: NFTrashBagBlueFilledTrash
+  suffix: Filled, Trash

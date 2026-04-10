@@ -55,7 +55,7 @@
 - type: entity
   categories: [ HideSpawnMenu ] # Frontier
   name: AKMS
-  parent: [BaseWeaponRifle, BaseC4Contraband] # Frontier: BaseSecurityContraband<BaseC4Contraband
+  parent: [BaseWeaponRifle, BaseC3SyndicateContraband] # Frontier: BaseSecurityContraband<BaseC3SyndicateContraband
   id: WeaponRifleAk
   description: A somewhat battered combat rifle of a design originating from old Earth. Favored by criminals, militias, and terrorists due to its famed reliability and easy-to-manufacture design. Feeds from .30 rifle magazines.
   components:
@@ -104,7 +104,7 @@
 - type: entity
   categories: [ HideSpawnMenu ] # Frontier
   name: M-90gl
-  parent: [BaseWeaponRifle, BaseC4Contraband] # Frontier: BaseSyndicateContraband<BaseC4Contraband
+  parent: [BaseWeaponRifle, BaseC3SyndicateContraband] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband
   id: WeaponRifleM90GrenadeLauncher
   description: An older bullpup carbine model, with an attached underbarrel grenade launcher. Uses .20 rifle ammo. An illegal firearm often used by Syndicate agents.
   components:
@@ -197,7 +197,7 @@
 - type: entity
   categories: [ HideSpawnMenu ] # Frontier
   name: Estoc DMR
-  parent: [BaseWeaponRifle, BaseC4Contraband] # Frontier: BaseSyndicateContraband<BaseC4Contraband
+  parent: [BaseWeaponRifle, BaseC3SyndicateContraband] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband
   id: WeaponRifleEstoc
   description: A designated marksman rifle, favored for medium-to-long range engagements. Uses .20 rifle ammo.
   components:
@@ -213,12 +213,17 @@
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/estocshot.ogg
+    minAngle: 30
+    maxAngle: 43
     shotsPerBurst: 3
     selectedMode: Burst
     availableModes:
     - Burst
     - SemiAuto
     burstFireRate: 14
+  - type: GunWieldBonus
+    minAngle: -28
+    maxAngle: -25
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -238,13 +243,13 @@
         whitelist:
           tags:
           - CartridgeRifle
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.75
+    sprintModifier: 0.75
   - type: CursorOffsetRequiresWield
   - type: EyeCursorOffset
     maxOffset: 2
     pvsIncrease: 0.2
-  - type: SpeedModifiedOnWield
-    walkModifier: 0.9
-    sprintModifier: 0.9
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -263,11 +268,11 @@
   description: A premium foam rifle of the highest quality. Its plastic feels rugged, and its mechanisms sturdy.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Rifles/foam_rifle.rsi
+    sprite: Objects/Fun/Foam/foam_rifle.rsi
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Rifles/foam_rifle.rsi
+    sprite: Objects/Fun/Foam/foam_rifle.rsi
   - type: Item
-    sprite: Objects/Weapons/Guns/Rifles/foam_rifle_inhand_64x.rsi
+    sprite: Objects/Fun/Foam/foam_rifle_inhand_64x.rsi
   - type: BallisticAmmoProvider
     whitelist:
       tags:

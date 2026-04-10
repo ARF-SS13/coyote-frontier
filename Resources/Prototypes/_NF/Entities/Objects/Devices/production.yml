@@ -137,20 +137,21 @@
     - type: BindToStation
       enabled: false # should be draggable between stations
 
-#- type: entity
-#  id: GaslockBigFrameMachineCircuitboard
-#  parent: BaseMachineCircuitboard
-#  name: full-sized gaslock machine board
-#  description: A machine printed circuit board for a full-on wall gaslock. Perfect for pumping a ship up full of gas like a Sonic OC.
-#  components:
-#    - type: Sprite
-#      state: engineering
-#    - type: MachineBoard
-#      prototype: Gaslock
-#      stackRequirements:
-#        Steel: 1
-#    - type: BindToStation
-#      enabled: false # should be draggable between stations
+- type: entity
+  id: OreProcessorCivilianCircuitboard
+  parent: BaseMachineCircuitboard
+  name: civilian ore processor machine board
+  description: A machine printed circuit board for a civilian ore processor.
+  components:
+    - type: Sprite
+      state: engineering
+    - type: MachineBoard
+      prototype: OreProcessorCivilian
+      requirements:
+        MatterBin: 1
+        Manipulator: 3
+      stackRequirements:
+        Glass: 1
 
 # TechFab
 - type: entity
@@ -217,7 +218,7 @@
 - type: entity
   id: SmallThrusterMachineCircuitboard
   parent: BaseMachineCircuitboard
-  name: SpacePutt Mini thruster machine board
+  name: small thruster machine board
   components:
   - type: Sprite
     state: supply
@@ -336,7 +337,7 @@
 
 - type: entity
   id: PortableGeneratorDKMachineCircuitboard
-  parent: [ BaseMachineCircuitboard, NotContraband ]
+  parent: [ BaseMachineCircuitboard, BaseC2ContrabandUnredeemable ]
   name: D-K portable generator machine board
   description: A machine printed circuit board for a D-K-type portable generator.
   components:
@@ -609,7 +610,7 @@
 
 - type: entity
   id: PirateStitcherCircuitboard
-  parent: [UniformPrinterMachineCircuitboard, NotContraband]
+  parent: [UniformPrinterMachineCircuitboard, BaseC3PirateContrabandNoValue]
   name: pirate stitcher machine board
   description: Clearly brand new.
   components:

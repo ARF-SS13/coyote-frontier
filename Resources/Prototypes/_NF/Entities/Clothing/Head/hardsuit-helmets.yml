@@ -107,8 +107,6 @@
     sprite: _NF/Clothing/Head/Hardsuits/nfsd.rsi
   - type: PointLight
     color: "#ffeead"
-    radius: 5
-    energy: 3
   - type: Armor
     modifiers:
       coefficients:
@@ -171,9 +169,6 @@
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
-  - type: PointLight
-    radius: 7
-    energy: 3
   - type: Armor
     modifiers:
       coefficients:
@@ -331,7 +326,7 @@
         Piercing: 0.8
         Heat: 0.8
 
-#Hostile enviroment hardsuit
+#Hostile environment hardsuit
 - type: entity
   parent: NFClothingHeadHardsuitWithLightBase
   id: ClothingHeadHardsuitHostileEnvironment
@@ -382,7 +377,7 @@
   - type: PointLight
     enabled: true
     color: "#A60000"
-    energy: 5
+    soft: true
     castShadows: false
   - type: Armor
     modifiers:

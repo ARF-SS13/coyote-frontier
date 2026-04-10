@@ -25,11 +25,6 @@
   - !type:GiveItemOnHolidaySpecial # Frontier
     holiday: FrontierBirthday # Frontier
     prototype: FrontierBirthdayGift # Frontier
-#  - !type:AddComponentSpecial # Frottage - soon
-#    components:
-#    - type: PaywardActionMailOpenedByOwners # Coyote Sector
-#    - type: PaywardAuraMailCarrier # Coyote Sector
-#    - type: PaywardModifierMailStats # Coyote Sector
 
 - type: startingGear
   id: MailCarrierGear
@@ -41,10 +36,12 @@
     belt: NFMailBag
   storage:
     back:
-    - EncryptionKeyService # Frontier
     - HandheldCrewMonitor # Frontier
     - ShipVoucherFrontierMailCarrier # Frontier
-    - MailMetricsCartridge # Frontier
+  encryptionKeys:
+  - EncryptionKeyService
+  cartridges:
+  - MailMetricsCartridge
 
 - type: chameleonOutfit
   id: MailCarrierChameleonOutfit

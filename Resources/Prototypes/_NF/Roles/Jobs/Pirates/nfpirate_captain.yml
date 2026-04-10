@@ -7,8 +7,8 @@
     - !type:OverallPlaytimeRequirement
       time: 172800 # 48 hours
     - !type:RoleTimeRequirement
-      role: JobPirateCaptain # Frontier: JobSeniorOfficer
-      time: 3600 # Frontier: 3 hrs as JobSeniorOfficer -> CS: 1 hr of itself
+      role: JobSeniorOfficer
+      time: 10800 # 3 hours
   whitelisted: true
   startingGear: NFPirateCaptainGear
   alwaysUseSpawner: true
@@ -18,24 +18,19 @@
   supervisors: job-supervisors-freebooters-union
   weight: 40
   displayWeight: 40
-  setPreference: false
+  setPreference: true
   newPlayerMessage: false
   access:
   - Pirate
-  - BlackMarket
   accessGroups:
   - GeneralAccess
   special:
   - !type:AddComponentSpecial
     components:
-#    - type: AutoPirateCaptain
+    - type: AutoPirateCaptain
     - type: SpecialSectorStationRecord # must be given on spawn
       recordGeneration: FalseRecord
     - type: DisableSuitSensors
-    - type: IsPirate
-  - !type:AddRpiJobModifierSpecial
-    modifiersToAdd:
-    - rpiJobModifierPirateCaptain
   - !type:AddImplantSpecial
     implants: [ FreelanceTrackingImplant ]
   - !type:GiveItemOnHolidaySpecial # Even pirates get a piece of cake.
@@ -51,7 +46,7 @@
   storage:
     back:
     - AppraisalTool
-    # - PirateTechFabFlatpack # CS - Disable pending piratefab rework/change
+    - PirateTechFabFlatpack
     - Multitool
 
 - type: chameleonOutfit

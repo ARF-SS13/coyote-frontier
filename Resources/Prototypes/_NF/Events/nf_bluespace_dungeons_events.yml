@@ -15,7 +15,7 @@
     weight: 5
     duration: 1800 # 30 minutes
     maxDuration: 1800 # 30 minutes
-    reoccurrenceDelay: 120 # minutes, keep in mind there are 6 in rotation that each last 30 minutes, so there is never any real "downtime" between these
+    reoccurrenceDelay: 120 # 2 hours (some variety - at worst, alternates between four dungeon types)
   - type: ActiveRadio
     channels:
     - Supply
@@ -29,10 +29,8 @@
     groups:
       vgroid: !type:DungeonSpawnGroup
         nameDataset: NamesBorer
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 3 # Coyote add: to three instances
-        minimumDistance: 2500 # Coyote add: 1500 -> 2500m
-        maximumDistance: 3500 # Coyote add: 2500 -> 3500m
+        minimumDistance: 1500
+        maximumDistance: 2500
         addComponents: &dungeonComponents
         - type: Gravity
           enabled: true
@@ -47,7 +45,6 @@
         - type: Physics
           bodyType: Static
           bodyStatus: OnGround
-        - type: DeletionCensusExempt
         protos:
         - NFVGRoidBasalt
 
@@ -60,10 +57,8 @@
     groups:
       vgroid: !type:DungeonSpawnGroup
         nameDataset: NamesBorer
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 3 # Coyote add: to three instances
-        minimumDistance: 2500 # Coyote add: 1500 -> 2500m
-        maximumDistance: 3500 # Coyote add: 2500 -> 3500m
+        minimumDistance: 1500
+        maximumDistance: 2500
         addComponents: *dungeonComponents
         protos:
         - NFVGRoidSnow
@@ -77,10 +72,8 @@
     groups:
       vgroid: !type:DungeonSpawnGroup
         nameDataset: NamesBorer
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 3 # Coyote add: to three instances
-        minimumDistance: 2500 # Coyote add: 1500 -> 2500m
-        maximumDistance: 3500 # Coyote add: 2500 -> 3500m
+        minimumDistance: 1500
+        maximumDistance: 2500
         addComponents: *dungeonComponents
         protos:
         - NFVGRoidCave
@@ -94,10 +87,8 @@
     groups:
       vgroid: !type:DungeonSpawnGroup
         nameDataset: NamesBorer
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 3 # Coyote add: to three instances
-        minimumDistance: 2500 # Coyote add: 1500 -> 2500m
-        maximumDistance: 3500 # Coyote add: 2500 -> 3500m
+        minimumDistance: 1500
+        maximumDistance: 2500
         addComponents: *dungeonComponents
         protos:
         - NFVGRoidChromite
@@ -111,10 +102,8 @@
     groups:
       vgroid: !type:DungeonSpawnGroup
         nameDataset: NamesBorer
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 3 # Coyote add: to three instances
-        minimumDistance: 2500 # Coyote add: 1500 -> 2500m
-        maximumDistance: 3500 # Coyote add: 2500 -> 3500m
+        minimumDistance: 1500
+        maximumDistance: 2500
         addComponents: *dungeonComponents
         protos:
         - NFVGRoidScrap
@@ -128,10 +117,8 @@
     groups:
       vgroid: !type:DungeonSpawnGroup
         nameDataset: NamesBorer
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 3 # Coyote add: to three instances
-        minimumDistance: 2500 # Coyote add: 1500 -> 2500m
-        maximumDistance: 3500 # Coyote add: 2500 -> 3500m
+        minimumDistance: 1500
+        maximumDistance: 2500
         addComponents: *dungeonComponents
         protos:
         - NFVGRoidCaveZombie

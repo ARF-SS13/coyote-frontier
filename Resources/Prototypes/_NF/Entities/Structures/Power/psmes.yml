@@ -28,14 +28,14 @@
       - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
         state: psmes-open
   - type: Battery
-    maxCharge: 7200000
+    maxCharge: 8000000
     startingCharge: 0
   - type: PowerNetworkBattery
-    maxSupply: 25000
-    maxChargeRate: 50000
+    maxSupply: 15000
+    maxChargeRate: 40000 #about a 4 minute recharge time. 
     supplyRampTolerance: 5000
     supplyRampRate: 500
-    efficiency: 1.0 # Coyote 0.8 -> 1.0
+    efficiency: 0.8 # take a loss when dumping in the juice.
   - type: NodeContainer
     examinable: true
     nodes:
@@ -72,7 +72,7 @@
 - type: entity
   parent: PortableSMESEmpty
   id: PortableSMES
-  suffix: 2kWh
+  suffix: Portable, 8MJ
   components:
   - type: Battery
-    startingCharge: 7200000
+    startingCharge: 8000000

@@ -1,30 +1,32 @@
-# Sergeant
-
 - type: job
   id: SeniorOfficer
   name: job-name-senior-officer
   description: job-description-senior-officer
   playTimeTracker: JobSeniorOfficer
-  requirements: # Coyote editted the playtime required for Sergeant
-  - !type:OverallPlaytimeRequirement
-    time: 108000
-  - !type:DepartmentTimeRequirement
-    department: Security
-    time: 172800 # 48 hours
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 108000 # 30 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 64800 # 18 hours
+    - !type:RoleTimeRequirement
+      role: JobSecurityOfficer
+      time: 43200 # 12 hours
+  alternateRequirementSets:
+    longerPlaytimeLessSec:
+    - !type:OverallPlaytimeRequirement
+      time: 540000 # 150 hours
+    - !type:RoleTimeRequirement
+      role: JobSecurityOfficer
+      time: 21600 # 6 hours
   startingGear: SeniorOfficerGear
   icon: JobIconSergeant
   supervisors: job-supervisors-bailiff
   weight: 140
   displayWeight: 50
   canBeAntag: false
-  consoleAdjustable: false
-  access: # Access was editted by Coyote
-  - HeadOfSecurity
-  - Command
-  - Armory
+  access:
   - Sergeant
-  - Bailiff
-  - Brigmedic
   accessGroups:
   - GeneralNfsdAccess
   special:
@@ -33,10 +35,6 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
-  - !type:AddComponentSpecial
-    components:
-    - type: IsNfsd
-      worth: 2
 
 - type: startingGear
   id: SeniorOfficerGear
@@ -45,13 +43,10 @@
   storage:
     back:
     - Flash
-    - CSMagazinePistol40Overpressure # Coyote NFMagazineHighCapacityPistol35Overpressure < CSMagazinePistol40Overpressure
-    - CSMagazinePistol40Rubber # Coyote NFMagazineHighCapacityPistol35Rubber < CSMagazinePistol40Rubber
+    - NFMagazineHighCapacityPistol35Overpressure
+    - NFMagazineHighCapacityPistol35Rubber
     - BaseSecurityUplinkRadioOfficer
-    - FrontierUplinkCoin5 # Coyote added 5 FUCs to Sergeants
     - ShipVoucherNfsdSergeant
-    - RubberStampSergeant
-    - EncryptionKeyCommand
 
 - type: chameleonOutfit
   id: SeniorOfficerChameleonOutfit

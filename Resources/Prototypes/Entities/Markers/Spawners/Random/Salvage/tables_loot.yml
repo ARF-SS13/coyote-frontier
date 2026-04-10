@@ -48,8 +48,8 @@
       weight: 2
     - id: ScrapGlass
       weight: 2
-    # - id: ScrapPlastic TODO: high-value plastic scrap.
-    #  weight: 2
+    - id: ScrapPlastic #Frontier
+      weight: 2 #Frontier
     - id: SheetSteel10
     - id: SheetGlass10
     - id: SheetPlastic10
@@ -190,12 +190,6 @@
       weight: 0.25 # Frontier
     - id: ScrapGenericMachineAncient # Frontier
       weight: 0.1 # Frontier
-    - id: CrateChemistryP # Frontier
-      weight: 0.1 # Frontier
-    - id: CrateChemistryD # Frontier
-      weight: 0.1 # Frontier
-    - id: CrateChemistryS # Frontier
-      weight: 0.1 # Frontier
 
 - type: entityTable
   id: SalvageTreasureLegendary
@@ -205,7 +199,7 @@
     - id: ClothingHeadHatFancyCrown
     - id: GoldenBikeHorn
     - id: ClothingHeadHatCatEars
-      weight: 0.001 # Frontier - 1 in 1000
+      weight: 0.01 # Frontier - 1 in 100
     - id: GoldenPersonalAI
     - id: TreasureCoinDiamond
       amount: !type:RangeNumberSelector
@@ -310,7 +304,6 @@
     - id: WeaponCrusherGlaive
     - id: ClothingOuterHardsuitSalvage
     - id: ChemistryBottleOmnizine
-      weight: 0.25 # Coyote
     - !type:GroupSelector
       children:
       - id: JetpackBlueFilled

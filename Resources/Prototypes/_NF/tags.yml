@@ -1,3 +1,4 @@
+# TODO: alphabetize all this per section
 #region Upstream Removed
 - type: Tag
   id: JanicartKeys
@@ -162,12 +163,25 @@
   id: NFPaperStampProtected
 
 - type: Tag
-  id: NFGlowshroomSpores
+  id: DemagImmune
 
 - type: Tag
   id: NFHotdog
 
+- type: Tag
+  id: NFGlowshroomSpores
+
+- type: Tag
+  id: Sheathable
+
+# Frontier: whitelist empty medipen in medical bag
+- type: Tag
+  id: NFEmptyMedipen
+
 # region Blueprints
+
+# Used for blueprints that are "too advanced" to be used with an autolathe.
+# Requires a techfab or protolathe.
 - type: Tag
   id: NFBlueprintAdvanced
 

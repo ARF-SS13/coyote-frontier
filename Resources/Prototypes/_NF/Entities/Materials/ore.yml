@@ -258,7 +258,6 @@
       - id: DeepFryerMachineCircuitboard
       - id: PortableScrubberMachineCircuitBoard
       - id: GaslockFrameMachineCircuitboard
-#      - id: GaslockBigFrameMachineCircuitboard
       - id: ResearchAndDevelopmentServerMachineCircuitboard
     # T3: cool machine boards
     - !type:GroupSelector

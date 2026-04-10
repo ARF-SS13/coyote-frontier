@@ -29,7 +29,7 @@
   minPlayers: 0
   stations:
     BarrierGate:
-      stationProto: StandardFrontierDepot
+      stationProto: StandardFrontierOutpost
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Barrier Gate'

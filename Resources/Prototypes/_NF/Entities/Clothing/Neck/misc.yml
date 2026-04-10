@@ -21,7 +21,7 @@
   - type: NFTreasure
 
 - type: entity
-  parent: ClothingNeckCollarBase # Floofstation - changed from ClothingNeckBase
+  parent: ClothingNeckBase
   id: ClothingNeckBellCollar
   name: bell collar
   description: A way to inform others about your presence, or just to annoy everyone around you!
@@ -35,7 +35,7 @@
       collection: FootstepJester
 
 - type: entity
-  parent: [ BaseC4Contraband, ClothingNeckBase, ContrabandClothing ] # Coyote: BaseC3CultContraband < BaseC4Contraband
+  parent: [ BaseC3CultContraband, ClothingNeckBase, ContrabandClothing ]
   id: ClothingNeckAmuletBloodCult
   name: ascended cultist amulet
   description: "Every time you gaze upon it, you feel as if it is gazing back at you. Summons a drained one that follows the user for a brief period of time. Has a cooldown."
@@ -63,6 +63,7 @@
     - ObjectOfSpiritualSignificance
   - type: PirateBountyItem
     id: ClothingNeckAmuletBloodCult
+  - type: NFTreasure
 
 - type: entity
   parent: ClothingNeckBase

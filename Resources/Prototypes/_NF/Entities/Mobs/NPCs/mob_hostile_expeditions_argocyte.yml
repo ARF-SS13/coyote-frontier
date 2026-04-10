@@ -64,8 +64,8 @@
     accent: genericAggressive
   - type: Speech
     speechVerb: LargeMob
-#  - type: Perishable #Ummmm the acid kills a lot of the bacteria or something
-#    molsPerSecondPerUnitMass: 0.0005
+  - type: Perishable #Ummmm the acid kills a lot of the bacteria or something
+    molsPerSecondPerUnitMass: 0.0005
   - type: Tag
     tags:
     - CannotSuicide
@@ -552,16 +552,16 @@
     - id: FoodMeatXeno
       amount: 12
   # Ghost role stuff
-  # - type: GhostRole # CS - disable ghost role
-    # allowMovement: true
-    # name: ghost-role-information-leviathing-dungeon-name
-    # description: ghost-role-information-leviathing-dungeon-description
-    # rules: ghost-role-information-dungeon-boss-rules
-    # raffle:
-      # settings: default
-    # mindRoles:
-    # - MindRoleGhostRoleTeamAntagonist
-  # - type: GhostTakeoverAvailable
+  - type: GhostRole
+    allowMovement: true
+    name: ghost-role-information-leviathing-dungeon-name
+    description: ghost-role-information-leviathing-dungeon-description
+    rules: ghost-role-information-dungeon-boss-rules
+    raffle:
+      settings: default
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+  - type: GhostTakeoverAvailable
   - type: ActionGrant
     actions:
     - ActionLeviathingSpawn

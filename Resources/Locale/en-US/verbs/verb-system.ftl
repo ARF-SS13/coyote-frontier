@@ -29,25 +29,9 @@ verb-categories-select-type = Select Type
 verb-categories-fax = Set Destination
 verb-categories-power-level = Power Level
 verb-categories-adjust = Adjust
-# EE interaction system
-verb-categories-interaction = Interact
-
-# Coyote - Reorganized context menus
-verb-categories-examine-group = Examine
-verb-categories-actions = Actions
-verb-categories-interact-sfw = Interact SFW
-verb-categories-interact-nsfw = Interact NSFW
-
-verb-categories-blip-preset = BLIP Preset
-verb-categories-blip-color = BLIP Color
-verb-categories-blip-shape = BLIP Shape
-verb-categories-blip-size = BLIP Size
-verb-categories-blip-toggle = BLIP Active
 
 verb-common-toggle-light = Toggle light
 verb-common-close = Close
 verb-common-open = Open
 verb-common-close-ui = Close UI
 verb-common-open-ui = Open UI
-
-

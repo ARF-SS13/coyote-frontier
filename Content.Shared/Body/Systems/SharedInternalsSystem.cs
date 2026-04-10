@@ -52,7 +52,6 @@ public abstract class SharedInternalsSystem : EntitySystem
         InteractionVerb verb = new()
         {
             Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/dot.svg.192dpi.png")),
-            Category = VerbCategory.Actions
         };
 
         if (AreInternalsWorking(ent))

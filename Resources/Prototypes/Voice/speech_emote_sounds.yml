@@ -100,12 +100,6 @@
       collection: ReptilianHiss # Imp
     MonkeyScreeches: # Frontier
       collection: MonkeyScreeches # Frontier
-    Gurgle:
-      collection: LizardGurgle
-    Chirp:
-      collection: LizardChirp
-    Hiss:
-      path: /Audio/_Impstation/Voice/Reptilian/reptillian_hiss1.ogg
     Honk:
       collection: BikeHorn
     Whistle:
@@ -132,12 +126,6 @@
       path: /Audio/Voice/Reptilian/reptilian_scream.ogg
     Laugh:
       path: /Audio/Animals/lizard_happy.ogg
-    Gurgle:
-      collection: LizardGurgle
-    Chirp:
-      collection: LizardChirp
-    Hiss:
-      path: /Audio/_Impstation/Voice/Reptilian/reptillian_hiss1.ogg
     ReptilianHiss: # Imp
       collection: ReptilianHiss # Imp
     MonkeyScreeches: # Frontier
@@ -534,24 +522,6 @@
       collection: Cracks # Imp
 
 - type: emoteSounds
-  id: LewdSounds
-  sounds:
-    Stroke:
-      collection: Stroke
-    WetPlorp:
-      collection: WetPlorp
-    Plap:
-      collection: Plap
-    WetPlap:
-      collection: WetPlap
-    CumIn:
-      collection: CumIn
-    CumOut:
-      collection: CumOut
-    PullOut:
-      collection: PullOut
-
-- type: emoteSounds
   id: DionaBodyEmotes
   sounds:
     Clap:
@@ -665,6 +635,20 @@
   params:
     variation: 0.125
   sounds:
+    Thump:
+      path: /Audio/Effects/soft_thump.ogg
+      params:
+        variation: 0.125
+    Clap:
+      collection: Claps
+    ClapSingle:
+      collection: ClapSingle
+    Snap:
+      collection: Snaps
+      params:
+        volume: -6
+    Salute:
+      collection: Salutes
     Laugh:
       collection: WawaLaugh
     Sneeze:
@@ -677,3 +661,19 @@
       collection: WawaSigh
     Scream:
       collection: WawaScream
+    Yawn:
+      collection: WawaYawn
+    Crying:
+      collection: WawaCry
+    Snore:
+      collection: Snores
+    Weh:
+      collection: Weh
+    Hew:
+      collection: Hew
+    Honk:
+      collection: BikeHorn
+    Gasp:
+      collection: MaleGasp
+    DefaultDeathgasp:
+      collection: WawaDeath

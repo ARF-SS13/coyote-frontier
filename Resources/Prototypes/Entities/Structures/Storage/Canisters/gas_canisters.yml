@@ -117,7 +117,6 @@
       - GasCanisters
     - type: Paintable
       group: Canisters
-    - type: SpaceJanitor # delete me after a while if im just in space
 
 - type: entity
   parent: GasCanister

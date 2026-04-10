@@ -2,8 +2,8 @@
 - type: gasDeposit
   id: AirLike
   gases:
-  -  5000,  9500  # oxygen
-  - 15000, 50000  # nitrogen
+  -  5000,  7500  # oxygen
+  - 15000, 20000  # nitrogen
   -     0,  1500  # carbon dioxide
   -     0,   200  # plasma
   -     0,    50  # tritium
@@ -18,7 +18,7 @@
   id: MostlyNitrogen
   gases:
   -     0,  2000  # oxygen
-  - 20000, 55000  # nitrogen
+  - 20000, 25000  # nitrogen
   -     0,  1500  # carbon dioxide
   -     0,   200  # plasma
   -     0,    50  # tritium
@@ -32,7 +32,7 @@
 - type: gasDeposit
   id: MostlyOxygen
   gases:
-  - 20000, 55000  # oxygen
+  - 20000, 25000  # oxygen
   -     0,  2000  # nitrogen
   -     0,  1500  # carbon dioxide
   -     0,   200  # plasma
@@ -49,7 +49,7 @@
   gases:
   -     0,  2000  # oxygen
   -     0,  1500  # nitrogen
-  - 20000, 55000  # carbon dioxide
+  - 20000, 25000  # carbon dioxide
   -     0,   200  # plasma
   -     0,    50  # tritium
   -     0,   500  # water vapor
@@ -69,7 +69,7 @@
   -     0,    50  # tritium
   -     0,   500  # water vapor
   -     0,   500  # ammonia
-  - 20000, 55000  # n2o
+  - 20000, 25000  # n2o
   -     0,     0  # frezon
   -     0,     0  # respiron
   -     0,   200  # helium
@@ -83,7 +83,7 @@
   -     0,   200  # plasma
   -     0,    50  # tritium
   -     0,   500  # water vapor
-  - 20000, 55000  # ammonia
+  - 20000, 25000  # ammonia
   -     0,   500  # n2o
   -     0,     0  # frezon
   -     0,     0  # respiron
@@ -97,7 +97,7 @@
   -     0,   200  # carbon dioxide
   -     0,   200  # plasma
   -     0,    50  # tritium
-  - 20000, 55000  # water vapor
+  - 20000, 25000  # water vapor
   -     0,   500  # ammonia
   -     0,   500  # n2o
   -     0,     0  # frezon
@@ -110,7 +110,7 @@
   -     0,  1000  # oxygen
   -     0,  2000  # nitrogen
   -     0,   200  # carbon dioxide
-  - 15000, 50000  # plasma
+  - 15000, 20000  # plasma
   -     0,    50  # tritium
   -     0,  3000  # water vapor
   -     0,  2000  # ammonia
@@ -122,44 +122,44 @@
 - type: gasDeposit
   id: MuddleEven
   gases:
-  -  2000,  5000  # oxygen
-  -  2000,  5000  # nitrogen
-  -  2000,  5000  # carbon dioxide
-  -  2000,  5000  # plasma
+  -  2000,  4000  # oxygen
+  -  2000,  4000  # nitrogen
+  -  2000,  4000  # carbon dioxide
+  -  2000,  4000  # plasma
   -     0,   400  # tritium
-  -  2000,  5000  # water vapor
-  -  2000,  5000  # ammonia
-  -  2000,  5000  # n2o
+  -  2000,  4000  # water vapor
+  -  2000,  4000  # ammonia
+  -  2000,  4000  # n2o
   -     0,     0  # frezon
   -     0,     0  # respiron
-  -  2000,  5000  # helium
+  -  2000,  4000  # helium
 
 - type: gasDeposit
   id: MuddlePlasma
   gases:
-  -  2000,  7000  # oxygen
-  -  2000,  7000  # nitrogen
-  -  2000,  7000  # carbon dioxide
-  -  4000,  20000  # plasma
+  -  2000,  4000  # oxygen
+  -  2000,  4000  # nitrogen
+  -  2000,  4000  # carbon dioxide
+  -  4000,  8000  # plasma
   -     0,   300  # tritium
-  -  1000,  4000  # water vapor
-  -  1000,  4000  # ammonia
-  -  2000,  7000  # n2o
+  -  1000,  2000  # water vapor
+  -  1000,  2000  # ammonia
+  -  2000,  4000  # n2o
   -     0,     0  # frezon
   -     0,     0  # respiron
-  -  2000,  7000  # helium
+  -  2000,  4000  # helium
 
 - type: gasDeposit
   id: MostlyHelium
   gases:
-  -     0,  2000  # oxygen
-  -     0,  5000  # nitrogen
+  -     0,  1000  # oxygen
+  -     0,  2000  # nitrogen
   -     0,   200  # carbon dioxide
   -     0,   200  # plasma
   -     0,    50  # tritium
-  -     0,  5000  # water vapor
-  -     0,  3000  # ammonia
-  -     0,  2000  # n2o
+  -     0,  3000  # water vapor
+  -     0,  2000  # ammonia
+  -     0,  1000  # n2o
   -     0,     0  # frezon
   -     0,     0  # respiron
-  - 7500, 22500  # helium
+  - 7500, 12500  # helium

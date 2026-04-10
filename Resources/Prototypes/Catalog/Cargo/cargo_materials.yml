@@ -33,7 +33,7 @@
 
 - type: cargoProduct
   id: Material
-  abstract: true # Frontier
+#  abstract: true # Frontier
   icon:
     sprite: Objects/Materials/Sheets/metal.rsi
     state: brass_3
@@ -114,7 +114,7 @@
     sprite: Objects/Materials/Sheets/other.rsi
     state: paper_3
   product: CrateMaterialPaper
-  cost: 3000 # Coyote: 185<3000
+  cost: 185
   category: cargoproduct-category-name-materials
   group: market
 
@@ -168,6 +168,6 @@
     sprite: Objects/Weapons/Grenades/airboom.rsi
     state: icon
   product: CrateAirGrenade
-  cost: 12000 # Coyote
+  cost: 2500
   category: cargoproduct-category-name-atmospherics
   group: market

@@ -1,29 +1,14 @@
-using Content.Shared.Atmos.Components;
-using Content.Shared.Chemistry.Reagent;
-using Content.Shared.FixedPoint;
-using Content.Shared.MedicalScanner;
-using Content.Shared.Tools;
+using System.Numerics; // Frontier
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+
 namespace Content.Shared.Medical.Cryogenics;
 
 [RegisterComponent, NetworkedComponent]
-[AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class CryoPodComponent : Component
 {
-    /// <summary>
-    /// The name of the container the patient is stored in.
-    /// </summary>
-    public const string BodyContainerName = "scanner-body";
-
-    /// <summary>
-    /// The name of the solution container for the injection chamber.
-    /// </summary>
-    public const string InjectionBufferSolutionName = "injectionBuffer";
-
     /// <summary>
     /// Specifies the name of the atmospherics port to draw gas from.
     /// </summary>
@@ -43,7 +28,7 @@ public sealed partial class CryoPodComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("beakerTransferTime")]
-    public TimeSpan BeakerTransferTime = TimeSpan.FromSeconds(2);
+    public float BeakerTransferTime = 1f;
 
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("nextInjectionTime", customTypeSerializer:typeof(TimeOffsetSerializer))]
@@ -65,20 +50,6 @@ public sealed partial class CryoPodComponent : Component
     public float PotencyMultiplier = 2f;
     // End Frontier
 
-
-    /// <summary>
-    /// How often the UI is updated.
-    /// </summary>
-    [DataField]
-    public TimeSpan UiUpdateInterval = TimeSpan.FromSeconds(1);
-
-    /// <summary>
-    /// The timestamp for the next UI update.
-    /// </summary>
-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
-    [AutoNetworkedField, AutoPausedField]
-    public TimeSpan NextUiUpdateTime = TimeSpan.Zero;
-
     /// <summary>
     ///     Delay applied when inserting a mob in the pod.
     /// </summary>
@@ -99,6 +70,14 @@ public sealed partial class CryoPodComponent : Component
     [ViewVariables]
     public ContainerSlot BodyContainer = default!;
 
+    // Frontier
+    /// <summary>
+    /// Tile offset to drop patients at
+    /// </summary>
+    [ViewVariables]
+    [DataField("dropOffset")]
+    public Vector2 DropOffset = new Vector2(0, -1);
+
     /// <summary>
     /// If true, the eject verb will not work on the pod and the user must use a crowbar to pry the pod open.
     /// </summary>
@@ -113,70 +92,10 @@ public sealed partial class CryoPodComponent : Component
     [DataField("permaLocked")]
     public bool PermaLocked { get; set; }
 
-    /// <summary>
-    /// The tool quality needed to eject a body when the pod is locked.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public ProtoId<ToolQualityPrototype> UnlockToolQuality = "Prying";
-}
-
-[Serializable, NetSerializable]
-public enum CryoPodVisuals : byte
-{
-    ContainsEntity,
-    IsOn
-}
-
-[Serializable, NetSerializable]
-public enum CryoPodUiKey : byte
-{
-    Key
-}
-
-[Serializable, NetSerializable]
-public sealed class CryoPodUserMessage : BoundUserInterfaceMessage
-{
-    public GasAnalyzerComponent.GasMixEntry GasMix;
-    public HealthAnalyzerUiState Health;
-    public FixedPoint2? BeakerCapacity;
-    public List<ReagentQuantity>? Beaker;
-    public List<ReagentQuantity>? Injecting;
-
-    public CryoPodUserMessage(
-        GasAnalyzerComponent.GasMixEntry gasMix,
-        HealthAnalyzerUiState health,
-        FixedPoint2? beakerCapacity,
-        List<ReagentQuantity>? beaker,
-        List<ReagentQuantity>? injecting)
+    [Serializable, NetSerializable]
+    public enum CryoPodVisuals : byte
     {
-        GasMix = gasMix;
-        Health = health;
-        BeakerCapacity = beakerCapacity;
-        Beaker = beaker;
-        Injecting = injecting;
-    }
-}
-
-[Serializable, NetSerializable]
-public sealed class CryoPodSimpleUiMessage : BoundUserInterfaceMessage
-{
-    public enum MessageType { EjectPatient, EjectBeaker }
-
-    public readonly MessageType Type;
-
-    public CryoPodSimpleUiMessage(MessageType type)
-    {
-        Type = type;
-    }
-}
-
-[Serializable, NetSerializable]
-public sealed class CryoPodInjectUiMessage : BoundUserInterfaceMessage
-{
-    public readonly FixedPoint2 Quantity;
-
-    public CryoPodInjectUiMessage(FixedPoint2 quantity)
-    {
-        Quantity = quantity;
+        ContainsEntity,
+        IsOn
     }
 }

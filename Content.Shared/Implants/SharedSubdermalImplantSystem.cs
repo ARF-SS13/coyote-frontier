@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared.Actions;
 using Content.Shared.Implants.Components;
 using Content.Shared.Interaction;
@@ -6,10 +7,7 @@ using Content.Shared.Mobs;
 using Content.Shared.Tag;
 using JetBrains.Annotations;
 using Robust.Shared.Containers;
-using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
-using System.Linq;
-using Content.Shared.Verbs;
 
 namespace Content.Shared.Implants;
 
@@ -34,8 +32,6 @@ public abstract class SharedSubdermalImplantSystem : EntitySystem
         SubscribeLocalEvent<ImplantedComponent, MobStateChangedEvent>(RelayToImplantEvent);
         SubscribeLocalEvent<ImplantedComponent, AfterInteractUsingEvent>(RelayToImplantEvent);
         SubscribeLocalEvent<ImplantedComponent, SuicideEvent>(RelayToImplantEvent);
-        SubscribeLocalEvent<ImplantedComponent, GetVerbsEvent<Verb>>(RelayToImplantEvent);
-        SubscribeLocalEvent<ImplantedComponent, ReTriggerRattleImplantEvent>(RelayToImplantEvent);
     }
 
     private void OnInsert(EntityUid uid, SubdermalImplantComponent component, EntGotInsertedIntoContainerMessage args)
@@ -94,7 +90,7 @@ public abstract class SharedSubdermalImplantSystem : EntitySystem
     /// Add a list of implants to a person.
     /// Logs any implant ids that don't have <see cref="SubdermalImplantComponent"/>.
     /// </summary>
-    public void AddImplants(EntityUid uid, IEnumerable<String> implants)
+    public void AddImplants(EntityUid uid, IEnumerable<EntProtoId> implants)
     {
         foreach (var id in implants)
         {
@@ -222,16 +218,4 @@ public readonly struct ImplantImplantedEvent
         Implant = implant;
         Implanted = implanted;
     }
-}
-
-/// <summary>
-/// Event used to re-trigger implant events, if needed.
-/// Raised on the implanted entity.
-/// </summary>
-public sealed class ReTriggerRattleImplantEvent(
-    EntityUid implanted,
-    MobState currentState) : EventArgs
-{
-    public readonly EntityUid Implanted = implanted;
-    public readonly MobState CurrentState = currentState;
 }

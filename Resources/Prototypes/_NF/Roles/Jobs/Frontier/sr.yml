@@ -7,12 +7,9 @@
     - !type:OverallPlaytimeRequirement
       time: 72000 # 20 hrs
     - !type:RoleTimeRequirement
-      role: JobSecretary
-      time: 28800
-  overrideRequirement:
-  - !type:RoleTimeRequirement
-    role: JobHeadOfPersonnel
-    time: 600 # 10 minutes to requalify
+      role: JobSecurityGuard
+      time: 10800 # 3 hrs as security guard
+  whitelisted: true
   startingGear: SrGear
   alwaysUseSpawner: true
   icon: "JobIconHeadOfPersonnel"
@@ -29,12 +26,7 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
-  - !type:AddRpiAuraSpecial
-    aurasToAdd:
-    - rpiAuraStationPrincess
-  - !type:AddRpiJobModifierSpecial
-    modifiersToAdd:
-    - rpiJobModifierStationPrincess
+      - type: PreventShipyardTitleOverwrite
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
@@ -48,7 +40,6 @@
     - Flash
     - RubberStampSr
     - DoorRemoteCommand
-    - ShipVoucherCoyoteSectorRep
   encryptionKeys:
   - EncryptionKeyStationMaster
 

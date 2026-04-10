@@ -2,7 +2,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
 using Content.Client.DisplacementMap;
-using Content.Client.Humanoid;
 using Content.Client.Inventory;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
@@ -55,14 +54,13 @@ public sealed class ClientClothingSystem : ClothingSystem
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly DisplacementMapSystem _displacement = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
-    [Dependency] private readonly HumanoidAppearanceSystem _humanoidSystem = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<ClothingComponent, GetEquipmentVisualsEvent>(OnGetVisuals);
-        SubscribeLocalEvent<ClothingComponent, InventoryTemplateUpdated>(OnInventoryTemplateUpdated);
+        SubscribeLocalEvent<InventoryComponent, InventoryTemplateUpdated>(OnInventoryTemplateUpdated);
 
         SubscribeLocalEvent<InventoryComponent, VisualsChangedEvent>(OnVisualsChanged);
         SubscribeLocalEvent<SpriteComponent, DidUnequipEvent>(OnDidUnequip);
@@ -85,20 +83,19 @@ public sealed class ClientClothingSystem : ClothingSystem
         }
     }
 
-    private void OnInventoryTemplateUpdated(Entity<ClothingComponent> ent, ref InventoryTemplateUpdated args)
+    private void OnInventoryTemplateUpdated(Entity<InventoryComponent> ent, ref InventoryTemplateUpdated args)
     {
-        UpdateAllSlots(ent.Owner, clothing: ent.Comp);
+        UpdateAllSlots(ent.Owner, ent.Comp);
     }
 
     private void UpdateAllSlots(
         EntityUid uid,
-        InventoryComponent? inventoryComponent = null,
-        ClothingComponent? clothing = null)
+        InventoryComponent? inventoryComponent = null)
     {
         var enumerator = _inventorySystem.GetSlotEnumerator((uid, inventoryComponent));
         while (enumerator.NextItem(out var item, out var slot))
         {
-            RenderEquipment(uid, item, slot.Name, inventoryComponent, clothingComponent: clothing);
+            RenderEquipment(uid, item, slot.Name, inventoryComponent);
         }
     }
 
@@ -232,25 +229,12 @@ public sealed class ClientClothingSystem : ClothingSystem
         RenderEquipment(args.Equipee, uid, args.Slot, clothingComponent: component);
     }
 
-    private void RenderEquipment(
-        EntityUid equipee,
-        EntityUid equipment,
-        string slot,
-        InventoryComponent? inventory = null,
-        SpriteComponent? sprite = null,
-        ClothingComponent? clothingComponent = null,
-        InventorySlotsComponent? inventorySlots = null
-    )
+    private void RenderEquipment(EntityUid equipee, EntityUid equipment, string slot,
+        InventoryComponent? inventory = null, SpriteComponent? sprite = null, ClothingComponent? clothingComponent = null,
+        InventorySlotsComponent? inventorySlots = null)
     {
-        if (!Resolve(
-                equipee,
-                ref inventory,
-                ref sprite,
-                ref inventorySlots)
-            || !Resolve(
-                equipment,
-                ref clothingComponent,
-                false))
+        if (!Resolve(equipee, ref inventory, ref sprite, ref inventorySlots) ||
+           !Resolve(equipment, ref clothingComponent, false))
         {
             return;
         }
@@ -305,41 +289,6 @@ public sealed class ClientClothingSystem : ClothingSystem
                     break;
             }
         }
-
-        if (TryComp(equipee, out HumanoidAppearanceComponent? ham))
-        {
-            _humanoidSystem.GetDisplacementForLegStyle(
-                equipee,
-                slot,
-                ham,
-                inventory.Displacements.GetValueOrDefault(slot),
-                inventory.MaleDisplacements.GetValueOrDefault(slot),
-                inventory.FemaleDisplacements.GetValueOrDefault(slot),
-                out DisplacementData? baseDisplacement,
-                out DisplacementData? maleDisplacement,
-                out DisplacementData? femaleDisplacement);
-            // sex-specific displacement override
-            DisplacementData? newDisplacementData = null;
-            if (equipeeSex != null)
-            {
-                switch (equipeeSex)
-                {
-                    case Sex.Male:
-                        if (maleDisplacement != null)
-                            newDisplacementData = maleDisplacement;
-                        break;
-                    case Sex.Female:
-                        if (femaleDisplacement != null)
-                            newDisplacementData = femaleDisplacement;
-                        break;
-                }
-            }
-            if (newDisplacementData != null)
-                displacementData = newDisplacementData;
-            else if (baseDisplacement != null)
-                displacementData = baseDisplacement;
-        }
-
 
         // add the new layers
         foreach (var (key, layerData) in ev.Layers)
@@ -398,19 +347,11 @@ public sealed class ClientClothingSystem : ClothingSystem
                 //Checking that the state is not tied to the current race. In this case we don't need to use the displacement maps.
                 //if (layerData.State is not null && inventory.SpeciesId is not null && layerData.State.EndsWith(inventory.SpeciesId))
                 //    continue;
-                if (layer.State.Name is not null
-                    && inventory.SpeciesId is not null
-                    && layer.State.Name.EndsWith(inventory.SpeciesId)
-                    || HasComp<DisableDisplacementsComponent>(equipee))
+                if (layer.State.Name is not null && inventory.SpeciesId is not null && layer.State.Name.EndsWith(inventory.SpeciesId) || HasComp<DisableDisplacementsComponent>(equipee))
                     continue;
                 // End Frontier: revise race check
 
-                if (_displacement.TryAddDisplacement(
-                    displacementData,
-                    (equipee, sprite),
-                    index,
-                    key,
-                    out var displacementKey))
+                if (_displacement.TryAddDisplacement(displacementData, (equipee, sprite), index, key, out var displacementKey))
                 {
                     revealedLayers.Add(displacementKey);
                     index++;

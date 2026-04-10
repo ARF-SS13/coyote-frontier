@@ -7,6 +7,7 @@ using Content.Server.Cargo.Components;
 using Content.Server.Popups;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Server.Vocalization.Systems;
 using Content.Shared.Cargo;
 using Content.Shared.Damage;
 using Content.Shared.Destructible;
@@ -61,6 +62,7 @@ namespace Content.Server.VendingMachines
             SubscribeLocalEvent<VendingMachineComponent, DamageChangedEvent>(OnDamageChanged);
             SubscribeLocalEvent<VendingMachineComponent, PriceCalculationEvent>(OnVendingPrice);
             //SubscribeLocalEvent<VendingMachineComponent, EmpPulseEvent>(OnEmpPulse); // Frontier: Upstream - #28984
+            SubscribeLocalEvent<VendingMachineComponent, TryVocalizeEvent>(OnTryVocalize);
 
             SubscribeLocalEvent<VendingMachineComponent, ActivatableUIOpenAttemptEvent>(OnActivatableUIOpenAttempt);
 
@@ -206,41 +208,41 @@ namespace Content.Server.VendingMachines
         /// <param name="vendComponent"></param>
         public void EjectRandom(EntityUid uid, bool throwItem, bool forceEject = false, VendingMachineComponent? vendComponent = null)
         {
-//            if (!Resolve(uid, ref vendComponent))
-//                return;
-//
-//            if (!this.IsPowered(uid, EntityManager))
-//                return;
-//
-//            if (vendComponent.Ejecting)
-//                return;
-//
-//            if (vendComponent.EjectRandomCounter <= 0)
-//            {
-//                _audioSystem.PlayPvs(_audioSystem.ResolveSound(vendComponent.SoundDeny), uid); // Frontier: ResolveSound, warning suppression
-//                _popupSystem.PopupEntity(Loc.GetString("vending-machine-component-try-eject-access-abused"), uid, PopupType.MediumCaution);
-//                return;
-//            }
-//
-//            var availableItems = GetAvailableInventory(uid, vendComponent);
-//            if (availableItems.Count <= 0)
-//                return;
-//            var item = _random.Pick(availableItems);
-//
-//            if (forceEject)
-//            {
-//                vendComponent.NextItemToEject = item.ID;
-//                vendComponent.ThrowNextItem = throwItem;
-//                var entry = GetEntry(uid, item.ID, item.Type, vendComponent);
-//                if (entry != null)
-//                    entry.Amount--;
-//                EjectItem(uid, vendComponent, forceEject);
-//            }
-//            else
-//            {
-//                TryEjectVendorItem(uid, item.Type, item.ID, throwItem, user: null, vendComponent: vendComponent);
-//            }
-//            vendComponent.EjectRandomCounter--; // Frontier: finite random ejections
+            if (!Resolve(uid, ref vendComponent))
+                return;
+
+            if (!this.IsPowered(uid, EntityManager))
+                return;
+
+            if (vendComponent.Ejecting)
+                return;
+
+            if (vendComponent.EjectRandomCounter <= 0)
+            {
+                _audioSystem.PlayPvs(_audioSystem.ResolveSound(vendComponent.SoundDeny), uid); // Frontier: ResolveSound, warning suppression
+                _popupSystem.PopupEntity(Loc.GetString("vending-machine-component-try-eject-access-abused"), uid, PopupType.MediumCaution);
+                return;
+            }
+
+            var availableItems = GetAvailableInventory(uid, vendComponent);
+            if (availableItems.Count <= 0)
+                return;
+            var item = _random.Pick(availableItems);
+
+            if (forceEject)
+            {
+                vendComponent.NextItemToEject = item.ID;
+                vendComponent.ThrowNextItem = throwItem;
+                var entry = GetEntry(uid, item.ID, item.Type, vendComponent);
+                if (entry != null)
+                    entry.Amount--;
+                EjectItem(uid, vendComponent, forceEject);
+            }
+            else
+            {
+                TryEjectVendorItem(uid, item.Type, item.ID, throwItem, user: null, vendComponent: vendComponent);
+            }
+            vendComponent.EjectRandomCounter--; // Frontier: finite random ejections
         }
 
         // Frontier: finite random ejections
@@ -272,14 +274,13 @@ namespace Content.Server.VendingMachines
             }
 
             // Default spawn coordinates
-            var spawnCoordinates = Transform(uid).Coordinates;
+            var xform = Transform(uid);
+            var spawnCoordinates = xform.Coordinates;
 
             //Make sure the wallvends spawn outside of the wall.
-
             if (TryComp<WallMountComponent>(uid, out var wallMountComponent))
             {
-
-                var offset = wallMountComponent.Direction.ToWorldVec() * WallVendEjectDistanceFromWall;
+                var offset = (wallMountComponent.Direction + xform.LocalRotation - Math.PI / 2).ToVec() * WallVendEjectDistanceFromWall;
                 spawnCoordinates = spawnCoordinates.Offset(offset);
             }
 
@@ -469,5 +470,10 @@ namespace Content.Server.VendingMachines
             }
         }
         // End Frontier: cash slot logic, custom vending check
+
+        private void OnTryVocalize(Entity<VendingMachineComponent> ent, ref TryVocalizeEvent args)
+        {
+            args.Cancelled |= ent.Comp.Broken;
+        }
     }
 }

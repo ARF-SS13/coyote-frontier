@@ -27,7 +27,6 @@
     tags:
     - Recyclable
     - SalvageScrap
-  - type: SpaceJanitor # delete me after a while if im just in space
 
 - type: entity
   parent: BaseStructure
@@ -68,7 +67,6 @@
           - SmallMobMask # Frontier: MachineMask<SmallMobMask so the machines could go under plastic flaps
         layer:
           - MachineLayer
-  - type: SpaceJanitor # delete me after a while if im just in space
 
 - type: entity
   parent: BaseScrap

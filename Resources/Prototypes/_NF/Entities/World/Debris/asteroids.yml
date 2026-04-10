@@ -357,6 +357,8 @@
         #  orGroup: deposit
         - id: GasDepositHelium
           orGroup: deposit
+        - id: GasDepositHelium
+          orGroup: deposit
 # endregion AsteroidRock Table
 
 # region Scrap Table

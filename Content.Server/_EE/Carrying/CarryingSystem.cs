@@ -32,7 +32,7 @@ using Content.Shared.Storage;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Server.GameObjects;
-using Robust.Shared.Player;
+using Content.Shared.Hands.EntitySystems; // Frontier
 
 namespace Content.Server.Carrying
 {
@@ -51,6 +51,7 @@ namespace Content.Server.Carrying
         [Dependency] private readonly PseudoItemSystem _pseudoItem = default!;
         [Dependency] private readonly ContestsSystem _contests = default!;
         [Dependency] private readonly TransformSystem _transform = default!;
+        [Dependency] private readonly SharedHandsSystem _hands = default!; // Frontier
 
         public const float BaseDistanceCoeff = 0.5f; // Frontier: default throwing speed reduction
         public const float MaxDistanceCoeff = 1.0f; // Frontier: default throwing speed reduction
@@ -79,11 +80,6 @@ namespace Content.Server.Carrying
             SubscribeLocalEvent<CarriableComponent, CarryDoAfterEvent>(OnDoAfter);
         }
 
-        private void OnPlayerConnect(EntityUid uid, ActorComponent component, ComponentStartup args)
-        {
-            EnsureComp<CarriableComponent>(uid);
-        }
-
         private void AddCarryVerb(EntityUid uid, CarriableComponent component, GetVerbsEvent<AlternativeVerb> args)
         {
             if (!args.CanInteract || !args.CanAccess || !_mobStateSystem.IsAlive(args.User)
@@ -100,8 +96,7 @@ namespace Content.Server.Carrying
                     StartCarryDoAfter(args.User, uid, component);
                 },
                 Text = Loc.GetString("carry-verb"),
-                Priority = 2,
-                Category = VerbCategory.Actions
+                Priority = 2
             };
             args.Verbs.Add(verb);
         }
@@ -292,7 +287,6 @@ namespace Content.Server.Carrying
             if (TryComp<PullableComponent>(carried, out var pullable))
                 _pullingSystem.TryStopPull(carried, pullable);
 
-            EnsureComp<KnockedDownComponent>(carried); // Floof - moved this statement up because some systems can break carrying in response to knockdown
             _transform.AttachToGridOrMap(carrier);
             _transform.AttachToGridOrMap(carried);
             _transform.SetCoordinates(carried, Transform(carrier).Coordinates);
@@ -303,6 +297,7 @@ namespace Content.Server.Carrying
             var carryingComp = EnsureComp<CarryingComponent>(carrier);
             ApplyCarrySlowdown(carrier, carried);
             var carriedComp = EnsureComp<BeingCarriedComponent>(carried);
+            EnsureComp<KnockedDownComponent>(carried);
 
             carryingComp.Carried = carried;
             carriedComp.Carrier = carrier;
@@ -315,10 +310,10 @@ namespace Content.Server.Carrying
             if (!Resolve(toCarry, ref carriedComp, false)
                 || !CanCarry(carrier, toCarry, carriedComp)
                 || HasComp<BeingCarriedComponent>(carrier)
-                || HasComp<ItemComponent>(carrier))
-                // || TryComp<PhysicsComponent>(carrier, out var carrierPhysics)
-                // && TryComp<PhysicsComponent>(toCarry, out var toCarryPhysics)
-                // && carrierPhysics.Mass < toCarryPhysics.Mass * 2f)
+                || HasComp<ItemComponent>(carrier)
+                || TryComp<PhysicsComponent>(carrier, out var carrierPhysics)
+                && TryComp<PhysicsComponent>(toCarry, out var toCarryPhysics)
+                && carrierPhysics.Mass < toCarryPhysics.Mass * 2f)
                 return false;
 
             Carry(carrier, toCarry);
@@ -358,7 +353,7 @@ namespace Content.Server.Carrying
                 || HasComp<BeingCarriedComponent>(carrier)
                 || HasComp<BeingCarriedComponent>(carried)
                 || !TryComp<HandsComponent>(carrier, out var hands)
-                || hands.CountFreeHands() < carriedComp.FreeHandsRequired)
+                || _hands.CountFreeHands(carrier) < carriedComp.FreeHandsRequired) // Frontier - hand refactor compliance (wizden #38438)
                 return false;
 
             return true;

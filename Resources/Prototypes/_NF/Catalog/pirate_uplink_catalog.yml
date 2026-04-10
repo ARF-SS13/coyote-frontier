@@ -1,7 +1,7 @@
 - type: listing
-  id: UplinkPirateHardsuit
-  name:  uplink-pirate-hardsuit-name
-  description: uplink-pirate-hardsuit-desc
+  id: UplinkPirateEVASuit
+  name:  uplink-pirate-EVA-name
+  description: uplink-pirate-EVA-desc
   productEntity: ClothingOuterEVASuitPirate
   icon: { sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi, state: icon }
   cost:
@@ -13,11 +13,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateHardsuitCaptain
@@ -25,6 +20,25 @@
   description: uplink-pirate-hardsuit-captain-desc
   productEntity: ClothingOuterHardsuitPirateCap
   icon: { sprite: Clothing/OuterClothing/Hardsuits/piratecaptain.rsi, state: icon }
+  cost:
+    Doubloon: 3
+  categories:
+    - UplinkPirateHardsuits
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - PirateUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - NFPirateCaptain
+
+- type: listing
+  id: UplinkPirateHardsuitElite
+  name:  uplink-pirate-hardsuit-elite-name
+  description: uplink-pirate-hardsuit-elite-desc
+  productEntity: ClothingOuterHardsuitPirateElite
+  icon: { sprite: _NF/Clothing/OuterClothing/Hardsuits/pirate_elite.rsi, state: icon }
   cost:
     Doubloon: 10
   categories:
@@ -34,32 +48,9 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
+    - !type:BuyerJobCondition
       whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
-
-- type: listing
-  id: UplinkPirateHardsuitElite
-  name:  uplink-pirate-hardsuit-elite-name
-  description: uplink-pirate-hardsuit-elite-desc
-  productEntity: ClothingOuterHardsuitPirateElite
-  icon: { sprite: _NF/Clothing/OuterClothing/Hardsuits/pirate_elite.rsi, state: icon }
-  cost:
-    Doubloon: 30 # COYOTE: 10 -> 30. It's juiced now.
-  categories:
-    - UplinkPirateHardsuits
-  conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
+        - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateCaptainCrateFilled
@@ -76,11 +67,25 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
+    - !type:BuyerJobCondition
       whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
+        - NFPirateCaptain
+
+- type: listing
+  id: UplinkPirateWoodenKegRum
+  name:  uplink-pirate-wooden-keg-rum-name
+  description: uplink-pirate-wooden-keg-rum-desc
+  productEntity: WoodenKegRum
+  icon: { sprite: _DV/Objects/Storage/keg.rsi, state: base }
+  cost:
+    Doubloon: 1
+  categories:
+    - UplinkPirateUtility
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - PirateUplink
 
 - type: listing
   id: UplinkPirateCrateFilled
@@ -89,7 +94,7 @@
   productEntity: CratePirateChest
   icon: { sprite: _NF/Structures/Storage/Crates/piratechestgrey.rsi, state: crate_icon }
   cost:
-    Doubloon: 20 # Coyote: Cost increase
+    Doubloon: 8
   categories:
     - UplinkPirateUtility
   conditions:
@@ -97,11 +102,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateSatchelFilled
@@ -118,11 +118,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateMagboots
@@ -139,11 +134,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateHoverbike
@@ -160,11 +150,9 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
+    - !type:BuyerJobCondition
       whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
+        - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateBlunderbuss
@@ -181,11 +169,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateRevolver
@@ -202,11 +185,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateCannon
@@ -223,11 +201,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkFlintlock
@@ -244,6 +217,9 @@
       whitelist:
         tags:
           - PirateUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - NFPirateCaptain
 
 - type: listing
   id: UplinkEnergyCutlass
@@ -260,11 +236,9 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
+    - !type:BuyerJobCondition
       whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
+        - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateAnchor
@@ -281,11 +255,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateRedGrenade
@@ -302,11 +271,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateGreenGrenade
@@ -323,11 +287,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateGrayGrenade
@@ -344,11 +303,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateShotgunAmmo
@@ -413,11 +367,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateNFCannonBallEmp
@@ -434,11 +383,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateGrapeshot
@@ -455,11 +399,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateGlassshot
@@ -476,11 +415,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-      - NFPirate
-      - NFPirateFirstMate
-      - NFPirateCaptain
 
 - type: listing
   id: UplinkPirateAccessConfigurator
@@ -497,6 +431,10 @@
       whitelist:
         tags:
           - PirateUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - NFPirateCaptain
+        - NFPirateFirstMate
 
 - type: listing
   id: UplinkRadioImplanterFreelance
@@ -512,7 +450,7 @@
         tags:
           - PirateUplink
   categories:
-  - UplinkPirateMedical #coyote
+  - UplinkPirateUtility
 
 - type: listing
   id: UplinkPirateRepairKit
@@ -527,40 +465,43 @@
       whitelist:
         tags:
           - PirateUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - NFPirateCaptain
   categories:
   - UplinkPirateUtility
 
-#- type: listing
-#  id: UplinkPirateIonizedBluespaceDustBag
-#  name: uplink-pirate-ionized-dust-bag-name
-#  description: uplink-pirate-ionized-dust-bag-desc
-#  productEntity: IonizedBluespaceDustBag
-#  icon: { sprite: _NF/Objects/Specific/Pirate/bluespace_dust.rsi, state: icon }
-#  cost:
-#    Doubloon: 2
-#  conditions:
-#    - !type:StoreWhitelistCondition
-#      whitelist:
-#        tags:
-#          - PirateUplink
-#  categories:
-#  - UplinkPirateUtility
-#
-#- type: listing
-#  id: UplinkPiratePinpointerScanner
-#  name: uplink-pirate-pinpointer-target-scanner-name
-#  description: uplink-pirate-pinpointer-target-scanner-desc
-#  productEntity: PinpointerScanner
-#  icon: { sprite: _NF/Objects/Specific/Pirate/pinpointer_scanner.rsi, state: icon }
-#  cost:
-#    Doubloon: 2
-#  conditions:
-#    - !type:StoreWhitelistCondition
-#      whitelist:
-#        tags:
-#          - PirateUplink
-#  categories:
-#  - UplinkPirateUtility
+- type: listing
+  id: UplinkPirateIonizedBluespaceDustBag
+  name: uplink-pirate-ionized-dust-bag-name
+  description: uplink-pirate-ionized-dust-bag-desc
+  productEntity: IonizedBluespaceDustBag
+  icon: { sprite: _NF/Objects/Specific/Pirate/bluespace_dust.rsi, state: icon }
+  cost:
+    Doubloon: 2
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - PirateUplink
+  categories:
+  - UplinkPirateUtility
+
+- type: listing
+  id: UplinkPiratePinpointerScanner
+  name: uplink-pirate-pinpointer-target-scanner-name
+  description: uplink-pirate-pinpointer-target-scanner-desc
+  productEntity: PinpointerScanner
+  icon: { sprite: _NF/Objects/Specific/Pirate/pinpointer_scanner.rsi, state: icon }
+  cost:
+    Doubloon: 2
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - PirateUplink
+  categories:
+  - UplinkPirateUtility
 
 - type: listing
   id: UplinkPiratePirateStitcher
@@ -575,8 +516,12 @@
       whitelist:
         tags:
           - PirateUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - NFPirateCaptain
+        - NFPirateFirstMate
   categories:
-  - UplinkPirateMachines #coyote
+  - UplinkPirateUtility
 
 - type: listing
   id: UplinkNFPouchPirateCaptain
@@ -593,8 +538,6 @@
           - PirateUplink
     - !type:BuyerJobCondition
       whitelist:
-        - NFPirate
-        - NFPirateFirstMate
         - NFPirateCaptain
   categories:
   - UplinkPirateUtility
@@ -612,11 +555,6 @@
       whitelist:
         tags:
           - PirateUplink
-    - !type:BuyerJobCondition # Coyote
-      whitelist:
-        - NFPirate
-        - NFPirateFirstMate
-        - NFPirateCaptain
   categories:
   - UplinkPirateUtility
 
@@ -636,18 +574,18 @@
         tags:
           - PirateUplink
 
-#- type: listing #Coyote
-#  id: UplinkTeleCrystal
-#  name:  uplink-Telecrystal
-#  description: uplink-Telecrystal-desc
-#  productEntity: Telecrystal1
-#  icon: { sprite: Objects/Specific/Syndicate/telecrystal.rsi, state: telecrystal }
-#  cost:
-#    Doubloon: 3
-#  categories:
-#    - UplinkPirateUtility
-#  conditions:
-#    - !type:StoreWhitelistCondition
-#       whitelist:
-#          tags:
-#            - PirateUplink
+- type: listing
+  id: UplinkPiratePirateShipyardRCD
+  name: uplink-pirate-shipyard-rcd-name
+  description: uplink-pirate-shipyard-rcd-desc
+  productEntity: BoxPirateShipyardRCD
+  icon: { sprite: _NF/Objects/Tools/pirate_shipyard_rcd.rsi, state: icon }
+  cost:
+    Doubloon: 2
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - PirateUplink
+  categories:
+  - UplinkPirateUtility

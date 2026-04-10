@@ -149,8 +149,8 @@
 - type: dungeonConfig
   id: NFVGRoidExteriorDungeonsVirologyLabZombies
   reserveTiles: true
-  minCount: 4
-  maxCount: 5
+  minCount: 2
+  maxCount: 3
   layers:
   - !type:ExteriorDunGen
     proto: NFVirologyLab

@@ -1,6 +1,6 @@
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Forensics;
 
 namespace Content.Server.Body.Systems;

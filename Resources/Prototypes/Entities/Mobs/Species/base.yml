@@ -9,27 +9,19 @@
   id: BaseMobSpecies
   abstract: true
   components:
-  - type: Wagging # Coyote: Wagging my tail :3
   - type: Sprite
     layers:
-    - map: [ "enum.HumanoidVisualLayers.TailBehind" ]
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
     - map: [ "enum.HumanoidVisualLayers.Eyes" ]
     - map: [ "enum.HumanoidVisualLayers.RArm" ]
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
-    - map: [ "enum.HumanoidVisualLayers.RLegBehind" ]
-    - map: [ "enum.HumanoidVisualLayers.LLegBehind" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
-    - map: [ "enum.HumanoidVisualLayers.Genital" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
-    - map: [ "enum.HumanoidVisualLayers.UndershirtUnderclothes" ]
     - map: ["jumpsuit"]
-    - map: ["enum.HumanoidVisualLayers.LFootBehind"]
-    - map: ["enum.HumanoidVisualLayers.RFootBehind"]
     - map: ["enum.HumanoidVisualLayers.LFoot"]
     - map: ["enum.HumanoidVisualLayers.RFoot"]
     - map: ["enum.HumanoidVisualLayers.LHand"]
@@ -38,17 +30,14 @@
     - map: [ "shoes" ]
     - map: [ "ears" ]
     - map: [ "eyes" ]
+    - map: [ "belt" ]
     - map: [ "id" ]
     - map: [ "outerClothing" ]
-    - map: [ "belt" ]
-    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ]
     - map: [ "back" ]
-    - map: [ "enum.HumanoidVisualLayers.UndershirtOverclothes" ]
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
-    - map: [ "enum.HumanoidVisualLayers.NeckFluff" ]
     - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
     - map: [ "mask" ]
@@ -130,24 +119,18 @@
       - !type:WashCreamPieReaction
   - type: StatusEffects
     allowed:
-    - Stun
-    - KnockedDown
-    - SlowedDown
     - Stutter
-    - SeeingRainbows
     - Electrocution
     - Drunk
     - SlurredSpeech
     - RatvarianLanguage
     - PressureImmunity
     - Muted
-    - ForcedSleep
     - TemporaryBlindness
     - Pacified
     - StaminaModifier
     - Flashed
     - RadiationProtection
-    - Drowsiness
     - Adrenaline
   - type: Body
     prototype: Human
@@ -179,6 +162,7 @@
   - type: SleepEmitSound
   - type: SSDIndicator
   - type: StandingState
+  - type: Crawler
   - type: Dna
   - type: MindContainer
     showExamineInfo: true
@@ -212,8 +196,6 @@
   - type: Emoting
   - type: BodyEmotes
     soundsId: GeneralBodyEmotes
-  - type: SexEmotes
-    soundsId: LewdSounds
   - type: Grammar
     attributes:
       proper: true
@@ -221,14 +203,12 @@
     price: 1500 # Kidnapping a living person and selling them for cred is a good move.
     deathPenalty: 0.01 # However they really ought to be living and intact, otherwise they're worth 100x less.
   - type: CanEscapeInventory # Carrying system from nyanotrasen.
-  - type: Vore # Floofstation - Vore
   - type: Tag
     tags:
     - CanPilot
     - FootstepSound
     - DoorBumpOpener
     - AnomalyHost
-  - type: ModifyUndies  # FLOOF Add
 
 - type: entity
   save: false
@@ -253,6 +233,8 @@
     damage:
       types:
         Heat: -0.07
+        Shock: -0.07 # Frontier
+        Cold: -0.07 # Frontier
       groups:
         Brute: -0.07
   - type: Fingerprint
@@ -271,9 +253,9 @@
         Heat: 1.5 #per second, scales with temperature & other constants
   - type: TemperatureSpeed
     thresholds:
-      293: 0.8
-      280: 0.6
-      260: 0.4
+      293: 0.9
+      280: 0.8
+      260: 0.7
   - type: ThermalRegulator
     metabolismHeat: 800
     radiatedHeat: 100
@@ -282,7 +264,7 @@
     shiveringHeatRegulation: 2000
     normalBodyTemperature: 310.15
     thermalRegulationTemperatureThreshold: 2
-#  - type: Perishable
+  - type: Perishable
   - type: Butcherable
     butcheringType: Spike # TODO human.
     spawned:
@@ -297,9 +279,7 @@
         Asphyxiation: -1.0
   - type: FireVisuals
     alternateState: Standing
-  - type: LayingDown
-  - type: ModifyUndies  # FLOOF Add
-  - type: RoleplayIncentive  # COYOTE Add
+  - type: StunVisuals
 
 - type: entity
   save: false
@@ -318,19 +298,15 @@
     noRot: true
     # TODO BODY Turn these into individual body parts?
     layers:
-    - map: [ "enum.HumanoidVisualLayers.TailBehind" ]
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
     - map: [ "enum.HumanoidVisualLayers.Eyes" ]
     - map: [ "enum.HumanoidVisualLayers.RArm" ]
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
-    - map: [ "enum.HumanoidVisualLayers.RLegBehind" ]
-    - map: [ "enum.HumanoidVisualLayers.LLegBehind" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
-    - map: [ "enum.HumanoidVisualLayers.Genital" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
     - map: ["jumpsuit"]
     - map: ["enum.HumanoidVisualLayers.LFoot"]
@@ -349,13 +325,11 @@
     - map: [ "belt" ]
     - map: [ "id" ]
     - map: [ "outerClothing" ]
-    - map: [ "enum.HumanoidVisualLayers.TailOversuit" ]
     - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
     - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
-    - map: [ "enum.HumanoidVisualLayers.NeckFluff" ]
     - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
     - map: [ "enum.HumanoidVisualLayers.Tail" ]
     - map: [ "mask" ]

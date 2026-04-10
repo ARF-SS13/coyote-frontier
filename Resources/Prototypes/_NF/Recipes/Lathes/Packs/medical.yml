@@ -32,6 +32,7 @@
   - ClothingHandsGlovesLatex
   - ClothingHandsGlovesNitrile
   - ClothingMaskSterile
+  - NFClothingNeckCardMedic
 
 - type: latheRecipePack
   id: NFChemistryBasicStatic

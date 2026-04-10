@@ -1,8 +1,6 @@
-using Content.Shared._Coyote.Needs;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.DoAfter;
-using Content.Shared.Ensnaring;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
@@ -16,11 +14,11 @@ using Robust.Shared.Timing;
 namespace Content.Shared.Animals;
 /// <summary>
 ///     Gives the ability to produce milkable reagents;
-///     produces endlessly if the owner does not have a NeedsComponent that supports Hunger.
+///     produces endlessly if the owner does not have a HungerComponent.
 /// </summary>
 public sealed class UdderSystem : EntitySystem
 {
-    [Dependency] private readonly SharedNeedsSystem _needs = default!;
+    [Dependency] private readonly HungerSystem _hunger = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
@@ -73,22 +71,13 @@ public sealed class UdderSystem : EntitySystem
                 continue;
 
             // Actually there is food digestion so no problem with instant reagent generation "OnFeed"
-            if (EntityManager.TryGetComponent(uid, out NeedsComponent? hunger))
+            if (TryComp(uid, out HungerComponent? hunger))
             {
-                // is there enough nutrition to produce reagent?
-                if (_needs.UsesHunger(uid, hunger))
-                {
-                    if (_needs.HungerIsBelowThreshold(
-                            uid,
-                            NeedThreshold.Satisfied,
-                            hunger))
-                        continue;
-                }
+                // Is there enough nutrition to produce reagent?
+                if (_hunger.GetHungerThreshold(hunger) < HungerThreshold.Okay)
+                    continue;
 
-                _needs.ModifyHunger(
-                    uid,
-                    -udder.HungerUsage,
-                    hunger);
+                _hunger.ModifyHunger(uid, -udder.HungerUsage, hunger);
             }
 
             //TODO: toxins from bloodstream !?
@@ -144,7 +133,7 @@ public sealed class UdderSystem : EntitySystem
     {
         if (args.Using == null ||
              !args.CanInteract ||
-             !EntityManager.HasComponent<RefillableSolutionComponent>(args.Using.Value))
+             !HasComp<RefillableSolutionComponent>(args.Using.Value))
             return;
 
         var uid = entity.Owner;

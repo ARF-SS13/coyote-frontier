@@ -29,7 +29,7 @@
       path: /Audio/_DV/Weapons/electricguitarhit.ogg
     damage:
       types:
-        Blunt: 19 # buffed most melee's damage by ~1.5x
+        Blunt: 7
     bluntStaminaDamageFactor: 1.50 #13.5 stamina damage
 
 - type: entity
@@ -42,15 +42,15 @@
   - type: MeleeWeapon
     soundHit:
       path: /Audio/_DV/Weapons/electricguitarhit.ogg
-    bluntStaminaDamageFactor: 2.40 #avoids one shots by onis
+    bluntStaminaDamageFactor: 4.5
     attackRate: 1.25
     range: 1.85
     damage:
       types:
-        Blunt: 19 # buffed most melee's damage by ~1.5x
+        Blunt: 7
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 19 # buffed most melee's damage by ~1.5x
-        Structural: 15 # coyote: replace shock damage with structure damage and buffed a little
+        Blunt: 7
+        Shock: 2

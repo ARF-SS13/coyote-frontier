@@ -6,14 +6,7 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 72000 # Frontier - 20 hrs (the real condition here is the whitelist)
-    - !type:RoleTimeRequirement
-      role: JobSecretary
-      time: 28800
-  overrideRequirement:
-  - !type:RoleTimeRequirement
-    role: JobPlantManager
-    time: 600 # 10 minutes to requalify
-  whitelisted: false
+  whitelisted: true
   startingGear: PlantManagerGear
   alwaysUseSpawner: true
   icon: "JobIconPlantManager"
@@ -27,6 +20,9 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: PreventShipyardTitleOverwrite
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift

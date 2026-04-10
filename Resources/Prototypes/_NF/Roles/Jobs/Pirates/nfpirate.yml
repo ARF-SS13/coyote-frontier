@@ -5,18 +5,14 @@
   playTimeTracker: JobPirate
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 43200 # frontier: 24 hrs / 4 shifts | CS: 12 hours / 2 shifts
-    - !type:RoleTimeRequirement
-      role: JobPirate
-      time: 3600 # CS: 1 hour
-#    - !type:DepartmentTimeRequirement # CS: swaps the playtime requirement to literally just be an hour of the role itself.
-#      department: Security
-#      time: 10800 # 3 hrs
+      time: 86400 # 24 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 10800 # 3 hrs
   startingGear: NFPirateGear
   alwaysUseSpawner: true
   hideConsoleVisibility: true
   canBeAntag: true
-  consoleAdjustable: false
   icon: "JobIconNFPirate"
   supervisors: job-supervisors-nf-pirate
   weight: 20
@@ -25,20 +21,15 @@
   newPlayerMessage: false
   access:
   - Pirate
-  - BlackMarket
   accessGroups:
   - GeneralAccess
   special:
   - !type:AddComponentSpecial
     components:
-#    - type: AutoPirate
+    - type: AutoPirate
     - type: SpecialSectorStationRecord # must be given on spawn
       recordGeneration: FalseRecord
     - type: DisableSuitSensors
-    - type: IsPirate
-  - !type:AddRpiJobModifierSpecial
-    modifiersToAdd:
-    - rpiJobModifierPirate
   - !type:AddImplantSpecial
     implants: [ FreelanceTrackingImplant ]
   - !type:GiveItemOnHolidaySpecial # Even pirates get a piece of cake.
@@ -53,35 +44,7 @@
   storage:
     back:
     - AppraisalTool
-    - ComputerIFFFlatpack
 
 - type: chameleonOutfit
   id: NFPirateChameleonOutfit
   job: NFPirate
-
-- type: roleLoadout
-  id: JobNFPirate
-  groups:
-  - NFPirateHead
-#  - NFPirateNeck
-  - ContractorNeck #Coyote: Pirate Loadout Expansion
-  - NFPirateJumpsuit
-#  - NFPirateGloves
-  - MercenaryGloves #Coyote: Pirate Loadout Expansion
-  - ContractorBackpack
-  - NFPirateForcedOuterClothing
-  - MercenaryOuterClothing #Coyote: Pirate Loadout Expansion
-  - NFPirateShoes
-  - NFPirateFace
-  - MercenaryGlasses #Coyote: Pirate Loadout Expansion
-  - MercenaryBelt #Coyote: Pirate Loadout Expansion
-  - NFPirateEars
-  - PirateEncryptionKey # Coyote: Pirates get comm keys
-  - ContractorBoxSurvival
-  - SmugglerPDA
-  - ContractorWallet
-  - PirateBackpackItems
-  - ContractorHandItems
-  - ContractorInstruments # Coyote
-  - NFSpeciesSpecific
-  canCustomizeName: true # pseudonym?

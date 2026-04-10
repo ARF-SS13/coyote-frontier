@@ -2,7 +2,7 @@
   parent: [BaseMob, StripableInventoryBase]
   id: BaseBorgChassisNotIonStormable
   name: cyborg
-  description: A synthetic that assists in station activity. They love being asked to state their laws over and over. #COYOTE CHANGE: was A man-machine hybrid that assists in station activity. They love being asked to state their laws over and over.
+  description: A man-machine hybrid that assists in station activity. They love being asked to state their laws over and over.
   save: false
   abstract: true
   components:
@@ -25,7 +25,7 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.35
-        density: 150
+        density: 300
         mask:
         - MobMask
         layer:
@@ -82,7 +82,7 @@
   - type: EmagSiliconLaw
     stunTime: 5
   - type: SiliconLawProvider
-    laws: Free #COYOTE CHANGE: was Crewsimov
+    laws: Crewsimov
   - type: Inventory
     templateId: borg
   - type: Hands
@@ -96,28 +96,20 @@
     - Binary
     - Common
     - Science
-#COYOTE ADD: Ring ring! We want our borgs to be able to talk in shortband too!
-    - Traffic
-#COYOTE END
   - type: ActiveRadio
     channels:
     - Binary
     - Common
     - Science
-#COYOTE ADD: Ring ring! We want our borgs to be able to talk in shortband too!
-    - Traffic
-#COYOTE END
   - type: ZombieImmune
   - type: Repairable
     doAfterDelay: 10
-    allowSelfRepair: true #COYOTE CHANGE: Was false, but we don't want to torture our cyborg players
+    allowSelfRepair: false
   - type: BorgChassis
   - type: LockingWhitelist
     blacklist:
       components:
-      #COYOTE TWEAK: We want borgs to be able to fix eachother and themselves
-      #- BorgChassis
-      #END COYOTE
+      - BorgChassis
       - RoboticsConsole
   - type: WiresPanel
     openingTool: Prying
@@ -149,15 +141,8 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
   - type: Body
-#COYOTE ADD: This allows borgs to use one singular hand, to be able to interact with the world effectively. Also lets them have incentive pay
-    prototype: Borg
-  - type: RoleplayIncentive
-#END COYOTE
   - type: StatusEffects
     allowed:
-    - Stun
-    - KnockedDown
-    - SlowedDown
     - Flashed
   - type: TypingIndicator
     proto: robot
@@ -229,8 +214,8 @@
       id: blinking
       interpolate: Nearest
       maxDuration: 1.0
-      startValue: 0.1 # Wizden#37444
-      endValue: 2.0 # Wizden#37444
+      startValue: 0.1
+      endValue: 2.0
       isLooped: true
   - type: ToggleableVisuals
     spriteLayer: light
@@ -262,7 +247,6 @@
       flatReductions:
         Heat: 10 # capable of touching light bulbs and stoves without feeling pain!
   - type: PreventDropOnDowned # Frontier: borgs don't drop items when falling (e.g. critical/dead)
-  - type: Vore # Floofstation - Vore
 
 - type: entity
   abstract: true
@@ -334,7 +318,8 @@
   - type: Access
     enabled: false
     groups:
-    - AllAccess
+    #- AllAccess # Frontier
+    - GeneralAccess # Frontier
     tags:
     - Borg
 #  - type: AccessReader
@@ -391,7 +376,8 @@
   - type: Access
     enabled: false
     groups:
-    - AllAccess #Randomized access would be fun. AllAccess is the best i can think of right now that does make it too hard for it to enter the station or navigate it..
+  #  - AllAccess #Randomized access would be fun. AllAccess is the best i can think of right now that does make it too hard for it to enter the station or navigate it.. # Frontier
+    - GeneralAccess # Frontier
   # - type: AccessReader # Frontier
   #   access: [["Command"], ["Research"]] # Frontier
   - type: StartIonStormed

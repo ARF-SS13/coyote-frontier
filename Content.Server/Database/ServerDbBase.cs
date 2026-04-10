@@ -10,7 +10,6 @@ using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
-using Content.Shared.Consent; // Floofstation
 using Content.Shared.Database;
 using Content.Shared.Ghost.Roles;
 using Content.Shared.Humanoid;
@@ -30,14 +29,13 @@ namespace Content.Server.Database
     public abstract class ServerDbBase
     {
         private readonly ISawmill _opsLog;
-        private IPrototypeManager _protoMan;
+
         public event Action<DatabaseNotification>? OnNotificationReceived;
 
         /// <param name="opsLog">Sawmill to trace log database operations to.</param>
         public ServerDbBase(ISawmill opsLog)
         {
             _opsLog = opsLog;
-            _protoMan = IoCManager.Resolve<IPrototypeManager>();
         }
 
         #region Preferences
@@ -66,7 +64,7 @@ namespace Content.Server.Database
             var profiles = new Dictionary<int, ICharacterProfile>(maxSlot);
             foreach (var profile in prefs.Profiles)
             {
-                profiles[profile.Slot] = ConvertProfiles(profile, _protoMan);
+                profiles[profile.Slot] = ConvertProfiles(profile);
             }
 
             var constructionFavorites = new List<ProtoId<ConstructionPrototype>>(prefs.ConstructionFavorites.Count);
@@ -206,7 +204,7 @@ namespace Content.Server.Database
             prefs.SelectedCharacterSlot = newSlot;
         }
 
-        private static HumanoidCharacterProfile ConvertProfiles(Profile profile, IPrototypeManager protoMan)
+        private static HumanoidCharacterProfile ConvertProfiles(Profile profile)
         {
             var jobs = profile.Jobs.ToDictionary(j => new ProtoId<JobPrototype>(j.JobName), j => (JobPriority) j.Priority);
             var antags = profile.Antags.Select(a => new ProtoId<AntagPrototype>(a.AntagName));
@@ -232,28 +230,7 @@ namespace Content.Server.Database
             {
                 foreach (var marking in markingsRaw)
                 {
-                    Marking? ParseFromDbJSON(string input)
-                    {
-                        return new Marking(JsonSerializer.Deserialize<MarkingDTO>(input));
-                    }
-
-                    Marking? ParseFromDbString(string input)
-                    {
-                        if (input.Length == 0) return null;
-                        // if it starts with '{', it's JSON, so deserialize it.
-                        if (input.StartsWith("{")) return ParseFromDbJSON(input);
-                        // otherwise, it's an old string, so parse it using legacy code
-                        // we could force a migration at some point to remove dependance on this old code
-                        var split = input.Split('@');
-                        if (split.Length != 2) return null;
-                        List<Color> colorList = new();
-                        foreach (string color in split[1].Split(','))
-                            colorList.Add(Color.FromHex(color));
-                        var proto = protoMan.Index<MarkingPrototype>(new EntProtoId(split[0]));
-                        return new Marking(split[0], colorList, proto.MarkingCategory);
-                    }
-
-                    var parsed = ParseFromDbString(marking);
+                    var parsed = Marking.ParseFromDbString(marking);
 
                     if (parsed is null) continue;
 
@@ -285,20 +262,10 @@ namespace Content.Server.Database
                 loadouts[role.RoleName] = loadout;
             }
 
-            HumanoidLegStyle legstyle = HumanoidLegStyle.Plantigrade;
-            if (Enum.TryParse(
-                profile.LegStyle,
-                true,
-                out HumanoidLegStyle legstyleVal))
-                legstyle = legstyleVal;
-
             return new HumanoidCharacterProfile(
                 profile.CharacterName,
                 profile.FlavorText,
                 profile.Species,
-                profile.Customspeciesname,
-                profile.Height,
-                profile.Width,
                 profile.Age,
                 sex,
                 gender,
@@ -311,8 +278,7 @@ namespace Content.Server.Database
                     Color.FromHex(profile.FacialHairColor),
                     Color.FromHex(profile.EyeColor),
                     Color.FromHex(profile.SkinColor),
-                    markings,
-                    legstyle
+                    markings
                 ),
                 spawnPriority,
                 jobs,
@@ -330,19 +296,16 @@ namespace Content.Server.Database
             List<string> markingStrings = new();
             foreach (var marking in appearance.Markings)
             {
-                markingStrings.Add(JsonSerializer.Serialize(marking.ToDTO()));
+                markingStrings.Add(marking.ToString());
             }
             var markings = JsonSerializer.SerializeToDocument(markingStrings);
 
             profile.CharacterName = humanoid.Name;
             profile.FlavorText = humanoid.FlavorText;
             profile.Species = humanoid.Species;
-            profile.Customspeciesname = humanoid.Customspeciesname;
             profile.Age = humanoid.Age;
             profile.Sex = humanoid.Sex.ToString();
             profile.Gender = humanoid.Gender.ToString();
-            profile.Height = humanoid.Height;
-            profile.Width = humanoid.Width;
             profile.BankBalance = humanoid.BankBalance;
             profile.HairName = appearance.HairStyleId;
             profile.HairColor = appearance.HairColor.ToHex();
@@ -354,7 +317,6 @@ namespace Content.Server.Database
             profile.Markings = markings;
             profile.Slot = slot;
             profile.PreferenceUnavailable = (DbPreferenceUnavailableMode) humanoid.PreferenceUnavailable;
-            profile.LegStyle = appearance.LegStyle.ToString();
 
             profile.Jobs.Clear();
             profile.Jobs.AddRange(
@@ -1211,193 +1173,6 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             var entry = await db.DbContext.Blacklist.SingleAsync(w => w.UserId == player);
             db.DbContext.Blacklist.Remove(entry);
             await db.DbContext.SaveChangesAsync();
-        }
-
-        #endregion
-
-        #region Consent Settings
-
-        private static async Task DeletePlayerConsentSettings(ServerDbContext db, NetUserId userId)
-        {
-            var consentSettings = await db.ConsentSettings
-                .Where(c => c.UserId == userId.UserId)
-                .SingleOrDefaultAsync();
-
-            if (consentSettings is null)
-            {
-                return;
-            }
-
-            db.ConsentSettings.Remove(consentSettings);
-        }
-
-        public async Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings? consentSettings)
-        {
-            await using var db = await GetDb();
-
-            if (consentSettings is null)
-            {
-                await DeletePlayerConsentSettings(db.DbContext, userId);
-                await db.DbContext.SaveChangesAsync();
-                return;
-            }
-
-            // Get current consent settings so we know if freetext needs updating and which toggles to add or remove
-            var currentConsentSettings = await db.DbContext.ConsentSettings
-                .Include(c => c.ConsentToggles)
-                .AsSplitQuery()
-                .SingleOrDefaultAsync(c => c.UserId == userId);
-
-            if (currentConsentSettings is null)
-            {
-                currentConsentSettings = new ConsentSettings() { UserId = userId, ConsentToggles = new() };
-
-                db.DbContext.ConsentSettings.Add(currentConsentSettings);
-            }
-
-            currentConsentSettings.ConsentFreetext = consentSettings.Freetext;
-            Dictionary<ProtoId<ConsentTogglePrototype>, string> currentConsentToggles = currentConsentSettings.ConsentToggles.ToDictionary(
-                keySelector: t => new ProtoId<ConsentTogglePrototype>(t.ToggleProtoId),
-                elementSelector: t => t.ToggleProtoState
-            );
-
-            // Remove and update toggles
-            foreach (var toggle in currentConsentToggles)
-            {
-                if (consentSettings.Toggles.TryGetValue(toggle.Key, out var toggleState))
-                {
-                    currentConsentSettings.ConsentToggles.Where(t => t.ToggleProtoId == toggle.Key).First().ToggleProtoState = toggleState;
-                }
-                else
-                {
-                    currentConsentSettings.ConsentToggles.RemoveAll(t => t.ToggleProtoId == toggle.Key);
-                }
-            }
-            // Add new toggles
-            foreach (var toggle in consentSettings.Toggles)
-            {
-                if (currentConsentToggles.ContainsKey(toggle.Key))
-                    continue;
-
-                currentConsentSettings.ConsentToggles.Add(new()
-                {
-                    ToggleProtoId = toggle.Key,
-                    ToggleProtoState = toggle.Value,
-                });
-            }
-
-            await db.DbContext.SaveChangesAsync();
-        }
-
-        public async Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings? consentSettings, int characterSlot)
-        {
-            await using var db = await GetDb();
-
-            if (consentSettings is null)
-            {
-                await DeletePlayerConsentSettings(db.DbContext, userId);
-                await db.DbContext.SaveChangesAsync();
-                return;
-            }
-
-            // Save account-level consent settings
-            var currentConsentSettings = await db.DbContext.ConsentSettings
-                .Include(c => c.ConsentToggles)
-                .AsSplitQuery()
-                .SingleOrDefaultAsync(c => c.UserId == userId);
-
-            if (currentConsentSettings is null)
-            {
-                currentConsentSettings = new ConsentSettings() { UserId = userId, ConsentToggles = new() };
-                db.DbContext.ConsentSettings.Add(currentConsentSettings);
-            }
-
-            currentConsentSettings.ConsentFreetext = consentSettings.Freetext;
-            Dictionary<ProtoId<ConsentTogglePrototype>, string> currentConsentToggles = currentConsentSettings.ConsentToggles.ToDictionary(
-                keySelector: t => new ProtoId<ConsentTogglePrototype>(t.ToggleProtoId),
-                elementSelector: t => t.ToggleProtoState
-            );
-
-            // Remove and update toggles
-            foreach (var toggle in currentConsentToggles)
-            {
-                if (consentSettings.Toggles.TryGetValue(toggle.Key, out var toggleState))
-                {
-                    currentConsentSettings.ConsentToggles.Where(t => t.ToggleProtoId == toggle.Key).First().ToggleProtoState = toggleState;
-                }
-                else
-                {
-                    currentConsentSettings.ConsentToggles.RemoveAll(t => t.ToggleProtoId == toggle.Key);
-                }
-            }
-            // Add new toggles
-            foreach (var toggle in consentSettings.Toggles)
-            {
-                if (currentConsentToggles.ContainsKey(toggle.Key))
-                    continue;
-
-                currentConsentSettings.ConsentToggles.Add(new()
-                {
-                    ToggleProtoId = toggle.Key,
-                    ToggleProtoState = toggle.Value,
-                });
-            }
-
-            // Save character-specific consent text
-            var profile = await db.DbContext.Profile
-                .Where(p => p.Preference.UserId == userId.UserId && p.Slot == characterSlot)
-                .SingleOrDefaultAsync();
-
-            if (profile != null)
-            {
-                profile.CharacterConsentFreetext = consentSettings.CharacterFreetext;
-            }
-
-            await db.DbContext.SaveChangesAsync();
-        }
-
-        public async Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId)
-        {
-            await using var db = await GetDb();
-
-            var consentSettings = await db.DbContext.ConsentSettings
-                //.Include(c => c.ConsentFreetext)
-                .Include(c => c.ConsentToggles)//.ThenInclude(t => t.ToggleProtoId)
-                //.Include(c => c.ConsentToggles).ThenInclude(t => t.ToggleProtoState)
-                //.AsSingleQuery()
-                .SingleOrDefaultAsync(c => c.UserId == userId);
-
-            if (consentSettings is null)
-                return new();
-
-            return new(consentSettings.ConsentFreetext, string.Empty, consentSettings.ConsentToggles.ToDictionary(
-                keySelector: t => new ProtoId<ConsentTogglePrototype>(t.ToggleProtoId),
-                elementSelector: t => t.ToggleProtoState
-            ));
-        }
-
-        public async Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId, int characterSlot)
-        {
-            await using var db = await GetDb();
-
-            var consentSettings = await db.DbContext.ConsentSettings
-                .Include(c => c.ConsentToggles)
-                .SingleOrDefaultAsync(c => c.UserId == userId);
-
-            // Get character-specific consent text from the profile
-            var profile = await db.DbContext.Profile
-                .Where(p => p.Preference.UserId == userId.UserId && p.Slot == characterSlot)
-                .SingleOrDefaultAsync();
-
-            var characterFreetext = profile?.CharacterConsentFreetext ?? string.Empty;
-
-            if (consentSettings is null)
-                return new(string.Empty, characterFreetext, new Dictionary<ProtoId<ConsentTogglePrototype>, string>());
-
-            return new(consentSettings.ConsentFreetext, characterFreetext, consentSettings.ConsentToggles.ToDictionary(
-                keySelector: t => new ProtoId<ConsentTogglePrototype>(t.ToggleProtoId),
-                elementSelector: t => t.ToggleProtoState
-            ));
         }
 
         #endregion

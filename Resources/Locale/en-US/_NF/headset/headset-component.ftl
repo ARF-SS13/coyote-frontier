@@ -1,3 +1,3 @@
 chat-radio-greeting = Greeting
 chat-radio-nfsd = NFSD
-chat-radio-traffic = Shortband
+chat-radio-traffic = Traffic

@@ -41,9 +41,6 @@ ui-options-restart-sounds = Round Restart Sounds
 ui-options-event-music = Event Music
 ui-options-admin-sounds = Play Admin Sounds
 ui-options-bwoink-sound = Play AHelp Notification Sound
-ui-options-mention-sound = Play Mention Sound
-ui-options-looc-sound = Play LOOC Notification Sound
-ui-options-subtle-sound = Play Subtle Notification Sound
 ui-options-volume-label = Volume
 
 ## Graphics menu
@@ -99,22 +96,24 @@ ui-options-vp-integer-scaling-tooltip = If this option is enabled, the viewport 
                                         at specific resolutions. While this results in crisp textures, it also often
                                         means that black bars appear at the top/bottom of the screen or that part
                                         of the viewport is not visible.
+ui-options-filter-label = Scaling filter:
+ui-options-filter-nearest = Nearest (no smoothing)
+ui-options-filter-bilinear = Bilinear (smoothed)
 ui-options-vp-vertical-fit = Vertical viewport fitting
 ui-options-vp-vertical-fit-tooltip = When enabled, the main viewport will ignore the horizontal axis entirely when
                                      fitting to your screen. If your screen is smaller than the viewport, then this
                                      will cause the viewport to be cut off on the horizontal axis.
 ui-options-vp-low-res = Low-resolution viewport
 ui-options-parallax-low-quality = Low-quality Parallax (background)
+ui-options-ambient-occlusion = Show Ambient Occlusion
 ui-options-fps-counter = Show FPS counter
 ui-options-vp-width = Viewport width:
 ui-options-hud-layout = HUD layout:
-ui-options-hud-chatbar = Chatbox max height:
 
 ## Controls menu
 
 ui-options-binds-reset-all = Reset ALL keybinds
 ui-options-binds-explanation = Click to change binding, right-click to clear
-ui-options-binds-search = Search:
 ui-options-unbound = Unbound
 ui-options-bind-reset = Reset
 ui-options-key-prompt = Press a key...
@@ -144,6 +143,7 @@ ui-options-function-move-left = Move Left
 ui-options-function-move-down = Move Down
 ui-options-function-move-right = Move Right
 ui-options-function-walk = Walk
+ui-options-function-toggle-knockdown = Toggle Crawling
 
 ui-options-function-camera-rotate-left = Rotate left
 ui-options-function-camera-rotate-right = Rotate right
@@ -164,13 +164,9 @@ ui-options-function-drop = Drop item
 ui-options-function-examine-entity = Examine
 ui-options-function-swap-hands = Swap hands
 ui-options-function-swap-hands-reverse = Swap hands (other direction)
-# Frontier
-ui-options-function-swap-hands-previous = Swap hands (previous)
 ui-options-function-move-stored-item = Move stored item
 ui-options-function-rotate-stored-item = Rotate stored item
 ui-options-function-save-item-location = Save item location
-ui-options-function-toggle-standing = Toggle standing
-ui-options-function-toggle-crawling-under = Toggle crawling under furniture
 ui-options-static-storage-ui = Lock storage window to hotbar
 
 ui-options-function-smart-equip-backpack = Smart-equip to backpack
@@ -192,7 +188,6 @@ ui-options-function-focus-emote = Focus chat (Emote)
 ui-options-function-focus-whisper-chat-window = Focus chat (Whisper)
 ui-options-function-focus-radio-window = Focus chat (Radio)
 ui-options-function-focus-looc-window = Focus chat (LOOC)
-ui-options-function-focus-subtlelooc-window = Focus chat (Subtle LOOC)
 ui-options-function-focus-ooc-window = Focus chat (OOC)
 ui-options-function-focus-admin-chat-window = Focus chat (Admin)
 ui-options-function-focus-dead-chat-window = Focus chat (Dead)
@@ -364,14 +359,9 @@ ui-options-accessability-header-content = Content
 ui-options-enable-color-name = Add colors to character names
 ui-options-colorblind-friendly = Colorblind friendly mode
 ui-options-reduced-motion = Reduce motion of visual effects
-ui-options-chat-window-opacity = Chat window opacity
 ui-options-screen-shake-intensity = Screen shake intensity
 
-## EE - Combat Options
-ui-options-function-look-up = Look up/Take aim
-ui-options-function-auto-get-up = Automatically get up after falling
-ui-options-function-hold-look-up = Hold down the key to aim
-
+ui-options-chat-window-opacity = Chat window opacity
 ui-options-speech-bubble-text-opacity = Speech bubble text opacity
 ui-options-speech-bubble-speaker-opacity = Speech bubble speaker opacity
 ui-options-speech-bubble-background-opacity = Speech bubble background opacity

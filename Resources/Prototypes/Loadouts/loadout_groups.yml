@@ -36,7 +36,6 @@
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
-  - ClothingNeckPolyamoryPin
   - TowelColorBlack
   - TowelColorDarkBlue
   - TowelColorDarkGreen
@@ -125,19 +124,6 @@
   - CaptainFormalSkirt
 
 - type: loadoutGroup
-  id: CaptainGear
-  name: loadout-group-captain-gear
-  minLimit: 0
-  maxLimit: 6
-  loadouts:
-  - CaptainSocks
-  - CaptainWarmers
-  - CaptainThong
-  - CommandSocks
-  - CommandWarmers
-  - CommandThong
-
-- type: loadoutGroup
   id: CaptainNeck
   name: loadout-group-captain-neck
   minLimit: 0
@@ -198,16 +184,6 @@
   minLimit: 0
   loadouts:
   - HoPWintercoat
-
-- type: loadoutGroup
-  id: CommandGear
-  name: loadout-group-command-gear
-  minLimit: 0
-  maxLimit: 6
-  loadouts:
-  - CommandSocks
-  - CommandWarmers
-  - CommandThong
 
 # Civilian
 - type: loadoutGroup
@@ -399,11 +375,10 @@
   minLimit: 1
   loadouts:
   - Bible
-  - BibleNanoTrasen
   - BibleDruid
-  - BibleHonk
-  - BibleRatvar
-  - BibleNarsie
+  - BibleNanoTrasen
+  - BibleSatanic
+  - BibleTanakh
 
 - type: loadoutGroup
   id: JanitorHead

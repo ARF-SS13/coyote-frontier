@@ -116,7 +116,7 @@
   - type: SpaceGarbage
 
 - type: entity
-  parent: [Matchbox, BaseC1Contraband] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband # Coyote: C1
+  parent: [Matchbox, BaseC3SyndicateContraband] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband
   id: GorlexMatchbox
   name: Gorlex match box
   description: "A pneumatic match box styled after the Gorlex Marauders' equipment. Contains 24 matches."
@@ -136,7 +136,7 @@
 
 - type: entity
   name: match stick
-  parent: [Matchstick, BaseC1Contraband] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband # Coyote: C1
+  parent: [Matchstick, BaseC3SyndicateContraband] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband
   id: GorlexMatchstick
   description: A military grade match stick, used for lighting fine smokables and noncombatants alike.
   components:

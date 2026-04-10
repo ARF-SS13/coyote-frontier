@@ -10,30 +10,6 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
-  - CaptainGear
-
-- type: roleLoadout # Move this to _HL later
-  id: JobStationCaptain
-  groups:
-  - CaptainHead
-  - CaptainNeck
-  - CaptainJumpsuit
-  - CaptainBackpack
-  - CaptainOuterClothing
-  - StationRepGloves
-  - StationRepForcedOuterClothing
-  - ContractorShoes
-  - ContractorFace
-  - ContractorGlasses
-  - ContractorBelt
-  - ContractorBoxSurvival
-  - ContractorWallet
-  - ContractorCartridge
-  - ContractorImplanter
-  - StationRepBackpackItems
-  - ContractorHandItems
-  - NFSpeciesSpecific
-  - CaptainGear
 
 - type: roleLoadout
   id: JobHeadOfPersonnel
@@ -48,7 +24,6 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
-  - CommandGear
 
 # Silicons
 - type: roleLoadout
@@ -139,21 +114,21 @@
   - Trinkets
   - GroupSpeciesBreathTool
 
-#- type: roleLoadout
-#  id: JobChaplain
-#  groups:
-#  - GroupTankHarness
-#  - ChaplainHead
-#  - ChaplainMask
-#  - ChaplainNeck
-#  - ChaplainJumpsuit
-#  - CommonBackpack
-#  - ChaplainOuterClothing
-#  - ChaplainBible
-#  - Glasses
-#  - Survival
-#  - Trinkets
-#  - GroupSpeciesBreathTool
+- type: roleLoadout
+  id: JobChaplain
+  groups:
+  - GroupTankHarness
+  - ChaplainHead
+  - ChaplainMask
+  - ChaplainNeck
+  - ChaplainJumpsuit
+  - CommonBackpack
+  - ChaplainOuterClothing
+  - ChaplainBible
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
 
 - type: roleLoadout
   id: JobJanitor

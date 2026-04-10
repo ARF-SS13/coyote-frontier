@@ -1,4 +1,3 @@
-# METATAGS: UpdateMarkingPoints, UpdateSpeciesBaseSprites
 - type: species
   id: Sheleg
   name: species-name-sheleg
@@ -16,9 +15,6 @@
   youngAge: 80
   oldAge: 400
   maxAge: 800
-  kind:
-  - BasicHumanlike
-  - BasicFurry
 
 - type: speciesBaseSprites
   id: MobShelegSprites
@@ -28,10 +24,8 @@
     Hair: MobShelegHair
     FacialHair: MobShelegHair
     Snout: MobHumanoidAnyMarking
-    NeckFluff: MobHumanoidAnyMarking
     UndergarmentTop: MobHumanoidAnyMarking
     UndergarmentBottom: MobHumanoidAnyMarking
-    Genital: MobHumanoidAnyMarking
     Chest: MobShelegTorso
     Eyes: MobHumanoidEyes
     HeadTop: MobHumanoidAnyMarking
@@ -41,93 +35,44 @@
     RHand: MobShelegRHand
     LLeg: MobShelegLLeg
     RLeg: MobShelegRLeg
-    LLegBehind: MobHumanoidAnyMarking
-    RLegBehind: MobHumanoidAnyMarking
-    LFootBehind: MobHumanoidAnyMarking
-    RFootBehind: MobHumanoidAnyMarking
     LFoot: MobShelegLFoot
     RFoot: MobShelegRFoot
-    Tail: MobHumanoidAnyMarking
-    TailBehind: MobHumanoidAnyMarking
-    TailOversuit: MobHumanoidAnyMarking
-    UndershirtUnderclothes: MobHumanoidAnyMarking
-    UndershirtOverclothes: MobHumanoidAnyMarking
 
 - type: markingPoints
   id: MobShelegMarkingLimits
   points:
     Special: # the cat ear joke
-      points: 35
+      points: 0
       required: false
     Hair:
-      points: 35
+      points: 1
       required: false
     FacialHair:
-      points: 35
+      points: 1
       required: false
     Snout:
-      points: 35
+      points: 1
       required: false
     Tail: # the cat tail joke
-      points: 35
+      points: 0
       required: false
     HeadTop:
-      points: 35
+      points: 1
       required: false
     UndergarmentTop:
-      points: 35
+      points: 1
       required: false
     UndergarmentBottom:
-      points: 35
+      points: 1
       required: false
     Chest:
-      points: 35
+      points: 4
       required: false
     Legs:
-      points: 35
+      points: 8
       required: false
     Arms:
-      points: 35
-      required: false
-    Head:
-      points: 35
-      required: false
-    HeadSide:
-      points: 35
-      required: false
-    Overlay:
-      points: 35
-      required: false
-    # Copypaste these into every species I HATE THIS CODE
-    BaseChest:
-      points: 35
-      required: false
-    BaseHead:
-      points: 35
-      required: false
-    BaseLArm:
-      points: 35
-      required: false
-    BaseLFoot:
-      points: 35
-      required: false
-    BaseLHand:
-      points: 35
-      required: false
-    BaseLLeg:
-      points: 35
-      required: false
-    BaseRArm:
-      points: 35
-      required: false
-    BaseRFoot:
-      points: 35
-      required: false
-    BaseRHand:
-      points: 35
-      required: false
-    BaseRLeg:
-      points: 35
+      points: 8
       required: false
 
 # - type: humanoidBaseSprite
@@ -170,56 +115,24 @@
   baseSprite:
     sprite: _NF/Mobs/Species/Sheleg/parts.rsi
     state: torso_m
-  altSprites:
-    Digitigrade: DigilegHumanTorsoMale
 
 - type: humanoidBaseSprite
   id: MobShelegTorsoMale
   baseSprite:
     sprite: _NF/Mobs/Species/Sheleg/parts.rsi
     state: torso_m
-  altSprites:
-    Digitigrade: DigilegHumanTorsoMale
 
 - type: humanoidBaseSprite
   id: MobShelegTorsoFemale
   baseSprite:
     sprite: _NF/Mobs/Species/Sheleg/parts.rsi
     state: torso_f
-  altSprites:
-    Digitigrade: DigilegHumanTorsoFemale
 
 - type: humanoidBaseSprite
   id: MobShelegLLeg
   baseSprite:
     sprite: _NF/Mobs/Species/Sheleg/parts.rsi
     state: l_leg
-  altSprites:
-    Digitigrade: DigilegPawLegLeft
-
-- type: humanoidBaseSprite
-  id: MobShelegLFoot
-  baseSprite:
-    sprite: _NF/Mobs/Species/Sheleg/parts.rsi
-    state: l_foot
-  altSprites:
-    Digitigrade: DigilegPawFootLeft
-
-- type: humanoidBaseSprite
-  id: MobShelegRLeg
-  baseSprite:
-    sprite: _NF/Mobs/Species/Sheleg/parts.rsi
-    state: r_leg
-  altSprites:
-    Digitigrade: DigilegPawLegRight
-
-- type: humanoidBaseSprite
-  id: MobShelegRFoot
-  baseSprite:
-    sprite: _NF/Mobs/Species/Sheleg/parts.rsi
-    state: r_foot
-  altSprites:
-    Digitigrade: DigilegPawFootRight
 
 - type: humanoidBaseSprite
   id: MobShelegLArm
@@ -234,6 +147,18 @@
     state: l_hand
 
 - type: humanoidBaseSprite
+  id: MobShelegLFoot
+  baseSprite:
+    sprite: _NF/Mobs/Species/Sheleg/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: MobShelegRLeg
+  baseSprite:
+    sprite: _NF/Mobs/Species/Sheleg/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
   id: MobShelegRArm
   baseSprite:
     sprite: _NF/Mobs/Species/Sheleg/parts.rsi
@@ -244,3 +169,9 @@
   baseSprite:
     sprite: _NF/Mobs/Species/Sheleg/parts.rsi
     state: r_hand
+
+- type: humanoidBaseSprite
+  id: MobShelegRFoot
+  baseSprite:
+    sprite: _NF/Mobs/Species/Sheleg/parts.rsi
+    state: r_foot

@@ -22,25 +22,36 @@
 
 - type: entity
   parent: PosterBase
-  id: ShuttleMapAlbatross
-  name: "KAZ Albatross"
-  description: "Detailed map of a Albatross shuttle."
+  id: ShuttleMapAnchor
+  name: "KC Anchor"
+  description: "Detailed map of a Anchor shuttle."
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
-    state: albatross
+    state: anchor
 
 - type: entity
   parent: PosterBase
   id: ShuttleMapApothecary
-  name: "NM Apothecary"
+  name: "FSB Apothecary"
   description: "Detailed map of a Apothecary shuttle."
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
     state: apothecary
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapAegis
+  name: "FSA Aegis"
+  description: "Detailed map of a Aegis shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: aegis
 
 - type: entity
   parent: PosterBase
@@ -55,14 +66,14 @@
 
 - type: entity
   parent: PosterBase
-  id: ShuttleMapBazaar
-  name: "SLI Bazaar"
-  description: "Detailed map of a Bazaar shuttle."
+  id: ShuttleMapBaroness
+  name: "BB Baroness"
+  description: "Detailed map of a Baroness shuttle."
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
-    state: bazaar
+    state: baroness
 
 - type: entity
   parent: PosterBase
@@ -77,6 +88,28 @@
 
 - type: entity
   parent: PosterBase
+  id: ShuttleMapBodkin
+  name: "BB Bodkin"
+  description: "Detailed map of a Bodkin shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: bodkin
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapBookworm
+  name: "BB Bookworm"
+  description: "Detailed map of a Bookworm shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: bookworm
+
+- type: entity
+  parent: PosterBase
   id: ShuttleMapBrigand
   name: "NT Brigand"
   description: "Detailed map of a Brigand shuttle."
@@ -85,6 +118,17 @@
   - type: Sprite
     sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
     state: brigand
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapBroom
+  name: "LVHI Broom"
+  description: "Detailed map of a Broom shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: broom
 
 - type: entity
   parent: PosterBase
@@ -122,7 +166,7 @@
 - type: entity
   parent: PosterBase
   id: ShuttleMapCharon
-  name: "ITS Apothecary"
+  name: "ITS Charon"
   description: "Detailed map of a Charon shuttle."
   categories: [ HideSpawnMenu ]
   components:
@@ -187,6 +231,49 @@
 
 - type: entity
   parent: PosterBase
+  id: ShuttleMapCrescent
+  name: "NC Crescent"
+  description: "Detailed map of a Crescent shuttle."
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: crescent
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapCrossroads
+  name: "PHI Crossroads"
+  description: "Detailed map of a Crossroads shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: crossroads
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapDove
+  name: "DYS Dove"
+  description: "Detailed map of a Dove shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: dove
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapDragoon
+  name: "FSA Dragoon"
+  description: "Detailed map of a Dragoon shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: dragoon
+
+- type: entity
+  parent: PosterBase
   id: ShuttleMapDragonfly
   name: "DYS Dragonfly"
   description: "Detailed map of a Dragonfly shuttle."
@@ -220,6 +307,17 @@
 
 - type: entity
   parent: PosterBase
+  id: ShuttleMapFirefighter
+  name: "AC Firefighter"
+  description: "Detailed map of a Firefighter shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: firefighter
+
+- type: entity
+  parent: PosterBase
   id: ShuttleMapGarden
   name: "NT Garden"
   description: "Detailed map of a Garden shuttle."
@@ -239,6 +337,28 @@
   - type: Sprite
     sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
     state: gasbender
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapGaslight
+  name: "FSC Gaslight"
+  description: "Detailed map of a Gaslight shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: gaslight
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapHammer
+  name: "BB Hammer"
+  description: "Detailed map of a Hammer shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: hammer
 
 - type: entity
   parent: PosterBase
@@ -275,6 +395,17 @@
 
 - type: entity
   parent: PosterBase
+  id: ShuttleMapHound
+  name: "CBC Hound"
+  description: "Detailed map of a Hound shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: hound
+
+- type: entity
+  parent: PosterBase
   id: ShuttleMapInvestigator
   name: "NR Investigator"
   description: "Detailed map of a Investigator shuttle."
@@ -287,7 +418,7 @@
 - type: entity
   parent: PosterBase
   id: ShuttleMapIzakaya
-  name: "SSS Izakaya"
+  name: "SSF Izakaya"
   description: "Detailed map of an Izakaya shuttle."
   categories: [ HideSpawnMenu ]
   components:
@@ -319,14 +450,36 @@
 
 - type: entity
   parent: PosterBase
-  id: ShuttleMapLegman
-  name: "NC Legman"
-  description: "Detailed map of a Legman shuttle."
+  id: ShuttleMapStringer
+  name: "LVHI Stringer"
+  description: "Detailed map of a Stringer shuttle."
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
-    state: legman
+    state: stringer
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapStronghold
+  name: "DBI Stronghold"
+  description: "Detailed map of a Stronghold shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: stronghold
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapLanternMk2
+  name: "LVHI Lantern Mk2"
+  description: "Detailed map of a Lantern Mk2 shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: lantern-mk2
 
 - type: entity
   parent: PosterBase
@@ -352,6 +505,17 @@
 
 - type: entity
   parent: PosterBase
+  id: ShuttleMapLyrae
+  name: "BB Lyrae"
+  description: "Detailed map of a Lyrae shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: lyrae
+
+- type: entity
+  parent: PosterBase
   id: ShuttleMapNightlight
   name: "FSB Nightlight"
   description: "Detailed map of a Nightlight shuttle."
@@ -371,17 +535,6 @@
   - type: Sprite
     sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
     state: pathfinder
-
-- type: entity
-  parent: PosterBase
-  id: ShuttleMapPetrel
-  name: "KAZ Petrel"
-  description: "Detailed map of a Petrel shuttle."
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
-    state: petrel
 
 - type: entity
   parent: PosterBase
@@ -484,14 +637,14 @@
 
 - type: entity
   parent: PosterBase
-  id: ShuttleMapStringer
-  name: "NC Stringer"
-  description: "Detailed map of a Stringer shuttle."
+  id: ShuttleMapStellaris
+  name: "NT Stasis"
+  description: "Detailed map of a Stellaris shuttle."
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
-    state: stringer
+    state: stellaris
 
 - type: entity
   parent: PosterBase
@@ -517,6 +670,17 @@
 
 - type: entity
   parent: PosterBase
+  id: ShuttleMapTyne
+  name: "BB Tyne"
+  description: "Detailed map of a Tyne shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: tyne
+
+- type: entity
+  parent: PosterBase
   id: ShuttleMapVagabond
   name: "NT Vagabond"
   description: "Detailed map of a Vagabond shuttle."
@@ -525,6 +689,28 @@
   - type: Sprite
     sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
     state: vagabond
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapMcCargo
+  name: "DC McCargo"
+  description: "Detailed map of a McCargo shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: mccargo
+
+- type: entity
+  parent: PosterBase
+  id: ShuttleMapMcDelivery
+  name: "WSE Nook"
+  description: "Detailed map of a McDelivery shuttle."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NF/Guidebook/shuttle_maps/128x96.rsi
+    state: mcdelivery
 
 - type: entity
   parent: PosterBase

@@ -584,7 +584,6 @@
   - MedicalAssemblerMachineCircuitboard
   - HotplateMachineCircuitboard
   - DefibrillatorCompact
-  - JetInjector # Coyote - Port in Jet Injectors from Den
   technologyPrerequisites:
   - NFBasicMedicine
   position: 2, 11
@@ -636,14 +635,10 @@
   name: nf-research-technology-anti-gravitational-fields
   entityIcon: NFClothingShoesBootsMoon
   discipline: NFScience
-  secondaryDiscipline: NFMedical # Coyote: Adds a secondary discipline now that this also has the holo hoverbed.
   tier: 1
   cost: 5000
   recipeUnlocks:
   - NFClothingShoesBootsMoon
-  # Begin DeltaV Additions -- Coyote: Add Holographic Hoverbeds to the same research as moon boots. Seems fitting...?
-  - HoverBedHoloSpawnFolded
-  # End DeltaV Additions
   technologyPrerequisites:
   - NFBasicMagnetsTech
   position: 0, 14
@@ -1068,7 +1063,6 @@
   cost: 2500
   recipeUnlocks:
   - PlantBagOfHolding
-  - BluespaceTrashBag # Coyote
   prerequisiteLineType: Diagonal
   technologyPrerequisites:
   - NFAdvancedHydroponicsEquipment
@@ -1238,6 +1232,7 @@
   recipeUnlocks:
   - SolarControlComputerCircuitboard
   - SolarTrackerElectronics
+  - SolarAssemblyFlatpack
   prerequisiteLineType: Diagonal
   technologyPrerequisites:
   - NFAdvancedPowercells
@@ -1291,22 +1286,23 @@
   cost: 2500
   recipeUnlocks:
   - PortableGeneratorPacmanMachineCircuitboard
+  - PowerComputerCircuitboard
   technologyPrerequisites:
   - NFTrashPowerGeneration
   position: 2, 28
 
-#- type: technology
-#  id: NFParticleDecelerator
-#  name: nf-research-technology-portable-particle-emission
-#  entityIcon: NFWeaponParticleDecelerator
-#  discipline: NFEngineering
-#  tier: 1
-#  cost: 10000
-#  recipeUnlocks:
-#  - NFWeaponParticleDecelerator
-#  technologyPrerequisites:
-#  - NFEmitter
-#  position: 2, 30
+- type: technology
+  id: NFParticleDecelerator
+  name: nf-research-technology-portable-particle-emission
+  entityIcon: NFWeaponParticleDecelerator
+  discipline: NFEngineering
+  tier: 1
+  cost: 10000
+  recipeUnlocks:
+  - NFWeaponParticleDecelerator
+  technologyPrerequisites:
+  - NFEmitter
+  position: 2, 30
 
 - type: technology
   id: NFPowerGeneration
@@ -1383,12 +1379,8 @@
   tier: 1
   cost: 5000
   recipeUnlocks:
-  - SlowWeakThrusterMachineCircuitboard
-  - SlowStrongThrusterMachineCircuitboard
-  - SmallThrusterMachineCircuitboard
   - ThrusterMachineCircuitboard
   - GyroscopeMachineCircuitboard
-  - SmallGyroscopeMachineCircuitboard
   prerequisiteLineType: Diagonal
   technologyPrerequisites:
   - NFSpaceScanning
@@ -1400,30 +1392,13 @@
   entityIcon: SmallThruster
   discipline: NFEngineering
   tier: 1
-  cost: 5000
+  cost: 1000
   recipeUnlocks:
-  - FastWeakThrusterMachineCircuitboard
-  - FastStrongThrusterMachineCircuitboard
-  - FasterWeakThrusterMachineCircuitboard
-  - FasterStrongThrusterMachineCircuitboard
+  - SmallThrusterMachineCircuitboard
+  - SmallGyroscopeMachineCircuitboard
   technologyPrerequisites:
   - NFShuttlecraftThrust
   position: 2, 32
-
-# Wayfarer Autopilot: begin
-- type: technology
-  id: WFAutopilotServer
-  name: wf-research-technology-autopilot-server
-  entityIcon: AutopilotServer
-  discipline: NFEngineering
-  tier: 1
-  cost: 10000
-  recipeUnlocks:
-  - AutopilotServerCircuitboard
-  technologyPrerequisites:
-  - NFShuttlecraftThrustSmall
-  position: 3, 32
-# Wayfarer Autopilot: end
 
 # region Atmospherics
 
@@ -1436,6 +1411,8 @@
   cost: 7500
   recipeUnlocks:
   - HolofanProjector
+  - AlertsComputerCircuitboard
+  - AtmosMonitoringComputerCircuitboard
 #  - FireExtinguisherBluespace # DeltaV
   technologyPrerequisites:
   - NFAtmosphericTech
@@ -1463,7 +1440,6 @@
   recipeUnlocks:
   - GasMiningDrillMachineCircuitboard
   - GaslockFrameMachineCircuitboard
-#  - GaslockBigFrameMachineCircuitboard
   prerequisiteLineType: Diagonal
   technologyPrerequisites:
   - NFAtmosphericTech
@@ -1538,19 +1514,6 @@
   position: 1, 36
 
 - type: technology
-  id: NFArsenalNfsdPropulsion
-  name: nf-research-technology-security-personal-propulsion
-  entityIcon: JetpackNfsd
-  discipline: NFArsenalNfsd
-  tier: 1
-  cost: 1000
-  recipeUnlocks:
-  - JetpackNfsd
-  technologyPrerequisites:
-  - NFArsenalMercenaryPropulsion
-  position: 1, 37
-
-- type: technology
   id: NFAdvancedPersonalPropulsion
   name: nf-research-technology-advanced-personal-propulsion
   entityIcon: JetpackVoid
@@ -1564,18 +1527,20 @@
   - NFPersonalPropulsion
   position: 2, 36
 
-# region Salvage
-
 - type: technology
-  id: NFIndustrialOreProcessor
-  name: nf-research-technology-salvage-equipment
-  entityIcon: OreProcessorIndustrial
+  id: NFBootBasedPropulsion
+  name: nf-research-technology-boot-based-propulsion
+  entityIcon: NFClothingShoesBootsJetpack
   discipline: NFSalvage
-  tier: 1
+  secondaryDiscipline: NFEngineering
+  tier: 2
   cost: 2500
   recipeUnlocks:
-  - OreProcessorIndustrialMachineCircuitboard
-  position: 0, 38
+  - NFClothingShoesBootsJetpack
+  technologyPrerequisites:
+  - NFAdvancedPersonalPropulsion
+  position: 2, 35
+# region Salvage
 
 - type: technology
   id: NFSalvageGrapplingEquipment
@@ -1583,12 +1548,10 @@
   entityIcon: WeaponGrapplingGun
   discipline: NFSalvage
   tier: 1
-  cost: 2500
+  cost: 1000
   recipeUnlocks:
   - WeaponGrapplingGun
-  technologyPrerequisites:
-  - NFIndustrialOreProcessor
-  position: 0, 39
+  position: 0, 38
 
 - type: technology
   id: NFExcavation
@@ -1601,8 +1564,35 @@
   - MiningDrill
   - MineralScannerEmpty
   technologyPrerequisites:
-  - NFIndustrialOreProcessor
+  - NFSalvageGrapplingEquipment
   position: 1, 38
+
+- type: technology
+  id: NFOreProcessor
+  name: nf-research-technology-ore-processing
+  entityIcon: OreProcessor
+  discipline: NFSalvage
+  tier: 1
+  cost: 2000
+  recipeUnlocks:
+  - OreProcessorMachineCircuitboard
+  prerequisiteLineType: Diagonal
+  technologyPrerequisites:
+  - NFExcavation
+  position: 2, 37
+
+- type: technology
+  id: NFIndustrialOreProcessor
+  name: nf-research-technology-industrial-ore-processing
+  entityIcon: OreProcessorIndustrial
+  discipline: NFSalvage
+  tier: 1
+  cost: 5000
+  recipeUnlocks:
+  - OreProcessorIndustrialMachineCircuitboard
+  technologyPrerequisites:
+  - NFOreProcessor
+  position: 3, 37
 
 - type: technology
   id: NFSalvageWeapons
@@ -1617,7 +1607,7 @@
   - WeaponCrusherDagger
   prerequisiteLineType: Diagonal
   technologyPrerequisites:
-  - NFIndustrialOreProcessor
+  - NFSalvageGrapplingEquipment
   position: 1, 39
 
 - type: technology
@@ -1626,7 +1616,7 @@
   entityIcon: MiningDrillDiamond
   discipline: NFSalvage
   tier: 1
-  cost: 2500
+  cost: 5000
   recipeUnlocks:
   - MiningDrillDiamond
   - AdvancedMineralScannerEmpty
@@ -1640,7 +1630,7 @@
   entityIcon: WeaponCrusherGlaive
   discipline: NFSalvage
   tier: 1
-  cost: 2500
+  cost: 5000
   recipeUnlocks:
   - WeaponCrusherGlaive
   technologyPrerequisites:
@@ -1653,10 +1643,9 @@
   entityIcon: OreBagOfHolding
   discipline: NFSalvage
   tier: 1
-  cost: 5000
+  cost: 7500
   recipeUnlocks:
   - OreBagOfHolding
-  - BorgModuleAdvancedMining
   technologyPrerequisites:
   - NFMassExcavation
   position: 3, 38
@@ -1667,7 +1656,7 @@
   entityIcon: NFWeaponPkaCannon
   discipline: NFSalvage
   tier: 1
-  cost: 5000
+  cost: 7500
   recipeUnlocks:
   - NFWeaponPkaCannon
   technologyPrerequisites:
@@ -1715,7 +1704,6 @@
   - NFAmmunitionBoxRifle20
   - NFAmmunitionBoxRifle30
   - NFAmmunitionBoxPistol35
-  - CSAmmunitionBoxPistol40
   - NFAmmunitionBoxPistol45
   - NFSpeedLoaderPistol35Empty
   - NFSpeedLoaderPistol45Empty
@@ -1738,7 +1726,6 @@
   - ClothingOuterCoatBHTrench
   - PinpointerUniversalNF
   - ClothingEyesHudBountyHunter
-  - ClothingEyesHudBountyHunterPatch
   - NFForensicPad
   - FlashlightSecliteNF
   technologyPrerequisites:
@@ -1754,13 +1741,10 @@
   cost: 2500
   recipeUnlocks:
   - NFAmmunitionBoxPistol35Overpressure
-  - CSAmmunitionBoxPistol40Overpressure
   - NFAmmunitionBoxPistol45Overpressure
   - NFMagazineHighCapacityPistol35Empty
   - NFMagazineSubMachineGun35Empty
   - NFMagazineSubMachineGunTopMounted35Empty
-  - CSMagazinePistol40Empty
-  - CSMagazineSubMachineGun40Empty
   - NFMagazinePistol45Empty
   prerequisiteLineType: Diagonal
   technologyPrerequisites:
@@ -1779,7 +1763,6 @@
   - NFAmmunitionBoxRifle20Rubber
   - NFAmmunitionBoxRifle30Rubber
   - NFAmmunitionBoxPistol35Rubber
-  - CSAmmunitionBoxPistol40Rubber
   - NFAmmunitionBoxPistol45Rubber
   - NFAmmunitionBoxShellShotgunTranquilizer
   technologyPrerequisites:
@@ -1861,6 +1844,7 @@
   - TimerTrigger
   - FlashPayload
   - ChemicalPayload
+  - ExplosivePayload
   technologyPrerequisites:
   - NFAdvancedRiotControl
   position: 3, 41
@@ -1882,7 +1866,7 @@
   id: NFSpecialMeans
   name: nf-research-technology-special-means
   entityIcon: ClothingBackpackElectropack
-  discipline: NFArsenalNfsd
+  discipline: NFArsenalMercenary
   tier: 1
   cost: 5000
   recipeUnlocks:
@@ -1912,7 +1896,7 @@
   id: NFBasicShuttleArmament
   name: nf-research-technology-basic-shuttle-armament
   entityIcon: PowerCageRecharger
-  discipline: NFArsenalNfsd
+  discipline: NFArsenalMercenary
   tier: 1
   cost: 10000
   recipeUnlocks:

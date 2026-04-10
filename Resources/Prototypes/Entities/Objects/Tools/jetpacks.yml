@@ -117,7 +117,7 @@
 #Empty black
 - type: entity
   id: JetpackBlack
-  parent: [BaseJetpack, NotContraband] # Frontier: BaseSyndicateContraband<BaseC4Contraband
+  parent: [BaseJetpack, BaseC3SyndicateContraband] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband
   name: jetpack
   suffix: Empty
   components:
@@ -132,12 +132,14 @@
     #  - Back
     # End DeltaV modifications
   # Frontier: emaggable jetpacks
-#  - type: Tag ## jk
-#    tags:
-#      - DemagImmune
-#  - type: Jetpack
-#    radarBlip: false
+  - type: Tag
+    tags:
+      - DemagImmune
+  - type: Jetpack
+    radarBlip: false
   # End Frontier: emaggable jetpacks
+#  - type: StaticPrice # Frontier
+#    price: 1000 # Frontier
 
 # Filled black
 - type: entity
@@ -174,6 +176,9 @@
   - type: Item
     sprite: Objects/Tanks/Jetpacks/captain.rsi
     size: Normal
+  - type: Tag
+    tags:
+    - HighRiskItem
   - type: StealTarget
     stealGroup: JetpackCaptainFilled
 
@@ -204,6 +209,8 @@
   components:
     - type: Item
       sprite: Objects/Tanks/Jetpacks/mini.rsi
+      shape: # Frontier
+      - 0,0,3,2 # Frontier
     - type: Sprite
       sprite: Objects/Tanks/Jetpacks/mini.rsi
     - type: Clothing

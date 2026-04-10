@@ -1,4 +1,3 @@
-using Content.Shared._Coyote.Needs;
 using Content.Shared.EntityEffects;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
@@ -16,12 +15,10 @@ public sealed partial class Hunger : EntityEffectCondition
 
     public override bool Condition(EntityEffectBaseArgs args)
     {
-        if (args.EntityManager.TryGetComponent(args.TargetEntity, out NeedsComponent? needy))
+        if (args.EntityManager.TryGetComponent(args.TargetEntity, out HungerComponent? hunger))
         {
-            var total = args.EntityManager.System<SharedNeedsSystem>().GetHunger(args.TargetEntity, needy);
-            if (total > Min
-                && total < Max)
-                return true;
+            var total = args.EntityManager.System<HungerSystem>().GetHunger(hunger);
+            return total >= Min && total <= Max;
         }
 
         return false;

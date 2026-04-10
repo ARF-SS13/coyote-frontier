@@ -1,6 +1,6 @@
 #region blue wizard
 - type: entity
-  parent: ClothingNeckBase # Coyote: Doesn't do anything. Not contraband.
+  parent: [ BaseC3WizardContrabandUnredeemable, ClothingNeckBase, ContrabandClothing ]
   id: ClothingNeckScarfWizardBlue
   name: blue wizard stole
   description: A scarf imbued with minor enchantments to protect the wearer from cold and minor magical effects.
@@ -187,7 +187,7 @@
 
 #region scarf of warmth
 - type: entity
-  parent: [ ClothingNeckScarfWizardPurple, BaseC1WizardContraband ] # Coyote: C3 to C1
+  parent: [ ClothingNeckScarfWizardPurple, BaseC3WizardContraband ]
   id: ClothingNeckScarfWizardWarmth
   name: wizard scarf of warmth
   description: You don't feel neither cold nor warm wearing it. Wonder if it keeps you safe from plasmafires?
@@ -239,7 +239,7 @@
 
 #region cloak of holding
 - type: entity
-  parent: [ ClothingNeckBase, BaseC2WizardContraband ] # Coyote: C3 to C2
+  parent: [ ClothingNeckBase, BaseC3WizardContraband ]
   id: ClothingNeckCloakWizardHolding
   name: wizard's portal cloak of holding
   description: What happens when your wizardry instructor forbids portal conjuring, yet you do it anyway and attempt to conceal it under your cloak when they are back to check on you?
@@ -252,7 +252,6 @@
         shader: unshaded
   - type: Item
     sprite: _NF/Clothing/Neck/Cloaks/wizard_cloak_holding.rsi
-    size: Ginormous #Coyote: Fixes expolitable inventory bugs
   - type: Clothing
     sprite: _NF/Clothing/Neck/Cloaks/wizard_cloak_holding.rsi
     clothingVisuals:
@@ -262,15 +261,12 @@
         shader: unshaded
   - type: Storage
     grid:
-    - 0,1,0,4 #Coyote about a toolbelt of slots. Removing previous inventory and nerfing slots a bit
-    - 2,1,2,4
-    - 4,1,4,4
-    - 6,1,6,4
-    #- 5,0,7,2 #Coyote shrinking of the inventory capacity. Removing previous inventory and giving it about a toolbelt of slots
-    #- 0,5,7,5
-    #- 6,4,7,5
-    #- 9,2,10,3
-    #- 9,5,9,5
+    - 0,0,3,3
+    - 5,0,7,2
+    - 0,5,7,5
+    - 6,4,7,5
+    - 9,2,10,3
+    - 9,5,9,5
     maxItemSize: Small
   - type: ContainerContainer
     containers:

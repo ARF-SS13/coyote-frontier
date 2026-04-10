@@ -9,7 +9,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 30
+        Piercing: 11
 
 - type: entity
   id: NFBulletRifle10Practice
@@ -20,7 +20,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 0
+        Piercing: 1
 
 - type: entity
   id: NFBulletRifle10Rubber
@@ -31,9 +31,9 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 0
+        Piercing: 1
   - type: StaminaDamageOnCollide
-    damage: 30 # ~4 hits to stun
+    damage: 10.5 # ~10 hits to stun sounds reasonable, less effective than pistol because rifle round is smaller in size
 
 #region .20 rifle
 - type: entity
@@ -45,7 +45,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 35
+        Piercing: 13
 
 - type: entity
   id: NFBulletRifle20Overpressure
@@ -56,7 +56,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 38
+        Piercing: 14
 
 - type: entity
   id: NFBulletRifle20Incendiary
@@ -67,8 +67,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 21 # 0.6 * base total dmg
-        Heat: 14 # 0.4 * base total dmg
+        Piercing: 7.8 # 0.6 * base total dmg
+        Heat: 5.2 # 0.4 * base total dmg
 
 - type: entity
   id: NFBulletRifle20Uranium
@@ -79,8 +79,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 29 # 0.6 * (1.4 * base total dmg)
-        Radiation: 19 # 0.4 * (1.4 * base total dmg)
+        Piercing: 10.8 # 0.6 * (1.4 * base total dmg)
+        Radiation: 7.2 # 0.4 * (1.4 * base total dmg)
 
 - type: entity
   id: NFBulletRifle20Practice
@@ -91,7 +91,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 0
+        Piercing: 2
 
 - type: entity
   id: NFBulletRifle20Rubber
@@ -102,9 +102,9 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 0
+        Piercing: 2
   - type: StaminaDamageOnCollide
-    damage: 35 # ~3 hits to stun
+    damage: 12 # ~9 hits to stun sounds reasonable, less effective than pistol because rifle round is smaller in size
 
 #region .25 rifle
 - type: entity
@@ -116,7 +116,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 38
+        Piercing: 14
 
 - type: entity
   id: NFBulletRifle25Overpressure
@@ -127,7 +127,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 43
+        Piercing: 16
 
 - type: entity
   id: NFBulletRifle25Incendiary
@@ -138,8 +138,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 23 # 0.6 * base total dmg
-        Heat: 15 # 0.4 * base total dmg
+        Piercing: 8.4 # 0.6 * base total dmg
+        Heat: 5.6 # 0.4 * base total dmg
 
 - type: entity
   id: NFBulletRifle25Uranium
@@ -150,8 +150,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 23 # 0.6 * (1.4 * base total dmg)
-        Radiation: 15 # 0.4 * (1.4 * base total dmg)
+        Piercing: 11.4 # 0.6 * (1.4 * base total dmg)
+        Radiation: 7.6 # 0.4 * (1.4 * base total dmg)
 
 - type: entity
   id: NFBulletRifle25Practice
@@ -162,7 +162,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 0
+        Piercing: 2
 
 - type: entity
   id: NFBulletRifle25Rubber
@@ -173,9 +173,9 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 0
+        Piercing: 2
   - type: StaminaDamageOnCollide
-    damage: 38 # ~3 hits to stun
+    damage: 12 # ~9 hits to stun sounds reasonable, less effective than pistol because rifle round is smaller in size
 
 #region .30 rifle
 - type: entity
@@ -187,7 +187,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 41
+        Piercing: 15
 
 - type: entity
   id: NFBulletRifle30Overpressure
@@ -198,7 +198,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 46
+        Piercing: 17
 
 - type: entity
   id: NFBulletRifle30Incendiary
@@ -209,8 +209,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 25
-        Heat: 16
+        Piercing: 9
+        Heat: 6
 
 - type: entity
   id: NFBulletRifle30Uranium
@@ -221,8 +221,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 34 # 0.6 * (1.4 * base total dmg) Coyote fix: apply rad ammo damage characteristics to 30 rifle
-        Radiation: 23 # 0.4 * (1.4 * base total dmg) Coyote fix: apply rad ammo damage characteristics to 30 rifle
+        Piercing: 12.6
+        Radiation: 8.4
 
 - type: entity
   id: NFBulletRifle30Practice
@@ -233,7 +233,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 0
+        Piercing: 2
 
 - type: entity
   id: NFBulletRifle30Rubber
@@ -244,9 +244,9 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 0
+        Piercing: 2
   - type: StaminaDamageOnCollide
-    damage: 41 # ~3 hits to stun
+    damage: 13 # ~8 hits to stun sounds reasonable
 
 #region .60 rifle
 - type: entity
@@ -258,7 +258,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 95
+        Piercing: 35
         Structural: 200
     penetrationThreshold: 360
     penetrationDamageTypeRequirement:
@@ -273,6 +273,6 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 0
+        Blunt: 10
   - type: StaminaDamageOnCollide
-    damage: 95 # ~2 hits to stun
+    damage: 70

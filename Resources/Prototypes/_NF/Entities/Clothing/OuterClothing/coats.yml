@@ -56,7 +56,7 @@
     clothingPrototype: ClothingHeadHatHoodCardinalHood
 
 - type: entity
-  parent: [ ClothingOuterStorageBase, BaseC4ContrabandUnredeemable ] # COYOTE: BaseC2ContrabandUnredeemable -> BaseC4ContrabandUnredeemable
+  parent: [ ClothingOuterStorageBase, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterCoatNfsdBomber
   name: NFSD bomber
   description: Lookin' slick Tom.
@@ -67,7 +67,7 @@
     sprite: _NF/Clothing/OuterClothing/Misc/nfsd_bomber.rsi
 
 - type: entity
-  parent: [ ClothingOuterStorageBase, BaseC4ContrabandUnredeemable ] # COYOTE: BaseC2ContrabandUnredeemable -> BaseC4ContrabandUnredeemable
+  parent: [ ClothingOuterStorageBase, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterCoatNfsdBomberBrigmed
   name: NFSD brigmedic bomber
   description: Blood may stain.
@@ -78,7 +78,7 @@
     sprite: _NF/Clothing/OuterClothing/Misc/nfsd_brigmed_bomber.rsi
 
 - type: entity
-  parent: [ ClothingOuterStorageBase, BaseC4ContrabandUnredeemable ] # COYOTE: BaseC2ContrabandUnredeemable -> BaseC4ContrabandUnredeemable
+  parent: [ ClothingOuterStorageBase, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterCoatNfsdFormal
   name: NFSD formal coat
   description: Snazzy.
@@ -89,7 +89,7 @@
     sprite: _NF/Clothing/OuterClothing/Misc/nfsd_formal.rsi
 
 - type: entity
-  parent: [ ClothingOuterStorageBase, BaseC4ContrabandUnredeemable ] # COYOTE: BaseC2ContrabandUnredeemable -> BaseC4ContrabandUnredeemable
+  parent: [ ClothingOuterStorageBase, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterCoatNfsdFormalSheriff
   name: NFSD sheriff's formal coat
   description: Very snazzy.
@@ -100,7 +100,7 @@
     sprite: _NF/Clothing/OuterClothing/Misc/nfsd_sheriff_formal.rsi
 
 - type: entity
-  parent: [ ClothingOuterStorageBase, BaseC4ContrabandUnredeemable ] # COYOTE: BaseC2ContrabandUnredeemable -> BaseC4ContrabandUnredeemable
+  parent: [ ClothingOuterStorageBase, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterCoatNfsdLongCoat
   name: NFSD long coat
   description: Big iron on his hip...
@@ -111,7 +111,7 @@
     sprite: _NF/Clothing/OuterClothing/Misc/nfsd_long.rsi
 
 - type: entity
-  parent: [ ClothingOuterStorageBase, BaseC4ContrabandUnredeemable ]
+  parent: [ ClothingOuterStorageBase, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterJacketSr
   name: station representative's jacket
   description: The upper part of the station representative's uniform.
@@ -127,7 +127,7 @@
       - state: equipped-OUTERCLOTHING
 
 - type: entity
-  parent: [ ClothingOuterStorageBase, BaseC1ContrabandUnredeemable ]
+  parent: [ ClothingOuterStorageBase, BaseC3PirateContrabandNoValue ]
   id: ClothingOuterCoatPirateCaptain
   name: pirate captain's coat
   description: Y'arrgh har fiddle di dee.
@@ -138,7 +138,7 @@
     sprite: _NF/Clothing/OuterClothing/Misc/pirate_captain.rsi
 
 - type: entity
-  parent: ClothingOuterStorageFoldableBase
+  parent: [ ClothingOuterStorageFoldableBase, BaseC3ContrabandNoValue, ContrabandClothing ]
   id: ClothingOuterCoatArcadiaTrench
   name: arcadia flak trenchcoat
   description: A flak trenchcoat produced by Arcadia Industries, enhanced with a bulletproof alloy for some extra protection.
@@ -175,7 +175,7 @@
     damageCoefficient: 0.60
 
 - type: entity
-  parent: [ ClothingOuterStorageBase, NotContraband ]
+  parent: [ ClothingOuterStorageBase, BaseC3WizardContraband ]
   id: ClothingOuterWizardBrick
   name: brick wizard coat
   description: ClothingOuterWizardBrick

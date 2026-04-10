@@ -1,7 +1,7 @@
 using Content.Server.Access.Systems;
 using Content.Server.Humanoid;
 using Content.Server.IdentityManagement;
-using Content.Server.Mind.Commands;
+using Content.Server.Mind;
 using Content.Server.PDA;
 using Content.Server.Station.Components;
 using Content.Shared.Access.Components;
@@ -34,7 +34,6 @@ using Robust.Shared.Containers; // Frontier
 using Content.Shared.Radio.Components; // Frontier
 using Content.Shared.Implants; // Frontier
 using Content.Shared.Implants.Components; // Frontier
-using Content.Server.Mind; // CS - I have no idea why upstream doesn't need this!
 
 namespace Content.Server.Station.Systems;
 
@@ -137,8 +136,8 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         if (prototype?.JobEntity != null)
         {
             DebugTools.Assert(entity is null);
-            var jobEntity = EntityManager.SpawnEntity(prototype.JobEntity, coordinates);
-            MakeSentientCommand.MakeSentient(jobEntity, EntityManager);
+            var jobEntity = Spawn(prototype.JobEntity, coordinates);
+            _mindSystem.MakeSentient(jobEntity);
 
             // Make sure custom names get handled, what is gameticker control flow whoopy.
             if (loadout != null)

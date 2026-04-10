@@ -24,6 +24,8 @@
   - ClothingMaskBreathMedicalSecurity
   - ClothingMaskGasSecurity
   - ClothingBeltBandolier
+  - NFBaseClothingNeckHolsterThigh
+  - NFBaseClothingNeckSheathThigh
 
 - type: latheRecipePack
   id: NFMercenaryStorageStatic
@@ -33,7 +35,6 @@
   - WeaponCaseLong
   - WeaponCaseHeavy
   - WeaponCaseShortAmmo
-  - WeaponCaseHeavyAmmo # Coyote
   - WeaponCaseShortExplosives
 
 - type: latheRecipePack
@@ -55,7 +56,6 @@
   id: NFMercenaryAmmoBoxesStatic
   recipes:
   - NFAmmunitionBoxPistol35
-  - CSAmmunitionBoxPistol40
   - NFAmmunitionBoxShellShotgunBuckshot
   - NFAmmunitionBoxRifle20
   - NFAmmunitionBoxRifle30
@@ -65,7 +65,6 @@
   - NFAmmunitionBoxShellShotgunSlug
   - NFAmmunitionBoxRifle30Rubber
   - NFAmmunitionBoxPistol35Rubber
-  - CSAmmunitionBoxPistol40Rubber
   - NFAmmunitionBoxPistol45Rubber
   - NFAmmunitionBoxRifle20Rubber
 
@@ -112,8 +111,6 @@
   - ClothingEyesHudBountyHunter
   - BolaNF
   - NFHandcuffs
-  - ArmorPlateLight # Mono
-  - ArmorPlateSteel # Mono
 
 - type: latheRecipePack
   id: NFMercenaryArchetypeMeleeStatic

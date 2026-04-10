@@ -3,8 +3,8 @@
   - SimpleSpaceMobBase
   - FlyingMobBase
   id: MobDragonPet
-  name: space drake #coyote, renamed from baby dragon and changed desc to match
-  description: The smaller cousin to the much larger space dragon.
+  name: baby space dragon
+  description: Even a flying leviathan starts off small and from an egg.
   components:
   - type: Body
     prototype: Animal
@@ -17,11 +17,23 @@
       80: 0.5
   - type: MobPrice
     price: 2000
-#  - type: Perishable
-  - type: Needs
-    needs:
-    - NeedHungerDragon
-    - NeedThirstDragon
+  - type: Perishable
+  - type: Hunger
+    thresholds:
+      Overfed: 100
+      Okay: 50
+      Peckish: 25
+      Starving: 10
+      Dead: 0
+    baseDecayRate: 0.00925925925926 # Guy needs to eat and drink
+  - type: Thirst
+    thresholds:
+      OverHydrated: 200
+      Okay: 150
+      Thirsty: 100
+      Parched: 50
+      Dead: 0
+    baseDecayRate: 0.04
   - type: StatusEffects
     allowed:
       - Stun
@@ -145,8 +157,8 @@
 - type: entity
   categories: [ HideSpawnMenu ]
   id: BabyDragonsSparkGun
-  name: space drake spark #coyote renamed from baby dragon spark
-  description: A tiny burning ember from a space drake.
+  name: baby dragon spark
+  description: A tiny burning ember from a baby dragon.
   components:
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 120
@@ -163,8 +175,8 @@
   categories: [ HideSpawnMenu ]
   id: ActionDragonsBreathBaby
   parent: BaseAction
-  name: "[color=orange]Drake's Breath[/color]" #coyote renamed from baby dragon's breath
-  description: Spew out tiny flames at anyone foolish enough to attack you!
+  name: "[color=orange]Hatchling's Breath[/color]"
+  description: Spew out tiny flames at anyone foolish enough to attack you! Adorable.
   components:
   - type: Action
     icon: { sprite : Objects/Weapons/Guns/Projectiles/magic.rsi, state: fireball }

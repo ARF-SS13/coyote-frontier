@@ -27,7 +27,7 @@
   abstract: true
   components:
   - type: RandomGasDeposit
-    scale: 0.60 # Coyote: 0.30 * 2
+    scale: 0.30
   - type: Sprite
     scale: 0.75, 0.75
 
@@ -36,7 +36,7 @@
   abstract: true
   components:
   - type: RandomGasDeposit
-    scale: 1.20 # Coyote: 0.60 * 2
+    scale: 0.60
   - type: Sprite
     scale: 0.85, 0.85
 
@@ -45,7 +45,7 @@
   abstract: true
   components:
   - type: RandomGasDeposit
-    scale: 2.80 # Coyote: 1.40 * 2
+    scale: 1.40
   - type: Sprite
     scale: 1.1, 1.1
 
@@ -54,7 +54,7 @@
   abstract: true
   components:
   - type: RandomGasDeposit
-    scale: 5.40 # Coyote: 2.70 * 2
+    scale: 2.70
   - type: Sprite
     scale: 1.2, 1.2
 # endregion Base Deposits
@@ -487,9 +487,7 @@
 
 # Debug item for detecting gas deposits
 - type: entity
-  parent:
-  - PinpointerSyndicateNuclear
-  - NotContraband
+  parent: PinpointerSyndicateNuclear
   id: PinpointerGasDeposit
   name: gas deposit pinpointer
   description: Pointing to the nearest gas deposit.
@@ -528,7 +526,7 @@
   - type: ItemToggle
   - type: ProximityBeeper
   - type: ProximityDetector
-    range: 20
+    range: 64
     components:
     - type: GasDeposit
   - type: Beeper

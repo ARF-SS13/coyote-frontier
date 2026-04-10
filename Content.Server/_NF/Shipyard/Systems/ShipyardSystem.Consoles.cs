@@ -42,8 +42,6 @@ using Content.Server.StationEvents.Components;
 using Content.Shared.Forensics.Components;
 using Robust.Server.Player;
 using Robust.Shared.Timing;
-using Content.Server._NF.GC.Components;
-using Content.Server._Mono.Shipyard;
 
 namespace Content.Server._NF.Shipyard.Systems;
 
@@ -157,7 +155,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 }
                 return;
             }
-            else if (!voucher.UseAnywhere && voucher!.ConsoleType != (ShipyardConsoleUiKey)args.UiKey)
+            else if (voucher!.ConsoleType != (ShipyardConsoleUiKey)args.UiKey)
             {
                 ConsolePopup(player, Loc.GetString("shipyard-console-invalid-voucher-type"));
                 PlayDenySound(player, shipyardConsoleUid, component);
@@ -188,7 +186,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             PlayDenySound(player, shipyardConsoleUid, component);
             return;
         }
-        shuttle.PlayerShuttle = true; // Frontier: They're on a shuttle =3
         EntityUid? shuttleStation = null;
         // setting up any stations if we have a matching game map prototype to allow late joins directly onto the vessel
         if (_prototypeManager.TryIndex<GameMapPrototype>(vessel.ID, out var stationProto))
@@ -219,12 +216,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttleUid);
         AssignShuttleDeedProperties((shuttleUid, deedShuttle), shuttleUid, name, shuttleOwner, voucherUsed);
 
-        // if (!voucherUsed && component.NewJobTitle != null)
-        // {
-        //     _idSystem.TryChangeJobTitle(targetId, Loc.GetString(component.NewJobTitle), idCard, player);
-        // }
-
-        EnsureComp<DeletionCensusExemptComponent>(shuttleUid); // Ensure ship doesn't get deleted, though chunks should be.
+        if (!voucherUsed && component.NewJobTitle != null && !HasComp<PreventShipyardTitleOverwriteComponent>(args.Actor))
+        {
+            _idSystem.TryChangeJobTitle(targetId, Loc.GetString(component.NewJobTitle), idCard, player);
+        }
 
         // The following block of code is entirely to do with trying to sanely handle moving records from station to station.
         // it is ass.
@@ -283,8 +278,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         SendPurchaseMessage(shipyardConsoleUid, player, name, component.ShipyardChannel, secret: false);
         if (component.SecretShipyardChannel is { } secretChannel)
             SendPurchaseMessage(shipyardConsoleUid, player, name, secretChannel, secret: true);
-
-        Get<ShipyardDirectionSystem>().SendShipDirectionMessage(player, shuttleUid);
 
         PlayConfirmSound(player, shipyardConsoleUid, component);
         if (voucherUsed)
@@ -678,13 +671,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         public IReadOnlyCollection<ProtoId<AccessGroupPrototype>> Groups;
     }
 
-    private struct VoucherShipAccesses()
-    {
-        public bool IsVoucher = false;
-        public List<VesselClass> Classes = new();
-        public List<string> Vessels = new();
-    }
-
     /// <summary>
     ///   Returns all shuttle prototype IDs the given shipyard console can offer.
     /// </summary>
@@ -713,11 +699,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         // Construct access set from input type (voucher or ID card)
         IDShipAccesses accesses;
-        VoucherShipAccesses voucherAccesses = new();
         bool initialHasAccess = true;
         if (TryComp<ShipyardVoucherComponent>(targetId, out var voucher))
         {
-            voucherAccesses.IsVoucher = true;
             if (voucher.ConsoleType == key)
             {
                 accesses.Tags = voucher.Access;
@@ -729,8 +713,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                 accesses.Groups = new HashSet<ProtoId<AccessGroupPrototype>>();
                 initialHasAccess = false;
             }
-            voucherAccesses.Classes = voucher.Classes.ToList();
-            voucherAccesses.Vessels = voucher.Vessels.ToList();
         }
         else if (TryComp<AccessComponent>(targetId, out var accessComponent))
         {
@@ -766,27 +748,6 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
                             break;
                         }
                     }
-                }
-
-            }
-
-            // If the vessel is a voucher, check if the voucher allows it.
-            if (voucherAccesses.IsVoucher)
-            {
-                // If the voucher has classes, check if the vessel class is allowed.
-                foreach (var vesselClass in vessel.Classes)
-                {
-                    if (voucherAccesses.Classes.Contains(vesselClass))
-                    {
-                        hasAccess = true;
-                        break;
-                    }
-                }
-
-                // If the voucher has vessels, check if the vessel is allowed.
-                if (!hasAccess && voucherAccesses.Vessels.Contains(vessel.ID))
-                {
-                    hasAccess = true;
                 }
             }
 

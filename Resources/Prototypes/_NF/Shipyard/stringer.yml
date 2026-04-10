@@ -11,9 +11,15 @@
 - type: vessel
   id: Stringer
   parent: BaseVessel
-  name: LL0 Stringer
+<<<<<<<< HEAD:Resources/Prototypes/_NF/Shipyard/legman.yml
+  name: LVHI Legman
+  description: A small maneuverable shuttle with low operational costs for reporters who want to be first on a scene. Manufactured by Langstad-Voigt Heavy Industries.
+  price: 25500 # 10675 0.05 11208.75 temporarily very expensive until a more robust version can be made, at present it's an obscene cheap shuttle with a broadcaster.
+========
+  name: LVHI Stringer
   description: A small shuttle with low operational costs for reporters who want to be first on a scene. Manufactured by Langstad-Voigt Heavy Industries.
-  price: 36500
+  price: 27000 # 25282 0.05 26546
+>>>>>>>> aaf42343024cbad92ff090a4d728f48b07c640a4:Resources/Prototypes/_NF/Shipyard/stringer.yml
   category: Small
   group: Shipyard
   shuttlePath: /Maps/_NF/Shuttles/stringer.yml

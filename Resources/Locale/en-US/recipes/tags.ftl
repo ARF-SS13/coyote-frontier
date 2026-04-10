@@ -32,7 +32,6 @@ construction-graph-tag-sun-glasses = sun glasses
 construction-graph-tag-security-helmet = security helmet
 
 # materials
-construction-graph-tag-manipulator = modular machine part
 construction-graph-tag-voice-trigger = a voice trigger
 construction-graph-tag-signal-trigger = a signal trigger
 construction-graph-tag-proximity-sensor = proximity sensor
@@ -69,6 +68,8 @@ construction-graph-tag-match-stick = match stick
 construction-graph-tag-potato = a potato
 construction-graph-tag-wheat-bushel = wheat bushel
 construction-graph-tag-corgi-hide = corgi hide
+construction-graph-tag-apron = an apron
+construction-graph-tag-utility-belt = a utility belt
 soil-construction-graph-any-mushroom = any mushroom
 construction-graph-tag-mop-basic = mop
 
@@ -77,7 +78,6 @@ construction-graph-tag-rubber-ducky = a rubber ducky
 construction-graph-tag-ghost = ghost soft toy
 construction-graph-tag-ectoplasm = ectoplasm
 construction-graph-tag-lizard-plushie = lizard plushie
-construction-graph-tag-candle = a candle
 
 # carpet
 construction-graph-tag-black-carpet = black carpet
@@ -146,3 +146,6 @@ construction-graph-tag-fire-helmet = fire helmet
 
 # salvage
 construction-graph-tag-spationaut-hardsuit = spationaut hardsuit
+
+# clothing
+construction-graph-tag-backpack = backpack

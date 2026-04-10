@@ -8,6 +8,8 @@
   - type: Sprite
     noRot: true
     drawdepth: Mobs
+  - type: MobCollision
+  - type: GravityAffected
   - type: Physics
     bodyType: KinematicController
   - type: Fixtures
@@ -36,7 +38,6 @@
     horizontalRotation: 0
   - type: DoAfter
   - type: Examiner
-  - type: ExaminableCharacter
   - type: Eye
   - type: ContentEye
   - type: CameraRecoil
@@ -44,10 +45,8 @@
   - type: MovementSpeedModifier
   - type: RequireProjectileTarget
     active: False
-  - type: OwnInteractionVerbs # EE interaction system
-    allowedVerbs: [] # TODO: define something here, or don't.
   - type: AnimatedEmotes # goob edit - animated emotes
-  - type: MobDice
+  - type: StunVisuals
 
 - type: entity
   save: false
@@ -111,6 +110,8 @@
     - Shock
     - Cold
     - Caustic
+    - Asphyxiation
+    - Radiation
   - type: DamageOnHighSpeedImpact
     damage:
       types:
@@ -145,7 +146,7 @@
   components:
   - type: AtmosExposed
   - type: Temperature
-    heatDamageThreshold: 340
+    heatDamageThreshold: 325
     coldDamageThreshold: 0
     currentTemperature: 310.15
     coldDamage: #per second, scales with temperature & other constants
@@ -162,7 +163,7 @@
     sweatHeatRegulation: 2000
     shiveringHeatRegulation: 2000
     normalBodyTemperature: 310.15
-    thermalRegulationTemperatureThreshold: 25
+    thermalRegulationTemperatureThreshold: 2
   - type: MovedByPressure
 
 # Used for mobs that require regular atmospheric conditions.
@@ -178,9 +179,9 @@
     sweatHeatRegulation: 500
     shiveringHeatRegulation: 500
     normalBodyTemperature: 310.15
-    thermalRegulationTemperatureThreshold: 25
+    thermalRegulationTemperatureThreshold: 2
   - type: Temperature
-    heatDamageThreshold: 340
+    heatDamageThreshold: 325
     coldDamageThreshold: 260
     currentTemperature: 310.15
     specificHeat: 42

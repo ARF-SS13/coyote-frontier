@@ -57,10 +57,6 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         _metaQuery = GetEntityQuery<MetaDataComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
 
-        InitializeDeviceLinking(); // Initialize device linking functionality
-
-        SubscribeLocalEvent<ShuttleConsoleComponent, ComponentStartup>(OnConsoleStartup);
-
         SubscribeLocalEvent<ShuttleConsoleComponent, ComponentShutdown>(OnConsoleShutdown);
         SubscribeLocalEvent<ShuttleConsoleComponent, PowerChangedEvent>(OnConsolePowerChange);
         SubscribeLocalEvent<ShuttleConsoleComponent, AnchorStateChangedEvent>(OnConsoleAnchorChange);
@@ -69,7 +65,6 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         {
             subs.Event<ShuttleConsoleFTLBeaconMessage>(OnBeaconFTLMessage);
             subs.Event<ShuttleConsoleFTLPositionMessage>(OnPositionFTLMessage);
-            subs.Event<BoundUIOpenedEvent>(OnConsoleUIOpen); // Wayfarer: refresh state on UI open
             subs.Event<BoundUIClosedEvent>(OnConsoleUIClose);
         });
 
@@ -92,8 +87,6 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         InitializeFTL();
 
         InitializeNFDrone(); // Frontier: add our drone subscriptions
-
-        InitializeAutopilot(); // Wayfarer: Autopilot system initialization
     }
 
     private void OnFtlDestStartup(EntityUid uid, FTLDestinationComponent component, ComponentStartup args)
@@ -148,14 +141,6 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             UpdateState(uid, ref dockState);
         }
     }
-
-    // Wayfarer: Refresh state when UI is opened to ensure autopilot button state is correct
-    private void OnConsoleUIOpen(EntityUid uid, ShuttleConsoleComponent component, BoundUIOpenedEvent args)
-    {
-        DockingInterfaceState? dockState = null;
-        UpdateState(uid, ref dockState);
-    }
-    // End Wayfarer
 
     /// <summary>
     /// Stop piloting if the window is closed.
@@ -355,7 +340,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
     public void AddPilot(EntityUid uid, EntityUid entity, ShuttleConsoleComponent component)
     {
-        if (!EntityManager.TryGetComponent(entity, out PilotComponent? pilotComponent)
+        if (!TryComp(entity, out PilotComponent? pilotComponent)
         || component.SubscribedPilots.Contains(entity))
         {
             return;
@@ -369,7 +354,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
 
         pilotComponent.Console = uid;
         ActionBlockerSystem.UpdateCanMove(entity);
-        pilotComponent.Position = EntityManager.GetComponent<TransformComponent>(entity).Coordinates;
+        pilotComponent.Position = Comp<TransformComponent>(entity).Coordinates;
         Dirty(entity, pilotComponent);
     }
 
@@ -392,12 +377,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         _popup.PopupEntity(Loc.GetString("shuttle-pilot-end"), pilotUid, pilotUid);
 
         if (pilotComponent.LifeStage < ComponentLifeStage.Stopping)
-            EntityManager.RemoveComponent<PilotComponent>(pilotUid);
+            RemComp<PilotComponent>(pilotUid);
     }
 
     public void RemovePilot(EntityUid entity)
     {
-        if (!EntityManager.TryGetComponent(entity, out PilotComponent? pilotComponent))
+        if (!TryComp(entity, out PilotComponent? pilotComponent))
             return;
 
         RemovePilot(entity, pilotComponent);
@@ -437,8 +422,6 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         if (!Resolve(entity, ref entity.Comp1, ref entity.Comp2))
             return new NavInterfaceState(SharedRadarConsoleSystem.DefaultMaxRange, GetNetCoordinates(coordinates), angle, docks, InertiaDampeningMode.Dampen, ServiceFlags.None, null, NetEntity.Invalid, true); // Frontier: add inertial dampening, target
 
-        var autopilotState = WfGetAutopilotState(entity); // Wayfarer
-
         return new NavInterfaceState(
             entity.Comp1.MaxRange,
             GetNetCoordinates(coordinates),
@@ -448,9 +431,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             _shuttle.NfGetServiceFlags(entity), // Frontier
             entity.Comp1.Target, // Frontier
             GetNetEntity(entity.Comp1.TargetEntity), // Frontier
-            entity.Comp1.HideTarget, // Frontier
-            autopilotState.Enabled, // Wayfarer
-            autopilotState.HasServer); // Wayfarer
+            entity.Comp1.HideTarget); // Frontier
     }
 
     /// <summary>

@@ -469,6 +469,7 @@
     items:
     - BorgFireExtinguisher
   # - BorgHandheldGPSBasic # Frontier
+  # - HandheldStationMapUnpowered # Frontier
   # - HandHeldMassScannerBorg # Frontier: todo - metal foam grenade? fire axe?
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: extinguisher-module }
@@ -554,7 +555,6 @@
     - Shovel
     - MineralScannerUnpowered
     # - BorgOreBag # Frontier
-    - RadioHandheldNF # Frontier: RadioHandheld<RadioHandheldNF
   # Frontier: droppable borg items
   - type: DroppableBorgModule
     moduleId: Mining
@@ -584,7 +584,6 @@
     - Shovel
     - AdvancedMineralScannerUnpowered
     # - OreBagOfHolding # Frontier
-    - RadioHandheldNF # Frontier
   # Frontier: droppable items
   - type: DroppableBorgModule
     moduleId: AdvancedMining
@@ -1307,6 +1306,8 @@
       - state: base-part-inhand-right
       - state: base-stripes-inhand-right
         color: "#7B0F12"
+  - type: StaticPrice
+    price: 2500
 
 - type: entity
   id: BorgModuleOperative
@@ -1398,6 +1399,8 @@
         - state: base-part-inhand-right
         - state: base-stripes-inhand-right
           color: "#7B0F12"
+    - type: StaticPrice
+      price: 2000
 
 # xenoborg modules
 - type: entity

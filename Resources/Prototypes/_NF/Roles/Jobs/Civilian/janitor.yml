@@ -28,9 +28,6 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
-  - !type:AddComponentSpecial
-    components:
-    - type: PaywardActionMaintenance
 
 - type: startingGear
   id: NFJanitorGear
@@ -40,9 +37,9 @@
     belt: ClothingBeltJanitorFilled
   storage:
     back:
-    - EncryptionKeyService
     - ShipVoucherFrontierJanitor
-    - TrashBag
+  encryptionKeys:
+  - EncryptionKeyService
 
 - type: chameleonOutfit
   id: NFJanitorChameleonOutfit

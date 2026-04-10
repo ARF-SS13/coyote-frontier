@@ -14,7 +14,7 @@
   parent: BaseVessel
   name: FSB Caladrius
   description: A medical carrier produced by the Far Star Biotech corporation. Designed for large scale colonization support, humanitarian relief and post-disaster investigation and recovery operations.
-  price: 200000 # 133217 0.5 199825.5
+  price: 200000 
   category: Large
   group: Medical
   shuttlePath: /Maps/_NF/Shuttles/caladrius.yml
@@ -40,7 +40,6 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            ContractorInterview: [ 2, 2 ]
-            CompanionInterview: [ 2, 2 ]
-            PilotInterview: [ 2, 2 ]
-            MercenaryInterview: [ 2, 2 ]
+            ContractorInterview: [ 0, 0 ]
+            PilotInterview: [ 0, 0 ]
+            MercenaryInterview: [ 0, 0 ]

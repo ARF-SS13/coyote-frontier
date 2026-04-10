@@ -35,11 +35,12 @@
     rechargeCooldown: 1
     rechargeSound:
       path: /Audio/_NF/Effects/silence.ogg
-  - type: Advertise
-    pack: syndicatehumanoidchatter
-    minimumWait: 30
-    maximumWait: 120
-    nextAdvertisementTime: 10
+  - type: Vocalizer
+    hideChat: true
+    minVocalizeInterval: 30
+    maxVocalizeInterval: 120
+  - type: DatasetVocalizer
+    dataset: syndicatehumanoidchatter
   - type: AutoWakeUp
 
 #region Humans
@@ -59,7 +60,7 @@
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
-      proto: NFCartridgePistol45
+      proto: NFCartridgePistol45Uranium
       capacity: 1
       count: 1
     - type: Gun
@@ -79,7 +80,7 @@
       prototypes:
         - SyndicateNavalCaptainGearB
     - type: BasicEntityAmmoProvider
-      proto: NFBulletPistol45
+      proto: NFBulletPistol45Incendiary
       capacity: 1
       count: 1
 
@@ -92,7 +93,7 @@
       prototypes:
         - SyndicateNavalCaptainGearC
     - type: BasicEntityAmmoProvider
-      proto: NFCartridgePistol45
+      proto: NFCartridgePistol45Overpressure
       capacity: 1
       count: 1
 
@@ -125,7 +126,7 @@
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
-      proto: NFShellShotgunBuckshot
+      proto: NFShellShotgunUranium
       capacity: 1
       count: 1
     - type: Gun
@@ -149,7 +150,7 @@
       prototypes:
         - SyndicateNavalEngineerGearB
     - type: BasicEntityAmmoProvider
-      proto: NFShellShotgunBuckshot
+      proto: NFShellShotgunIncendiary
       capacity: 1
       count: 1
 
@@ -162,7 +163,7 @@
       prototypes:
         - SyndicateNavalEngineerGearC
     - type: BasicEntityAmmoProvider
-      proto: NFShellShotgunBuckshot
+      proto: NFShellShotgunBuckshotOverpressure
       capacity: 1
       count: 1
 
@@ -326,7 +327,7 @@
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
-      proto: NFCartridgePistol35
+      proto: NFCartridgePistol35Uranium
       capacity: 7
       count: 7
     - type: Gun
@@ -368,7 +369,7 @@
       prototypes:
         - SyndicateNavalOperatorGearD
     - type: BasicEntityAmmoProvider
-      proto: NFCartridgePistol35
+      proto: NFCartridgePistol35Overpressure
       capacity: 7
       count: 7
 
@@ -551,7 +552,7 @@
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
-      proto: NFCartridgeRifle25
+      proto: NFCartridgeRifle25Uranium
       capacity: 4
       count: 4
     - type: Gun
@@ -571,7 +572,7 @@
       prototypes:
         - SyndicateNavalCommanderGearB
     - type: BasicEntityAmmoProvider
-      proto: NFCartridgeRifle25
+      proto: NFCartridgeRifle25Incendiary
       capacity: 4
       count: 4
     - type: Gun
@@ -591,7 +592,7 @@
       prototypes:
         - SyndicateNavalCommanderGearC
     - type: BasicEntityAmmoProvider
-      proto: NFCartridgeRifle25
+      proto: NFCartridgeRifle25Overpressure
       capacity: 4
       count: 4
 
@@ -624,13 +625,11 @@
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
-      proto: NFBulletPistol35
+      proto: NFBulletPistol35Uranium
       capacity: 4
       count: 4
     - type: Gun
       showExamineText: false
-      minAngle: 5
-      maxAngle: 15
       fireRate: 0.5
       selectedMode: FullAuto
       availableModes:
@@ -646,7 +645,7 @@
       prototypes:
         - SyndicateNavalDeckhandGearB
     - type: BasicEntityAmmoProvider
-      proto: NFBulletPistol35
+      proto: NFBulletPistol35Incendiary
       capacity: 4
       count: 4
 
@@ -659,7 +658,7 @@
       prototypes:
         - SyndicateNavalDeckhandGearC
     - type: BasicEntityAmmoProvider
-      proto: NFBulletPistol35
+      proto: NFBulletPistol35Overpressure
       capacity: 4
       count: 4
 
@@ -686,11 +685,12 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalMimeGear
-    - type: Advertise
-      pack: mimehumanoidchatter
-      minimumWait: 120
-      maximumWait: 240
-      nextAdvertisementTime: 0
+    - type: Vocalizer
+      hideChat: true
+      minVocalizeInterval: 120
+      maxVocalizeInterval: 240
+    - type: DatasetVocalizer
+      dataset: mimehumanoidchatter
 
 # Syndicate Chemwarrior, shoots healthy mixes of chems
 # Look for chems here: /Resources/Prototypes/_NF/Entities/Objects/Weapons/Ammunition/Projectiles/chem.yml
@@ -776,7 +776,7 @@
       prototypes:
         - SyndicateNavalCaptainVoidGear
     - type: BasicEntityAmmoProvider
-      proto: NFCartridgePistol45
+      proto: NFCartridgePistol45Uranium
       capacity: 1
       count: 1
 
@@ -821,7 +821,7 @@
       prototypes:
         - SyndicateNavalEngineerVoidGear
     - type: BasicEntityAmmoProvider
-      proto: NFShellShotgunBuckshot
+      proto: NFShellShotgunUranium
       capacity: 1
       count: 1
 

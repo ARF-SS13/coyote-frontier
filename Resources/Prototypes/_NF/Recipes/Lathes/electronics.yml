@@ -111,14 +111,6 @@
     Steel: 800
     Glass: 900
 
-#- type: latheRecipe
-#  parent: [BaseCircuitboardRecipe, BaseEngineeringMachineRecipeCategory]
-#  id: GaslockBigFrameMachineCircuitboard
-#  result: GaslockBigFrameMachineCircuitboard
-#  materials:
-#    Steel: 2000
-#    Glass: 2000
-
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseGeneralMachineRecipeCategory ]
   id: NFHolopadShipMachineCircuitboard
@@ -138,6 +130,11 @@
   parent: [BaseCircuitboardRecipe, BaseServiceMachineRecipeCategory]
   id: ImpCoffeeMachineCircuitboard
   result: ImpCoffeeMachineCircuitboard
+
+- type: latheRecipe
+  id: OreProcessorCivilianCircuitboard
+  parent: [BaseCircuitboardRecipe, BaseEngineeringMachineRecipeCategory]
+  result: OreProcessorCivilianCircuitboard
 
 # region Consoles
 - type: latheRecipe
@@ -224,3 +221,19 @@
   materials:
     Steel: 800
     Glass: 900
+
+# Consoles
+- type: latheRecipe
+  id: AlertsComputerCircuitboard
+  parent: BaseCircuitboardRecipe
+  result: AlertsComputerCircuitboard
+
+- type: latheRecipe
+  id: PowerComputerCircuitboard
+  parent: BaseCircuitboardRecipe
+  result: PowerComputerCircuitboard
+
+- type: latheRecipe
+  id: AtmosMonitoringComputerCircuitboard
+  parent: BaseCircuitboardRecipe
+  result: AtmosMonitoringComputerCircuitboard

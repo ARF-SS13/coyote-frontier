@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
-using Content.Shared.Consent; // Floofstation
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
 using Content.Shared.Preferences;
@@ -253,15 +252,6 @@ namespace Content.Server.Database
         IAsyncEnumerable<SharedAdminLog> GetAdminLogs(LogFilter? filter = null);
         IAsyncEnumerable<JsonDocument> GetAdminLogsJson(LogFilter? filter = null);
         Task<int> CountAdminLogs(int round);
-
-        #endregion
-
-        #region Consent Settings
-
-        Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings consentSettings);
-        Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings consentSettings, int characterSlot);
-        Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId);
-        Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId, int characterSlot);
 
         #endregion
 
@@ -1023,29 +1013,6 @@ namespace Content.Server.Database
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.MarkMessageAsSeen(id, dismissedToo));
-        }
-        public Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings consentSettings) // Floofstation
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SavePlayerConsentSettingsAsync(userId, consentSettings));
-        }
-
-        public Task SavePlayerConsentSettingsAsync(NetUserId userId, PlayerConsentSettings consentSettings, int characterSlot) // Floofstation
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SavePlayerConsentSettingsAsync(userId, consentSettings, characterSlot));
-        }
-
-        public Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId) // Floofstation
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetPlayerConsentSettingsAsync(userId));
-        }
-
-        public Task<PlayerConsentSettings> GetPlayerConsentSettingsAsync(NetUserId userId, int characterSlot) // Floofstation
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetPlayerConsentSettingsAsync(userId, characterSlot));
         }
 
         public Task AddJobWhitelist(Guid player, ProtoId<JobPrototype> job)

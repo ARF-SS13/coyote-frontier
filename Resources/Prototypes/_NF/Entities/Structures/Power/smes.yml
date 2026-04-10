@@ -2,7 +2,6 @@
 - type: entity
   id: SMESBig
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseSMES]
-  suffix: 100kWh
   name: BLES
   description: A bluespace-leveraged energy storage (BLES) unit.
   components:
@@ -31,14 +30,14 @@
         state: bles-open
   - type: UpgradeBattery
     maxChargeMultiplier: 1 # non-upgradeable
-    baseMaxCharge: 360000000
+    baseMaxCharge: 80000000
   - type: BatteryInterface
     minChargeRate: 50000
     maxChargeRate: 1500000
     minSupply: 50000
     maxSupply: 1500000
   - type: Battery
-    maxCharge: 360000000
+    maxCharge: 80000000
   - type: PowerNetworkBattery
     maxSupply: 1500000
     maxChargeRate: 50000

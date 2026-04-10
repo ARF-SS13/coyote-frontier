@@ -491,16 +491,16 @@
         Piercing: 10
         Structural: 20
   # Ghost role stuff
-  # - type: GhostRole # CS - disable ghost role
-    # allowMovement: true
-    # name: ghost-role-information-t-rex-dungeon-name
-    # description: ghost-role-information-t-rex-dungeon-description
-    # rules: ghost-role-information-dungeon-boss-rules
-    # raffle:
-      # settings: default
-    # mindRoles:
-    # - MindRoleGhostRoleTeamAntagonist
-  # - type: GhostTakeoverAvailable
+  - type: GhostRole
+    allowMovement: true
+    name: ghost-role-information-t-rex-dungeon-name
+    description: ghost-role-information-t-rex-dungeon-description
+    rules: ghost-role-information-dungeon-boss-rules
+    raffle:
+      settings: default
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+  - type: GhostTakeoverAvailable
   - type: ActionGun
     action: ActionTRexRoar
     gunProto: TRexRoarGun

@@ -74,20 +74,15 @@
   - CircuitImprinterHyperConvectionMachineCircuitboard
   - SheetifierMachineCircuitboard
   - MaterialSiloMachineCircuitboard
-  - SlowWeakThrusterMachineCircuitboard
-  - SlowStrongThrusterMachineCircuitboard
-  - FastWeakThrusterMachineCircuitboard
-  - FastStrongThrusterMachineCircuitboard
-  - FasterWeakThrusterMachineCircuitboard
-  - FasterStrongThrusterMachineCircuitboard
-  - ImpCoffeeMachineCircuitboard #imp
   # PowerGeneration
   - PortableGeneratorPacmanMachineCircuitboard
   - PortableGeneratorSuperPacmanMachineCircuitboard
   - PortableGeneratorJrPacmanMachineCircuitboard
   - SolarControlComputerCircuitboard
   - SolarTrackerElectronics
+  - SolarAssemblyFlatpack
   - EmitterCircuitboard
+  - PowerComputerCircuitboard
   # AtmosphericTech
   - ThermomachineFreezerMachineCircuitBoard
   - GasRecyclerMachineCircuitboard
@@ -109,11 +104,12 @@
   - MiniStationAnchorCircuitboard
   - SmallThrusterMachineCircuitboard
   - SmallGyroscopeMachineCircuitboard
-  - AutopilotServerCircuitboard # Wayfarer
   # AdvancedAtmospherics
   - HellfireFreezerMachineCircuitBoard
   - PortableScrubberMachineCircuitBoard
   - HolofanProjector
+  - AlertsComputerCircuitboard
+  - AtmosMonitoringComputerCircuitboard
   # AdvancedToolsTechnology
   - WelderExperimental
   - PowerDrill
@@ -133,11 +129,10 @@
   # AtmosphericDrilling
   - GasMiningDrillMachineCircuitboard
   - GaslockFrameMachineCircuitboard
-#  - GaslockBigFrameMachineCircuitboard
   # HardsuitsAdvanced
   - ClothingOuterHardsuitEngineeringWhite
   # PortableParticleEmission
-#  - NFWeaponParticleDecelerator
+  - NFWeaponParticleDecelerator
   # MatterEnergyConversion
   - BorgModuleRCD
   # MagnetsTech
@@ -152,8 +147,6 @@
   recipes:
   # MeatManipulation
   - BiomassReclaimerMachineCircuitboard
-  # SmartStorageRefrigeration
-  - SmartFridgeCircuitboard #Coyote sector
   # BiochemicalStasis
   - StasisBedMachineCircuitboard
   - CryoPodMachineCircuitboard
@@ -191,10 +184,6 @@
   # PersonalPropulsion
   - JetpackBlue
   - JetpackCaptain
-  - ImpCoffeeMachineCircuitboard #imp
-  # GravityResistantTech
-  - HoverBedHoloSpawnFolded # Coyote
-  - JetInjector # Coyote
 
 # region Mercenary
 - type: latheRecipePack
@@ -238,6 +227,7 @@
   - JetpackSecurity
   # AdvancedPersonalPropulsion
   - JetpackVoid
+  - NFClothingShoesBootsJetpack
   # HardsuitsExperimentalIndustrial
   - ClothingOuterHardsuitMaximPrototype
 
@@ -252,9 +242,6 @@
   # NFBasicShuttleArmament
   - NFGrenadeFlash
   - NFGrenadeEMP
-  # PersonalPropulsion
-  - JetpackNfsd
-  - ImpCoffeeMachineCircuitboard #imp
 
 # region Salvage
 - type: latheRecipePack
@@ -276,6 +263,7 @@
   - JetpackCaptain
   # AdvancedPersonalPropulsion
   - JetpackVoid
+  - NFClothingShoesBootsJetpack
   # BluespaceGasTanks
   - BluespaceAirTank
   - SmallBluespaceAirTank
@@ -283,6 +271,7 @@
   - MiningDrill
   - WeaponGrapplingGun
   - MineralScannerEmpty
+  - OreProcessorMachineCircuitboard
   - OreProcessorIndustrialMachineCircuitboard
   - ClothingMaskWeldingGas
   # SpaceScanning
@@ -300,7 +289,6 @@
   - ClothingOuterHardsuitSalvage
   # HardsuitsAdvanced
   - ClothingOuterHardsuitLuxury
-  - ImpCoffeeMachineCircuitboard #imp
 
 # region Science
 - type: latheRecipePack
@@ -376,8 +364,6 @@
   # MeatManipulation
   - FatExtractorMachineCircuitboard
   - BiogeneratorMachineCircuitboard
-  # SmartStorageRefrigeration
-  - SmartFridgeCircuitboard
   # IndustrialCutter
   - CutterMachineCircuitboard
   # FauxAstroTiles
@@ -388,7 +374,6 @@
   - FauxTileAstroSnow
   - FauxTileAstroAsteroidSand
   # AdvancedCleaning
-  - BluespaceTrashBag
   - AdvMopItem
   - MegaSprayBottle
   - ReinforcedJug
@@ -441,7 +426,7 @@
   - ClothingOuterHardsuitClown
   - ClothingOuterHardsuitMime
   - ClothingOuterHardsuitPilot
-  - ImpCoffeeMachineCircuitboard #imp
+
 #################
 #               #
 #               #
@@ -481,7 +466,6 @@
   - ClothingOuterCoatBHTrench
   - PinpointerUniversalNF
   - ClothingEyesHudBountyHunter
-  - ClothingEyesHudBountyHunterPatch
   - NFForensicPad
   # ImprovedPistolAmmo
   - NFAmmunitionBoxPistol35Overpressure
@@ -512,6 +496,7 @@
   - TimerTrigger
   - FlashPayload
   - ChemicalPayload
+  - ExplosivePayload
   # NFBasicShuttleArmament
   - PowerCageRechargerCircuitboard
   - PowerCageSmall
@@ -520,16 +505,6 @@
   - NFMagazineGrenadeEmpty
   # NFPortableMicrofusionWeaponry
   - NFPortableRecharger
-  # Coyote
-  - CSAmmunitionBoxPistol40
-  - CSAmmunitionBoxPistol40Rubber
-  - CSAmmunitionBoxPistol40Overpressure
-  - CSMagazinePistol40Empty
-  - CSMagazineSubMachineGun40Empty
-  # Monolith
-  - ArmorPlateMedium
-  - ArmorPlateTactical
-  - ArmorPlateRefractive
 
 # region Engineering & Science
 - type: latheRecipePack
@@ -554,10 +529,10 @@
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
   # BluespaceStorage
-  - ClothingBackpackHolding # Coyote: Unify into single chameleon item
-  # - ClothingBackpackSatchelHolding
-  # - ClothingBackpackDuffelHolding
-  # - ClothingBackpackMessengerHolding
+  - ClothingBackpackHolding
+  - ClothingBackpackSatchelHolding
+  - ClothingBackpackDuffelHolding
+  - ClothingBackpackMessengerHolding
   # PortableFission
   - PowerCellMicroreactor
   # HardsuitsBasic
@@ -565,4 +540,3 @@
   - ClothingOuterHardsuitPilot
   # HardsuitsAdvanced
   - ClothingOuterHardsuitCap
-  - ImpCoffeeMachineCircuitboard #imp

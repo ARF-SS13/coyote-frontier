@@ -7,15 +7,13 @@
 # Discord: ???
 
 # Shuttle Notes:
-# Archetypes = Salvage
-# Halftypes = Medical/Service
-# Domestic Areas = Moderate
+#
 - type: vessel
   id: Sprinter
   parent: BaseVessel
-  name: LL2 Sprinter
+  name: KC Sprinter
   description: A light freighter often picked by bounty hunters due to its quick acceleration, expedition capable.
-  price: 132500 #51991, +50k(exped) LL2 x1.3 = 132588
+  price: 60000 # 49452 0.2 59342.4
   category: Medium
   group: Expedition
   shuttlePath: /Maps/_NF/Shuttles/Expedition/sprinter.yml
@@ -27,7 +25,7 @@
 
 - type: gameMap
   id: Sprinter
-  mapName: 'Sprinter'
+  mapName: 'KC Sprinter'
   mapPath: /Maps/_NF/Shuttles/Expedition/sprinter.yml
   minPlayers: 0
   stations:
@@ -41,7 +39,6 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            ContractorInterview: [ 2, 2 ]
-            CompanionInterview: [ 2, 2 ]
-            PilotInterview: [ 2, 2 ]
-            MercenaryInterview: [ 2, 2 ]
+            ContractorInterview: [ 0, 0 ]
+            PilotInterview: [ 0, 0 ]
+            MercenaryInterview: [ 0, 0 ]

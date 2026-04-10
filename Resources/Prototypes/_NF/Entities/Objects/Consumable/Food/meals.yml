@@ -85,9 +85,10 @@
   - type: Appearance
   - type: DeepFried
     crispinessLevelSet: Crispy
-    originalName: crispy
   - type: FriedTrait
     crispinessLevelSet: Crispy
+  - type: NameModifier
+    baseName: crispy
 
 - type: entity
   name: spooky
@@ -101,10 +102,11 @@
       - spooky
   - type: DeepFried
     crispinessLevelSet: Spectral
-    originalName: spooky
   - type: FriedTrait
     crispinessLevelSet: Spectral
   - type: Spectral
+  - type: NameModifier
+    baseName: spooky
 
 - type: entity
   name: dragon omelette
@@ -591,7 +593,7 @@
   name: fried tofu
   parent: FoodTofuSlice
   id: FoodSlicedTofuFried
-  description: This once healthy slice of tofu has been fried to cispy perfection.
+  description: This once healthy slice of tofu has been fried to crispy perfection.
   components:
   - type: Tag
     tags:

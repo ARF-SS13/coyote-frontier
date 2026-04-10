@@ -73,7 +73,7 @@
         weight: 0.2
       - !type:NestedSelector
         tableId: TableDungeonLootWeaponsExplosives
-        weight: 0.1
+        weight: 0.15
 
 - type: entity
   parent: MarkerBasePlaceFree

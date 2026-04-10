@@ -1,44 +1,19 @@
 // New Frontiers - This file is licensed under AGPLv3
 // Copyright (c) 2024 New Frontiers Contributors
 // See AGPLv3.txt for details.
-
-using Content.Server._NF.Shuttles.Components;
 using Content.Server._NF.Station.Components;
-using Content.Server._WF.Shuttles.Components; // Wayfarer: Autopilot
-using Content.Server._WF.Shuttles.Systems; // Wayfarer: Autopilot
-using Content.Server.Chat.Managers;
-using Content.Server.Chat.Systems;
-using Content.Server.Popups;
-using Content.Server.Power.EntitySystems;
 using Content.Server.Shuttles.Components;
-using Content.Shared._Coyote;
 using Content.Shared._NF.Shuttles.Events;
 using Content.Shared._NF.Shipyard.Components;
-using Content.Shared.Audio;
-using Content.Shared.Ghost;
-using Content.Shared.Mind.Components;
-using Content.Shared.Mobs.Systems;
-using Content.Shared.Popups;
 using Content.Shared.Shuttles.Components;
-using Robust.Server.Player;
-using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Utility;
 
 namespace Content.Server.Shuttles.Systems;
 
 public sealed partial class ShuttleSystem
 {
     [Dependency] private readonly RadarConsoleSystem _radarConsole = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly IPlayerManager _players = default!;
-    [Dependency] private readonly PopupSystem _popupSystem = null!;
-    [Dependency] private readonly AutopilotSystem _autopilot = default!; // Wayfarer: Autopilot
-    public TimeSpan BrakeDelay = TimeSpan.FromSeconds(10);
-    public TimeSpan NextBrakeCheck = TimeSpan.Zero;
-
-    private const float SpaceFrictionStrength = 0.000f; // slip slide
+    private const float SpaceFrictionStrength = 0.0075f;
     private const float DampenDampingStrength = 0.25f;
     private const float AnchorDampingStrength = 2.5f;
     private void NfInitialize()
@@ -49,12 +24,7 @@ public sealed partial class ShuttleSystem
         SubscribeLocalEvent<ShuttleConsoleComponent, SetHideTargetRequest>(NfSetHideTarget);
     }
 
-    private bool SetInertiaDampening(
-        EntityUid uid,
-        PhysicsComponent physicsComponent,
-        ShuttleComponent shuttleComponent,
-        TransformComponent transform,
-        InertiaDampeningMode mode)
+    private bool SetInertiaDampening(EntityUid uid, PhysicsComponent physicsComponent, ShuttleComponent shuttleComponent, TransformComponent transform, InertiaDampeningMode mode)
     {
         if (!transform.GridUid.HasValue)
         {
@@ -67,8 +37,8 @@ public sealed partial class ShuttleSystem
             return false;
         }
 
-        if (!EntityManager.HasComponent<ShuttleDeedComponent>(transform.GridUid)
-            || EntityManager.HasComponent<StationDampeningComponent>(_station.GetOwningStation(transform.GridUid)))
+        if (!EntityManager.HasComponent<ShuttleDeedComponent>(transform.GridUid) ||
+            EntityManager.HasComponent<StationDampeningComponent>(_station.GetOwningStation(transform.GridUid)))
         {
             return false;
         }
@@ -79,45 +49,26 @@ public sealed partial class ShuttleSystem
             InertiaDampeningMode.Dampen => DampenDampingStrength,
             InertiaDampeningMode.Anchor => AnchorDampingStrength,
             _ => DampenDampingStrength, // other values: default to some sane behaviour (assume normal dampening)
-        }; // FFS ITS DAMPING
+        };
 
-        shuttleComponent.DampingModifier = shuttleComponent.BodyModifier;
-        shuttleComponent.EBrakeActive = false;
+        if (shuttleComponent.DampingModifier != 0)
+            shuttleComponent.DampingModifier = shuttleComponent.BodyModifier;
         _console.RefreshShuttleConsoles(transform.GridUid.Value);
         return true;
     }
 
-    private void OnSetInertiaDampening(
-        EntityUid uid,
-        ShuttleConsoleComponent component,
-        SetInertiaDampeningRequest args)
+    private void OnSetInertiaDampening(EntityUid uid, ShuttleConsoleComponent component, SetInertiaDampeningRequest args)
     {
         // Ensure that the entity requested is a valid shuttle (stations should not be togglable)
-        if (!EntityManager.TryGetComponent(uid, out TransformComponent? transform)
-            || !transform.GridUid.HasValue
-            || !EntityManager.TryGetComponent(transform.GridUid, out PhysicsComponent? physicsComponent)
-            || !EntityManager.TryGetComponent(transform.GridUid, out ShuttleComponent? shuttleComponent))
+        if (!EntityManager.TryGetComponent(uid, out TransformComponent? transform) ||
+            !transform.GridUid.HasValue ||
+            !EntityManager.TryGetComponent(transform.GridUid, out PhysicsComponent? physicsComponent) ||
+            !EntityManager.TryGetComponent(transform.GridUid, out ShuttleComponent? shuttleComponent))
         {
             return;
         }
 
-        // Wayfarer start: Disengage autopilot if pilot manually changes mode
-        if (args.Mode != InertiaDampeningMode.Query &&
-            TryComp<AutopilotComponent>(transform.GridUid.Value, out var autopilot) &&
-            autopilot.Enabled)
-        {
-            _autopilot.DisableAutopilot(transform.GridUid.Value);
-            _autopilot.SendShuttleMessage(transform.GridUid.Value, "Autopilot disengaged - manual mode change");
-        }
-        // Wayfarer end
-
-        if (SetInertiaDampening(
-                uid,
-                physicsComponent,
-                shuttleComponent,
-                transform,
-                args.Mode)
-            && args.Mode != InertiaDampeningMode.Query)
+        if (SetInertiaDampening(uid, physicsComponent, shuttleComponent, transform, args.Mode) && args.Mode != InertiaDampeningMode.Query)
             component.DampeningMode = args.Mode;
     }
 
@@ -127,30 +78,28 @@ public sealed partial class ShuttleSystem
             return InertiaDampeningMode.Dampen;
 
         // Not a shuttle, shouldn't be togglable
-        if (!EntityManager.HasComponent<ShuttleDeedComponent>(xform.GridUid)
-            || EntityManager.HasComponent<StationDampeningComponent>(_station.GetOwningStation(xform.GridUid)))
+        if (!EntityManager.HasComponent<ShuttleDeedComponent>(xform.GridUid) ||
+            EntityManager.HasComponent<StationDampeningComponent>(_station.GetOwningStation(xform.GridUid)))
             return InertiaDampeningMode.Station;
 
         if (!EntityManager.TryGetComponent(xform.GridUid, out ShuttleComponent? shuttle))
             return InertiaDampeningMode.Dampen;
 
-        if (shuttle.EBrakeActive)
-            return InertiaDampeningMode.Emergency; // mainly to uncheck the thing in the UI
-
         if (shuttle.BodyModifier >= AnchorDampingStrength)
             return InertiaDampeningMode.Anchor;
-        if (shuttle.BodyModifier <= SpaceFrictionStrength)
+        else if (shuttle.BodyModifier <= SpaceFrictionStrength)
             return InertiaDampeningMode.Off;
-        return InertiaDampeningMode.Dampen;
+        else
+            return InertiaDampeningMode.Dampen;
     }
 
     public void NfSetPowered(EntityUid uid, ShuttleConsoleComponent component, bool powered)
     {
         // Ensure that the entity requested is a valid shuttle (stations should not be togglable)
-        if (!EntityManager.TryGetComponent(uid, out TransformComponent? transform)
-            || !transform.GridUid.HasValue
-            || !EntityManager.TryGetComponent(transform.GridUid, out PhysicsComponent? physicsComponent)
-            || !EntityManager.TryGetComponent(transform.GridUid, out ShuttleComponent? shuttleComponent))
+        if (!EntityManager.TryGetComponent(uid, out TransformComponent? transform) ||
+            !transform.GridUid.HasValue ||
+            !EntityManager.TryGetComponent(transform.GridUid, out PhysicsComponent? physicsComponent) ||
+            !EntityManager.TryGetComponent(transform.GridUid, out ShuttleComponent? shuttleComponent))
         {
             return;
         }
@@ -158,26 +107,17 @@ public sealed partial class ShuttleSystem
         // Update dampening physics without adjusting requested mode.
         if (!powered)
         {
-            SetInertiaDampening(
-                uid,
-                physicsComponent,
-                shuttleComponent,
-                transform,
-                InertiaDampeningMode.Anchor);
+            SetInertiaDampening(uid, physicsComponent, shuttleComponent, transform, InertiaDampeningMode.Anchor);
         }
         else
         {
             // Update our dampening mode if we need to, and if we aren't a station.
             var currentDampening = NfGetInertiaDampeningMode(uid);
-            if (currentDampening != InertiaDampeningMode.Station
-                && component.DampeningMode != InertiaDampeningMode.Station)
+            if (currentDampening != component.DampeningMode &&
+                currentDampening != InertiaDampeningMode.Station &&
+                component.DampeningMode != InertiaDampeningMode.Station)
             {
-                SetInertiaDampening(
-                    uid,
-                    physicsComponent,
-                    shuttleComponent,
-                    transform,
-                    component.DampeningMode);
+                SetInertiaDampening(uid, physicsComponent, shuttleComponent, transform, component.DampeningMode);
             }
         }
     }
@@ -254,204 +194,4 @@ public sealed partial class ShuttleSystem
         _radarConsole.SetHideTarget((uid, radarConsole), args.Hidden);
         _console.RefreshShuttleConsoles(gridUid);
     }
-
-    /// <summary>
-    /// Throws on the emergency brake for any shuttle that:
-    /// Is a player shuttle, AND
-    /// Doesn't have anyone in it OR
-    /// everyone inside is either in crit or dead OR
-    /// The shuttle console is not powered or EMPed
-    /// </summary>
-    public void ShouldEmergencyBrake()
-    {
-        var curTime = _gameTiming.CurTime;
-        if (curTime < NextBrakeCheck)
-            return;
-        NextBrakeCheck = curTime + BrakeDelay;
-        var query = EntityQueryEnumerator<ShuttleComponent>();
-        var whereIsEveryone = GetPlayerShipsWithPeopleOnThem();
-
-        while (query.MoveNext(out var uid, out var shuttle))
-        {
-            if (shuttle.EBrakeActive)
-            {
-                continue;
-            }
-            if (!shuttle.PlayerShuttle)
-            {
-                continue;
-            }
-            if (shuttle.DampingModifier > SpaceFrictionStrength)
-            {
-                // Its already able to slow down on its own, no need to emergency brake
-                continue;
-            }
-            // If the shuttle is not moving, no need to emergency brake
-            if (!TryComp(uid, out PhysicsComponent? gridBody))
-            {
-                Log.Warning($"Shuttle {ToPrettyString(uid)} does not have a PhysicsComponent!!!");
-                continue;
-            }
-            // if the shuttle is moving under a certain speed, just quietly engage the emergency brake
-            var quietly = false;
-            var gridVelocity = gridBody.LinearVelocity;
-            if (gridVelocity.LengthSquared() < 1f)
-            {
-                continue; // no need to emergency brake, shuttle is basically stationary
-            }
-            if (gridVelocity.LengthSquared() < 25f) // 5 squared
-            {
-                quietly = true; // shuttle is slowly moving, engage the emergency brake quietly
-            }
-
-            var mygrid = Transform(uid).GridUid;
-            if (mygrid is null)
-            {
-                continue;
-            }
-
-            // is the shuttle present in the list of player ships with people on them?
-            if (whereIsEveryone.Contains(mygrid.Value))
-            {
-                continue; // people are on it, no need to emergency brake
-            }
-
-            // find all the shuttle consoles on this shuttle
-            var consolesQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
-            var cronsoles = new HashSet<Entity<ShuttleConsoleComponent>>();
-            while (consolesQuery.MoveNext(out var consoleUid, out var consoleComp, out var consoleXform))
-            {
-                if (consoleXform.GridUid == mygrid)
-                {
-                    cronsoles.Add((consoleUid, consoleComp));
-                }
-            }
-
-            // No people on board and shuttle is moving - engage emergency brake!
-            EngageEmergencyBrake(
-                uid,
-                shuttle,
-                cronsoles,
-                quietly);
-        }
-    }
-
-    /// <summary>
-    /// Returns a HashSet of:
-    /// Shuttle EntityUids where: it is a player shuttle, and players are inside, and at least one player is alive.
-    /// </summary>
-    private HashSet<EntityUid> GetPlayerShipsWithPeopleOnThem()
-    {
-        var whereDict = new HashSet<EntityUid>(); // awoo
-        foreach (var sesh in _players.Sessions)
-        {
-            // Get the player entity
-            if (!sesh.AttachedEntity.HasValue)
-            {
-                // Log.Debug($"Skipping for E-Brake: Player session {sesh.Name} ({sesh.UserId}) has no attached entity.");
-                continue;
-            }
-            var attached = sesh.AttachedEntity.Value;
-            // If the player is in crit or dead, skip them
-            if (!HasComp<AdminGhostComponent>(attached))
-            {
-                if (!_mobState.IsAlive(attached)
-                    || HasComp<GhostComponent>(attached))
-                {
-                    // Log.Debug($"Skipping for E-Brake: Player session {sesh.Name} ({sesh.UserId}) is in crit or dead.");
-                    continue;
-                }
-            }
-
-            // Get the shuttle the player is on, if any
-            if (!EntityManager.TryGetComponent(attached, out TransformComponent? transform)
-                || !transform.GridUid.HasValue
-                || !TryComp<ShuttleComponent>(transform.GridUid.Value, out var shuttle)
-                || !shuttle.PlayerShuttle)
-            {
-                // Log.Debug($"Skipping for E-Brake: Player session {sesh.Name} ({sesh.UserId}) is not on a player shuttle.");
-                continue;
-            }
-            whereDict.Add(transform.GridUid.Value);
-        }
-        return whereDict;
-    }
-
-    /// <summary>
-    /// Turns on the emergency brake for a given shuttle.
-    /// </summary>
-    private void EngageEmergencyBrake(
-        EntityUid uid,
-        ShuttleComponent shuttle,
-        HashSet<Entity<ShuttleConsoleComponent>> consoles,
-        bool quietly = false)
-    {
-        if (shuttle.EBrakeActive)
-        {
-            return;
-        }
-
-        if (!EntityManager.TryGetComponent(uid, out TransformComponent? transform)
-            || !transform.GridUid.HasValue
-            || !EntityManager.TryGetComponent(transform.GridUid, out PhysicsComponent? physicsComponent))
-        {
-            return;
-        }
-        Log.Debug($"Engaging E-Brake for {ToPrettyString(uid)}.");
-        SetInertiaDampening(
-            uid,
-            physicsComponent,
-            shuttle,
-            transform,
-            InertiaDampeningMode.Anchor);
-        shuttle.EBrakeActive = true;
-        if (consoles.Count > 0)
-        {
-            SoundSpecifier eBrakeBeep = quietly switch
-            {
-                true => new SoundPathSpecifier("/Audio/_COYOTE/ShuttleStuff/ShuttleEBrakeEngagedQuietly.ogg"),
-                false => new SoundPathSpecifier("/Audio/_COYOTE/ShuttleStuff/ShuttleEBrakeEngaged.ogg"),
-            };
-            var audioParams = quietly switch
-            {
-                true => AudioParams.Default.WithVariation(SharedContentAudioSystem.DefaultVariation).WithVolume(1f).WithMaxDistance(10f),
-                false => AudioParams.Default.WithVariation(SharedContentAudioSystem.DefaultVariation).WithVolume(3f).WithMaxDistance(20f),
-            };
-
-            foreach (var console in consoles)
-            {
-                // get the entity the console is attached to
-                var consoleEntity = console.Owner;
-                _audio.PlayPvs(
-                    eBrakeBeep,
-                    consoleEntity,
-                    audioParams);
-                if (!quietly) // throw in a BANG to make it more dramatic
-                {
-                    _audio.PlayPvs(
-                        _shuttleImpactSound,
-                        consoleEntity,
-                        audioParams.WithVolume(5f));
-                }
-                if (quietly)
-                {
-                    _popupSystem.PopupEntity(
-                        "Emergency Brake Engaged",
-                        consoleEntity,
-                        PopupType.MediumCaution);
-                }
-                else
-                {
-                    _popupSystem.PopupEntity(
-                        "EMERGENCY BRAKE ENGAGED!!",
-                        consoleEntity,
-                        PopupType.LargeCaution);
-                }
-            }
-        }
-    }
-
-
-
-
 }

@@ -55,11 +55,12 @@
       path: /Audio/Weapons/bladeslice.ogg
       params:
         variation: 0.125
-  - type: Advertise
-    pack: mercenaryhumanoidchatter
-    minimumWait: 30
-    maximumWait: 120
-    nextAdvertisementTime: 10
+  - type: Vocalizer
+    hideChat: true
+    minVocalizeInterval: 30
+    maxVocalizeInterval: 120
+  - type: DatasetVocalizer
+    dataset: mercenaryhumanoidchatter
   - type: AutoWakeUp
 
 # Variations
@@ -142,7 +143,7 @@
       color: "#a9b6bd"
       shader: unshaded
   - type: BasicEntityAmmoProvider
-    proto: NFCartridgePistol35
+    proto: NFCartridgePistol35Overpressure
     capacity: 4
     count: 4
   - type: Gun
@@ -188,7 +189,7 @@
       color: "#a9b6bd"
       shader: unshaded
   - type: BasicEntityAmmoProvider
-    proto: NFCartridgeRifle20
+    proto: NFCartridgeRifle20Overpressure
     capacity: 10
     count: 10
   - type: Gun
@@ -285,7 +286,7 @@
       color: "#a9b6bd"
       shader: unshaded
   - type: BasicEntityAmmoProvider
-    proto: NFCartridgePistol35
+    proto: NFCartridgePistol35Overpressure
     capacity: 6
     count: 6
   - type: Gun
@@ -337,14 +338,14 @@
     rechargeSound:
       path: /Audio/_NF/Effects/silence.ogg
   - type: BasicEntityAmmoProvider
-    proto: NFShellShotgunBuckshot
+    proto: NFShellShotgunBuckshotOverpressure
     capacity: 1
     count: 1
   - type: Gun
     showExamineText: false
     fireRate: 2
-    minAngle: 25
-    maxAngle: 50
+    minAngle: 10
+    maxAngle: 20
     angleIncrease: 5
     angleDecay: 3
     selectedMode: SemiAuto
@@ -454,7 +455,7 @@
       color: "#a9b6bd"
       shader: unshaded
   - type: BasicEntityAmmoProvider
-    proto: NFCartridgeRifle25
+    proto: NFCartridgeRifle25Overpressure
     capacity: 2
     count: 2
   - type: RechargeBasicEntityAmmo
@@ -511,7 +512,7 @@
       color: "#a9b6bd"
       shader: unshaded
   - type: BasicEntityAmmoProvider
-    proto: NFCartridgeRifle30
+    proto: NFCartridgeRifle30Overpressure
     capacity: 10
     count: 10
   - type: Gun
@@ -529,16 +530,16 @@
     maxOffset: 10
     pvsIncrease: 1
   # Ghost role stuff
-  # - type: GhostRole # CS - disable ghost role
-    # allowMovement: true
-    # name: ghost-role-information-mercenary-captain-dungeon-name
-    # description: ghost-role-information-mercenary-captain-dungeon-description
-    # rules: ghost-role-information-dungeon-boss-rules
-    # raffle:
-      # settings: default
-    # mindRoles:
-    # - MindRoleGhostRoleTeamAntagonist
-  # - type: GhostTakeoverAvailable
+  - type: GhostRole
+    allowMovement: true
+    name: ghost-role-information-mercenary-captain-dungeon-name
+    description: ghost-role-information-mercenary-captain-dungeon-description
+    rules: ghost-role-information-dungeon-boss-rules
+    raffle:
+      settings: default
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+  - type: GhostTakeoverAvailable
   - type: ActionGun
     action: ActionSideArmFan
     gunProto: GunSideArmFan

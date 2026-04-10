@@ -3,22 +3,32 @@
   name: job-name-bailiff
   description: job-description-bailiff
   playTimeTracker: JobWarden
-  requirements: # Coyote editted the playtime required for Sergeant
-  - !type:OverallPlaytimeRequirement
-    time: 108000
-  - !type:DepartmentTimeRequirement
-    department: Security
-    time: 172800 # 48 hours
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 108000 # 30 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 64800 # 18 hours
+    - !type:RoleTimeRequirement
+      role: JobSeniorOfficer
+      time: 21600 # 6 hours
+  alternateRequirementSets:
+    longerPlaytimeLessSec:
+    - !type:OverallPlaytimeRequirement
+      time: 720000 # 200 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 43200 # 12 hours
+    - !type:RoleTimeRequirement
+      role: JobSeniorOfficer
+      time: 21600 # 6 hours
   startingGear: BailiffGear
   icon: JobIconBailiff
   supervisors: job-supervisors-sheriff
   weight: 150
   displayWeight: 60
-  consoleAdjustable: false
   canBeAntag: false
-  access: # Access was editted by Coyote
-  - HeadOfSecurity
-  - Command
+  access:
   - Armory
   - Sergeant
   - Bailiff
@@ -31,15 +41,6 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
-  - !type:AddRpiJobModifierSpecial
-    modifiersToAdd:
-    - rpiJobModifierBailiff
-  - !type:AddComponentSpecial
-    components:
-    - type: CommandStaff
-    - type: IsNfsd
-      worth: 2
-
 
 - type: startingGear
   id: BailiffGear
@@ -49,13 +50,11 @@
   storage:
     back:
     - Flash
-    - CSMagazinePistol40Overpressure # Coyote NFMagazineHighCapacityPistol35Overpressure < CSMagazinePistol40Overpressure
-    - CSMagazinePistol40Rubber # Coyote NFMagazineHighCapacityPistol35Rubber < CSMagazinePistol40Rubber
+    - NFMagazineHighCapacityPistol35Overpressure
+    - NFMagazineHighCapacityPistol35Rubber
     - BaseSecurityUplinkRadioOfficer
-    - FrontierUplinkCoin5 # Coyote added 5 starting FUCs to Bailiff
     - ShipVoucherNfsdBailiff
     - RubberStampBailiff
-    - EncryptionKeyCommand
 
 - type: chameleonOutfit
   id: BailiffChameleonOutfit

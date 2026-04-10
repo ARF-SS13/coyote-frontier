@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ BaseCrowbar, BaseC4WizardContraband ] # Coyote: C3 to C4
+  parent: [ BaseCrowbar, BaseC3WizardContraband ]
   id: NFRavenbar
   name: ravenbar
   description: CAAAW!

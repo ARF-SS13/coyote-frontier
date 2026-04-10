@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ ClothingOuterBaseLarge, BaseC4ContrabandUnredeemable ]
+  parent: [ ClothingOuterBaseLarge, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterArmorSrCarapace
   name: "station representative's carapace"
   description: "A premium armored chestpiece that provides above average protection for its size. It offers maximum mobility and flexibility thanks to the premium composite materials. Issued only to the station representative."
@@ -28,7 +28,7 @@
   parent: ClothingOuterBioGeneral
   id: ClothingOuterBioArmoredMercenary
   name: mercenary bio suit
-  description: Favorite protective gear of any syndicate chemical warfare enjoyers.
+  description: The choice of armor for any mercenaries battling bio-hazards in atmosphere.
   components:
   - type: Sprite
     sprite: _NF/Clothing/OuterClothing/Bio/mercenary.rsi
@@ -51,7 +51,7 @@
 # Syndicate armored bio suit
 - type: entity
   parent:
-  - BaseC1Contraband
+  - BaseC3SyndicateContraband
   - ClothingOuterBioGeneral
   - ContrabandClothing
   id: ClothingOuterBioArmoredSyndicate
@@ -77,7 +77,7 @@
     damageCoefficient: 0.60
 
 - type: entity
-  parent: [ ClothingOuterBaseLarge, BaseC4Contraband ] # COYOTE: BaseC2ContrabandUnredeemable -> BaseC4ContrabandUnredeemable
+  parent: [ ClothingOuterBaseLarge, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterArmorNfsd
   name: NFSD armor
   description: Get shot, maybe survive?

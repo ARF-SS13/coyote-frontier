@@ -10,8 +10,7 @@
   - type: Sprite
     sprite: _NF/Objects/Power/big_ame_jar.rsi
   - type: AmeFuelContainer
-    fuelAmount: 10000
-    fuelCapacity: 10000 # ~ 1200 MJ > 6000 MJ to last overnight (Coyote Sector)
+    fuelAmount: 1500
+    fuelCapacity: 1500 # ~ 900 MJ
   - type: StaticPrice
-    price: 6000 # 1.5k at 1.25
-    vendPrice: 40000 # Frontier: FuelVend price, Coyote - upped by 5x to match new capacity
+    price: 800 # 1k at 1.25

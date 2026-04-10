@@ -9,6 +9,8 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Timing;
+using Content.Shared.Mobs.Components; // Frontier
+using Content.Shared.Mobs.Systems; // Frontier
 
 namespace Content.Shared.Weapons.Marker;
 
@@ -18,6 +20,7 @@ public abstract class SharedDamageMarkerSystem : EntitySystem
     [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly MobStateSystem _mobStateSystem = default!; // Frontier
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
 
@@ -40,7 +43,9 @@ public abstract class SharedDamageMarkerSystem : EntitySystem
             uid,
             args.User);
 
-        if (TryComp<LeechOnMarkerComponent>(args.Used, out var leech))
+        if (TryComp<LeechOnMarkerComponent>(args.Used, out var leech)
+            && TryComp<MobStateComponent>(uid, out var state) // Frontier
+            && !_mobStateSystem.IsDead(uid, state)) // Frontier
         {
             DamageSpecifier what2Heal = leech.Leech;
             // is the target dead?

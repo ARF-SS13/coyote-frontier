@@ -43,7 +43,7 @@
         - FullTileMask
         layer:
         - WallLayer
-        density: 400 #Coyote
+        density: 1000
   - type: Airtight
   - type: StaticPrice
     price: 25 # Frontier 75<25
@@ -512,7 +512,7 @@
           - FullTileMask
           layer:
           - WallLayer
-          density: 600 #Coyote
+          density: 4000
     - type: Damageable
       damageContainer: StructuralInorganic
       damageModifierSet: StructuralMetallicStrong
@@ -541,17 +541,13 @@
                   max: 1
             - !type:DoActsBehavior
               acts: [ "Destruction" ]
-    - type: RCDDeconstructable # Coyote
-      deconstructable: true
-      cost: 6
-      delay: 8
-      fx: EffectRCDDeconstruct8
 
 - type: entity
   parent: WallDiagonalBase
   id: WallPlastitaniumDiagonalIndestructible
   name: plastitanium wall
   suffix: diagonal, indestructible
+  description: Skub knows this wall is too hard to destroy. # Frontier
   components:
   - type: Sprite
     drawdepth: Walls
@@ -572,13 +568,13 @@
   id: WallPlastitaniumDiagonal
   name: plastitanium wall
   suffix: diagonal
-  description: Skub knows this wall is too hard to destroy. # Frontier
+  description: Keeps the air in and the greytide out. # Frontier: restore base value
   components:
   - type: Sprite
     drawdepth: Walls
     sprite: Structures/Walls/plastitanium_diagonal.rsi
-    state: state0
     color: "#ffffff" # Frontier
+    state: state0
   - type: Icon
     sprite: Structures/Walls/plastitanium_diagonal.rsi
     state: state0
@@ -598,11 +594,8 @@
         - !type:PlaySoundBehavior
           sound:
             collection: MetalSlam
-  - type: RCDDeconstructable # Coyote
-    deconstructable: true
-    cost: 6
-    delay: 8
-    fx: EffectRCDDeconstruct8
+  - type: RCDDeconstructable # Frontier
+    deconstructable: false # Frontier
 
 - type: entity
   parent: BaseWall
@@ -1139,6 +1132,109 @@
 
 - type: entity
   parent: BaseWall
+  id: WallSolidChitin
+  name: solid chitin
+  components:
+  - type: Tag
+    tags:
+      - Wall
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Sprite
+    sprite: Structures/Walls/xeno.rsi
+  - type: Icon
+    sprite: Structures/Walls/xeno.rsi
+  - type: IconSmooth
+    key: chitin
+    base: solid
+  - type: Construction
+    graph: Girder
+    node: wallChitin
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+
+- type: entity
+  parent: BaseWall
+  id: WallReinforcedChitin
+  name: reinforced chitin
+  components:
+  - type: Sprite
+    sprite: Structures/Walls/xeno.rsi
+  - type: Icon
+    sprite: Structures/Walls/xeno.rsi
+    state: rgeneric
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ReinforcedWallVisuals.DeconstructionStage:
+        ReinforcedWallVisualLayers.Deconstruction:
+          -1: { visible: false }
+          0: { state: reinf_construct-0, visible: true}
+          1: { state: reinf_construct-1, visible: true}
+          2: { state: reinf_construct-2, visible: true}
+          3: { state: reinf_construct-3, visible: true}
+          4: { state: reinf_construct-4, visible: true}
+          5: { state: reinf_construct-5, visible: true}
+  - type: StaticPrice
+    price: 250
+  - type: RadiationBlocker
+    resistance: 5
+  - type: IconSmooth
+    key: chitin
+    base: reinf_over
+  - type: Construction
+    graph: Girder
+    node: reinforcedWallChitin
+
+- type: entity
+  parent: BaseWall
   id: WallUranium
   name: uranium wall
   components:
@@ -1339,11 +1435,10 @@
     - mining
     - miningB
   - type: Appearance
-  - type: RCDDeconstructable # Coyote
-    deconstructable: true
-    cost: 6
-    delay: 8
-    fx: EffectRCDDeconstruct8
+  - type: RCDDeconstructable # Frontier
+    cost: 6 # Frontier
+    delay: 8 # Frontier
+    fx: EffectRCDDeconstruct8 # Frontier
 
 - type: entity
   parent: WallDiagonalBase
@@ -1385,11 +1480,10 @@
           collection: MetalSlam
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: RCDDeconstructable # Coyote
-    deconstructable: true
-    cost: 6
-    delay: 8
-    fx: EffectRCDDeconstruct8
+  - type: RCDDeconstructable # Frontier
+    cost: 6 # Frontier
+    delay: 8 # Frontier
+    fx: EffectRCDDeconstruct8 # Frontier
 
 
 # Vault Walls

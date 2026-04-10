@@ -49,7 +49,6 @@
   - PortableScrubberMachineCircuitBoard
   - ThermomachineFreezerMachineCircuitBoard
   - CondenserMachineCircuitBoard
-  - PowerComputerCircuitboard # CS
 
 - type: latheRecipePack
   id: NFEngineeringMaterialsStatic
@@ -79,20 +78,16 @@
   id: NFEngineeringBoards
   recipes:
   - PortableGeneratorDKJrMachineCircuitboard
-  - GasMiningDrillMachineCircuitboard
-  - GaslockFrameMachineCircuitboard
-  - SlowWeakThrusterMachineCircuitboard
-  - SlowStrongThrusterMachineCircuitboard
-  - FastWeakThrusterMachineCircuitboard
-  - FastStrongThrusterMachineCircuitboard
-  - FasterWeakThrusterMachineCircuitboard
-  - FasterStrongThrusterMachineCircuitboard
 
 - type: latheRecipePack
   id: NFEngineeringBoardsCircuitImprinter
   recipes:
   - GasMiningDrillMachineCircuitboard
   - GaslockFrameMachineCircuitboard
+  - AlertsComputerCircuitboard
+  - PowerComputerCircuitboard
+  - AtmosMonitoringComputerCircuitboard
+  - SolarAssemblyFlatpack
 
 - type: latheRecipePack
   id: NFEngineering
@@ -106,4 +101,4 @@
   - SuperCapacitorStockPart
   - SuperMatterBinStockPart
   - PicoManipulatorStockPart
-#  - NFWeaponParticleDecelerator
+  - NFWeaponParticleDecelerator

@@ -419,8 +419,8 @@
   - type: SpawnItemsOnUse
     items:
       - id: NFWeaponSubMachineGunC20rExpedition
-      - id: CSMagazineSubMachineGun40Uranium # Coyote NFMagazineSubMachineGun35Uranium < CSMagazineSubMachineGun40Uranium
-      - id: CSMagazineSubMachineGun40Uranium # Coyote NFMagazineSubMachineGun35Uranium < CSMagazineSubMachineGun40Uranium
+      - id: NFMagazineSubMachineGun35Uranium
+      - id: NFMagazineSubMachineGun35Uranium
         prob: 0.2
       - id: SpaceCash1000
       - id: SpaceCash1000
@@ -541,8 +541,8 @@
   - type: SpawnItemsOnUse
     items:
       - id: NFWeaponPistolViperExpedition
-      - id: CSMagazinePistol40Uranium # Coyote: .40 conversion
-      - id: CSMagazinePistol40Uranium # Coyote: .40 conversion
+      - id: NFMagazineHighCapacityPistol35Uranium
+      - id: NFMagazineHighCapacityPistol35Uranium
         prob: 0.2
       - id: SpaceCash1000
       # Bonus Loot T1

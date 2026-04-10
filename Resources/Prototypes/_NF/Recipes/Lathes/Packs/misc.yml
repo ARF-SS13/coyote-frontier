@@ -16,8 +16,6 @@
   - ExteriorLightTube
   - LedLightBulb
   - LedLightTube
-  - DimLightBulb #Coyote
-  - WarmLightBulb #Coyote
 
 - type: latheRecipePack
   id: NFBasicToolsStatic
@@ -30,6 +28,7 @@
   - Multitool
   - AppraisalTool
   - HandLabeler
+  - Binoculars
   - Signaller
   - ClothingMaskWeldingGas
   - SprayPainter
@@ -79,7 +78,7 @@
   recipes:
   - CableStack
   - CableMVStack
-  - CableHVStack
+  - CableHVStack  
   - PowerCellSmall
   - PowerCellMedium
   - Beaker

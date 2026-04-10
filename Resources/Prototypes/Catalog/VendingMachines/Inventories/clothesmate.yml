@@ -20,196 +20,99 @@
     ClothingSkirtUniformRandomBra: 6 # Frontier
     ClothingSkirtUniformRandomShorts: 6 # Frontier
     ClothingSkirtUniformRandomShirt: 6 # Frontier
-    ClothingHeadHatBeret: 4 # Coyote: Uniform dying doesn't exist. [
-    ClothingHeadBandBlack: 2
-    ClothingHeadBandBlue: 2
-    ClothingHeadBandGreen: 2
-    ClothingHeadBandRed: 2
-    ClothingHeadBandSkull: 2
-    ClothingHeadHatPropeller: 2 # Goobstation
-    ClothingHeadHatGreyFlatcap: 3
-    ClothingHeadHatBrownFlatcap: 3
+    # ClothingHeadHatBeret: 4
+    # ClothingHeadBandBlack: 2
+    # ClothingHeadBandBlue: 2
+    # ClothingHeadBandGreen: 2
+    # ClothingHeadBandRed: 2
+    # ClothingHeadBandSkull: 2
+    # ClothingHeadHatGreyFlatcap: 3
+    # ClothingHeadHatBrownFlatcap: 3
     ClothingUniformJumpsuitColorGrey: 8
     ClothingUniformJumpskirtColorGrey: 8
-    ClothingUniformJumpsuitColorWhite: 3
-    ClothingUniformJumpskirtColorWhite: 3
-    ClothingUniformJumpsuitColorBlack: 3
-    ClothingUniformJumpskirtColorBlack: 3
-    ClothingUniformJumpsuitColorBlue: 2
-    ClothingUniformJumpskirtColorBlue: 2
-    ClothingUniformJumpsuitColorYellow: 2
-    ClothingUniformJumpskirtColorYellow: 2
-    ClothingUniformJumpsuitColorGreen: 2
+    # ClothingUniformJumpsuitColorWhite: 3
+    # ClothingUniformJumpskirtColorWhite: 3
+    # ClothingUniformJumpsuitColorBlack: 3
+    # ClothingUniformJumpskirtColorBlack: 3
+    # ClothingUniformJumpsuitColorBlue: 2
+    # ClothingUniformJumpskirtColorBlue: 2
+    # ClothingUniformJumpsuitColorYellow: 2
+    # ClothingUniformJumpskirtColorYellow: 2
+    # ClothingUniformJumpsuitColorGreen: 2
    # DO NOT ADD MORE, USE UNIFORM DYING
-    ClothingUniformJumpskirtColorGreen: 2
-    ClothingUniformJumpsuitColorOrange: 2
-    ClothingUniformJumpskirtColorOrange: 2
-    ClothingUniformJumpsuitColorRed: 2
-    ClothingUniformJumpskirtColorRed: 2
-    ClothingUniformJumpsuitColorPurple: 2
-    ClothingUniformJumpskirtColorPurple: 2
-    ClothingUniformJumpsuitColorPink: 2
-    ClothingUniformJumpskirtColorPink: 2
-    ClothingUniformJumpsuitColorDarkBlue: 2
-    ClothingUniformJumpskirtColorDarkBlue: 2
-    ClothingUniformJumpsuitColorDarkGreen:  2
-    ClothingUniformJumpskirtColorDarkGreen: 2
-    ClothingUniformJumpsuitColorTeal: 2
-    ClothingUniformJumpskirtColorTeal: 2
-    ClothingUniformJumpsuitHawaiBlack: 2
-    ClothingUniformJumpsuitHawaiBlue: 2
-    ClothingUniformJumpsuitHawaiRed: 2
-    ClothingUniformJumpsuitHawaiYellow: 2
-    ClothingUniformJumpsuitFlannel: 2
-    ClothingUniformJumpsuitCasualBlue: 2
-    ClothingUniformJumpskirtCasualBlue: 2
-    ClothingUniformJumpsuitCasualPurple: 2
-    ClothingUniformJumpskirtCasualPurple: 2
-    ClothingUniformJumpsuitCasualRed: 2
-    ClothingUniformJumpskirtCasualRed: 2
-    ClothingUniformJumpsuitCasualGreen: 2
-    ClothingUniformJumpskirtCasualGreen: 2
+    # ClothingUniformJumpskirtColorGreen: 2
+    # ClothingUniformJumpsuitColorOrange: 2
+    # ClothingUniformJumpskirtColorOrange: 2
+    # ClothingUniformJumpsuitColorRed: 2
+    # ClothingUniformJumpskirtColorRed: 2
+    # ClothingUniformJumpsuitColorPurple: 2
+    # ClothingUniformJumpskirtColorPurple: 2
+    # ClothingUniformJumpsuitColorPink: 2
+    # ClothingUniformJumpskirtColorPink: 2
+    # ClothingUniformJumpsuitColorDarkBlue: 2
+    # ClothingUniformJumpskirtColorDarkBlue: 2
+    # ClothingUniformJumpsuitColorDarkGreen:  2
+    # ClothingUniformJumpskirtColorDarkGreen: 2
+    # ClothingUniformJumpsuitColorTeal: 2
+    # ClothingUniformJumpskirtColorTeal: 2
+    # ClothingUniformJumpsuitHawaiBlack: 2
+    # ClothingUniformJumpsuitHawaiBlue: 2
+    # ClothingUniformJumpsuitHawaiRed: 2
+    # ClothingUniformJumpsuitHawaiYellow: 2
+    # ClothingUniformJumpsuitFlannel: 2
+    # ClothingUniformJumpsuitCasualBlue: 2
+    # ClothingUniformJumpskirtCasualBlue: 2
+    # ClothingUniformJumpsuitCasualPurple: 2
+    # ClothingUniformJumpskirtCasualPurple: 2
+    # ClothingUniformJumpsuitCasualRed: 2
+    # ClothingUniformJumpskirtCasualRed: 2
+    # ClothingUniformJumpsuitCasualGreen: 2
+    # ClothingUniformJumpskirtCasualGreen: 2
    # DO NOT ADD MORE, USE UNIFORM DYING
     ClothingShoesColorBlack: 8
-    ClothingShoesColorBrown: 4
-    ClothingShoesColorWhite: 3
-    ClothingShoesColorBlue: 2
-    ClothingShoesColorYellow: 2
-    ClothingShoesColorGreen: 2
-    ClothingShoesColorOrange: 2
-    ClothingShoesColorRed: 2
-    ClothingShoesColorPurple: 2
-    ClothingHeadHatGreysoft: 8
-    ClothingHeadHatMimesoft: 3
-    ClothingHeadHatBluesoft: 2
-    ClothingHeadHatYellowsoft: 2
-    ClothingHeadHatGreensoft: 2
-    ClothingHeadHatOrangesoft: 2
-    ClothingHeadHatRedsoft: 2
+    # ClothingShoesColorBrown: 4
+    # ClothingShoesColorWhite: 3
+    # ClothingShoesColorBlue: 2
+    # ClothingShoesColorYellow: 2
+    # ClothingShoesColorGreen: 2
+    # ClothingShoesColorOrange: 2
+    # ClothingShoesColorRed: 2
+    # ClothingShoesColorPurple: 2
+    # ClothingHeadHatGreysoft: 8
+    # ClothingHeadHatMimesoft: 3
+    # ClothingHeadHatBluesoft: 2
+    # ClothingHeadHatYellowsoft: 2
+    # ClothingHeadHatGreensoft: 2
+    # ClothingHeadHatOrangesoft: 2
+    # ClothingHeadHatRedsoft: 2
     # DO NOT ADD MORE, USE UNIFORM DYING
-    ClothingHeadHatBlacksoft: 2
-    ClothingHeadHatPurplesoft: 2
-    ClothingHeadHatCorpsoft: 2
-    ClothingHeadFishCap: 2
-    ClothingHeadRastaHat: 2
-    ClothingBeltStorageWaistbag: 3
-    ClothingEyesGlasses: 6
-    ClothingHandsGlovesColorBlack: 4
-    ClothingHandsGlovesColorGray: 4
-    ClothingHandsGlovesColorBrown: 2
-    ClothingHandsGlovesColorWhite: 2
-    ClothingHandsGlovesColorRed: 2
-    ClothingHandsGlovesColorBlue: 2
-    ClothingHandsGlovesColorTeal: 2
-    ClothingHandsGlovesColorGreen: 2
-    ClothingHandsGlovesColorOrange: 2
-    ClothingHandsGlovesColorPurple: 2
-    ClothingEyesGlassesCheapSunglasses: 3  # Coyote: Uniform dying doesn't exist. ]
+    # ClothingHeadHatBlacksoft: 2
+    # ClothingHeadHatPurplesoft: 2
+    # ClothingHeadHatCorpsoft: 2
+    # ClothingHeadFishCap: 2
+    # ClothingHeadRastaHat: 2
+    # ClothingHeadPropellerHat: 2
+    # ClothingBeltStorageWaistbag: 3
+    # ClothingEyesGlasses: 6
+    # ClothingHandsGlovesColorBlack: 4
+    # ClothingHandsGlovesColorGray: 4
+    # ClothingHandsGlovesColorBrown: 2
+    # ClothingHandsGlovesColorWhite: 2
+    # ClothingHandsGlovesColorRed: 2
+    # ClothingHandsGlovesColorBlue: 2
+    # ClothingHandsGlovesColorTeal: 2
+    # ClothingHandsGlovesColorGreen: 2
+    # ClothingHandsGlovesColorOrange: 2
+    # ClothingHandsGlovesColorPurple: 2
+    # ClothingEyesGlassesCheapSunglasses: 3
     # DO NOT ADD MORE, USE UNIFORM DYING
-    ClothingNeckCollarBlue: 2 # Floofstation - Collar addition
-    ClothingNeckCollarBlack: 2 # Floofstation - Collar addition
-    ClothingNeckCollarPink: 2 # Floofstation - Collar addition
-    ClothingOuterCyberJacket: 2
-    ClothingOuterCyberJacketPurple: 2
-    ClothingOuterCyberJacketYellow: 2
-    ClothingUniformloincloth: 2
-    ClothingUniformloinclothWhite: 2
-    ClothingOuterBeltedWear: 2
-    ClothingOuterTransparentOuterwear: 2
-    ClothingShoesHighheelShoes: 6 # Coyote start
-    ClothingUniformJumpskirtGothic: 4
-    ClothingUniformJumpskirtMaid: 4
-    ClothingUniformJumpskirtDressRed: 4
-    ClothingUniformJumpskirtTango: 4
-    ClothingUniformJumpskirtVictorianBlack: 4
-    ClothingUniformJumpskirtReporter: 4
-    ClothingUniformJumpskirtJournalist: 4
-    ClothingUniformJumpskirtVictorianrRed: 4
-    ClothingUniformJumpskirtSuitNurse: 4
-    ClothingUniformJumpskirtPencilTan: 4
-    ClothingUniformJumpskirtPencilCentcomOfficial: 4
-    ClothingUniformJumpskirtPencilSpecialOperationsOfficer: 4
-    ClothingUniformJumpskirtCargoSalvage: 4
-    ClothingUniformJumpskirtCargoSalvageFormal: 4
-    ClothingUniformJumpskirtSalvageLead: 4
-    ClothingUniformJumpskirtMiningSpecialist: 4
-    ClothingUniformJumpskirtCargoFormal: 4
-    ClothingUniformJumpskirtScientistFormal: 4
-    ClothingUniformJumpskirtCoroner: 4
-    ClothingUniformJumpskirtCentcomOfficial: 4
-    ClothingUniformJumpskirtCentcomOfficer: 4
-    ClothingUniformJumpskirtElegantMaid: 4
-    ClothingUniformColorJumpskirtRainbow: 4
-    ClothingUniformJumpskirtSchool: 4
-    ClothingUniformJumpskirtCapTurtleneck: 4
-    ClothingUniformJumpskirtHoPTurtleneck: 4
-    ClothingUniformJumpskirtHoSBlack: 4
-    ClothingUniformJumpskirtRDClassical: 4
-    ClothingUniformJulianneVA11HALLA: 4
-    ClothingUniformElegantLadyDress: 4
-    ClothingUniformPastryDress: 4
-    ClothingUniformJumpsuitSuitCheckered: 4
-    ClothingUniformJumpsuitSuitTan: 4
-    ClothingUniformJumpsuitSuitWaiter: 4
-    ClothingUniformJumpsuitMimeSexyWhite: 4
-    ClothingUniformJumpsuitMimeSexyBlack: 4
-    ClothingUniformJumpsuitCargoAlt: 4
-    ClothingUniformJumpsuitCargoFormal: 4
-    ClothingUniformJumpsuitSalvageFormal: 4
-    ClothingUniformJumpsuitCoroner: 4
-    ClothingUniformJumpsuitCoronerAlt: 4
-    ClothingUniformJumpsuitSuperstarCop: 4
-    ClothingUniformJumpsuitAerostatic: 4
-    ClothingUniformJumpsuitCentcomOfficerBlack: 4
-    ClothingUniformJumpsuitCapTurtleneck: 4
-    ClothingUniformJumpsuitCaptainNoble: 4
-    ClothingUniformJumpsuitHoPTurtleneck: 4
-    ClothingUniformJumpsuitHoSBlack: 4
-    ClothingUniformJumpsuitRDClassical: 4
-    ClothingUniformJumpsuitVampir: 4
-    ClothingUniformDama235123: 4
-    ClothingUniformBootsVampir: 4
-    ClothingShoesBootsSalvage1208134: 4
-    ClothingUniformDama0965: 4
-    ClothingUniformShinelVampir: 4
-    ClothingNeckTieGeoffroyblack12: 4
-    RedRegaliaCloak: 4
-    ClothingHeadBase0121: 4
-    RedRegaliaHat: 4
-    BodysuitJeansUniformSuit: 4
-    CamoUniformSuit: 4
-    CandyClownUniformSuit: 4
-    CoolTanktopUniformSuit: 4
-    DruidRobesUniformSuit: 4
-    FlamboyantUniformSuit: 4
-    FlamencoUniformSuit: 4
-    FlyCaptainUniformSuit: 4
-    KiltUniformSuit: 4
-    LilacDressUniformSuit: 4
-    LittleBlackDressUniformSuit: 4
-    LumberjackOverallsUniformSuit: 4
-    MechanicOverallsUniformSuit: 4
-    MessyDressShirtUniformSuit: 4
-    MimeFrillsUniformSuit: 4
-    OldWomanUniformSuit: 4
-    PunkJeansUniformSuit: 4
-    RefereeUniformSuit: 4
-    SailorUniformSuit: 4
-    StripedClownUniformSuit: 4
-    SundressUniformSuit: 4
-    TatteredClothesUniformSuit: 4
-    TieDyeUniformSuit: 4
-    TogaUniformSuit: 4
-    VintageUniformSuit: 4
-    CargoOverallsUniformSuit: 4
-    RedRegaliaSuit: 4
   contrabandInventory:
     ClothingMaskNeckGaiter: 2
     ClothingUniformJumpsuitTacticool: 1
     ClothingUniformJumpskirtTacticool: 1
-    ClothingBackpackSatchelRed: 2
     ToyFigurinePassenger: 1
     ToyFigurineGreytider: 1
     # ClothingBackpackSatchelSmugglerUnanchored: 1 # Frontier
     ClothingHeadHatSolidHeadband: 2
+    ClothingHeadPropellerHat: 2 # Frontier
   # DO NOT ADD MORE, USE UNIFORM DYING

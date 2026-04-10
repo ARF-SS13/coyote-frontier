@@ -37,7 +37,7 @@
       - id: SpellScrollRolledSmoke
       - id: SpellScrollRolledWall
       - id: SpellScrollRolledRepulse
-      #- id: SpellScrollRolledKnock # Coyote: Too powerful
+      - id: SpellScrollRolledKnock
       #- id: SpellScrollRolledRecall
     # not spell scrolls
     - !type:GroupSelector
@@ -108,7 +108,7 @@
       - id: SpellScrollRolledSmoke
       - id: SpellScrollRolledWall
       - id: SpellScrollRolledRepulse
-      #- id: SpellScrollRolledKnock # Coyote: Too powerful
+      - id: SpellScrollRolledKnock
       #- id: SpellScrollRolledRecall
     # not spell scrolls
     - !type:GroupSelector

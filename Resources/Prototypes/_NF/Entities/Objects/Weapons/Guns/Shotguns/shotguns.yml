@@ -2,7 +2,7 @@
 - type: entity
   id: NFWeaponShotgunBulldog
   parent:
-  - BaseC3Contraband
+  - BaseC3SyndicateContraband
   - NFBaseWeaponShotgunChamber50Magazine
   - NFBaseWeaponFrameShotgunWieldable
   name: Bulldog
@@ -13,6 +13,8 @@
     sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
   - type: Clothing
     sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
+  - type: GunSpreadModifier
+    spread: 1.1
   - type: Gun
     selectedMode: FullAuto
     availableModes:
@@ -22,7 +24,7 @@
 
 - type: entity
   id: NFWeaponShotgunDoubleBarreled
-  parent: [ BaseC1Contraband, NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgunWieldable ]
+  parent: [ NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgunWieldable ]
   name: double-barreled shotgun
   description: |-
     An immortal classic. A civilian grade shotgun.
@@ -33,6 +35,8 @@
     sprite: Objects/Weapons/Guns/Shotguns/db_shotgun.rsi
   - type: Item
     sprite: Objects/Weapons/Guns/Shotguns/db_shotgun_inhands_64x.rsi
+  - type: GunSpreadModifier
+    spread: 0.5
   - type: BallisticAmmoProvider
     capacity: 2
   - type: Construction
@@ -43,10 +47,10 @@
 
 - type: entity
   id: NFWeaponShotgunEnforcer
-  parent: [ BaseC1ContrabandUnredeemable, NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgunWieldable ] # Coyote: Add BaseC2ContrabandUnredeemable
+  parent: [ NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgunWieldable ]
   name: Enforcer
   description: |-
-    A premium semi-automatic shotgun, featuring an upgraded tube capacity. On the receiver is a label that says 'for authorized use only.'
+    A premium semi-automatic shotgun, featuring an upgraded tube capacity.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi
@@ -59,7 +63,7 @@
 
 - type: entity
   id: NFWeaponShotgunKammerer
-  parent: [ BaseC1Contraband, NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgunWieldable ]
+  parent: [ NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgunWieldable ]
   name: Kammerer
   description: |-
     An old yet faithful design, and a favorite among irregular forces on many worlds.
@@ -70,6 +74,8 @@
     sprite: _NF/Objects/Weapons/Guns/Shotguns/pump.rsi
   - type: Item
     sprite: _NF/Objects/Weapons/Guns/Shotguns/pump_inhands_64x.rsi
+  - type: GunSpreadModifier
+    spread: 0.7
   - type: BallisticAmmoProvider
     capacity: 5
   - type: NFWeaponDetails
@@ -77,7 +83,7 @@
 
 - type: entity
   id: NFWeaponShotgunSawn
-  parent: [ BaseC1Contraband, NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgun ]
+  parent: [ NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgun ]
   name: sawn-off shotgun
   description: |-
     Groovy!
@@ -89,7 +95,9 @@
   - type: Item
     size: Normal
     shape:
-    - 0,0,3,1
+      - 0,0,2,1
+  - type: GunSpreadModifier
+    spread: 1.4
   - type: BallisticAmmoProvider
     capacity: 2
   - type: NFWeaponDetails
@@ -107,7 +115,7 @@
 
 - type: entity
   id: NFWeaponShotgunHandmade
-  parent: [ BaseC1Contraband, NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgun ]
+  parent: [ NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgun ]
   name: handmade pistol
   description: |-
     Looks unreliable, but legal.
@@ -118,8 +126,8 @@
     sprite: Objects/Weapons/Guns/Shotguns/hm_pistol.rsi
   - type: Item
     size: Small
-    shape:
-    - 0,0,2,1
+  - type: GunSpreadModifier
+    spread: 1.5
   - type: BallisticAmmoProvider
     capacity: 1
   - type: NFWeaponDetails
@@ -139,7 +147,7 @@
 
 - type: entity
   id: NFWeaponShotgunBlunderbuss
-  parent: [ BaseC1Contraband, NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgunWieldable ]
+  parent: [ BaseC3PirateContraband, NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgunWieldable ]
   name: blunderbuss
   description: |-
     Deadly at close range, an illegal shotgun often found at the side of a pirate.
@@ -150,6 +158,8 @@
     sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
   - type: Item
     sprite: Objects/Weapons/Guns/Shotguns/blunderbuss.rsi
+  - type: GunSpreadModifier
+    spread: 1.1
   - type: BallisticAmmoProvider
     capacity: 1
   - type: NFWeaponDetails
@@ -157,7 +167,7 @@
 
 - type: entity
   id: NFWeaponShotgunImprovised
-  parent: [ BaseC1Contraband, NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgunWieldable ]
+  parent: [ NFBaseWeaponShotgunChamber50, NFBaseWeaponFrameShotgunWieldable ]
   name: improvised shotgun
   description: |-
     A shitty, but legal, hand-made shotgun. It can only hold one round in the chamber.
@@ -168,6 +178,8 @@
     sprite: Objects/Weapons/Guns/Shotguns/improvised_shotgun.rsi
   - type: Item
     sprite: Objects/Weapons/Guns/Shotguns/improvised_shotgun_inhands_64x.rsi
+  - type: GunSpreadModifier
+    spread: 1.2
   - type: BallisticAmmoProvider
     capacity: 1
     proto: null

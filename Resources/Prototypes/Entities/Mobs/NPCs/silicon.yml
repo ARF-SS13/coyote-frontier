@@ -15,9 +15,6 @@
     bodyType: KinematicController # Same for all inheritors
   - type: StatusEffects
     allowed:
-    - Stun
-    - KnockedDown
-    - SlowedDown
     - Stutter
     - Electrocution
   - type: Repairable
@@ -114,17 +111,6 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai #couldn't decide if this should be borg or pai sounds so I flipped a coin.
-  - type: TypingIndicator
-    proto: robot
-  - type: Vocal
-    sounds:
-      Unsexed: UnisexSilicon
-  - type: Emoting
-  - type: ZombieImmune
-  - type: ProtectedFromStepTriggers
-  - type: NoSlip
-  - type: Insulated
-  - type: LeashAnchor # Floofstation
 
 - type: entity
   parent: MobSiliconBase
@@ -138,6 +124,7 @@
   - type: Construction
     graph: FireBot
     node: bot
+  - type: Anchorable # Frontier
   - type: HTN
     rootTask:
       task: FirebotCompound
@@ -170,8 +157,9 @@
     interactFailureString: petting-failure-firebot
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
-  - type: Advertise
-    pack: FirebotAd
+  - type: Vocalizer
+  - type: DatasetVocalizer
+    dataset: FirebotAd
 
 - type: entity
   parent: MobSiliconBase
@@ -366,8 +354,9 @@
     interactFailureString: petting-failure-medibot
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
-  - type: Advertise
-    pack: MedibotAds
+  - type: Vocalizer
+  - type: DatasetVocalizer
+    dataset: MedibotAds
   - type: Inventory
     templateId: medibot
   - type: DoAfter

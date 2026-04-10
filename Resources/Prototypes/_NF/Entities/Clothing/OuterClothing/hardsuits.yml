@@ -19,13 +19,13 @@
       coefficients:
         Blunt: 0.75
         Slash: 0.75
-        Piercing: 0.7
-        Heat: 0.75
-        Radiation: 0.65
+        Piercing: 0.75
+        Heat: 0.8
+        Radiation: 0.6
         Caustic: 0.8
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.85
+    walkModifier: 0.95
+    sprintModifier: 0.9
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitMercenary
@@ -102,9 +102,9 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.4
-        Slash: 0.4
-        Piercing: 0.7
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.5
         Heat: 0.8
         Radiation: 0.3
         Caustic: 0.5
@@ -169,8 +169,8 @@
         Radiation: 0.55
         Caustic: 0.75
   - type: ClothingSpeedModifier
-    walkModifier: 1.0 # COYOTE: 0.95 -> 1.0
-    sprintModifier: 1.0 # COYOTE: 0.9 -> 1.0
+    walkModifier: 0.95
+    sprintModifier: 0.9
 
 - type: entity
   parent: ClothingOuterHardsuitNfsdBronze
@@ -225,7 +225,7 @@
     clothingPrototype: ClothingHeadHelmetHardsuitNfsdBrigmedic
 
 - type: entity
-  parent: [BaseC4ContrabandUnredeemable, ClothingOuterHardsuitJuggernaut] # Jugger Suit
+  parent: [BaseC2ContrabandUnredeemable, ClothingOuterHardsuitJuggernaut] # Jugger Suit
   id: ClothingOuterHardsuitNfsdExperimental
   name: NFSD experimental combat suit
   description: A very heavily armored NFSD suit. This space proof marvel of engineering uses state of the art alloys to provide immense protection while sacrificing little mobility.
@@ -274,15 +274,15 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.4 # Coyote 0.6<0.4
-        Slash: 0.4 # Coyote 0.6<0.4
-        Piercing: 0.4 # Coyote 0.6<0.4
-        Heat: 0.4 # Coyote 0.60<0.4
-        Radiation: 0.4 # Coyote 0.5<0.4
-        Caustic: 0.4 # Coyote 0.7<0.4
+        Blunt: 0.5
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.60
+        Radiation: 0.50
+        Caustic: 0.7
   - type: ClothingSpeedModifier
-    walkModifier: 0.95 # COYOTE: 0.85 -> 0.95. Essentially a (slightly better) universal SCAF.
-    sprintModifier: 0.75 # COYOTE: 0.75 -> 0.85. Essentially a (slightly better) universal SCAF.
+    walkModifier: 0.85
+    sprintModifier: 0.75
 
 #Security Command Hardsuit
 - type: entity
@@ -338,7 +338,7 @@
     lowPressureMultiplier: 1000
   - type: ClothingSpeedModifier
     walkModifier: 0.9
-    sprintModifier: 0.8
+    sprintModifier: 0.9
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitScaf
@@ -370,8 +370,8 @@
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000
   - type: ClothingSpeedModifier # So many layers of stain protection makes it very heavy
-    walkModifier: 0.75 # COYOTE: 0.75 -> 1.0
-    sprintModifier: 0.75 # COYOTE: 0.75 -> 1.0
+    walkModifier: 0.75
+    sprintModifier: 0.75
   - type: HeldSpeedModifier
   - type: FootstepModifier
     footstepSoundCollection:
@@ -380,7 +380,7 @@
     clothingPrototype: ClothingHeadHelmetHardsuitTacticalMaid
 
 - type: entity
-  parent: [BaseC3Contraband, ClothingOuterHardsuitBaseNF, ContrabandClothing] # COYOTE: BaseC3Contraband -> BaseC3MetaPirate
+  parent: [BaseC3PirateContraband, ClothingOuterHardsuitBaseNF, ContrabandClothing]
   id: ClothingOuterHardsuitPirateElite
   name: elite pirate hardsuit
   description: An ancient elite armored hardsuit, designed by an unknown bearded man and built like a brick house.
@@ -396,19 +396,19 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.4 # COYOTE: 0.5 -> 0.4
-        Slash: 0.4 # COYOTE: 0.5 -> 0.4
-        Piercing: 0.4 # COYOTE: 0.5 -> 0.4
-        Heat: 0.4 # COYOTE: 0.5 -> 0.4. Essentially a universal SCAF.
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.50
         Radiation: 0.4
         Caustic: 0.6
   - type: ClothingSpeedModifier
-    walkModifier: 0.9 # COYOTE: 0.85 -> 0.9. Essentially a universal SCAF.
-    sprintModifier: 0.8 # COYOTE: 0.75 -> 0.8. Essentially a universal SCAF.
+    walkModifier: 0.85
+    sprintModifier: 0.75
 
 #Wizard Hardsuit
 - type: entity
-  parent: [ClothingOuterHardsuitBase, NotContraband, ContrabandClothing] # Frontier: BaseMagicalContraband<NotContraband, ContrabandClothing as parent
+  parent: [ClothingOuterHardsuitBase, BaseC3WizardContraband, ContrabandClothing] # Frontier: BaseMagicalContraband<BaseC3WizardContraband, ContrabandClothing as parent
   id: ClothingOuterHardsuitWizardBrick
   name: brick wizard hardsuit
   description: A weird hardsuit with ornaments made of baked clay and magical gemstones.
@@ -443,7 +443,7 @@
   parent: ClothingOuterHardsuitBaseNF
   id: ClothingOuterHardsuitHostileEnvironment
   name: hostile environment hardsuit
-  description: No matter where you are sent to operate, the hostile enviroment hardsuit ensures you will more or less make it out in one piece!
+  description: No matter where you are sent to operate, the hostile environment hardsuit ensures you will more or less make it out in one piece!
   components:
   - type: Sprite
     sprite: _NF/Clothing/OuterClothing/Hardsuits/hostile_environment.rsi

@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+<<<<<<<< HEAD:Resources/Textures/Clothing/Uniforms/Jumpsuit/piratebaddie.rsi/meta.json
+========
+  "copyright": "Made by NeKognitoHazard",
+>>>>>>>> aaf42343024cbad92ff090a4d728f48b07c640a4:Resources/Textures/_Goobstation/Clothing/OuterClothing/Misc/nopro.rsi/meta.json
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "equipped-OUTERCLOTHING",
+      "directions": 4
+    },
+    {
+      "name": "equipped-OUTERCLOTHING-vox",
+      "directions": 4
+    },
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-INNERCLOTHING",
+      "directions": 4
+    },
+    {
+      "name": "equipped-INNERCLOTHING-monkey",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+<<<<<<<< HEAD:Resources/Textures/Clothing/Uniforms/Jumpsuit/piratebaddie.rsi/meta.json
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+========
+>>>>>>>> aaf42343024cbad92ff090a4d728f48b07c640a4:Resources/Textures/_Goobstation/Clothing/OuterClothing/Misc/nopro.rsi/meta.json
+    }
+  ]
+}

@@ -1028,16 +1028,16 @@
     energy: 2.5
     color: "#47f8ff"
   # Ghost role stuff
-  # - type: GhostRole # CS - disable ghost role
-    # allowMovement: true
-    # name: ghost-role-information-guardian-unit-dungeon-name
-    # description: ghost-role-information-one-star-unit-dungeon-description
-    # rules: ghost-role-information-dungeon-boss-rules
-    # raffle:
-      # settings: default
-    # mindRoles:
-    # - MindRoleGhostRoleTeamAntagonist
-  # - type: GhostTakeoverAvailable
+  - type: GhostRole
+    allowMovement: true
+    name: ghost-role-information-guardian-unit-dungeon-name
+    description: ghost-role-information-one-star-unit-dungeon-description
+    rules: ghost-role-information-dungeon-boss-rules
+    raffle:
+      settings: default
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+  - type: GhostTakeoverAvailable
   # Radar
   - type: UserInterface
     interfaces:
@@ -1105,16 +1105,16 @@
     footstepSoundCollection:
       path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
   # Ghost role stuff
-  # - type: GhostRole # CS - disable ghost role
-    # allowMovement: true
-    # name: ghost-role-information-one-star-unit-dungeon-name
-    # description: ghost-role-information-one-star-unit-dungeon-description
-    # rules: ghost-role-information-dungeon-boss-rules
-    # raffle:
-      # settings: default
-    # mindRoles:
-    # - MindRoleGhostRoleTeamAntagonist
-  # - type: GhostTakeoverAvailable
+  - type: GhostRole
+    allowMovement: true
+    name: ghost-role-information-one-star-unit-dungeon-name
+    description: ghost-role-information-one-star-unit-dungeon-description
+    rules: ghost-role-information-dungeon-boss-rules
+    raffle:
+      settings: default
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+  - type: GhostTakeoverAvailable
   # Radar
   - type: UserInterface
     interfaces:

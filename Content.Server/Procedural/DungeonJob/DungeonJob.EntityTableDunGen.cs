@@ -37,7 +37,7 @@ public sealed partial class DungeonJob
                     return;
 
                 // if (reservedTiles.Contains(tile))    // Frontier: spawn floor loot inside the dungeon footprint
-                //    continue;                         // Frontier
+                //    continue;                         // Frontier 
 
                 if (!_anchorable.TileFree((_gridUid, _grid),
                         tile,

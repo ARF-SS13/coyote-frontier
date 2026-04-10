@@ -116,46 +116,6 @@
       - id: LightTubeCrystalGreen
 
 - type: entity
-  name: red navigation lighttube box
-  parent: BoxLightbulb
-  id: BoxLighttubeNavRed
-  components:
-  - type: StorageFill
-    contents:
-    - id: LightTubeCrystalRed
-    - id: LightTubeCrystalRed
-    - id: LightTubeCrystalRed
-    - id: LightTubeCrystalRed
-    - id: LightTubeCrystalRed
-    - id: LightTubeCrystalRed
-    - id: LightTubeCrystalRed
-    - id: LightTubeCrystalRed
-    - id: LightTubeCrystalRed
-    - id: LightTubeCrystalRed
-    - id: LightTubeCrystalRed
-    - id: LightTubeCrystalRed
-
-- type: entity
-  name: green navigation lighttube box
-  parent: BoxLightbulb
-  id: BoxLighttubeNavGreen
-  components:
-  - type: StorageFill
-    contents:
-    - id: LightTubeCrystalGreen
-    - id: LightTubeCrystalGreen
-    - id: LightTubeCrystalGreen
-    - id: LightTubeCrystalGreen
-    - id: LightTubeCrystalGreen
-    - id: LightTubeCrystalGreen
-    - id: LightTubeCrystalGreen
-    - id: LightTubeCrystalGreen
-    - id: LightTubeCrystalGreen
-    - id: LightTubeCrystalGreen
-    - id: LightTubeCrystalGreen
-    - id: LightTubeCrystalGreen
-
-- type: entity
   name: PDA box
   parent: BoxCardboard
   id: BoxPDA
@@ -253,8 +213,10 @@
     contents:
         - id: NFInflatableWallStack # Frontier: InflatableWallStack<NFInflatableWallStack
           amount: 2
-        - id: NFInflatableDoorStack # Frontier: InflatableDoorStack<NFInflatableDoorStack
-          amount: 2
+        - id: NFInflatableDoorStack5 # Frontier: InflatableDoorStack<NFInflatableDoorStack5
+          amount: 1 # Frontier: 2<1
+        - id: NFInflatableWindowStack # Frontier
+          amount: 1 # Frontier
   - type: Sprite
     layers:
       - state: box
@@ -413,7 +375,7 @@
 
 - type: entity
   name: syndicate encryption key box
-  parent: [BoxEncryptionKeyPassenger, NotContraband] # Frontier: BaseSyndicateContraband<BaseC4Contraband
+  parent: [BoxEncryptionKeyPassenger, BaseC3SyndicateContraband] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband
   id: BoxEncryptionKeySyndie
   description: Two syndicate encryption keys for the price of one. Miniaturized for ease of use.
   components:

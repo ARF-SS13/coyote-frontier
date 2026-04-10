@@ -88,12 +88,6 @@
   abstract: true
   id: WeaponMasterStaffBase
   components:
-  - type: Gun
-    projectileSpeed: 30
-    fireRate: 1.5
-  - type: BatterySelfRecharger
-    autoRecharge: true
-    autoRechargeRate: 2
   - type: MeleeThrowOnHit
     unanchorOnHit: true
     whitelist:
@@ -110,7 +104,7 @@
 
 #region blue curacao staff
 - type: entity
-  parent: [ BaseC2WizardContraband, WeaponInertStaffBase ] # Coyote: C3 to C2
+  parent: [ BaseC3WizardContraband, WeaponInertStaffBase ]
   id: WeaponInertStaffWizardElementalAdept
   name: inert adept-wizard blue curacao elemental staff
   components:
@@ -149,7 +143,7 @@
   name: master-wizard blue curacao elemental staff
   components:
   - type: ProjectileBatteryAmmoProvider
-    proto: WaterElementalConjuredStaffMaster # Coyote: WaterElementalConjuredStaff < WaterElementalConjuredStaffMaster
+    proto: WaterElementalConjuredStaff
     fireCost: 250
   - type: Construction
     graph: WeaponChargedStaffWizardElementalAdeptActivation
@@ -158,7 +152,7 @@
 
 #region ice staff
 - type: entity
-  parent: [ BaseC2WizardContraband, WeaponInertStaffBase ] # Coyote: C3 to C2
+  parent: [ BaseC3WizardContraband, WeaponInertStaffBase ]
   id: WeaponInertStaffWizardIceAdept
   name: inert adept-wizard ice staff
   components:
@@ -206,7 +200,7 @@
   name: master-wizard ice staff
   components:
   - type: ProjectileBatteryAmmoProvider
-    proto: BulletIceGlobeMaster # Coyote: BulletIceGlobe < BulletIceGlobeMaster
+    proto: BulletIceGlobe
     fireCost: 40
   - type: Construction
     graph: WeaponChargedStaffWizardIceAdeptActivation
@@ -215,7 +209,7 @@
 
 #region lightning staff
 - type: entity
-  parent: [ BaseC2WizardContraband, WeaponInertStaffBase ] # Coyote: C3 to C2
+  parent: [ BaseC3WizardContraband, WeaponInertStaffBase ]
   id: WeaponInertStaffWizardLightningAdept
   name: inert adept-wizard lightning staff
   components:
@@ -248,12 +242,12 @@
     deconstructionTarget: null
 
 - type: entity
-  parent: [ WeaponMasterStaffBase, WeaponChargedStaffWizardLightningAdept ]
+  parent: WeaponChargedStaffWizardLightningAdept
   id: WeaponChargedStaffWizardLightningMaster
   name: master-wizard lightning staff
   components:
   - type: HitscanBatteryAmmoProvider
-    proto: WizardHitscanLightningMaster # Coyote: WizardHitscanLightning < WizardHitscanLightningMaster
+    proto: WizardHitscanLightning
     fireCost: 40
   - type: Construction
     graph: WeaponChargedStaffWizardLightningAdeptActivation
@@ -262,7 +256,7 @@
 
 #region soap staff
 - type: entity
-  parent: [ BaseC2WizardContraband, WeaponInertStaffBase ] # Coyote: C3 to C2
+  parent: [ BaseC3WizardContraband, WeaponInertStaffBase ]
   id: WeaponInertStaffWizardSoapAdept
   name: inert adept-wizard soap staff
   components:
@@ -296,7 +290,7 @@
     deconstructionTarget: null
 
 - type: entity
-  parent: [ WeaponMasterStaffBase, WeaponChargedStaffWizardSoapAdept ]
+  parent: WeaponChargedStaffWizardSoapAdept
   id: WeaponChargedStaffWizardSoapMaster
   name: master-wizard soap staff
   components:
@@ -310,7 +304,7 @@
 
 #region magic bolt staff
 - type: entity
-  parent: [ BaseC2WizardContraband, WeaponInertStaffBase ] # Coyote: C3 to C2
+  parent: [ BaseC3WizardContraband, WeaponInertStaffBase ]
   id: WeaponInertStaffWizardBoltMagicAdept
   name: inert adept-wizard magic bolt staff
   components:
@@ -344,12 +338,12 @@
     deconstructionTarget: null
 
 - type: entity
-  parent: [ WeaponMasterStaffBase, WeaponChargedStaffWizardBoltMagicAdept ]
+  parent: WeaponChargedStaffWizardBoltMagicAdept
   id: WeaponChargedStaffWizardBoltMagicMaster
   name: master-wizard magic bolt staff
   components:
   - type: ProjectileBatteryAmmoProvider
-    proto: BulletMagicBoltMaster # Coyote: BulletMagicBolt < BulletMagicBoltMaster
+    proto: BulletMagicBolt
     fireCost: 40
   - type: Construction
     graph: WeaponChargedStaffWizardBoltMagicAdeptActivation
@@ -358,7 +352,7 @@
 
 #region fire bolt staff
 - type: entity
-  parent: [ BaseC2WizardContraband, WeaponInertStaffBase ] # Coyote: C3 to C2
+  parent: [ BaseC3WizardContraband, WeaponInertStaffBase ]
   id: WeaponInertStaffWizardBoltFireAdept
   name: inert adept-wizard fire bolt staff
   components:
@@ -401,12 +395,12 @@
     deconstructionTarget: null
 
 - type: entity
-  parent: [ WeaponMasterStaffBase, WeaponChargedStaffWizardBoltFireAdept ]
+  parent: WeaponChargedStaffWizardBoltFireAdept
   id: WeaponChargedStaffWizardBoltFireMaster
   name: master-wizard fire bolt staff
   components:
   - type: ProjectileBatteryAmmoProvider
-    proto: BulletFireBoltMaster # Coyote: BulletFireBolt < BulletFireBoltMaster
+    proto: BulletFireBolt
     fireCost: 40
   - type: Construction
     graph: WeaponChargedStaffWizardBoltFireAdeptActivation
@@ -415,7 +409,7 @@
 
 #region caustic beam staff
 - type: entity
-  parent: [ BaseC2WizardContraband, WeaponInertStaffBase ] # Coyote: C3 to C2
+  parent: [ BaseC3WizardContraband, WeaponInertStaffBase ]
   id: WeaponInertStaffWizardCausticAdept
   name: inert adept-wizard caustic beam staff
   components:
@@ -458,12 +452,12 @@
     deconstructionTarget: null
 
 - type: entity
-  parent: [ WeaponMasterStaffBase, WeaponChargedStaffWizardCausticAdept ]
+  parent: WeaponChargedStaffWizardCausticAdept
   id: WeaponChargedStaffWizardCausticMaster
   name: master-wizard caustic beam staff
   components:
   - type: HitscanBatteryAmmoProvider
-    proto: CausticBeamMaster # Coyote: CausticBeam < CausticBeamMaster
+    proto: CausticBeam
     fireCost: 40
   - type: Construction
     graph: WeaponChargedStaffWizardCausticAdeptActivation
@@ -472,7 +466,7 @@
 
 #region brick staff
 - type: entity
-  parent: [ BaseC2WizardContraband, WeaponInertStaffBase ] # Coyote: C3 to C2
+  parent: [ BaseC3WizardContraband, WeaponInertStaffBase ]
   id: WeaponInertStaffWizardBrickAdept
   name: inert brick wizard staff
   components:
@@ -512,12 +506,12 @@
     deconstructionTarget: null
 
 - type: entity
-  parent: [ WeaponMasterStaffBase, WeaponChargedStaffWizardBrickAdept ]
+  parent: WeaponChargedStaffWizardBrickAdept
   id: WeaponChargedStaffWizardBrickMaster
   name: master-wizard brick staff
   components:
   - type: ProjectileBatteryAmmoProvider
-    proto: BrickConjuredMaster # Coyote: BrickConjured < BrickConjuredMaster
+    proto: BrickConjured
     fireCost: 40
   - type: Construction
     graph: WeaponChargedStaffWizardBrickAdeptActivation
@@ -560,12 +554,12 @@
     deconstructionTarget: null
 
 - type: entity
-  parent: [ WeaponMasterStaffBase, WeaponChargedStaffCultistBoltDarkAdept ]
+  parent: [ WeaponChargedStaffCultistBoltDarkAdept, WeaponMasterStaffBase ]
   id: WeaponChargedStaffCultistBoltDarkMaster
-  name: master blood cult staff of crimson bolt
+  name: blood cult staff of crimson bolt
   components:
   - type: ProjectileBatteryAmmoProvider
-    proto: BulletBloodCultDarkBoltMaster # Coyote: BulletBloodCultDarkBolt < BulletBloodCultDarkBoltMaster
+    proto: BulletBloodCultDarkBolt
     fireCost: 40
   - type: Construction
     graph: WeaponChargedStaffCultistBoltDarkActivation
@@ -608,12 +602,12 @@
     deconstructionTarget: null
 
 - type: entity
-  parent: [ WeaponMasterStaffBase, WeaponChargedStaffCultistHandAdept ]
+  parent: [ WeaponChargedStaffCultistHandAdept, WeaponMasterStaffBase ]
   id: WeaponChargedStaffCultistHandMaster
-  name: master blood cult staff of malicious touch
+  name: blood cult staff of malicious touch
   components:
   - type: ProjectileBatteryAmmoProvider
-    proto: BulletBloodCultHandMaster # Coyote: BulletBloodCultHand < BulletBloodCultHandMaster
+    proto: BulletBloodCultHand
     fireCost: 40
   - type: Construction
     graph: WeaponInertStaffCultistHandActivation
@@ -656,12 +650,12 @@
     deconstructionTarget: null
 
 - type: entity
-  parent: [ WeaponMasterStaffBase, WeaponChargedStaffCultistLightningAdept ]
+  parent: [ WeaponChargedStaffCultistLightningAdept, WeaponMasterStaffBase ]
   id: WeaponChargedStaffCultistLightningMaster
-  name: master blood cult staff of crimson lightning
+  name: blood cult staff of crimson lightning
   components:
   - type: HitscanBatteryAmmoProvider
-    proto: BloodCultLaserMaster # Coyote: BloodCultLaser < BloodCultLaserMaster
+    proto: BloodCultLaser
     fireCost: 40
   - type: Construction
     graph: WeaponInertStaffCultistLightningActivation
@@ -704,9 +698,9 @@
     deconstructionTarget: null
 
 - type: entity
-  parent: [ WeaponMasterStaffBase, WeaponChargedStaffCultistSoapAdept ]
+  parent: [ WeaponChargedStaffCultistSoapAdept, WeaponMasterStaffBase ]
   id: WeaponChargedStaffCultistSoapMaster
-  name: master blood cult staff of shredding soap
+  name: blood cult staff of shredding soap
   components:
   - type: ProjectileBatteryAmmoProvider
     proto: ShellSoapConjuredBloodCultCluster

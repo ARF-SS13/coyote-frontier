@@ -1,7 +1,6 @@
 ﻿- type: job
   id: Valet
   name: job-name-valet
-  setPreference: false # soft removed, cus they dont really anything, also secretary #27503
   description: job-description-valet
   playTimeTracker: JobValet
   requirements:
@@ -34,10 +33,10 @@
     id: ValetPDA
   storage:
     back:
-    - EncryptionKeyService
     - ShipVoucherFrontierValet
   encryptionKeys:
   - EncryptionKeyGreeting
+  - EncryptionKeyService
 
 - type: chameleonOutfit
   id: ValetChameleonOutfit

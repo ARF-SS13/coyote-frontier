@@ -63,36 +63,6 @@
   group: market
 
 - type: cargoProduct
-  id: CargoSteelMatsBox
-  icon:
-    sprite:  /Textures/Objects/Materials/Sheets/metal.rsi
-    state: steel_2
-  product: CrateMaterialSteel
-  cost: 4000
-  category: cargoproduct-category-name-materials
-  group: market
-
-- type: cargoProduct
-  id: CargoGlassMatsBox
-  icon:
-    sprite:  /Textures/Objects/Materials/Sheets/glass.rsi
-    state: glass_2
-  product: CrateMaterialGlass
-  cost: 5000
-  category: cargoproduct-category-name-materials
-  group: market
-
-- type: cargoProduct
-  id: CargoBasicMatsBox
-  icon:
-    sprite:  /Textures/Objects/Materials/Sheets/other.rsi
-    state: plastic_2
-  product: CrateMaterialsBasicFilled
-  cost: 7500
-  category: cargoproduct-category-name-materials
-  group: market
-
-- type: cargoProduct
   id: CargoTreasureBox
   icon:
     sprite:  /Textures/_NF/Structures/Storage/magnetbox.rsi

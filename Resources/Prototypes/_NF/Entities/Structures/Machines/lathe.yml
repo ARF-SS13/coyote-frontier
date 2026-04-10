@@ -6,6 +6,7 @@
     whitelist:
       tags:
       - BlueprintAutolathe
+      - NFBlueprintAdvanced
   - type: ContainerContainer
     containers:
       machine_board: !type:Container
@@ -101,7 +102,8 @@
     - ReportingStatic # DeltaV
     - NFLightsColoredStatic
     - NFServiceArchetypeStatic
-    - CSPlumbingStatic # CS - showers, sinks, drains
+    - NFPietyStatic
+    - NFCandlesStatic
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NFServiceTechfabEmagStatic
@@ -109,6 +111,7 @@
     whitelist:
       tags:
       - NFBlueprintServiceTechfab
+      - NFBlueprintAdvanced
   - type: OreSiloClient
 
 - type: entity
@@ -195,12 +198,12 @@
     - NFEngineeringMaterialsStatic
     - NFInflatablesStatic
     - NFEngineeringArchetypeStatic
-    - CSPlumbingStatic # CS - showers, sinks, drains
 
   - type: BlueprintReceiver
     whitelist:
       tags:
       - NFBlueprintEngineeringTechfab
+      - NFBlueprintAdvanced
   - type: OreSiloClient
 
 - type: entity
@@ -250,6 +253,7 @@
     whitelist:
       tags:
       - NFBlueprintSalvageTechfab
+      - NFBlueprintAdvanced
   - type: OreSiloClient
 
 - type: entity
@@ -294,12 +298,13 @@
     - NFMercenaryStorageStatic
     - NfsdToolsStatic
     - NfsdTargetsStatic
-    - CSMagazineStatic
     - NfsdBoardsStatic
+    - NfsdReportingStatic
   - type: BlueprintReceiver
     whitelist:
       tags:
       - NFBlueprintNfsdTechfab
+      - NFBlueprintAdvanced
   - type: OreSiloClient
 
 - type: entity
@@ -345,20 +350,19 @@
     - NfsdPracticeStatic
     - NFMercenaryMagazineStatic
     - NFTopicalsStatic
-    - CSIPCTopicalsStatic # CS - IPC topicals
-    - CSMagazineStatic
     - NFMercenaryArchetypeStatic
     - NFMercenaryArchetypeMeleeStatic
   - type: BlueprintReceiver
     whitelist:
       tags:
       - NFBlueprintMercenaryTechfab
+      - NFBlueprintAdvanced
   - type: OreSiloClient
 
 - type: entity
   id: MercenaryTechFabHacked
   parent:
-  - NotContraband
+  - BaseC3Contraband
   - MercenaryTechFab
   - BaseHyperlathe
   - PunkHoloGraffitiOverlay # Prototype can be located at /Resources/Prototypes/_NF/Entities/Structures/Holographic/graffiti.yml
@@ -419,6 +423,7 @@
       tags:
       - NFBlueprintMercenaryTechfab
       - NFBlueprintNfsdTechfab
+      - NFBlueprintAdvanced
   - type: OreSiloClient
 
 - type: entity
@@ -437,8 +442,8 @@
   - type: LitOnPowered
   - type: ApcPowerReceiver
     powerLoad: 200
-  - type: Advertise
-    pack: CuddlyCritterAds
+  - type: DatasetVocalizer
+    dataset: CuddlyCritterAds
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -561,6 +566,7 @@
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
     - state: inserting
+      shader: unshaded
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
@@ -647,6 +653,22 @@
     - NFPirateClothing
 
 - type: entity
+  parent: OreProcessor
+  id: OreProcessorCivilian
+  name: civilian ore processor
+  description: A stand alone ore processor designed to operate independently of shuttle infrastructure. Time to live off the grid!
+  components:
+  - type: Sprite
+    sprite: _NF/Structures/Machines/civilian_ore_processor.rsi
+  - type: Machine
+    board: OreProcessorCivilianCircuitboard
+  - type: Lathe
+    materialUseMultiplier: 1.25
+    timeMultiplier: 1.5
+    staticPacks:
+    - CivilianOreSmelting
+
+- type: entity
   id: PirateTechFab
   parent: [ NFBlueprintReceiverBase, BaseLatheLube ]
   name: pirate techfab
@@ -672,3 +694,4 @@
     idleState: icon
     runningState: icon
   - type: OreSiloClient
+

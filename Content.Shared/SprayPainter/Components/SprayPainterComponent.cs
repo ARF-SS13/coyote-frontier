@@ -1,4 +1,3 @@
-
 using Content.Shared.Decals;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -106,12 +105,6 @@ public sealed partial class SprayPainterComponent : Component
     /// </summary>
     [DataField]
     public SoundSpecifier SoundSwitchDecalMode = new SoundPathSpecifier("/Audio/Machines/quickbeep.ogg", AudioParams.Default.WithVolume(1.5f));
-
-    /// <summary>
-    /// Whether the decal color picker is currently active.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public bool ColorPickerEnabled = false;
 }
 
 /// <summary>

@@ -3,12 +3,11 @@
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
     Margin="4"
     MinSize="50 50">
-    <BoxContainer Orientation="Vertical" SeparationOverride="4">
-        <GridContainer Columns="3">
-            <controls:ConfirmButton Name="StartRound" Text="{Loc administration-ui-round-tab-start-round}" />
-            <controls:ConfirmButton Name="EndRound" Text="{Loc administration-ui-round-tab-end-round}" />
-            <controls:ConfirmButton Name="RestartRound" Text="{Loc administration-ui-round-tab-restart-round}" />
-            <controls:ConfirmButton Name="RestartRoundNow" Text="{Loc administration-ui-round-tab-restart-round-now}" />
-        </GridContainer>
-    </BoxContainer>
+    <GridContainer
+        Columns="3">
+        <controls:ConfirmButton Name="StartRound" Text="{Loc administration-ui-round-tab-start-round}" />
+        <controls:ConfirmButton Name="EndRound" Text="{Loc administration-ui-round-tab-end-round}" />
+        <controls:ConfirmButton Name="RestartRound" Text="{Loc administration-ui-round-tab-restart-round}" />
+        <controls:ConfirmButton Name="RestartRoundNow" Text="{Loc administration-ui-round-tab-restart-round-now}" />
+    </GridContainer>
 </Control>

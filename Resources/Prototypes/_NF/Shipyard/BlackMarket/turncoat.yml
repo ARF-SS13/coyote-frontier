@@ -15,7 +15,6 @@
   price: 85000
   category: Medium
   group: BlackMarket
-  access: BlackMarket
   shuttlePath: /Maps/_NF/Shuttles/BlackMarket/turncoat.yml
   guidebookPage: Null
   class:
@@ -37,7 +36,6 @@
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
-#        - type: StationJobs
-#          availableJobs:
-#            NFPirate: [ 0, 0 ]
-#            Escort: [ 0, 0 ]
+        - type: StationJobs
+          availableJobs:
+            NFPirate: [ 0, 0 ]

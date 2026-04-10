@@ -54,10 +54,10 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: ContractorT1
-  price: 1000
+  price: 600
   storage:
     back:
-    - BoxTapeRecorder
+    - TapeRecorder
 
 #T2
 - type: loadout
@@ -232,11 +232,11 @@
     - Wristwatch
 
 - type: loadout
-  id: ContractorAACTablet
+  id: ContractorUrnMortuary
   price: 500
   storage:
     back:
-    - AACTablet
+    - UrnMortuary
 
 #T1
 - type: loadout
@@ -572,10 +572,3 @@
   storage:
     back:
     - RubberStampEngineer
-
-- type: loadout
-  id: ContractorClicker
-  price: 500
-  storage:
-    back:
-    - Clicker

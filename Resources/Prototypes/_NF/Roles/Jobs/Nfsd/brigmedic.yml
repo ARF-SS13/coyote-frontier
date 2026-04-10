@@ -4,18 +4,24 @@
   description: job-description-brigmedic-nf
   playTimeTracker: JobBrigmedic
   requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 43200 # 12 hours
-  - !type:DepartmentTimeRequirement
-    department: Security
-    time: 14400 # 4 hours
+    - !type:OverallPlaytimeRequirement
+      time: 43200 # 12 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 21600 # 6 hours
+  alternateRequirementSets:
+    longerPlaytimeLessSec:
+    - !type:OverallPlaytimeRequirement
+      time: 360000 # 100 hours
+    - !type:RoleTimeRequirement
+      role: JobSecurityGuard
+      time: 21600 # 6 hours as security guard
   startingGear: BrigmedicGear
   icon: JobIconBrigmedicNF
   supervisors: job-supervisors-bailiff
   weight: 125
   displayWeight: 35
   canBeAntag: false
-  consoleAdjustable: false
   access:
   - Brigmedic
   accessGroups:
@@ -26,12 +32,6 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
-  - !type:AddRpiJobModifierSpecial
-    modifiersToAdd:
-    - rpiJobModifierBrigMedic
-  - !type:AddComponentSpecial
-    components:
-    - type: IsNfsd
 
 - type: startingGear
   id: BrigmedicGear
@@ -39,11 +39,12 @@
     pocket1: NFWeaponPistolUniversalNfsdLessLethal
   storage:
     back:
-    - EncryptionKeyMedical
     - Flash
-    - CSMagazinePistol40Overpressure # Coyote NFMagazineHighCapacityPistol35Overpressure < CSMagazinePistol40Overpressure
-    - CSMagazinePistol40Rubber # Coyote NFMagazineHighCapacityPistol35Rubber < CSMagazinePistol40Rubber
-    - BaseSecurityUplinkRadioOfficer # Coyote added uplink to brigmedics and removed starting FUCs
+    - NFMagazineHighCapacityPistol35Overpressure
+    - NFMagazineHighCapacityPistol35Rubber
+    - FrontierUplinkCoin10
+  encryptionKeys:
+  - EncryptionKeyMedical
 
 - type: chameleonOutfit
   id: BrigmedicChameleonOutfit

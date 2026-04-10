@@ -35,6 +35,7 @@
     - BorgHandheldGPSBasic
     - HandHeldMassScannerBorg
     - BorgClock
+    - RadioHandheldNF
   - type: DroppableBorgModule
     moduleId: NFJetpack
     items:

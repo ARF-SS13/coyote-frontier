@@ -46,7 +46,6 @@
     damageContainers:
     - Inorganic
     - Silicon
-    - IPC # CS - Add IPC damage container
   - type: ItemSlots
     slots:
       cell_slot:

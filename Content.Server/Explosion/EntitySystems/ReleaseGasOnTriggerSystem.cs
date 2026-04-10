@@ -1,4 +1,4 @@
-using Content.Server.Atmos.EntitySystems;
+﻿using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Explosion.Components.OnTrigger;
 using Content.Shared.Explosion.EntitySystems;
 using Robust.Shared.Timing;

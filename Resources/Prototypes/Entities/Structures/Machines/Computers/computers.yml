@@ -156,7 +156,6 @@
   - type: GuideHelp
     guides:
     - ShuttleCraft
-  - type: NoSignalOnLink
 
 - type: entity
   parent: [BaseComputerShuttle, BaseShuttleIntercom] # Frontier - BaseShuttleIntercom
@@ -266,7 +265,7 @@
     stealGroup: CargoShuttleConsoleCircuitboard
 
 - type: entity
-  parent: [BaseComputerAiAccess, NotContraband]
+  parent: BaseComputerAiAccess
   id: ComputerIFF
   name: IFF computer
   description: Allows you to control the IFF characteristics of this vessel.
@@ -297,7 +296,7 @@
     board: ComputerIFFCircuitboard
 
 - type: entity
-  parent: [ComputerIFF, BaseC4Contraband]
+  parent: ComputerIFF
   id: ComputerIFFSyndicate
   name: IFF computer
   suffix: Syndicate
@@ -690,7 +689,7 @@
     title: comms-console-announcement-title-station
     global: true #SR WILL NOT BE IGNORED
   - type: DeviceNetwork
-    deviceNetId: Wireless # Frontier
+    deviceNetId: Wireless
     transmitFrequencyId: ShuttleTimer
   - type: ActivatableUI
     key: enum.CommunicationsConsoleUiKey.Key
@@ -710,7 +709,7 @@
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
 
-- type: entity # CS - added by fuzzy_fuzzy
+- type: entity
   parent: ComputerComms
   id: SyndicateComputerComms
   name: syndicate communications computer
@@ -742,39 +741,6 @@
   - type: PointLight
     radius: 1.5
     energy: 4.0
-    color: "#f71713"
-
-- type: entity
-  parent: ComputerComms
-  id: FreelancerComputerComms
-  name: Freelancer communications computer
-  description: A computer made to conveniently broadcast all your plans and shenanigans.
-  components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: comm_syndie
-    - map: ["computerLayerKeys"]
-      state: syndie_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
-  - type: AccessReader
-    access: [[ "Pirate" ]]
-  - type: CommunicationsConsole
-    title: comms-console-announcement-title-free
-    color: "#ff0000"
-    canShuttle: false
-    canAlert: false
-    global: true
-  - type: Computer
-    board: FreelancerCommsComputerCircuitboard
-  - type: PointLight
-    radius: 1.5
-    energy: 1.6
     color: "#f71713"
 
 - type: entity
@@ -901,7 +867,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: RadarConsole
-    maxRange: 256
+    maxRange: 256 # Frontier
     maxIffRange: 512 # Frontier
   - type: ActivatableUI
     key: enum.RadarConsoleUiKey.Key
@@ -922,7 +888,7 @@
   id: ComputerCargoOrders
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseComputerAiAccess] # Frontier: add BaseStructureDisableToolUse, BaseStructureIndestructible
   name: cargo request computer
-  description: Used to purchase supplies in from central command. # Frontier
+  description: Used to order supplies and approve requests.
   components:
   - type: Sprite
     layers:
@@ -940,7 +906,6 @@
     taxAccounts: # Frontier
       Frontier: 0.25 # Frontier
       Nfsd: 0.15 # Frontier
-    allowedGroups: [ "market" ]
     # removeLimitAccess: [ "Quartermaster" ] # Frontier
   # - type: ActiveRadio # Frontier
   #   channels: # Frontier
@@ -998,7 +963,7 @@
     account: Engineering
     announcementChannel: Engineering
     removeLimitAccess: [ "ChiefEngineer" ]
-    slipPrinter: true
+    mode: SendToPrimary
   - type: ActiveRadio
     channels:
     - Engineering
@@ -1032,7 +997,7 @@
     account: Medical
     announcementChannel: Medical
     removeLimitAccess: [ "ChiefMedicalOfficer" ]
-    slipPrinter: true
+    mode: SendToPrimary
   - type: ActiveRadio
     channels:
     - Medical
@@ -1066,7 +1031,7 @@
     account: Science
     announcementChannel: Science
     removeLimitAccess: [ "ResearchDirector" ]
-    slipPrinter: true
+    mode: SendToPrimary
   - type: ActiveRadio
     channels:
     - Science
@@ -1100,7 +1065,7 @@
     account: Security
     announcementChannel: Security
     removeLimitAccess: [ "HeadOfSecurity" ]
-    slipPrinter: true
+    mode: SendToPrimary
   - type: ActiveRadio
     channels:
     - Security
@@ -1134,7 +1099,7 @@
     account: Service
     announcementChannel: Service
     removeLimitAccess: [ "HeadOfPersonnel" ]
-    slipPrinter: true
+    mode: SendToPrimary
   - type: ActiveRadio
     channels:
     - Service
@@ -1316,8 +1281,8 @@
 - type: entity
   id: ComputerSalvageExpedition
   parent: BaseComputerAiAccess
-  name: expedition console # Frontier: salvage expeditions computer<expedition console
-  description: Used to go on expeditions, if you're tough enough. # Frontier: "accept salvage missions"<"go on expeditions"
+  name: salvage expeditions computer
+  description: Used to accept salvage missions, if you're tough enough.
   components:
     - type: Sprite
       layers:

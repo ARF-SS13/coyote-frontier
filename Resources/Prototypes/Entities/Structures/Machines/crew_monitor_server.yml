@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: CrewMonitoringServer
   parent: [ BaseMachinePowered, ConstructibleMachine ]
   name: crew monitoring server

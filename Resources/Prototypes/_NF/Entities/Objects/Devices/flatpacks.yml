@@ -31,7 +31,6 @@
     entity: EngineeringTechFab
   - type: StaticPrice
     price: 250
-    vendPrice: 85000
 
 - type: entity
   parent: BaseNFFlatpack
@@ -121,9 +120,6 @@
   components:
   - type: Flatpack
     entity: GeneratorRTG
-  - type: StaticPrice
-    price: 10000
-    vendPrice: 75000
 
 - type: entity
   parent: BaseNFFlatpack
@@ -210,7 +206,6 @@
     entity: Protolathe
   - type: StaticPrice
     price: 250
-    vendPrice: 60000
   - type: Sprite
     layers:
     - state: science_lathe
@@ -226,8 +221,6 @@
   - type: Sprite
     layers:
     - state: science_artifact_analyzer
-  - type: StaticPrice
-    vendPrice: 6250
 
 - type: entity
   parent: ProtolatheFlatpack
@@ -297,8 +290,6 @@
   components:
   - type: Flatpack
     entity: BlueprintLithograph
-  - type: StaticPrice
-    vendPrice: 6250
 
 - type: entity
   parent: ExosuitFabricatorFlatpack
@@ -309,7 +300,7 @@
   - type: Flatpack
     entity: MachineMaterialSilo
   - type: StaticPrice
-    price: 250
+    price: 150
 
 #region Service
 - type: entity
@@ -343,7 +334,6 @@
     entity: ServiceTechFab
   - type: StaticPrice
     price: 250
-    vendPrice: 85000
 
 - type: entity
   parent: UniformPrinterFlatpack
@@ -437,8 +427,8 @@
 - type: entity
   parent: UniformPrinterFlatpack
   id: ComputerWithdrawBankATMFlatpack
-  name: withdraw only atm flatpack
-  description: A flatpack used for constructing an atm. Best not to think about it.
+  name: withdraw-only bank ATM flatpack
+  description: A flatpack used for constructing an ATM. Best not to think about it.
   components:
   - type: Flatpack
     entity: ComputerWithdrawBankATM
@@ -463,7 +453,6 @@
     entity: MedicalTechFab
   - type: StaticPrice
     price: 250
-    vendPrice: 95000
   - type: Sprite
     layers:
     - state: medical_lathe
@@ -530,9 +519,6 @@
   components:
   - type: Flatpack
     entity: ChemistryHotplate
-  - type: StaticPrice
-    price: 250
-    vendPrice: 10000
 
 - type: entity
   parent: MedicalTechFabFlatpack
@@ -552,6 +538,18 @@
   components:
   - type: Flatpack
     entity: OreProcessor
+  - type: Sprite
+    layers:
+    - state: supply_lathe
+
+- type: entity
+  parent: BaseNFFlatpack
+  id: CivilianOreProcessorFlatpack
+  name: civilian ore processor flatpack
+  description: A flatpack used for constructing a civilian ore processor.
+  components:
+  - type: Flatpack
+    entity: OreProcessorCivilian
   - type: Sprite
     layers:
     - state: supply_lathe
@@ -578,8 +576,6 @@
   components:
   - type: Flatpack
     entity: SalvageTechfabNF
-  - type: StaticPrice
-    vendPrice: 85000
 
 - type: entity
   parent: OreProcessorFlatpack
@@ -629,8 +625,6 @@
   - type: Sprite
     layers:
     - state: mercenary
-  - type: StaticPrice
-    vendPrice: 70000
 
 - type: entity
   parent: AmmoTechFabFlatpack
@@ -642,7 +636,6 @@
     entity: MercenaryTechFab
   - type: StaticPrice
     price: 600
-    vendPrice: 85000
 
 - type: entity
   parent: AmmoTechFabFlatpack
@@ -710,7 +703,7 @@
     - state: medical_console
 
 - type: entity
-  parent: [BaseNFFlatpack, NotContraband]
+  parent: BaseNFFlatpack
   id: ComputerIFFFlatpack
   name: IFF computer flatpack
   description: A flatpack used for constructing a IFF computer.
@@ -719,7 +712,6 @@
     entity: ComputerIFF
   - type: StaticPrice
     price: 400
-    vendPrice: 60000 # ehehehehee
   - type: Sprite
     layers:
     - state: supply_gun
@@ -746,7 +738,6 @@
     entity: ResearchAndDevelopmentServer
   - type: StaticPrice
     price: 250
-    vendPrice: 21250
   - type: Sprite
     layers:
     - state: science_server
@@ -956,7 +947,7 @@
   description: A flatpack used for constructing a jukebox.
   components:
   - type: Flatpack
-    entity: Jukebox
+    entity: JukeboxEmpty
   - type: StaticPrice
     price: 250
 
@@ -971,35 +962,6 @@
     entity: NFVehicleHoverbikeKeys
   - type: StaticPrice
     price: 2000
-  - type: Sprite
-    layers:
-    - state: command_airlock
-
-- type: entity
-  parent: BaseNFFlatpack
-  id: HoverchairFlatpack
-  name: hoverchair flatpack
-  description: A folded up hoverchair, ready to carry around your lazy butt.
-  components:
-  - type: Flatpack
-    entity: VehicleHoverchair
-  - type: StaticPrice
-    price: 2000
-  - type: Sprite
-    layers:
-    - state: command_airlock
-
-- type: entity
-  parent: BaseNFFlatpack
-  id: WheelchairFlatpack
-  name: wheelchair flatpack
-  description: A folded up wheelchair to allow accessibility.
-  components:
-  - type: Flatpack
-    entity: VehicleWheelchair
-  - type: StaticPrice
-    price: 500 # Coyote: lets not be cruel for people that loose the roundstart wheelchair
-    vendPrice: 1000
   - type: Sprite
     layers:
     - state: command_airlock

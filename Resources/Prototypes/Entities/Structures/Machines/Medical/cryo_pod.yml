@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   parent: [BaseStructure, ConstructibleMachine] # Not a BaseMachinePowered since we don't want the anchorable component
   id: CryoPod
   name: cryo pod
@@ -87,14 +87,17 @@
         whitelist:
           components:
             - FitsInDispenser
+  # - type: ItemToggle # Frontier
+  - type: HealthAnalyzer
+    scanDelay: 0
   - type: UserInterface
     interfaces:
-      enum.CryoPodUiKey.Key:
-        type: CryoPodBoundUserInterface
+      enum.HealthAnalyzerUiKey.Key:
+        type: HealthAnalyzerBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
   - type: ActivatableUI
-    key: enum.CryoPodUiKey.Key
+    key: enum.HealthAnalyzerUiKey.Key
     requiresComplex: false
   - type: ActivatableUIRequiresPower
   - type: PointLight
@@ -105,21 +108,15 @@
   - type: EmptyOnMachineDeconstruct
     containers:
       - scanner-body
-  - type: SolutionContainerManager
-    solutions:
-      injectionBuffer:
-        maxVol: 50
   - type: CryoPod
   - type: CryoPodAir
   - type: ContainerTemperatureDamageThresholds
     coldDamageThreshold: 10
+  - type: Climbable  # Frontier
+    vaultable: false # Frontier
   - type: GuideHelp
     guides:
     - Cryogenics
-  # # Coyote: Lets cryo pods fuckin. print slips. why not
-  # - type: HealthAnalyzerPrinter
-  #   printTemplate: PaperWrittenMedicalMedtekPatientRecord
-  # # End Coyote
 
 - type: entity
   parent: BaseMachine

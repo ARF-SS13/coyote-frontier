@@ -11,14 +11,14 @@
   - NFWeaponHoloflareGun
   - NFMetalShield
   - Signaller
-  - ArmorPlateSteel # Mono
+  - PinpointerUniversalNF
 
 - type: latheRecipePack
   id: NFSalvageBoardsStatic
   recipes:
   - ShuttleGunKineticCircuitboard
   - NFScrapProcessorCircuitboard
-  - OreProcessorMachineCircuitboard
+  - OreProcessorCivilianCircuitboard
 
 - type: latheRecipePack
   id: NFSalvageArchetypeStatic
@@ -30,10 +30,8 @@
 - type: latheRecipePack
   id: NFSalvage
   recipes:
-  - MiningDrill
-  - NFWeaponPka
-  - NFWeaponPkaCannon
-  - WeaponGrapplingGun
+  - BluespaceAirTank
+  - SmallBluespaceAirTank
 
 - type: latheRecipePack
   id: NFSalvageTechfabEmag
@@ -45,5 +43,3 @@
     - NFAmmunitionBoxRifle30
 #       - GrenadeBlast
     - ClothingHeadHelmetCosmonaut
-    - BluespaceAirTank
-    - SmallBluespaceAirTank

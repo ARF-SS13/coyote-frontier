@@ -1,4 +1,4 @@
-﻿# Smite-like spell that you click on someone else to use
+# Smite-like spell that you click on someone else to use
 - type: entity
   abstract: true
   parent: BaseAction

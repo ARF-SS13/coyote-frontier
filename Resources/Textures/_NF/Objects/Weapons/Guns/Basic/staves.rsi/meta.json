@@ -190,7 +190,7 @@
       "license": "CC-BY-SA-3.0",
       "copyright": "Taken from GoonStation13 at commits https://github.com/goonstation/goonstation/commit/1cc0013f1fc2d57dab01f6a5cd66b6d88b229a03",
       "directions": 4
-    },
+    },	
     {
       "name": "fake",
       "version": 1,

@@ -55,7 +55,7 @@
   name: french garlic bread
   parent: FoodBreadBase
   id: FoodBreadGarlicBaguette
-  description: Garlic? Melted cheese on a baguette!? The only thing missing here is more even garlic.
+  description: Garlic? Melted cheese on a baguette!? The only thing missing here is more even garlic. 
   components:
   - type: FlavorProfile
     flavors:

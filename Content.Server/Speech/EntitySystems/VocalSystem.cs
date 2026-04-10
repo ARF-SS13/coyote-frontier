@@ -54,9 +54,7 @@ public sealed class VocalSystem : EntitySystem
 
     private void OnEmote(EntityUid uid, VocalComponent component, ref EmoteEvent args)
     {
-        // if (args.Handled || !args.Emote.Category.HasFlag(EmoteCategory.Vocal))
-        //     return;
-        if (args.Handled)
+        if (args.Handled || !args.Emote.Category.HasFlag(EmoteCategory.Vocal))
             return;
 
         // snowflake case for wilhelm scream easter egg
@@ -66,12 +64,11 @@ public sealed class VocalSystem : EntitySystem
             return;
         }
 
+        if (component.EmoteSounds is not { } sounds)
+            return;
+
         // just play regular sound based on emote proto
-        args.Handled = _chat.TryPlayEmoteSound(
-            uid,
-            component.EmoteSounds,
-            component.SupplementalSounds,
-            args.Emote);
+        args.Handled = _chat.TryPlayEmoteSound(uid, _proto.Index(sounds), args.Emote);
     }
 
     private void OnScreamAction(EntityUid uid, VocalComponent component, ScreamActionEvent args)
@@ -91,11 +88,10 @@ public sealed class VocalSystem : EntitySystem
             return true;
         }
 
-        return _chat.TryPlayEmoteSound(
-            uid,
-            component.EmoteSounds,
-            component.SupplementalSounds,
-            component.ScreamId);
+        if (component.EmoteSounds is not { } sounds)
+            return false;
+
+        return _chat.TryPlayEmoteSound(uid, _proto.Index(sounds), component.ScreamId);
     }
 
     private void LoadSounds(EntityUid uid, VocalComponent component, Sex? sex = null)
@@ -107,6 +103,10 @@ public sealed class VocalSystem : EntitySystem
 
         if (!component.Sounds.TryGetValue(sex.Value, out var protoId))
             return;
-        _proto.TryIndex(protoId, out component.EmoteSounds);
+
+        if (!_proto.HasIndex(protoId))
+            return;
+
+        component.EmoteSounds = protoId;
     }
 }

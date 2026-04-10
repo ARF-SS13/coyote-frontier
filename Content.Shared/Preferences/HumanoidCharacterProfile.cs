@@ -26,19 +26,10 @@ namespace Content.Shared.Preferences
     [Serializable, NetSerializable]
     public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     {
-
-        // private static readonly Regex RestrictedNameRegex = new(@"[a-zA-Z0-9!@#$%^&*()\-_=+\[\]{};:'"",.<>?/\\|`~]");
+        private static readonly Regex RestrictedNameRegex = new(@"[^A-Za-z0-9 '\-]");
         private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
-        public const int MaxNameLength = 32;
-        public const int MaxLoadoutNameLength = 32;
-        public const int MaxDescLength = 4000; //maximum discord message length, without nitro
-
-        public const int DefaultBalance = 50000; // Frontier's Default bank balance = 30000
-
-        //private readonly Dictionary<string, JobPriority> _jobPriorities; // Frontier: commented out during merge.
-        //private readonly List<string> _antagPreferences; // Frontier: commented out during merge.
-        //private readonly List<string> _traitPreferences; // Frontier: commented out during merge.
+        public const int DefaultBalance = 30000; // Frontier
 
         /// <summary>
         /// Job preferences for initial spawn.
@@ -87,9 +78,6 @@ namespace Content.Shared.Preferences
         public ProtoId<SpeciesPrototype> Species { get; set; } = SharedHumanoidAppearanceSystem.DefaultSpecies;
 
         [DataField]
-        public string Customspeciesname { get; set; } = string.Empty;
-
-        [DataField]
         public int Age { get; set; } = 18;
 
         [DataField]
@@ -100,12 +88,6 @@ namespace Content.Shared.Preferences
 
         [DataField] // Frontier: Bank balance
         public int BankBalance { get; private set; } = DefaultBalance; // Frontier: Bank balance
-
-        [DataField("height")]
-        public float Height { get; set; } = 1f;
-
-        [DataField("width")]
-        public float Width { get; set; } = 1f;
 
         /// <summary>
         /// <see cref="Appearance"/>
@@ -150,9 +132,6 @@ namespace Content.Shared.Preferences
             string name,
             string flavortext,
             string species,
-            string customspeciesname,
-            float height,
-            float width,
             int age,
             Sex sex,
             Gender gender,
@@ -168,9 +147,6 @@ namespace Content.Shared.Preferences
             Name = name;
             FlavorText = flavortext;
             Species = species;
-            Customspeciesname = customspeciesname;
-            Height = height;
-            Width = width;
             Age = age;
             Sex = sex;
             Gender = gender;
@@ -191,23 +167,8 @@ namespace Content.Shared.Preferences
             HashSet<ProtoId<AntagPrototype>> antagPreferences,
             HashSet<ProtoId<TraitPrototype>> traitPreferences,
             Dictionary<string, RoleLoadout> loadouts)
-            : this(other.Name,
-                other.FlavorText,
-                other.Species,
-                other.Customspeciesname,
-                other.Height,
-                other.Width,
-                other.Age,
-                other.Sex,
-                other.Gender,
-                other.BankBalance,
-                other.Appearance,
-                other.SpawnPriority,
-                jobPriorities,
-                other.PreferenceUnavailable,
-                antagPreferences,
-                traitPreferences,
-                loadouts)
+            : this(other.Name, other.FlavorText, other.Species, other.Age, other.Sex, other.Gender, other.BankBalance, other.Appearance, other.SpawnPriority,
+                jobPriorities, other.PreferenceUnavailable, antagPreferences, traitPreferences, loadouts)
         {
         }
 
@@ -216,9 +177,6 @@ namespace Content.Shared.Preferences
             : this(other.Name,
                 other.FlavorText,
                 other.Species,
-                other.Customspeciesname,
-                other.Height,
-                other.Width,
                 other.Age,
                 other.Sex,
                 other.Gender,
@@ -247,8 +205,10 @@ namespace Content.Shared.Preferences
         /// </summary>
         /// <param name="species">The species to use in this default profile. The default species is <see cref="SharedHumanoidAppearanceSystem.DefaultSpecies"/>.</param>
         /// <returns>Humanoid character profile with default settings.</returns>
-        public static HumanoidCharacterProfile DefaultWithSpecies(string species = SharedHumanoidAppearanceSystem.DefaultSpecies)
+        public static HumanoidCharacterProfile DefaultWithSpecies(string? species = null)
         {
+            species ??= SharedHumanoidAppearanceSystem.DefaultSpecies;
+
             return new()
             {
                 Species = species,
@@ -270,21 +230,19 @@ namespace Content.Shared.Preferences
             return RandomWithSpecies(species: species, balance: balance);
         }
 
-        public static HumanoidCharacterProfile RandomWithSpecies(string species = SharedHumanoidAppearanceSystem.DefaultSpecies, int balance = DefaultBalance)
+        public static HumanoidCharacterProfile RandomWithSpecies(string? species = null, int balance = DefaultBalance) // Frontier: add balance arg
         {
+            species ??= SharedHumanoidAppearanceSystem.DefaultSpecies;
+
             var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
             var random = IoCManager.Resolve<IRobustRandom>();
 
             var sex = Sex.Unsexed;
             var age = 18;
-            var height = 1f;
-            var width = 1f;
             if (prototypeManager.TryIndex<SpeciesPrototype>(species, out var speciesPrototype))
             {
                 sex = random.Pick(speciesPrototype.Sexes);
                 age = random.Next(speciesPrototype.MinAge, speciesPrototype.OldAge); // people don't look and keep making 119 year old characters with zero rp, cap it at middle aged
-                // height = random.NextFloat(speciesPrototype.MinHeight, speciesPrototype.MaxHeight);
-                // width = random.NextFloat(speciesPrototype.MinWidth, speciesPrototype.MaxWidth);
             }
 
             var gender = Gender.Epicene;
@@ -307,8 +265,6 @@ namespace Content.Shared.Preferences
                 Age = age,
                 Gender = gender,
                 Species = species,
-                Height = height,
-                Width = width,
                 Appearance = HumanoidCharacterAppearance.Random(species, sex),
             };
         }
@@ -350,19 +306,6 @@ namespace Content.Shared.Preferences
             return new(this) { Species = species };
         }
 
-        public HumanoidCharacterProfile WithHeight(float height)
-        {
-            return new(this) { Height = height };
-        }
-
-        public HumanoidCharacterProfile WithWidth(float width)
-        {
-            return new(this) { Width = width };
-        }
-        public HumanoidCharacterProfile WithCustomSpeciesName(string customspeciename)
-        {
-            return new(this) { Customspeciesname = customspeciename };
-        }
 
         public HumanoidCharacterProfile WithCharacterAppearance(HumanoidCharacterAppearance appearance)
         {
@@ -533,8 +476,6 @@ namespace Content.Shared.Preferences
             if (maybeOther is not HumanoidCharacterProfile other) return false;
             if (Name != other.Name) return false;
             if (Age != other.Age) return false;
-            if (Height != other.Height) return false;
-            if (Width != other.Width) return false;
             if (Sex != other.Sex) return false;
             if (Gender != other.Gender) return false;
             if (Species != other.Species) return false;
@@ -584,13 +525,14 @@ namespace Content.Shared.Preferences
             };
 
             string name;
+            var maxNameLength = configManager.GetCVar(CCVars.MaxNameLength);
             if (string.IsNullOrEmpty(Name))
             {
                 name = GetName(Species, gender);
             }
-            else if (Name.Length > MaxNameLength)
+            else if (Name.Length > maxNameLength)
             {
-                name = Name[..MaxNameLength];
+                name = Name[..maxNameLength];
             }
             else
             {
@@ -601,7 +543,15 @@ namespace Content.Shared.Preferences
 
             if (configManager.GetCVar(CCVars.RestrictedNames))
             {
-                name = ICNameRegexifier(name);
+                name = Regex.Replace(name, @"[^\u0041-\u005A,\u0061-\u007A,\u00C0-\u00D6,\u00D8-\u00F6,\u00F8-\u00FF,\u0100-\u017F, -]", string.Empty);
+                /*
+                 * 0041-005A  Basic Latin: Uppercase Latin Alphabet
+                 * 0061-007A  Basic Latin: Lowercase Latin Alphabet
+                 * 00C0-00D6  Latin-1 Supplement: Letters I
+                 * 00D8-00F6  Latin-1 Supplement: Letters II
+                 * 00F8-00FF  Latin-1 Supplement: Letters III
+                 * 0100-017F  Latin Extended A: European Latin
+                 */
             }
 
             if (configManager.GetCVar(CCVars.ICNameCase))
@@ -615,14 +565,11 @@ namespace Content.Shared.Preferences
                 name = GetName(Species, gender);
             }
 
-            var customspeciename = speciesPrototype.CustomName
-                ? FormattedMessage.RemoveMarkup(Customspeciesname ?? "")[..MaxNameLength]
-                : "";
-
             string flavortext;
-            if (FlavorText.Length > MaxDescLength)
+            var maxFlavorTextLength = configManager.GetCVar(CCVars.MaxFlavorTextLength);
+            if (FlavorText.Length > maxFlavorTextLength)
             {
-                flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText)[..MaxDescLength];
+                flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText)[..maxFlavorTextLength];
             }
             else
             {
@@ -637,14 +584,6 @@ namespace Content.Shared.Preferences
                 bankBalance = 0;
             }
             // End Frontier
-
-            var height = Height;
-            if (speciesPrototype != null)
-                height = Math.Clamp(Height, speciesPrototype.MinHeight, speciesPrototype.MaxHeight);
-
-            var width = Width;
-            if (speciesPrototype != null)
-                width = Math.Clamp(Width, speciesPrototype.MinWidth, speciesPrototype.MaxWidth);
 
             var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex);
 
@@ -695,8 +634,6 @@ namespace Content.Shared.Preferences
             Name = name;
             FlavorText = flavortext;
             Age = age;
-            Height = height;
-            Width = width;
             Sex = sex;
             Gender = gender;
             BankBalance = bankBalance;
@@ -736,17 +673,6 @@ namespace Content.Shared.Preferences
             {
                 _loadouts.Remove(value);
             }
-        }
-
-        public static string ICNameRegexifier(string name)
-        {
-            // The regex pattern that will delete any character that isnt part of this set:
-            // a-z, A-Z, 0-9, !@#$%^&*()-_=+[]{};:'",.<>?/\\|`~
-            Regex coolRegex = new(@"[^\a-zA-Z0-9!@#$%^&*()\-_=+\[\]{};:'"",.<>?/\\|`~]");
-            // Replace all characters that match the regex with an empty string
-            name = coolRegex.Replace(name, string.Empty);
-            name = name.Trim();
-            return name;
         }
 
         /// <summary>
@@ -805,7 +731,7 @@ namespace Content.Shared.Preferences
 
         public override bool Equals(object? obj)
         {
-            return ReferenceEquals(this, obj) || obj is HumanoidCharacterProfile other && MemberwiseEquals(other);
+            return ReferenceEquals(this, obj) || obj is HumanoidCharacterProfile other && Equals(other);
         }
 
         public override int GetHashCode()
@@ -818,8 +744,6 @@ namespace Content.Shared.Preferences
             hashCode.Add(Name);
             hashCode.Add(FlavorText);
             hashCode.Add(Species);
-            hashCode.Add(Height);
-            hashCode.Add(Width);
             hashCode.Add(Age);
             hashCode.Add((int)Sex);
             hashCode.Add((int)Gender);

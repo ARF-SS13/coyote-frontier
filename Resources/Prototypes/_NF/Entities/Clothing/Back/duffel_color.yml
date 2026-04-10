@@ -392,7 +392,7 @@
   parent: NFClothingDuffel
   id: ClothingBackpackDuffelTrauma
   name: trauma duffel
-  description: A duffelbag produced for an ERT specialist.
+  description: A duffelbag produced for emergency response specialists.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Back/Duffels/color.rsi
@@ -923,8 +923,10 @@
 
 #region wizard
 - type: entity
-  parent: # Coyote: C3 to nothing. Not contraband clothing. It's just a bag.
+  parent:
+  - BaseC3WizardContrabandUnredeemable
   - NFClothingDuffel
+  - ContrabandClothing
   id: NFClothingBackpackDuffelWizardBlue
   name: blue wizard duffel
   description: A robust duffelbag produced for a magic user favoring blue tones of color.

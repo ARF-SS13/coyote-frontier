@@ -75,7 +75,7 @@
   - type: PointLight
     enabled: false
     radius: 1.7
-    faloff: 3
+    falloff: 3
     softness: 5
     autoRot: true
   - type: Ringer
@@ -96,7 +96,6 @@
       - NewsReaderCartridge
       - BountyContractsCartridge # Frontier
       - AstroNavCartridge # Frontier
-      - NanoChatCartridge # DeltaV
     cartridgeSlot:
       priority: -1
       name: device-pda-slot-component-slot-name-cartridge
@@ -136,21 +135,17 @@
     proto: robot
   - type: Speech
     speechVerb: Robotic
-  # Frontier: extra components
-  - type: StaticPrice
-    price: 20
-  - type: CargoSellBlacklist
-  #- type: PirateBountyItem # Coyote: No.
-  #  id: Pda # Coyote: Ditto
-  - type: ToggleableGhostRole
-    wipeVerbText: pda-wipe-device-verb-text
-    wipeVerbPopup: pda-wiped-device
-    mindRoles: []
-  - type: ShipyardSellCondition
+  - type: StaticPrice # Frontier
+    price: 20 # Frontier: The card need to cost less then the PDA that comes with a card and a pen in it.
+  - type: CargoSellBlacklist # Frontier: Liltenhead moment
+  - type: PirateBountyItem
+    id: Pda
+  - type: ToggleableGhostRole # Frontier: Literally only for the wipe verb and nothing else.
+    wipeVerbText: pda-wipe-device-verb-text # Frontier
+    wipeVerbPopup: pda-wiped-device # Frontier
+    mindRoles: [] # Frontier: no default value here
+  - type: ShipyardSellCondition # Frontier: Teleport to shipyard console on sale
     preserveOnSale: true
-  - type: DeletionCensusExempt
-  # End Frontier: extra components
-  - type: BlipCartridge # Coyote: Blip
 
 - type: entity
   parent: BasePDA
@@ -185,17 +180,11 @@
     - BountyContractsCartridge # Frontier
     - AstroNavCartridge # Frontier
     - WantedListCartridge
-    - NanoChatCartridge # DeltaV
-  - type: BlipCartridge
-    defaultPreset: BlipPresetSecurity
 
 - type: entity
   parent: BasePDA
   id: BaseMedicalPDA
   abstract: true
-  components:
-  - type: BlipCartridge
-    defaultPreset: BlipPresetMedical
   # Frontier: cartridges moved to loadouts
   # components:
   # - type: CartridgeLoader
@@ -238,8 +227,6 @@
     accentVColor: "#949137"
   - type: Icon
     state: pda-interntech
-  - type: BlipCartridge
-    defaultPreset: BlipPresetEngineering
 
 - type: entity
   parent: BaseMedicalPDA
@@ -300,8 +287,6 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-internsci
-  - type: BlipCartridge
-    defaultPreset: BlipPresetScience
 
 - type: entity
   parent: BasePDA
@@ -528,8 +513,13 @@
     accentVColor: "#a23e3e"
   - type: Icon
     state: pda-qm
-  - type: BlipCartridge
-    defaultPreset: BlipPresetCommand
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - AstroNavCartridge
 
 - type: entity
   parent: BasePDA
@@ -548,8 +538,6 @@
     borderColor: "#e39751"
   - type: Icon
     state: pda-cargo
-  - type: BlipCartridge
-    defaultPreset: BlipPresetEngineering
 
 - type: entity
   parent: BasePDA
@@ -569,8 +557,6 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-miner
-  - type: BlipCartridge
-    defaultPreset: BlipPresetEngineering
   # Frontier: cartridges moved to loadouts
   # - type: CartridgeLoader
   #   uiKey: enum.PdaUiKey.Key
@@ -712,8 +698,6 @@
     borderColor: "#7C5D00"
   - type: Icon
     state: pda-captain
-  - type: BlipCartridge
-    defaultPreset: BlipPresetCommand
 
 - type: entity
   parent: BasePDA
@@ -739,8 +723,6 @@
     accentHColor: "#447987"
   - type: Icon
     state: pda-hop
-  - type: BlipCartridge
-    defaultPreset: BlipPresetCommand
 
 - type: entity
   parent: BasePDA
@@ -760,8 +742,6 @@
     accentHColor: "#447987"
   - type: Icon
     state: pda-ce
-  - type: BlipCartridge
-    defaultPreset: BlipPresetCommand
 
 - type: entity
   parent: BasePDA
@@ -781,8 +761,6 @@
     accentVColor: "#A32D26"
   - type: Icon
     state: pda-engineer
-  - type: BlipCartridge
-    defaultPreset: BlipPresetEngineering
 
 - type: entity
   parent: BaseMedicalPDA
@@ -803,8 +781,6 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-cmo
-  - type: BlipCartridge
-    defaultPreset: BlipPresetCommand
 
 - type: entity
   parent: BaseMedicalPDA
@@ -896,8 +872,6 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-rd
-  - type: BlipCartridge
-    defaultPreset: BlipPresetCommand
 
 - type: entity
   parent: BasePDA
@@ -917,8 +891,6 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-science
-  - type: BlipCartridge
-    defaultPreset: BlipPresetScience
 
 - type: entity
   parent: BaseSecurityPDA
@@ -946,9 +918,6 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - LogProbeCartridge
-    - NanoChatCartridge # DeltaV
-  - type: BlipCartridge
-    defaultPreset: BlipPresetCommand
 
 - type: entity
   parent: BaseSecurityPDA
@@ -997,6 +966,7 @@
     id: CentcomIDCard
     penSlot:
       startingItem: PenCentcom
+      priority: -1
       whitelist:
         tags:
         - Write
@@ -1020,9 +990,6 @@
       - WantedListCartridge
       - LogProbeCartridge
       - AstroNavCartridge
-      - NanoChatCartridge # DeltaV
-  - type: BlipCartridge
-    defaultPreset: BlipPresetCommand
 
 - type: entity
   parent: CentcomPDA
@@ -1050,12 +1017,9 @@
       - WantedListCartridge
       - MedTekCartridge
       - AstroNavCartridge
-      - NanoChatCartridge # DeltaV
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
-  - type: BlipCartridge
-    enabled: false # Frontier: Admin PDA does not have blips
 
 - type: entity
   parent: CentcomPDA
@@ -1088,8 +1052,8 @@
   - type: Instrument
     allowPercussion: false
     handheld: true
-    bank: 1
     program: 2
+    bank: 100 # Defined in space-station-14.sf2
 
 - type: entity
   parent: MusicianPDA
@@ -1120,8 +1084,6 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-atmos
-  - type: BlipCartridge
-    defaultPreset: BlipPresetEngineering
 
 - type: entity
   parent: BasePDA
@@ -1153,7 +1115,7 @@
     - DoorBumpOpener
 
 - type: entity
-  parent: [ BasePDA, BaseC1Contraband ] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContrabandNoValue
+  parent: [ BasePDA, BaseC3SyndicateContrabandNoValue ] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContrabandNoValue
   id: SyndiPDA
   name: syndicate PDA
   description: Ok, time to be a productive member of- oh cool I'm a bad guy time to kill people!
@@ -1173,11 +1135,8 @@
     uiKey: enum.PdaUiKey.Key
     preinstalled:
       - NotekeeperCartridge
-      - NanoChatCartridge # DeltaV
       - NanoTaskCartridge
       - AstroNavCartridge # Frontier
-  - type: BlipCartridge
-    defaultPreset: BlipPresetPirate
 
 - type: entity
   parent: BaseSecurityPDA
@@ -1211,7 +1170,6 @@
       - LogProbeCartridge
       - AstroNavCartridge
       - MailMetricsCartridge # Frontier
-      - NanoChatCartridge # DeltaV
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1382,7 +1340,6 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - LogProbeCartridge
-    - NanoChatCartridge # DeltaV
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1411,7 +1368,6 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - MedTekCartridge
-    - NanoChatCartridge # DeltaV
 
 - type: entity
   parent: ClownPDA
@@ -1458,8 +1414,6 @@
     accentVColor: "#CD6900"
   - type: Icon
     state: pda-seniorengineer
-  - type: BlipCartridge
-    defaultPreset: BlipPresetEngineering
 
 - type: entity
   parent: BasePDA
@@ -1480,8 +1434,6 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-seniorresearcher
-  - type: BlipCartridge
-    defaultPreset: BlipPresetScience
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1523,14 +1475,12 @@
     state: pda-seniorofficer
 
 - type: entity
-  parent: [ SyndiPDA, NotContraband ] # Frontier: BaseMajorContraband<BaseC3ContrabandNoValue # COYOTE: BaseC3ContrabandNoValue -> BaseC3MetaPirate
+  parent: [ BaseC3PirateContrabandNoValue, SyndiPDA ] # Frontier: BaseMajorContraband<BaseC3PirateContrabandNoValue
   id: PiratePDA
   name: pirate PDA
   description: Yargh!
   categories: [ HideSpawnMenu ] # Frontier
   components:
-  - type: Contraband
-    hideValues: true
   - type: Pda
     id: PirateIDCard
   - type: Appearance
@@ -1540,11 +1490,9 @@
        pda-pirate
   - type: Icon
     state: pda-pirate
-  - type: BlipCartridge
-    defaultPreset: BlipPresetPirate
 
 - type: entity
-  parent: [ BaseMedicalPDA, BaseC1Contraband ] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContrabandNoValue
+  parent: [ BaseMedicalPDA, BaseC3SyndicateContrabandNoValue ] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContrabandNoValue
   id: SyndiAgentPDA
   name: syndicate corpsman PDA
   description: For those days when healing normal syndicates aren't enough, try healing nuclear operatives instead!
@@ -1566,12 +1514,11 @@
       - NotekeeperCartridge
       - NanoTaskCartridge
       - MedTekCartridge
-      - NanoChatCartridge # DeltaV
 
 - type: entity
   parent: BasePDA
   id: ChameleonPDA
-  name: resident PDA # Frontier passenger<resident
+  name: contractor PDA # Frontier passenger<contractor
   description: Why isn't it gray?
   suffix: Chameleon
   components:
@@ -1622,8 +1569,6 @@
     borderColor: "#7F3300"
   - type: Icon
     state: pda-wizard
-  - type: BlipCartridge
-    defaultPreset: BlipPresetPirate
 
 - type: entity
   parent: ClearPDA

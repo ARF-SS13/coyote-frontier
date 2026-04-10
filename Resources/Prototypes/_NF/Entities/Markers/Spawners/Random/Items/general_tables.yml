@@ -358,13 +358,13 @@
   table: !type:GroupSelector
     children:
     - id: CrateFunATV
-      weight: 0.70 # Coyote: Change as we removed the id below.
+      weight: 0.69
     - id: CrateFunHoverbikeNF
       weight: 0.2
     - id: NFCrateFunSyndicateSegway
       weight: 0.1
-    #- id: CrateFunScurret # Coyote: Main proto commented, likely not desired.
-      #weight: 0.01
+    - id: CrateFunScurret
+      weight: 0.01
 
 # region Crates (Restock)
 - type: entityTable # Probably should be removed
@@ -533,8 +533,6 @@
       - id: VendingMachineRoboDrobe
       - id: VendingMachineGeneDrobe
       - id: VendingMachineViroDrobe
-      - id: VendingMachineArcadia # Coyote: Added to the clothes tables as it is no longer contra.
-      - id: VendingMachineClothingPunk # Coyote: Added to the clothes tables as it is no longer contra.
     - !type:NestedSelector
       tableId: TableDungeonLootGeneralVendomatsContraband
       weight: 0.05
@@ -554,7 +552,6 @@
       - id: BlockGameArcade
       - id: VendingMachineBooze
       - id: VendingMachineCigs
-      - id: VendingMachineBarista # Coyote: Added the monolith baristavend to the table.
       - id: VendingMachineCoffee
       - id: VendingMachineCola
       - id: VendingMachineColaBlack
@@ -594,8 +591,8 @@
   table: !type:GroupSelector
     children:
       - id: VendingMachineMagivend
-      #- id: VendingMachineArcadia # Coyote: No longer contraband.
-      #- id: VendingMachineClothingPunk # Coyote: No longer contraband.
+      - id: VendingMachineArcadia
+      - id: VendingMachineClothingPunk
       - id: VendingMachineBountyVendPunk
       - id: VendingMachineSyndieContraband
 
@@ -858,7 +855,6 @@
     - id: VendingMachineRestockNonLethalVend
     - id: VendingMachineRestockAutoTuneVend
     - id: VendingMachineRestockPottedPlantVend
-    - id: VendingMachineRestockBarista # Coyote: Since we added the barista vend, add the restock too!
 
 - type: entityTable
   id: TableDungeonLootGeneralCanisterBroken

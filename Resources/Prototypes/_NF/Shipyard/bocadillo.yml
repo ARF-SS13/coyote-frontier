@@ -13,7 +13,7 @@
   parent: BaseVessel
   name: NC Bocadillo
   description: A tiny food truck perfect for a solo chef. Better with a friend!
-  price: 25000 # 22709 0.05 23844.45
+  price: 25500 # 22709 0.05 23844.45
   category: Small
   group: Shipyard
   shuttlePath: /Maps/_NF/Shuttles/bocadillo.yml
@@ -21,7 +21,7 @@
   class:
   - Kitchen
   engine:
-  - Plasma
+  - Uranium
 
 - type: gameMap
   id: Bocadillo
@@ -39,7 +39,6 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            ContractorInterview: [ 2, 2 ]
-            CompanionInterview: [ 2, 2 ]
-            PilotInterview: [ 2, 2 ]
-            MercenaryInterview: [ 2, 2 ]
+            ContractorInterview: [ 0, 0 ]
+            PilotInterview: [ 0, 0 ]
+            MercenaryInterview: [ 0, 0 ]

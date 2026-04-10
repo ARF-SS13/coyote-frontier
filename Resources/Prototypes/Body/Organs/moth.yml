@@ -5,10 +5,10 @@
   components:
   - type: Stomach
     specialDigestible:
-      # Frontier: general moth digestion # Coyote edit, allows moths to once again eat ClothMade and Paper items
-      tags:
-      - ClothMade
-      - Paper
+      # Frontier: general moth digestion
+      # tags:
+      # - ClothMade
+      # - Paper
       # - Pill
       components:
       - MothFood
@@ -30,10 +30,3 @@
     groups:
       - id: Food
       - id: Drink
-      - id: Medicine
-      - id: Cryogenic # Frontier
-      - id: Poison
-      - id: Narcotic
-      - id: Alcohol
-      - id: Aphrodisiac # Coyote edit; Necessary to detect aphrodisiac injected solutions.
-      - id: AphrodisiacDrink # Coyote edit; Necessary to detect aphrodisiac injected solutions.

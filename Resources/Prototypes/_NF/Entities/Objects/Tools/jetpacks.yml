@@ -35,7 +35,7 @@
 #Empty pirate
 - type: entity
   id: JetpackPirate
-  parent: [BaseJetpack, BaseC1Contraband]
+  parent: [BaseJetpack, BaseC3PirateContraband]
   name: pirate jetpack
   suffix: Empty
   components:
@@ -45,11 +45,11 @@
     sprite: _NF/Objects/Tanks/Jetpacks/pirate.rsi
   - type: Clothing
     sprite: _NF/Objects/Tanks/Jetpacks/pirate.rsi
-#  - type: Tag
-#    tags:
-#      - DemagImmune
+  - type: Tag
+    tags:
+      - DemagImmune
   - type: Jetpack
-#    radarBlip: false
+    radarBlip: false
 
 #Filled pirate
 - type: entity

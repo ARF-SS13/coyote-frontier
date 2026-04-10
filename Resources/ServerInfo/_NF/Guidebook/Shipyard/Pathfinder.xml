@@ -2,6 +2,8 @@
   # PATHFINDER-CLASS EXPEDITION SHUTTLE
   <Box>
   <GuideEntityEmbed Entity="ClothingMaskGasExplorer"/>
+  <GuideEntityEmbed Entity="MechEmuCargo"/>
+  <GuideEntityEmbed Entity="CrateStorageRack"/>
   <GuideEntityEmbed Entity="MobRandomCargoCorpse"/>
   </Box>
   <Box>
@@ -28,6 +30,7 @@
   <GuideEntityEmbed Entity="ButtonFrameGrey" Caption="Power Down Thrusters"/>
   </Box>
   - For the basics of [bold]shuttle piloting[/bold], refer to [textlink="Piloting" link="Piloting"] and [textlink="Sector Topology" link="SectorTopology"/].
+  - For the basics of [bold]cargo hauling[/bold], refer to [textlink="Cargo Hauling" link="CargoHauling"].
   - For the basics of [bold]expedition diving[/bold], refer to [textlink="Expeditions" link="Expeditions"].
   - As a Captain of a Nanotrasen vessel, you have the authority to hire, fire, demote, or promote crew members at will, refer to [textlink="Hiring" link="Hiring"] for more information.
 

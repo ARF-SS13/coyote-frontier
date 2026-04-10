@@ -8,14 +8,20 @@
       time: 43200 # 12 hours
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 14400 # 4 hours
+      time: 21600 # 6 hours
+  alternateRequirementSets:
+    longerPlaytimeLessSec:
+    - !type:OverallPlaytimeRequirement
+      time: 360000 # 100 hours
+    - !type:RoleTimeRequirement
+      role: JobSecurityGuard
+      time: 21600 # 6 hours as security guard
   startingGear: DeputyGear
   icon: JobIconDeputy
   supervisors: job-supervisors-sergeant
   weight: 130
   displayWeight: 40
   canBeAntag: false
-  consoleAdjustable: false
   accessGroups:
   - GeneralNfsdAccess
   special:
@@ -24,12 +30,6 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift
-  - !type:AddRpiJobModifierSpecial
-    modifiersToAdd:
-    - rpiJobModifierDeputy
-  - !type:AddComponentSpecial
-    components:
-    - type: IsNfsd
 
 - type: startingGear
   id: DeputyGear
@@ -38,9 +38,9 @@
   storage:
     back:
     - Flash
-    - CSMagazinePistol40Overpressure # Coyote NFMagazineHighCapacityPistol35Overpressure < CSMagazinePistol40Overpressure
-    - CSMagazinePistol40Rubber # Coyote NFMagazineHighCapacityPistol35Rubber < CSMagazinePistol40Rubber
-    - BaseSecurityUplinkRadioOfficer # Coyote added uplink for deputies, removed their starting uplink coins
+    - NFMagazineHighCapacityPistol35Overpressure
+    - NFMagazineHighCapacityPistol35Rubber
+    - FrontierUplinkCoin10
 
 - type: chameleonOutfit
   id: DeputyChameleonOutfit

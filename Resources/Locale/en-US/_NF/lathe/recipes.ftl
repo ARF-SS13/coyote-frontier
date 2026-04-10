@@ -10,8 +10,6 @@ lathe-recipe-WeaponCaseLong-name = weapon case (empty)
 lathe-recipe-WeaponCaseHeavy-name = weapon case (heavy, empty)
 lathe-recipe-WeaponCaseShortAmmo-name = ammo case (small, empty)
 lathe-recipe-WeaponCaseShortExplosives-name = explosives case (small, empty)
-# Coyote
-lathe-recipe-WeaponCaseHeavyAmmo-name = ammo case (heavy, empty)
 
 # Cardboard
 lathe-recipe-NFHappyHonkMimeEmpty-name = happy honk meal (empty)
@@ -38,6 +36,7 @@ lathe-recipe-NFSheetPaperFromWood-name = paper (wood)
 lathe-recipe-NFSheetPaperFromCardboard-name = paper (cardboard)
 
 # Inflatables
+lathe-recipe-NFInflatableFloorStack1-name = inflatable floor
 lathe-recipe-NFInflatableWallStack1-name = inflatable wall
 lathe-recipe-NFInflatableWindowStack1-name = inflatable window
 lathe-recipe-NFInflatableDoorStack1-name = inflatable door
