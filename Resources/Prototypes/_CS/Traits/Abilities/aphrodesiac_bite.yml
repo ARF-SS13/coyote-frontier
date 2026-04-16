@@ -1,0 +1,23 @@
+- type: entity
+  id: ActionAphrodesiacBite
+  name: Aphrodesiac Bite
+  description: Inject a powerful aphrodesiac venom into someone.
+  components:
+  - type: Action
+    icon:
+      sprite: _CS/Traits/Abilities.rsi
+      state: aphrodesiac
+    itemIconStyle: BigAction
+    useDelay: 2
+  - type: TargetAction
+  - type: EntityTargetAction
+    event: !type:AphrodesiacBiteEvent
+
+- type: trait
+  id: AbilityAphrodesiacBite
+  name: trait-aphrodesiacbite-name
+  description: trait-aphrodesiacbite-desc
+  category: Quirks
+  cost: 0
+  components:
+    - type: AphrodesiacBite

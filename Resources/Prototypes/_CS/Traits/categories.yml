@@ -1,0 +1,27 @@
+- type: traitCategory
+  id: RPI
+  name: trait-category-rpi
+
+- type: traitCategory
+  id: Examine
+  name: trait-category-examine
+
+- type: traitCategory
+  id: Temperament
+  name: trait-category-temperament
+  maxTraitPoints: 2
+
+- type: traitCategory
+  id: BodyType
+  name: trait-category-bodytypes
+  maxTraitPoints: 2
+
+- type: traitCategory
+  id: Scents
+  name: trait-category-scents
+  maxTraitPoints: 2
+
+- type: traitCategory
+  id: ScentsNSFW
+  name: trait-category-scents-nsfw
+  maxTraitPoints: 2
