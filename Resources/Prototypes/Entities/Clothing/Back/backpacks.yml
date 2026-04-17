@@ -317,7 +317,7 @@
         shader: unshaded # Frontier
     # equippedPrefix: holding # Frontier
   - type: Item
-    size: Ginormous
+    size: Humungous # Coyote: Ginormous -> Humungous
     inhandVisuals: # Frontier
       left: # Frontier
       - state: inhand-left # Frontier
@@ -328,9 +328,9 @@
       - state: inhand-right-unlit # Frontier
         shader: unshaded # Frontier
   - type: Storage
-    maxItemSize: Huge
+    maxItemSize: Ginormous # Coyote: Huge -> Humungous
     grid:
-    - 0,0,7,7 # Frontier: Was 0,0,19,9
+    - 0,0,19,9 # Frontier: Was 0,0,19,9 ## Coyote: Revert this nerf
 
 - type: entity
   parent: NFClothingBackpack # Frontier: ClothingBackpack<NFClothingBackpackClown

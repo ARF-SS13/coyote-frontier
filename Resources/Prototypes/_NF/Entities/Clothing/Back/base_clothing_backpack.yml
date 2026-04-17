@@ -3,7 +3,7 @@
   id: NFClothingBackpack
   components:
   - type: Storage
-    maxItemSize: Large
+    maxItemSize: Huge # Coyote: Large -> Huge
     defaultStorageOrientation: Vertical
     grid:
     - 0,0,6,3

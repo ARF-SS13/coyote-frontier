@@ -1,0 +1,6 @@
+- type: itemSize
+  id: Humungous
+  weight: 64
+  name: item-component-size-Humungous
+  defaultShape:
+  - 0,0,7,7
