@@ -164,8 +164,13 @@
   metabolisms:
     Poison:
       effects:
-      - !type:Electrocute
-        probability: 0.35
+        - !type:PopupMessage  # Coyote edit: this chem has been castrated until it is no longer a hard shutdown
+          type: Local
+          visualType: MediumCaution
+          messages:
+          - "generic-reagent-effect-static"
+          - "generic-reagent-effect-prickle"
+          probability: 0.2
 
 - type: reagent
   id: Razorium
@@ -341,21 +346,21 @@
         showInGuidebook: true
         force: true
         probability: 0.5
-      - !type:Polymorph
-        prototype: ArtifactLizard # Does the same thing as the original YML I made for this reagent.
-        conditions:
-        # - !type:OrganType # Frontier
-        #   type: Animal # Frontier
-        #   shouldHave: false # Frontier
-        - !type:NFIsHumanoid # Frontier
-        - !type:ReagentThreshold
-          min: 50
-      - !type:AdjustReagent
-        reagent: JuiceThatMakesYouWeh
-        amount: -20
-        conditions:
-        - !type:ReagentThreshold
-          min: 50
+#      - !type:Polymorph # Coyote edit: removed forced polymorph for the sake of prefs
+#        prototype: ArtifactLizard # Does the same thing as the original YML I made for this reagent.
+#        conditions:
+#        # - !type:OrganType # Frontier
+#        #   type: Animal # Frontier
+#        #   shouldHave: false # Frontier
+#        - !type:NFIsHumanoid # Frontier
+#        - !type:ReagentThreshold
+#          min: 50
+#      - !type:AdjustReagent
+#        reagent: JuiceThatMakesYouWeh
+#        amount: -20
+#        conditions:
+#        - !type:ReagentThreshold
+#          min: 50
 
 - type: reagent
   id: JuiceThatMakesYouHew
@@ -375,18 +380,18 @@
         showInGuidebook: true
         force: true
         probability: 0.5
-      - !type:Polymorph
-        prototype: ArtifactLizard
-        conditions:
-        # - !type:OrganType # Frontier
-        #   type: Animal # Frontier
-        #   shouldHave: false # Frontier
-        - !type:NFIsHumanoid # Frontier
-        - !type:ReagentThreshold
-          min: 50
-      - !type:AdjustReagent
-        reagent: JuiceThatMakesYouHew
-        amount: -20
-        conditions:
-        - !type:ReagentThreshold
-          min: 50
+#      - !type:Polymorph # Coyote edit: removed forced polymorph for the sake of prefs
+#        prototype: ArtifactLizard
+#        conditions:
+#        # - !type:OrganType # Frontier
+#        #   type: Animal # Frontier
+#        #   shouldHave: false # Frontier
+#        - !type:NFIsHumanoid # Frontier
+#        - !type:ReagentThreshold
+#          min: 50
+#      - !type:AdjustReagent
+#        reagent: JuiceThatMakesYouHew
+#        amount: -20
+#        conditions:
+#        - !type:ReagentThreshold
+#          min: 50

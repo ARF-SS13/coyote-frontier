@@ -1161,9 +1161,9 @@
     TeaPowder:
       amount: 1
     Water:
-      amount: 5
+      amount: 3
   products:
-    Tea: 6
+    Tea: 4
 
 - type: reaction
   id: TequilaSunrise

@@ -104,7 +104,7 @@
 - type: entity
   parent: BaseFoodCondimentPacket
   id: FoodCondimentPacketBbq
-  name: BBQ sauce
+  name: BBQ sauce packet
   description: Hand wipes not included.
   components:
   - type: SolutionContainerManager
@@ -124,7 +124,7 @@
 - type: entity
   parent: BaseFoodCondimentPacket
   id: FoodCondimentPacketCornoil
-  name: vegetable oil # Frontier: corn<vegetable
+  name: vegetable oil packet # Frontier: corn<vegetable
   description: Vegetable oil. A delicious oil used in cooking. Made from vegetables. # Frontier: corn<vegetable
   components:
   - type: SolutionContainerManager
@@ -144,7 +144,7 @@
 - type: entity
   parent: BaseFoodCondimentPacket
   id: FoodCondimentPacketColdsauce
-  name: coldsauce
+  name: coldsauce packet
   description: Coldsauce. Leaves the tongue numb in its passage.
   components:
   - type: SolutionContainerManager
@@ -164,7 +164,7 @@
 - type: entity
   parent: BaseFoodCondimentPacket
   id: FoodCondimentPacketHorseradish
-  name: horseradish sauce
+  name: horseradish sauce packet
   description: A packet of smelly horseradish sauce.
   components:
   - type: SolutionContainerManager
@@ -184,7 +184,7 @@
 - type: entity
   parent: BaseFoodCondimentPacket
   id: FoodCondimentPacketHotsauce
-  name: hotsauce
+  name: hotsauce packet
   description: You can almost TASTE the stomach ulcers now!
   components:
   - type: SolutionContainerManager
@@ -204,7 +204,7 @@
 - type: entity
   parent: BaseFoodCondimentPacket
   id: FoodCondimentPacketKetchup
-  name: ketchup
+  name: ketchup packet
   description: You feel more American already.
   components:
   - type: SolutionContainerManager
@@ -224,7 +224,7 @@
 - type: entity
   parent: BaseFoodCondimentPacket
   id: FoodCondimentPacketMustard
-  name: mustard
+  name: mustard packet
   description: A condiment made from the ground-up seeds of the Mustard plant.
   components:
   - type: SolutionContainerManager
@@ -243,7 +243,7 @@
 - type: entity
   parent: BaseFoodCondimentPacket
   id: FoodCondimentPacketPepper
-  name: black pepper
+  name: black pepper packet
   description: Often used to flavor food or make people sneeze.
   components:
   - type: SolutionContainerManager
@@ -262,7 +262,7 @@
 - type: entity
   parent: BaseFoodCondimentPacket
   id: FoodCondimentPacketSalt
-  name: salt
+  name: salt packet
   description: Salt. From space oceans, presumably.
   components:
   - type: SolutionContainerManager
@@ -290,7 +290,7 @@
 - type: entity
   parent: BaseFoodCondimentPacket
   id: FoodCondimentPacketSoy
-  name: soy sauce
+  name: soy sauce packet
   description: A salty soy-based flavoring.
   components:
   - type: SolutionContainerManager
@@ -309,7 +309,7 @@
 - type: entity
   parent: BaseFoodCondimentPacket
   id: FoodCondimentPacketSugar
-  name: sugar
+  name: sugar packet
   description: Tasty spacey sugar!
   components:
   - type: SolutionContainerManager
@@ -317,6 +317,272 @@
       food:
         reagents:
         - ReagentId: Sugar
+          Quantity: 10
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketBlackTea
+  name: black tea packet
+  description: Strong and invigorating morning tea. Add to 15u hot water.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: TeaPowder
+          Quantity: 5
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketGreenTea
+  name: green tea packet
+  description: Rich herbal tea. Add water, not ocean. Add to 15u hot water.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: GreenTeaPowder
+          Quantity: 5
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketChamomileTea
+  name: chamomile tea packet
+  description: Earthy and caffeine-free. Add to 15u hot water.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: ChamomileTeaPowder
+          Quantity: 5
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketBerryTea
+  name: berry tea packet
+  description: A sweet yet tart tea. Add to 15u hot water.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: BerryTeaPowder
+          Quantity: 5
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketFruitTea
+  name: fruit tea packet
+  description: Fruity and sweet. Add to 15u hot water.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: FruitTeaPowder
+          Quantity: 5
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketYorkshireTea
+  name: Yorkshire tea packet
+  description: A specialty blend of black tea, popular since Sol 1977. Add to 15u hot water.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: YorkshireTeaPowder
+          Quantity: 5
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketDecafBlackTea
+  name: decaf black tea packet
+  description: A bitter morning coffee, now without the morning part. Add to 15u hot water.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: DecafBlackTeaPowder
+          Quantity: 5
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketSyndicateTea
+  name: syndicate tea packet
+  description: A synthetic black tea used to keep Syndicate crewmen awake during long hours. Add to 15u hot water.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: SyndicateTeaPowder
+          Quantity: 5
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketCoffee
+  name: coffee packet
+  description: Simple strong beanwater. Add to 15u hot water.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: CoffeeGrounds
+          Quantity: 5
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketDecafCoffee
+  name: coffee packet
+  description: A dark roast with most of the caffeine cooked off. Add to 15u hot water.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: DecafCoffeePowder
+          Quantity: 5
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketHoney
+  name: honey packet
+  description: An age old and chemically complex sweetener. Add to 15u hot water.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: DecafCoffeePowder
+          Quantity: 10
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketCream
+  name: cream packet
+  description: For upgrading coffee and tea.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Cream
+          Quantity: 10
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketMilk
+  name: milk packet
+  description: It's like a bag of milk but smaller.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Milk
+          Quantity: 10
+  - type: Icon
+    state: packet-sugar
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 2
+    fillBaseName: packet-solid-
+
+- type: entity
+  parent: BaseFoodCondimentPacket
+  id: FoodCondimentPacketMilkSoy
+  name: soy milk packet
+  description: For adding additional bean to your beanwater.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: MilkSoy
           Quantity: 10
   - type: Icon
     state: packet-sugar

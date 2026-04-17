@@ -10,9 +10,9 @@
     GreenTeaPowder:
       amount: 1
     Water:
-      amount: 5
+      amount: 3
   products:
-    GreenTea: 6
+    GreenTea: 4
 
 - type: reaction
   id: ChamomileTea
@@ -21,9 +21,9 @@
     ChamomileTeaPowder:
       amount: 1
     Water:
-      amount: 5
+      amount: 3
   products:
-    ChamomileTea: 6
+    ChamomileTea: 4
 
 - type: reaction
   id: BerryTea
@@ -32,9 +32,9 @@
     BerryTeaPowder:
       amount: 1
     Water:
-      amount: 5
+      amount: 3
   products:
-    BerryTea: 6
+    BerryTea: 4
 
 - type: reaction
   id: FruitTea
@@ -43,9 +43,9 @@
     FruitTeaPowder:
       amount: 1
     Water:
-      amount: 5
+      amount: 3
   products:
-    FruitTea: 6
+    FruitTea: 4
 
 - type: reaction
   id: YorkshireTea
@@ -54,9 +54,9 @@
     YorkshireTeaPowder:
       amount: 1
     Water:
-      amount: 5
+      amount: 3
   products:
-    YorkshireTea: 6
+    YorkshireTea: 4
 
 - type: reaction
   id: DecafBlackTea
@@ -65,9 +65,9 @@
     DecafBlackTeaPowder:
       amount: 1
     Water:
-      amount: 5
+      amount: 3
   products:
-    DecafBlackTea: 6
+    DecafBlackTea: 4
 
 - type: reaction
   id: SyndicateTea
@@ -76,9 +76,9 @@
     SyndicateTeaPowder:
       amount: 1
     Water:
-      amount: 5
+      amount: 3
   products:
-    SyndicateTea: 6
+    SyndicateTea: 4
 
 - type: reaction
   id: DecafCoffee
@@ -87,6 +87,6 @@
     DecafCoffeePowder:
       amount: 1
     Water:
-      amount: 5
+      amount: 3
   products:
-    DecafCoffee: 6
+    DecafCoffee: 4

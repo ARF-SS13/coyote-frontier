@@ -56,19 +56,13 @@
   metabolisms:
     Poison:
       effects:
-      - !type:Emote
+      - !type:Emote # Coyote edit: removed to prevent instant knockouts. needs a longer, more controlled descent into drowsiness
         emote: Yawn
         showInChat: true
         probability: 0.1
-      - !type:MovespeedModifier
-        walkSpeedModifier: 0.65
-        sprintSpeedModifier: 0.65
-      - !type:GenericStatusEffect
-        key: Drowsiness
-        component: Drowsiness
-        time: 4
-        type: Add
-        refresh: false
+#      - !type:MovespeedModifier
+#        walkSpeedModifier: 0.65
+#        sprintSpeedModifier: 0.65
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
@@ -323,6 +317,7 @@
   color: "#6b0007"
   metabolisms:
     Poison:
+      metabolismRate: 3.00 # Coyote edit: brought to the standard of other rapid effect poisons and acids. high potency but high volume need
       effects:
       - !type:HealthChange
         damage:
@@ -557,7 +552,7 @@
           types:
             Poison: 0.06
 
-- type: reagent
+- type: reagent  # Coyote edit: this chem has been castrated until it is no longer a hard shutdown
   id: Pax
   name: reagent-name-pax
   group: Narcotics
@@ -567,11 +562,14 @@
   metabolisms:
     Poison:
       effects:
-      - !type:GenericStatusEffect
-        key: Pacified
-        component: Pacified
-        type: Add
-        time: 4
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages:
+        - "generic-reagent-effect-peaceful"
+        - "generic-reagent-effect-harmless"
+        - "generic-reagent-effect-harmony"
+        probability: 0.2
 
 - type: reagent
   id: Honk
@@ -668,7 +666,12 @@
   metabolisms:
     Poison:
       effects:
-      - !type:Electrocute
+      - !type:PopupMessage  # Coyote edit: this chem has been castrated until it is no longer a hard shutdown
+        type: Local
+        visualType: MediumCaution
+        messages:
+        - "generic-reagent-effect-static"
+        - "generic-reagent-effect-prickle"
         probability: 0.8
 
 - type: reagent
