@@ -7,7 +7,7 @@ namespace Content.Shared._CS.RadioNoises;
 /// Prototype for the sound pack that contains the static noise.
 /// </summary>
 [Prototype("RadioStatic")]
-public sealed class RadioStaticPrototype : IPrototype
+public sealed partial class RadioStaticPrototype : IPrototype
 {
     /// <summary>
     /// The ID of the sound pack.

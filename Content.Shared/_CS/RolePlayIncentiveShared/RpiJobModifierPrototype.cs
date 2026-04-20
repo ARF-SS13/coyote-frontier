@@ -12,7 +12,7 @@ public sealed partial class RpiJobModifierPrototype : IPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; private set; } = default!;
 
     /// <summary>
     /// The multiplier applied to the role's RPI.

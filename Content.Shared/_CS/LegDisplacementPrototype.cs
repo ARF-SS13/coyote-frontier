@@ -11,7 +11,7 @@ public sealed partial class LegDisplacementPrototype : IPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; private set; } = default!;
 
     [DataField]
     public Dictionary<string, DisplacementData> Displacements = new();

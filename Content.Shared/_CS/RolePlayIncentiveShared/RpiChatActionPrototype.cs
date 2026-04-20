@@ -10,7 +10,7 @@ public sealed partial class RpiChatActionPrototype : IPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; private set; } = default!;
 
     /// <summary>
     /// The category this action falls under.

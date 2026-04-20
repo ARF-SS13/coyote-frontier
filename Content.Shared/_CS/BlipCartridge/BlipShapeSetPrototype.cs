@@ -11,7 +11,7 @@ public sealed partial class BlipShapeSetPrototype : IPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; private set; } = default!;
 
     /// <summary>
     /// The name of the blip shape set.

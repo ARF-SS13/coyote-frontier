@@ -267,12 +267,6 @@ dotnet_naming_rule.types_and_namespaces_rule.severity = warning
 dotnet_naming_rule.types_and_namespaces_rule.style = upper_camel_case_style
 dotnet_naming_rule.types_and_namespaces_rule.symbols = types_and_namespaces_symbols
 
-# Frontier: ignore underscore-prefixed namespaces
-dotnet_naming_rule.namespaces_rule.severity = none
-dotnet_naming_rule.namespaces_rule.style = upper_camel_case_style
-dotnet_naming_rule.namespaces_rule.symbols = namespaces_symbols
-# End Frontier: ignore underscore-prefixed namespaces
-
 dotnet_naming_rule.type_parameters_rule.severity = warning
 dotnet_naming_rule.type_parameters_rule.style = t_upper_camel_case_style
 dotnet_naming_rule.type_parameters_rule.symbols = type_parameters_symbols
@@ -339,13 +333,8 @@ dotnet_naming_symbols.static_readonly_symbols.applicable_accessibilities = publi
 dotnet_naming_symbols.static_readonly_symbols.applicable_kinds = field
 dotnet_naming_symbols.static_readonly_symbols.required_modifiers = static, readonly
 
-# Frontier: ignore underscore-prefixed namespaces
 dotnet_naming_symbols.types_and_namespaces_symbols.applicable_accessibilities = *
-dotnet_naming_symbols.types_and_namespaces_symbols.applicable_kinds = class, struct, enum, delegate
-
-dotnet_naming_symbols.namespace_symbols.applicable_accessibilities = *
-dotnet_naming_symbols.namespace_symbols.applicable_kinds = namespace
-# End Frontier: ignore underscore-prefixed namespaces
+dotnet_naming_symbols.types_and_namespaces_symbols.applicable_kinds = namespace, class, struct, enum, delegate
 
 dotnet_naming_symbols.type_parameters_symbols.applicable_accessibilities = *
 dotnet_naming_symbols.type_parameters_symbols.applicable_kinds = type_parameter
@@ -362,7 +351,7 @@ resharper_csharp_qualified_using_at_nested_scope = false
 resharper_csharp_prefer_qualified_reference = false
 resharper_csharp_allow_alias = false
 
-[*.{csproj,xml,yml,yaml,dll.config,msbuildproj,targets,props}]
+[*.{csproj,xml,yml,yaml,dll.config,msbuildproj,targets,props,slnx}]
 indent_size = 2
 
 [nuget.config]

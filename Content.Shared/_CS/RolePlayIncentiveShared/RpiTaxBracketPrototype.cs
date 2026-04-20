@@ -11,7 +11,7 @@ public sealed partial class RpiTaxBracketPrototype : IPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; private set; } = default!;
 
     /// <summary>
     /// This bracket applies to you if you have less than this amount of $$$

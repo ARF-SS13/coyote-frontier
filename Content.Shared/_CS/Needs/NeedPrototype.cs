@@ -12,7 +12,7 @@ public sealed partial class NeedPrototype : IPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; private set; } = default!;
 
     #region General Info
     /// <summary>

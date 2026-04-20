@@ -7,7 +7,6 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Serilog;
 
 
 namespace Content.Client._Floof.Examine;

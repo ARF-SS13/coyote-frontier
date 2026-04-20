@@ -1,120 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <!-- Work around https://github.com/dotnet/project-system/issues/4314 -->
-    <TargetFramework>$(TargetFramework)</TargetFramework>
-    <LangVersion>12</LangVersion>
-    <IsPackable>false</IsPackable>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>..\bin\Content.Server\</OutputPath>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <OutputType Condition="'$(FullRelease)' != 'True'">Exe</OutputType>
     <NoWarn>1998</NoWarn>
+    <!-- CS: Remove RA0032 errors -->
     <WarningsAsErrors>nullable</WarningsAsErrors>
-    <Nullable>enable</Nullable>
     <ServerGarbageCollection>true</ServerGarbageCollection>
   </PropertyGroup>
+  <Import Project="../MSBuild/Content.props" />
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" PrivateAssets="All" />
     <PackageReference Include="NetCord" />
+    <PackageReference Include="prometheus-net" />
+    <PackageReference Include="Microsoft.Extensions.ObjectPool" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Content.Packaging\Content.Packaging.csproj" />
     <ProjectReference Include="..\Content.Server.Database\Content.Server.Database.csproj" />
     <ProjectReference Include="..\Content.Shared.Database\Content.Shared.Database.csproj" />
-    <ProjectReference Include="..\RobustToolbox\Lidgren.Network\Lidgren.Network.csproj" />
-    <ProjectReference Include="..\RobustToolbox\Robust.Shared.Maths\Robust.Shared.Maths.csproj" />
-    <ProjectReference Include="..\RobustToolbox\Robust.Shared\Robust.Shared.csproj" />
-    <ProjectReference Include="..\RobustToolbox\Robust.Server\Robust.Server.csproj" />
     <ProjectReference Include="..\Content.Shared\Content.Shared.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="EntityEffects\Effects\Ignite.cs" />
-    <Compile Remove="EntityEffects\EffectConditions\ReagentThreshold.cs" />
-    <Compile Remove="EntityEffects\Effects\ChemVomit.cs" />
-    <Compile Remove="EntityEffects\EffectConditions\SolutionTemperature.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantAdjustToxins.cs" />
-    <Compile Remove="EntityEffects\EffectConditions\TotalDamage.cs" />
-    <Compile Remove="EntityEffects\Effects\ModifyLungGas.cs" />
-    <Compile Remove="EntityEffects\Effects\MovespeedModifier.cs" />
-    <Compile Remove="EntityEffects\Effects\ReduceRotting.cs" />
-    <Compile Remove="EntityEffects\Effects\WearableReaction.cs" />
-    <Compile Remove="EntityEffects\Effects\ModifyBleedAmount.cs" />
-    <Compile Remove="EntityEffects\Effects\ChemCleanBloodstream.cs" />
-    <Compile Remove="EntityEffects\Effects\Drunk.cs" />
-    <Compile Remove="EntityEffects\Effects\AdjustTemperature.cs" />
-    <Compile Remove="EntityEffects\Effects\WashCreamPieReaction.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantAdjustPests.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantCryoxadone.cs" />
-    <Compile Remove="EntityEffects\Effects\FlammableReaction.cs" />
-    <Compile Remove="EntityEffects\Effects\CreateGas.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantAdjustHealth.cs" />
-    <Compile Remove="EntityEffects\Effects\Paralyze.cs" />
-    <Compile Remove="EntityEffects\EffectConditions\OrganType.cs" />
-    <Compile Remove="EntityEffects\Effects\Slipify.cs" />
-    <Compile Remove="ParticleAccelerator\Components\ParticleAcceleratorPartComponent.cs" />
-    <Compile Remove="EntityEffects\Effects\EmpReactionEffect.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantAdjustWeeds.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantAdjustNutrition.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantAdjustPotency.cs" />
-    <Compile Remove="ParticleAccelerator\Components\ParticleAcceleratorFuelChamberComponent.cs" />
-    <Compile Remove="EntityEffects\EffectConditions\JobCondition.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantDiethylamine.cs" />
-    <Compile Remove="Bed\Components\HealOnBuckleComponent.cs" />
-    <Compile Remove="EntityEffects\Effects\StatusEffects\GenericStatusEffect.cs" />
-    <Compile Remove="Atmos\Piping\Unary\Components\GasThermoMachineComponent.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantAdjustWater.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\RobustHarvest.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantAffectGrowth.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantRestoreSeeds.cs" />
-    <Compile Remove="EntityEffects\Effects\SolutionTemperatureEffects.cs" />
-    <Compile Remove="EntityEffects\Effects\Glow.cs" />
-    <Compile Remove="EntityEffects\Effects\CreateEntityReactionEffect.cs" />
-    <Compile Remove="EntityEffects\EffectConditions\BodyTemperature.cs" />
-    <Compile Remove="EntityEffects\Effects\HealthChange.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMutateChemicals.cs" />
-    <Compile Remove="MoMMI\IMoMMILink.cs" />
-    <Compile Remove="Procedural\DungeonJob\DungeonJob.PostGenDungeonConnector.cs" />
-    <Compile Remove="EntityEffects\Effects\Oxygenate.cs" />
-    <Compile Remove="Damage\Components\DamageUserOnTriggerComponent.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantAdjustAttribute.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantAdjustMutationMod.cs" />
-    <Compile Remove="Procedural\DungeonJob\DungeonJob.DunGenFill.cs" />
-    <Compile Remove="EntityEffects\Effects\MakeSentient.cs" />
-    <Compile Remove="EntityEffects\EffectConditions\MobStateCondition.cs" />
-    <Compile Remove="ParticleAccelerator\EntitySystems\ParticleAcceleratorSystem.Parts.cs" />
-    <Compile Remove="ParticleAccelerator\Components\ParticleAcceleratorPowerBoxComponent.cs" />
-    <Compile Remove="Atmos\Components\AtmosPlaqueComponent.cs" />
-    <Compile Remove="EntityEffects\Effects\ModifyBloodLevel.cs" />
-    <Compile Remove="Bed\Components\HealOnBuckleHealing.cs" />
-    <Compile Remove="EntityEffects\Effects\SatiateHunger.cs" />
-    <Compile Remove="EntityEffects\Effects\PopupMessage.cs" />
-    <Compile Remove="EntityEffects\Effects\SatiateThirst.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantSpeciesChange.cs" />
-    <Compile Remove="EntityEffects\Effects\ArtifactUnlock.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMutateGases.cs" />
-    <Compile Remove="ParticleAccelerator\Components\ParticleAcceleratorEmitterComponent.cs" />
-    <Compile Remove="EntityEffects\Effects\Electrocute.cs" />
-    <Compile Remove="EntityEffects\Effects\AdjustReagent.cs" />
-    <Compile Remove="ParticleAccelerator\Components\ParticleAcceleratorEndCapComponent.cs" />
-    <Compile Remove="Procedural\DungeonJob\DungeonJob.PostGenWallMount.cs" />
-    <Compile Remove="EntityEffects\Effects\AreaReactionEffect.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantAdjustMutationLevel.cs" />
-    <Compile Remove="_NF\EntityEffects\Effects\NFIsHumanoid.cs" />
-    <Compile Remove="Atmos\Piping\Binary\Components\GasValveComponent.cs" />
-    <Compile Remove="EntityEffects\Effects\ExtinguishReaction.cs" />
-    <Compile Remove="EntityEffects\Effects\ExplosionReactionEffect.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantChangeStat.cs" />
-    <Compile Remove="EntityEffects\Effects\AddToSolutionReaction.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMetabolism\PlantDestroySeeds.cs" />
-    <Compile Remove="EntityEffects\Effects\PlantMutateHarvest.cs" />
-    <Compile Remove="EntityEffects\Effects\AdjustAlert.cs" />
-    <Compile Remove="Atmos\EntitySystems\AtmosPlaqueSystem.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EntityEffects\Effects\PlantMetabolism\" />
-    <Folder Include="EntityEffects\Effects\StatusEffects\" />
-    <Folder Include="MoMMI\" />
-    <Folder Include="_NF\EntityEffects\Effects\" />
-  </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
+
+  <Import Project="..\RobustToolbox\Imports\Lidgren.props" />
+  <Import Project="..\RobustToolbox\Imports\Server.props" />
+  <Import Project="..\RobustToolbox\Imports\Shared.props" />
+  <Import Project="..\RobustToolbox\Imports\Packaging.props" />
 </Project>

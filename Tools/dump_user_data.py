@@ -442,4 +442,3 @@ FROM (
 main()
 
 # "I'm surprised you managed to write this entire Python file without spamming the word 'sus' everywhere." - Remie
-

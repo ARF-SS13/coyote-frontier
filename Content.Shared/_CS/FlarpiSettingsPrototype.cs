@@ -11,7 +11,7 @@ public sealed partial class FlarpiSettingsPrototype : IPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; private set; } = default!;
 
     /// <summary>
     /// Name token for the flarpi
