@@ -271,10 +271,6 @@ marking-MEarsFox-m_ears_fox_ADJ_secondary = Fox Ears (Inside)
 marking-MEarsFox-m_ears_fox_ADJ_primary = Fox Ears (Outside)
 marking-MEarsFox = Fox Ears (M)
 
-marking-TailFox-tail_fox_primary = Fox Tail (Primary)
-marking-TailFox-tail_fox_secondary = Fox Tail (Secondary)
-marking-TailFox = Fox Tail
-
 marking-Tail9sune-m_tail_9sune_BEHIND_primary = Kitsune, 9 Tails (Primary)
 marking-Tail9sune-m_tail_9sune_BEHIND_secondary = Kitsune, 9 Tails (Secondary)
 marking-Tail9sune-m_tail_9sune_FRONT_primary = Kitsune, 9 Tails (Primary)
@@ -293,11 +289,11 @@ marking-TailAvian2-m_tail_avian2_FRONT_primary = Avian Tailfeathers, Birb (Prima
 marking-TailAvian2-m_tail_avian2_FRONT_secondary = Avian Tailfeathers, Birb (Secondary)
 marking-TailAvian2 = Avian Tailfeathers, Birb
 
-marking-TailBatl-m_tail_batl_BEHIND_primary = Bat Tail, Long (Primary)
-marking-TailBatl-m_tail_batl_BEHIND_secondary = Bat Tail, Long (Secondary)
-marking-TailBatl-m_tail_batl_FRONT_primary = Bat Tail, Long (Primary)
-marking-TailBatl-m_tail_batl_FRONT_secondary = Bat Tail, Long (Secondary)
-marking-TailBatl = Bat Tail, Long
+# marking-TailBatl-m_tail_batl_BEHIND_primary = Bat Tail, Long (Primary)
+# marking-TailBatl-m_tail_batl_BEHIND_secondary = Bat Tail, Long (Secondary)
+# marking-TailBatl-m_tail_batl_FRONT_primary = Bat Tail, Long (Primary)
+# marking-TailBatl-m_tail_batl_FRONT_secondary = Bat Tail, Long (Secondary)
+# marking-TailBatl = Bat Tail, Long
 
 marking-TailBats-m_tail_bats_BEHIND_primary = Bat Tail, Short (Primary)
 marking-TailBats-m_tail_bats_BEHIND_secondary = Bat Tail, Short (Secondary)

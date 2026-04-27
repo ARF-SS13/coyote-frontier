@@ -1,0 +1,135 @@
+# Hi Jess! This is an example of how to make a tail marking.
+# In this file we will show how to make two different kinds of tail markings:
+# 1. A simple tail marking that uses the old system (please dont use this)
+# 2. A more complex tail marking that uses the new system (recommended)
+# This process involves three files:
+# 1. The .yml file (this file) which defines the marking and its properties
+# 2. The .rsi file which contains the sprites for the marking
+# 3. The .ftl file which contains the text to show in the customization menu
+# You will need to make all three files for your marking to work properly.
+# This file will focus on the .yml file, but I will briefly explain the other two files as well.
+
+# First, the simple tail marking:
+# v- Defines that this is a marking
+- type: marking
+  # Unique ID for this marking, used internally, and by the FTL file
+  id: TailFox
+  # This defines which layer the marking will be applied to, by default.
+  # Must be something defined in Content.Shared/Humanoid/HumanoidVisualLayers.cs
+  # Ask Dan if you need help with this!
+  bodyPart: Tail
+  # This defines which category the marking belongs to, in the customization menu.
+  # Must be something defined in Content.Shared/Humanoid/Markings/MarkingCategories.cs
+  markingCategory: Tail
+  # This is the kinds of species that can use this marking.
+  # These are strings that are associated with species, you can look them up - kindAllowance:
+  # Their respective species YMLs, just search for BasicHumanlike or BasicFurry
+  # These by default will only allow humans and furries to use this marking.
+  # Which excludes resomi and vox, cus they have wierd sprites.
+  kindAllowance: [BasicHumanlike, BasicFurry]
+  # This is where the sprites for the marking are defined.
+  # Each one defines a layer of the marking, and each get a color slider attached to them.
+  sprites:
+  - sprite: Floof/Mobs/Customization/skyrattails.rsi
+    state: tail_fox_secondary
+  - sprite: Floof/Mobs/Customization/skyrattails.rsi
+    state: tail_fox_primary
+  # Note how the names are NOT set here! Check over in tail_example.ftl to see how to set them!
+  # see u there~
+
+# Now, the more complex tail marking. This one uses the new system, and is recommended.
+# However it is more complex, and requires more work. But, not that much more work!
+# The main difference is that the individual sprites are assigned more data in order to
+# define how they are inserted into the character's sprite. This allows for more complex
+# layering and color linking, so you can have tails that have parts that go behind the character,
+# and parts that go in front of the character, as well as parts that share colors.
+# If you are importing sprites from SS13, this is the method you want to use.
+
+# anyway lets get into it:
+# This is the same as before...
+- type: marking
+  id: TailBatl
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Vulpkanin, Rodentia, SlimePerson, Human, Harpy, IPC, Arachne, Felinid, Oni, Kitsune]
+  kindAllowance: [BasicHumanlike, BasicFurry]
+  # Here is where the new stuff starts!
+  # This is where we define which layer each of the sprites will be drawn on.
+  # The format here is:
+  # <sprite_state_name>: <layer_name>
+  # The layer names are defined in Content.Shared/Humanoid/HumanoidVisualLayers.cs
+  # Ask Dan if you need help with this! Every state MUST have a layer defined here.
+  # There are three layers that are commonly used for tails:
+  # TailBehind - for parts of the tail that go behind the character
+  # TailOversuit - for parts of the tail that go in front of the character, but under backpacks
+  # Tail - for parts of the tail that go over everything, including backpacks
+  # In this example, we have two parts of the tail that go behind the character,
+  # and two parts that go in front of the character, but under backpacks.
+  # Use Tail for tails that would reasonably go over backpacks, like uppy-tails or WINGS
+  layering:
+    m_tail_batl_BEHIND_primary: TailBehind
+    m_tail_batl_BEHIND_secondary: TailBehind
+    m_tail_batl_FRONT_primary: TailOversuit
+    m_tail_batl_FRONT_secondary: TailOversuit
+  # However, this causes an issue! Every sprite would get its own color slider,
+  # even the ones that are 'reasonably' supposed to be the same 'part' of that tail!
+  # To fix this, we use colorLinks. This allows us to have one state inherit the coloration
+  # of another state, and thus share a color slider.
+  # The format here is:
+  # <sprite_state_name_to_inherit>: <sprite_state_name_to_inherit_from>
+  # NOTE: the FRONT or BEHIND or whatever is NOT important to the system, they were just there
+  # because SS13 did it that way. My system doesnt really care what the state is named, just that they match up.
+  # So in this case...
+  # m_tail_batl_BEHIND_primary will use the color set by m_tail_batl_FRONT_primary,
+  # and only display the color slider for m_tail_batl_FRONT_primary.
+  # Same for the secondary color.
+  colorLinks:
+    m_tail_batl_BEHIND_primary: m_tail_batl_FRONT_primary
+    m_tail_batl_BEHIND_secondary: m_tail_batl_FRONT_secondary
+  # Finally, we define the sprites themselves. This is the same as before.
+  # All states need to be in the same RSI file, it makes things easier.
+  sprites:
+    - sprite: Floof/Mobs/Customization/skyrattails.rsi
+      state: m_tail_batl_FRONT_primary
+    - sprite: Floof/Mobs/Customization/skyrattails.rsi
+      state: m_tail_batl_FRONT_secondary
+    - sprite: Floof/Mobs/Customization/skyrattails.rsi
+      state: m_tail_batl_BEHIND_primary
+    - sprite: Floof/Mobs/Customization/skyrattails.rsi
+      state: m_tail_batl_BEHIND_secondary
+  # Again, names are not set here, check the .ftl file for that.
+  # see u there~
+
+# BUT DAN, you say, HOW DO I MAKE THE .RSI FILE???
+# Good question! Ask Fenny.
+# The RSI that he'll give you will need to be placed in the right folder.
+# The path for these examples is:
+# Resources/Textures/Floof/Mobs/Customization/skyrattails.rsi
+# However, when put into a YML file, the Resources/Textures/ part is omitted.
+# So in the YML file, it is just Floof/Mobs/Customization/skyrattails.rsi
+
+# However, since we are making things for COYOTE, you will need to put the RSI into the COYOTE folder.
+# So the path for COYOTE will be:
+# Resources/Textures/_CS/Mobs/Markings/YourFileNameHere.rsi
+# And in the YML file, it will be:
+# _CS/Mobs/Markings/YourFileNameHere.rsi
+# if the folder doesnt exist, make it!
+
+# BUT WHAT ABOUT WINGS???
+# Good news, they are done exactly the same way as tails!
+# There isnt a special bodyPart for wings, just use Tail.
+# There isnt even a special markingCategory for wings, just use Tail.
+# The layering options are the same as tails, TailBehind, TailOversuit, and Tail
+# yes this sucks, but it is what it is.
+
+
+# OKAY HOW DO I TEST THIS IN GAME???
+# Compile and run the game
+# When it loads and you get in, open the console (default key is ~)
+# Type in golobby to go to the lobby
+# Then, pick the markings you made from the customization menu as you would in game
+# If you did everything right, it should show up with the right colors and text!
+# Also be sure to spawn in with the markings applied, to make sure they layer with clothes and backpacks properly.
+# you can Start the game with startround to do this, and you can use golobby any time you want
+
+# DONT USE GOLOBBY ON THE LIVE SERVER IT DOES NOT HAVE A WARNING IT WILL END THE GAME IMMEDIATELY
