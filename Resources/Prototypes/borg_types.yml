@@ -240,3 +240,41 @@
   # Pet
   petSuccessString: petting-success-service-cyborg
   petFailureString: petting-failure-service-cyborg
+
+# Dogborgs
+# Engineering borg
+- type: borgType
+  id: engineeringd
+
+  # Description
+  dummyPrototype: DogBorgChassisEngineer
+
+  # Functional
+  extraModuleCount: 3
+  moduleWhitelist:
+    tags:
+    - BorgModuleGeneric
+    - BorgModuleEngineering
+
+  defaultModules:
+  - BorgModuleTool
+  - BorgModuleConstruction
+  - BorgModuleRCDShipyard # Frontier: RCD<RCDShipyard
+  - BorgModuleCable
+  - BorgModuleJetpack # Frontier
+
+  radioChannels:
+  - Engineering
+  - Science
+
+  # Visual
+  inventoryTemplateId: borgShort
+  spriteBodyState: engineeringd
+  spriteBodyMovementState: engineeringd_moving
+  spriteHasMindState: engineeringd_e
+  spriteNoMindState: engineeringd_e_r
+  spriteToggleLightState: engineeringd_l
+
+  # Pet
+  petSuccessString: petting-success-engineer-cyborg
+  petFailureString: petting-failure-engineer-cyborg
