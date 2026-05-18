@@ -14,7 +14,8 @@ public sealed partial class SalvageSystem
     [Dependency] private readonly WeatherSystem _weatherSystem = default!;
 
     /// <summary>
-    /// Interval between weather rolls (15 minutes). Two rolls total per expedition.
+    /// Interval between weather rolls (15 minutes).
+    /// Rolls continue while the expedition map exists.
     /// </summary>
     private static readonly TimeSpan WeatherRollInterval = TimeSpan.FromMinutes(15);
 
@@ -50,11 +51,15 @@ public sealed partial class SalvageSystem
     ];
 
     /// <summary>
-    /// Initialises weather for an expedition on first shuttle arrival.
-    /// Caches the biome, performs the initial roll, and schedules the second roll.
+    /// Initialises weather for an expedition map.
+    /// Caches the biome, performs the initial roll, and schedules recurring rolls.
     /// </summary>
     private void InitExpeditionWeather(EntityUid uid, SalvageExpeditionComponent comp)
     {
+        // Already initialized for this expedition map.
+        if (!string.IsNullOrEmpty(comp.BiomeId))
+            return;
+
         if (string.IsNullOrEmpty(comp.MissionParams.Difficulty))
             return;
 
@@ -66,10 +71,10 @@ public sealed partial class SalvageSystem
 
         var mapId = Comp<MapComponent>(uid).MapId;
 
-        // Roll 1: on expedition creation / first arrival.
+        // Roll immediately when map weather is initialized.
         TryRollExpeditionWeather(comp, mapId, initialSpawnRoll: true);
 
-        // Roll 2: exactly 10 minutes later.
+        // Schedule recurring rolls.
         comp.WeatherNextRoll = _timing.CurTime + WeatherRollInterval;
     }
 
@@ -96,10 +101,6 @@ public sealed partial class SalvageSystem
 
         while (query.MoveNext(out _, out var comp, out var mapComp))
         {
-            // Do not process weather until the expedition is running.
-            if (comp.Stage == ExpeditionStage.Added)
-                continue;
-
             // Advance staged weather phases.
             if (comp.WeatherPhaseSequence != null && now >= comp.WeatherPhaseEnd)
             {
@@ -118,18 +119,18 @@ public sealed partial class SalvageSystem
                 {
                     comp.WeatherPhaseSequence = null;
 
-                    // Only clear weather if the second roll isn't also firing this tick.
-                    // If it is, let the roll start new weather directly — avoids a blank 15s fade gap.
-                    var secondRollImminent = comp.WeatherNextRoll != TimeSpan.MaxValue && now >= comp.WeatherNextRoll;
-                    if (!secondRollImminent)
+                    // Only clear weather if a new roll isn't also firing this tick.
+                    // If it is, let the roll start new weather directly — avoids a blank fade gap.
+                    var rollImminent = comp.WeatherNextRoll != TimeSpan.MaxValue && now >= comp.WeatherNextRoll;
+                    if (!rollImminent)
                         _weatherSystem.SetWeather(mapComp.MapId, null, null);
                 }
             }
 
-            // Perform the second (and final) weather roll.
+            // Perform recurring weather rolls while the expedition map exists.
             if (comp.WeatherNextRoll != TimeSpan.MaxValue && now >= comp.WeatherNextRoll)
             {
-                comp.WeatherNextRoll = TimeSpan.MaxValue;
+                comp.WeatherNextRoll = now + WeatherRollInterval;
                 TryRollExpeditionWeather(comp, mapComp.MapId, initialSpawnRoll: false);
             }
         }

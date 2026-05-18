@@ -294,7 +294,6 @@ public sealed partial class SalvageSystem
         {
             component.Stage = ExpeditionStage.Running;
             Dirty(args.MapUid, component);
-            InitExpeditionWeather(args.MapUid, component);
         }
     }
 
@@ -489,6 +488,9 @@ public sealed partial class SalvageSystem
 
             if (activeShuttles.Count == 0)
             {
+                // _CS Start: clear weather/audio before expedition map deletion
+                StopExpeditionWeather(uid, comp);
+                // _CS End: clear weather/audio before expedition map deletion
                 QueueDel(uid);
                 continue;
             }

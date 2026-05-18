@@ -112,10 +112,17 @@ public sealed partial class SalvageSystem
         // Ensure any old shuttle pause cache for a reused map UID cannot affect a fresh expedition.
         ClearPausedShuttleCacheForMap(uid);
         component.SelectedSong = _audio.ResolveSound(component.Sound);
+        // _CS Start: map-lifecycle weather init
+        InitExpeditionWeather(uid, component);
+        // _CS End: map-lifecycle weather init
     }
 
     private void OnExpeditionShutdown(EntityUid uid, SalvageExpeditionComponent component, ComponentShutdown args)
     {
+        // _CS Start: ensure weather/audio cleanup on expedition shutdown
+        StopExpeditionWeather(uid, component);
+        // _CS End: ensure weather/audio cleanup on expedition shutdown
+
         // Drop shuttle pause cache when expedition map is shutting down.
         ClearPausedShuttleCacheForMap(uid);
 
@@ -437,6 +444,9 @@ public sealed partial class SalvageSystem
     // Send all ghosts (relevant for admins) back to the default map so they don't lose their stuff.
     private void OnMapTerminating(EntityUid uid, SalvageExpeditionComponent component, EntityTerminatingEvent ev)
     {
+        // Ensure weather stream is force-cleared before map teardown.
+        StopExpeditionWeather(uid, component);
+
         var ghosts = EntityQueryEnumerator<GhostComponent, TransformComponent>();
         var newCoords = new MapCoordinates(Vector2.Zero, _gameTicker.DefaultMap);
         while (ghosts.MoveNext(out var ghostUid, out _, out var xform))
