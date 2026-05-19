@@ -1,5 +1,6 @@
 // _CS Start: salvage objective nearby NPC spawn placement
 using System.Numerics;
+using Content.Server.Salvage.Expeditions;
 using Content.Shared.NPC.Components;
 using Content.Shared.Construction.EntitySystems;
 using Content.Shared.Physics;
@@ -117,6 +118,9 @@ public sealed class SalvageObjectiveNpcSpawnerSystem : EntitySystem
             var tile = candidates[index];
             candidates.RemoveAt(index);
 
+            if (IsBlockedByReservedLandingZone(uid, gridUid, grid, tile))
+                continue;
+
             if (!_anchorable.TileFree((gridUid, grid), tile, (int)CollisionGroup.MachineLayer, (int)CollisionGroup.MachineLayer))
                 continue;
 
@@ -126,6 +130,26 @@ public sealed class SalvageObjectiveNpcSpawnerSystem : EntitySystem
 
         coords = default;
         return false;
+    }
+
+    private bool IsBlockedByReservedLandingZone(EntityUid uid, EntityUid gridUid, MapGridComponent grid, Vector2i tile)
+    {
+        var xform = Transform(uid);
+        if (xform.MapUid is not { Valid: true } mapUid)
+            return false;
+
+        if (!TryComp<SalvageExpeditionComponent>(mapUid, out var expedition))
+            return false;
+
+        var tileSize = grid.TileSize;
+        var minCoords = new EntityCoordinates(gridUid, new Vector2(tile.X * tileSize, tile.Y * tileSize));
+        var maxCoords = new EntityCoordinates(gridUid, new Vector2((tile.X + 1) * tileSize, (tile.Y + 1) * tileSize));
+
+        var minMap = _xforms.ToMapCoordinates(minCoords).Position;
+        var maxMap = _xforms.ToMapCoordinates(maxCoords).Position;
+        var tileBounds = new Box2(minMap, maxMap);
+
+        return SalvageExpeditionReservation.IntersectsReservedLandingZone(expedition, tileBounds);
     }
     // _CS End: salvage objective nearby NPC spawn placement
 }
