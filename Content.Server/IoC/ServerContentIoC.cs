@@ -24,6 +24,9 @@ using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
+// _CS start: toy control IoC binding
+using Content.Server._CS.ToyControl;
+// _CS end: toy control IoC binding
 using Content.Server.Voting.Managers;
 using Content.Server.Worldgen.Tools;
 using Content.Shared.Administration.Logs;
@@ -44,6 +47,9 @@ namespace Content.Server.IoC
             IoCManager.Register<IChatSanitizationManager, ChatSanitizationManager>();
             // IoCManager.Register<IMoMMILink, MoMMILink>();
             IoCManager.Register<IServerConsentManager, ServerConsentManager>(); // Floofstation
+            // _CS start: toy control server manager registration
+            IoCManager.Register<IServerToyControlManager, ServerToyControlManager>();
+            // _CS end: toy control server manager registration
             IoCManager.Register<IServerPreferencesManager, ServerPreferencesManager>();
             IoCManager.Register<IServerDbManager, ServerDbManager>();
             IoCManager.Register<RecipeManager, RecipeManager>();

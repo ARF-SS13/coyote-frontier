@@ -18,4 +18,10 @@ public sealed class CSCVars
     /// </summary>
     public static readonly CVarDef<float> ConveyorCleanupIntervalSeconds =
     CVarDef.Create("conveyor.cleanup_interval_seconds", 51f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Websocket address of the local Intiface Central instance.
+    /// </summary>
+    public static readonly CVarDef<string> IntifaceAddress =
+        CVarDef.Create("toy_control.intiface_address", "ws://127.0.0.1:12345", CVar.CLIENT | CVar.ARCHIVE);
 }

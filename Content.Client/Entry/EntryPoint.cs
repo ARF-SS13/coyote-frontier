@@ -20,6 +20,9 @@ using Content.Client.Replay;
 using Content.Client.Screenshot;
 using Content.Client.Singularity;
 using Content.Client.Stylesheets;
+// _CS start: toy control manager wiring
+using Content.Client._CS.ToyControl;
+// _CS end: toy control manager wiring
 using Content.Client.UserInterface;
 using Content.Client.Viewport;
 using Content.Client.Voting;
@@ -59,6 +62,9 @@ namespace Content.Client.Entry
         [Dependency] private readonly ViewportManager _viewportManager = default!;
         [Dependency] private readonly IUserInterfaceManager _userInterfaceManager = default!;
         [Dependency] private readonly IClientConsentManager _clientConsentManager = default!; // Floofstation
+        // _CS start: initialize client toy control network manager
+        [Dependency] private readonly IClientToyControlManager _clientToyControlManager = default!;
+        // _CS end: initialize client toy control network manager
         [Dependency] private readonly IInputManager _inputManager = default!;
         [Dependency] private readonly IOverlayManager _overlayManager = default!;
         [Dependency] private readonly IChatManager _chatManager = default!;
@@ -171,6 +177,9 @@ namespace Content.Client.Entry
             _overlayManager.AddOverlay(new EmpBlastOverlay()); // Frontier
             _chatManager.Initialize();
             _clientConsentManager.Initialize(); // Floofstation
+            // _CS start: initialize toy control manager on client startup
+            _clientToyControlManager.Initialize();
+            // _CS end: initialize toy control manager on client startup
             _clientPreferencesManager.Initialize();
             _euiManager.Initialize();
             _voteManager.Initialize();

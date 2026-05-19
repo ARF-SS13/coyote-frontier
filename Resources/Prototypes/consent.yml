@@ -43,6 +43,10 @@
   id: Transformation
   priority: 9
 
+- type: consentToggle
+  id: RemoteToyControl
+  priority: 10
+
 
 #- type: consentToggle
 #  id: Cum

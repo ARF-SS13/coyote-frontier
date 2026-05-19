@@ -2,6 +2,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Consent; // Floofstation
 using Content.Server.Preferences.Managers;
+// _CS start: toy control server manager integration
+using Content.Server._CS.ToyControl;
+// _CS end: toy control server manager integration
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
@@ -20,6 +23,9 @@ public sealed class UserDbDataManager : IPostInjectInit
 {
     [Dependency] private readonly ILogManager _logManager = default!;
     [Dependency] private readonly IServerConsentManager _consent = default!; // Floofstation
+    // _CS start: server toy control disconnect handling
+    [Dependency] private readonly IServerToyControlManager _toyControl = default!;
+    // _CS end: server toy control disconnect handling
 
     private readonly Dictionary<NetUserId, UserData> _users = new();
     private readonly List<OnLoadPlayer> _onLoadPlayer = [];
@@ -53,6 +59,9 @@ public sealed class UserDbDataManager : IPostInjectInit
         data.Cancel.Dispose();
         
         _consent.OnClientDisconnected(session); // Floofstation
+        // _CS start: ensure toy control sessions are closed on disconnect
+        _toyControl.OnClientDisconnected(session);
+        // _CS end: ensure toy control sessions are closed on disconnect
 
         foreach (var onDisconnect in _onPlayerDisconnect)
         {

@@ -40,6 +40,7 @@ public sealed partial class SalvageSystem
         SalvageMissionParams? missionparams = null;
         if (data.Missions.TryGetValue(args.Index, out var stationMission) && stationMission.OpenContract)
         {
+            // _CS start: shared mission cooldown enforcement
             var sharedMissionIndex = stationMission.SharedMissionIndex != 0
                 ? stationMission.SharedMissionIndex
                 : args.Index;
@@ -54,11 +55,12 @@ public sealed partial class SalvageSystem
             if (board.ActiveMission != 0 && board.ActiveMission != sharedMissionIndex)
                 return;
 
-                // Frontier: server-side cooldown guard — board.Cooldown is the authoritative lock.
-                // Missions remain in board.Missions during cooldown (for display), so we must
-                // explicitly reject claims while the shared board is cooling down.
-                if (board.Cooldown)
-                    return;
+            // Frontier: server-side cooldown guard - board.Cooldown is the authoritative lock.
+            // Missions remain in board.Missions during cooldown (for display), so we must
+            // explicitly reject claims while the shared board is cooling down.
+            if (board.Cooldown)
+                return;
+            // _CS end: shared mission cooldown enforcement
         }
         else if (!data.Missions.TryGetValue(args.Index, out var localMission))
         {
@@ -72,22 +74,32 @@ public sealed partial class SalvageSystem
         if (missionparams == null)
             return;
 
-        // Frontier: prevent expeditions if there are too many out already.
+        // _CS start: active expedition cap by expedition instances
+        // Frontier: prevent starting too many expeditions at once.
+        // Count active expedition instances, not claimed stations (shared expeditions can have many participants).
         var activeExpeditionCount = 0;
-        var expeditionQuery = AllEntityQuery<SalvageExpeditionDataComponent, MetaDataComponent>();
-        while (expeditionQuery.MoveNext(out var expeditionUid, out _, out _))
+        var expeditionQuery = EntityQueryEnumerator<SalvageExpeditionComponent>();
+        while (expeditionQuery.MoveNext(out _, out var activeExpedition))
         {
-            if (TryComp<SalvageExpeditionDataComponent>(expeditionUid, out var expeditionData) && expeditionData.Claimed)
-                activeExpeditionCount++;
+            if (activeExpedition.Station is not { Valid: true })
+                continue;
+
+            activeExpeditionCount++;
         }
 
-        if (activeExpeditionCount >= _cfgManager.GetCVar(NFCCVars.SalvageExpeditionMaxActive))
+        // Joining an already-active shared mission does not create a new expedition instance.
+        var joiningExistingSharedMission = isOpenContract
+            && board.ActiveMission != 0
+            && board.ActiveMission == missionparams.Index;
+
+        if (!joiningExistingSharedMission && activeExpeditionCount >= _cfgManager.GetCVar(NFCCVars.SalvageExpeditionMaxActive))
         {
             PlayDenySound((uid, component));
             _popupSystem.PopupEntity(Loc.GetString("shuttle-ftl-too-many"), uid, PopupType.MediumCaution);
             UpdateConsoles((station.Value, data));
             return;
         }
+        // _CS end: active expedition cap by expedition instances
         // End Frontier
 
         // var cdUid = Spawn(CoordinatesDisk, Transform(uid).Coordinates); // Frontier: no disk-based FTL

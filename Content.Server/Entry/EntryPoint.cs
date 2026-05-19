@@ -25,6 +25,9 @@ using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
+// _CS start: toy control server manager wiring
+using Content.Server._CS.ToyControl;
+// _CS end: toy control server manager wiring
 using Content.Server.Voting.Managers;
 using Content.Shared.CCVar;
 using Content.Shared.Kitchen;
@@ -108,6 +111,9 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<IConnectionManager>().Initialize();
                 _dbManager.Init();
                 IoCManager.Resolve<IServerConsentManager>().Initialize(); // Floofstation
+                // _CS start: initialize toy control manager on server startup
+                IoCManager.Resolve<IServerToyControlManager>().Initialize();
+                // _CS end: initialize toy control manager on server startup
                 IoCManager.Resolve<IServerPreferencesManager>().Init();
                 IoCManager.Resolve<INodeGroupFactory>().Initialize();
                 IoCManager.Resolve<ContentNetworkResourceManager>().Initialize();

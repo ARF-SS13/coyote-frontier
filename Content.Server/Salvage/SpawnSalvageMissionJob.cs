@@ -134,18 +134,23 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
     protected override async Task<bool> Process()
     {
         // _CS: gracefully handle expedition failures
-        bool success = true;
-        string? errorStackTrace = null;
+        var success = true;
+        Exception? error = null;
         try
         {
-            await InternalProcess().ContinueWith((t) => { success = false; errorStackTrace = t.Exception?.InnerException?.StackTrace; }, TaskContinuationOptions.OnlyOnFaulted);
+            success = await InternalProcess();
+        }
+        catch (Exception e)
+        {
+            success = false;
+            error = e;
         }
         finally
         {
             ExpeditionSpawnCompleteEvent ev = new(Station, success, _missionParams.Index, mapUid, _economyId);
             _entManager.EventBus.RaiseEvent(EventSource.Local, ev);
-            if (errorStackTrace != null)
-                _sawmill.Error("salvage", $"Expedition generation failed with exception: {errorStackTrace}!");
+            if (error != null)
+                _sawmill.Error("salvage", $"Expedition generation failed with exception: {error}");
             if (!success)
             {
                 // Invalidate station, expedition cancellation will be handled by task handler
@@ -228,15 +233,15 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
             }
         }
 
-        _map.InitializeMap(mapId);
-        _map.SetPaused(mapUid, true);
-
-        // Setup expedition
+        // Setup expedition component BEFORE map init so that MapInitEvent handlers can access it
         var expedition = _entManager.AddComponent<SalvageExpeditionComponent>(mapUid);
         expedition.EconomyId = _economyId;
         expedition.Station = Station;
         expedition.EndTime = _timing.CurTime + mission.Duration;
         expedition.MissionParams = _missionParams;
+
+        _map.InitializeMap(mapId);
+        _map.SetPaused(mapUid, true);
 
         var landingPadRadius = 4; // _CS: 24<4 - using this as a margin (4-16), not a radius
         var minDungeonOffset = landingPadRadius + 4;
@@ -839,7 +844,6 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                     "MobBloodCultistAscended",
                 };
                 break;
-            // _CS End
         }
     }
 

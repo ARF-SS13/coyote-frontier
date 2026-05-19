@@ -63,6 +63,9 @@ consent-SizeManipulation-desc = Turn this on to allow yourself to be grown or sh
 consent-Transformation-name = Allow transformation
 consent-Transformation-desc = Turn this on to allow yourself to be transformed into other entities with transformation tools.
 
+consent-RemoteToyControl-name = Allow remote toy control
+consent-RemoteToyControl-desc = When on, other players can open a toy control session to send vibration commands to your connected Intiface toy.
+
 consent-Cum-name = Interact with cum
 consent-Cum-desc = Turn this on for cum to have any meaningful interaction with you.
 

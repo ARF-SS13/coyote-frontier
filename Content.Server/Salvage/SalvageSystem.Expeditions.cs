@@ -441,12 +441,10 @@ public sealed partial class SalvageSystem
         UpdateEconomyConsoles(board.EconomyId);
     }
 
+    // _CS start: do not force-clear expedition weather during map termination
     // Send all ghosts (relevant for admins) back to the default map so they don't lose their stuff.
     private void OnMapTerminating(EntityUid uid, SalvageExpeditionComponent component, EntityTerminatingEvent ev)
     {
-        // Ensure weather stream is force-cleared before map teardown.
-        StopExpeditionWeather(uid, component);
-
         var ghosts = EntityQueryEnumerator<GhostComponent, TransformComponent>();
         var newCoords = new MapCoordinates(Vector2.Zero, _gameTicker.DefaultMap);
         while (ghosts.MoveNext(out var ghostUid, out _, out var xform))

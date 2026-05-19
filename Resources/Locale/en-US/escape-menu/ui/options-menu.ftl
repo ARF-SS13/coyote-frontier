@@ -378,6 +378,7 @@ ui-options-speech-bubble-speaker-opacity = Speech bubble speaker opacity
 ui-options-speech-bubble-background-opacity = Speech bubble background opacity
 
 ui-options-censor-nudity = Censor character nudity
+ui-options-allow-remote-toy-control = Allow other players to open toy control sessions on me
 
 ## Admin menu
 

@@ -17,7 +17,7 @@
                 Text="Save"
                 Disabled="True" />
         </BoxContainer>
-        
+
         <TabContainer Name="ConsentTabContainer" Access="Public" VerticalExpand="True" HorizontalExpand="True">
             <!-- Character Specific Tab -->
             <BoxContainer Name="CharacterTab" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
