@@ -1,6 +1,6 @@
 using Content.Client.UserInterface.Controls;
 // _CS start: toy control consent integration
-using Robust.Client.ToyControl;
+using Content.Client._CS.ToyControl.Intiface;
 using Content.Shared._CS.CCVar;
 // _CS end: toy control consent integration
 using Content.Shared.Floofstation.FSCVars; // Flooftier

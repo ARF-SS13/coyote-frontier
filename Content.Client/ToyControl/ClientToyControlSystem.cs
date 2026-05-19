@@ -3,8 +3,8 @@ using Content.Client._CS.ToyControl.UI;
 using Content.Shared._CS.CCVar;
 using Content.Shared._CS.ToyControl;
 using Content.Shared.Verbs;
+using Content.Client._CS.ToyControl.Intiface;
 using Robust.Client.Player;
-using Robust.Client.ToyControl;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -149,7 +149,7 @@ public sealed class ClientToyControlSystem : EntitySystem
     {
         _intiface.SetServerAddress(_cfg.GetCVar(CSCVars.IntifaceAddress));
 
-        var payload = new Robust.Client.ToyControl.IntifaceCommandPayload
+        var payload = new IntifaceCommandPayload
         {
             DurationSeconds = command.DurationSeconds,
             Vibrate = command.Vibrate,
