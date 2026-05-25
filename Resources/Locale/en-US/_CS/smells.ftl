@@ -573,3 +573,15 @@ scent-hotdogwater-examine      = hotdogwater
 scent-hotdogwater-direct       = {CAPITALIZE($src)} smells like hotdog water.
 scent-hotdogwater-close        = You smell a trace of hotdog water.
 scent-hotdogwater-far          = You catch a faint whiff of hotdog water.
+
+# metal
+scent-metal-examine      = metal
+scent-metal-direct       = {CAPITALIZE($src)} smells like metal.
+scent-metal-close        = You smell a trace of metal.
+scent-metal-far          = You catch a faint whiff of metal.
+
+# pennies
+scent-pennies-examine      = pennies
+scent-pennies-direct       = {CAPITALIZE($src)} smells like pennies.
+scent-pennies-close        = You smell a trace of pennies.
+scent-pennies-far          = You catch a faint whiff of pennies.

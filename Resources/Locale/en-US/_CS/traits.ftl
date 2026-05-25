@@ -386,6 +386,12 @@ trait-scent-girlsmell-desc = You smell like girlsmell.
 trait-scent-spaceweed-name = Spaceweed
 trait-scent-spaceweed-desc = You smell like spaceweed.
 
+trait-scent-metal-name = Metal
+trait-scent-metal-desc = You smell like metal.
+
+trait-scent-pennies-name = Pennies
+trait-scent-pennies-desc = You smell like pennies.
+
 # BODYTYPES!
 trait-bodytype-buxom-name             = Buxom
 trait-bodytype-buxom-desc             = You are pretty buxom!
