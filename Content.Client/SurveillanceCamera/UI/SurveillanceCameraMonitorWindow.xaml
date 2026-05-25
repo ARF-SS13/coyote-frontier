@@ -14,12 +14,14 @@
             <Label Name="CameraStatus" />
         </BoxContainer>
         <Control VerticalExpand="True" HorizontalExpand="True" Margin="5 5 5 5" Name="CameraViewBox">
+            <!-- _CS Start: Reduce CCTV viewport minimum size to lower UI render target memory usage. -->
             <viewport:ScalingViewport Name="CameraView"
                                       VerticalExpand="True"
                                       HorizontalExpand="True"
-                                      MinSize="500 500"
+                                      MinSize="320 320"
                                       MouseFilter="Ignore" />
-            <TextureRect VerticalExpand="True" HorizontalExpand="True" MinSize="500 500" Name="CameraViewBackground" />
+            <TextureRect VerticalExpand="True" HorizontalExpand="True" MinSize="320 320" Name="CameraViewBackground" />
+            <!-- _CS End: Reduce CCTV viewport minimum size to lower UI render target memory usage. -->
         </Control>
     </BoxContainer>
 </DefaultWindow>

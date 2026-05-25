@@ -111,6 +111,10 @@ public sealed class SurveillanceCameraMonitorBoundUserInterface : BoundUserInter
     {
         base.Dispose(disposing);
 
+        // _CS Start: Ensure monitor switch timers are cancelled when the UI closes.
+        _surveillanceCameraMonitorSystem.RemoveTimer(Owner);
+        // _CS End: Ensure monitor switch timers are cancelled when the UI closes.
+
         if (_currentCamera != null)
         {
             _eyeLerpingSystem.RemoveEye(_currentCamera.Value);
@@ -119,7 +123,20 @@ public sealed class SurveillanceCameraMonitorBoundUserInterface : BoundUserInter
 
         if (disposing)
         {
-            _window?.Dispose();
+            // _CS Start: Unsubscribe handlers before dispose to prevent lingering delegate references.
+            if (_window != null)
+            {
+                _window.CameraSelected -= OnCameraSelected;
+                _window.SubnetOpened -= OnSubnetRequest;
+                _window.CameraRefresh -= OnCameraRefresh;
+                _window.SubnetRefresh -= OnSubnetRefresh;
+                _window.CameraSwitchTimer -= OnCameraSwitchTimer;
+                _window.CameraDisconnect -= OnCameraDisconnect;
+                _window.Dispose();
+            }
+
+            _window = null;
+            // _CS End: Unsubscribe handlers before dispose to prevent lingering delegate references.
         }
     }
 }

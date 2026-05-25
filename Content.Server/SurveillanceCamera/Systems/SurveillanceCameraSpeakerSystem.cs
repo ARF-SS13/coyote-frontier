@@ -20,7 +20,6 @@ namespace Content.Server.SurveillanceCamera;
 /// </summary>
 public sealed class SurveillanceCameraSpeakerSystem : EntitySystem
 {
-    // _CS Start: TV relay controls and MIDI synchronization
     private const float MinRelayVolumeDb = -20f;
     private const float RelayVolumeStepDb = 5f;
     private static readonly TimeSpan MidiRelayIdleTimeout = TimeSpan.FromSeconds(1.5f);
@@ -270,12 +269,33 @@ public sealed class SurveillanceCameraSpeakerSystem : EntitySystem
         // MIDI file playback already embeds ProgramChange events in the stream; this
         // handles the case where the musician picked a sound via the UI before playing.
         if (TryComp<InstrumentComponent>(args.Source, out var srcInstrument) &&
-            TryComp<InstrumentComponent>(uid, out var tvInstrument) &&
-            (tvInstrument.InstrumentProgram != srcInstrument.InstrumentProgram ||
-             tvInstrument.InstrumentBank != srcInstrument.InstrumentBank))
+            TryComp<InstrumentComponent>(uid, out var tvInstrument))
         {
-            _instrumentSystem.SetInstrumentProgram(uid, tvInstrument,
-                srcInstrument.InstrumentProgram, srcInstrument.InstrumentBank);
+            // _CS Start: Mirror source bank/program and per-channel filter state onto the relay instrument.
+            if (tvInstrument.InstrumentProgram != srcInstrument.InstrumentProgram ||
+                tvInstrument.InstrumentBank != srcInstrument.InstrumentBank)
+            {
+                _instrumentSystem.SetInstrumentProgram(uid, tvInstrument,
+                    srcInstrument.InstrumentProgram, srcInstrument.InstrumentBank);
+            }
+
+            // Keep relay channel filtering in lockstep with the source even when
+            // state changes occurred outside explicit filter toggle messages.
+            for (var channel = 0; channel < Robust.Shared.Audio.Midi.RobustMidiEvent.MaxChannels; channel++)
+            {
+                var sourceFiltered = srcInstrument.FilteredChannels[channel];
+                if (tvInstrument.FilteredChannels[channel] == sourceFiltered)
+                    continue;
+
+                _instrumentSystem.SetFilteredChannel(uid, tvInstrument, channel, sourceFiltered);
+
+                if (sourceFiltered)
+                {
+                    _instrumentSystem.RelayMidiEvents(uid,
+                        [Robust.Shared.Audio.Midi.RobustMidiEvent.AllNotesOff((byte) channel, 0)]);
+                }
+            }
+            // _CS End: Mirror source bank/program and per-channel filter state onto the relay instrument.
         }
 
         component.RelayMidiSources[args.Source] = _gameTiming.CurTime;
@@ -288,20 +308,25 @@ public sealed class SurveillanceCameraSpeakerSystem : EntitySystem
         if (!IsEntertainmentFilterSatisfied(uid, component))
             return;
 
-        if (!TryComp<InstrumentComponent>(args.Source, out var sourceInstrument) ||
-            !TryComp<InstrumentComponent>(uid, out var tvInstrument))
+        if (!TryComp<InstrumentComponent>(uid, out var tvInstrument))
             return;
 
         if (args.Channel < 0 || args.Channel >= Robust.Shared.Audio.Midi.RobustMidiEvent.MaxChannels)
             return;
 
+        // _CS Start: Apply explicit channel filter sync payloads and stop ringing notes when filtering on.
         // Only mutate when needed; this keeps the sync path cheap for rapid channel clicks.
-        if (tvInstrument.FilteredChannels[args.Channel] == sourceInstrument.FilteredChannels[args.Channel])
+        if (tvInstrument.FilteredChannels[args.Channel] == args.Filtered)
             return;
 
-        _instrumentSystem.SetFilteredChannel(uid, tvInstrument, args.Channel,
-            sourceInstrument.FilteredChannels[args.Channel]);
+        _instrumentSystem.SetFilteredChannel(uid, tvInstrument, args.Channel, args.Filtered);
+
+        if (args.Filtered)
+        {
+            _instrumentSystem.RelayMidiEvents(uid,
+                [Robust.Shared.Audio.Midi.RobustMidiEvent.AllNotesOff((byte) args.Channel, 0)]);
+        }
+        // _CS End: Apply explicit channel filter sync payloads and stop ringing notes when filtering on.
     }
 
-    // _CS End: TV relay controls and MIDI synchronization
 }

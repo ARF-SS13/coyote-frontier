@@ -140,19 +140,27 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
                         DisconnectFromSubnet(uid, subnetData);
                     }
 
-                    if (!component.KnownCameras.ContainsKey(address))
-                    {
-                        component.KnownCameras.Add(address, name);
-                    }
+                    // _CS Start: Only publish UI state when discovered camera data actually changes.
+                    var camerasChanged = !component.KnownCameras.TryGetValue(address, out var existingName)
+                        || existingName != name;
 
-                    UpdateUserInterface(uid, component);
+                    if (camerasChanged)
+                    {
+                        component.KnownCameras[address] = name;
+                        UpdateUserInterface(uid, component);
+                    }
+                    // _CS End: Only publish UI state when discovered camera data actually changes.
                     break;
                 case SurveillanceCameraSystem.CameraSubnetData:
+                    // _CS Start: Gate subnet UI updates to real subnet-list mutations.
+                    var subnetsChanged = false;
+
                     if (args.Data.TryGetValue(SurveillanceCameraSystem.CameraSubnetData, out string? subnet)
                         && !string.IsNullOrEmpty(subnet)
                         && !component.KnownSubnets.ContainsKey(subnet))
                     {
                         component.KnownSubnets.Add(subnet, args.SenderAddress);
+                        subnetsChanged = true;
 
                         // If the monitor was previously connected to this subnet (e.g. after a power
                         // restore or grid change) and has no active subnet right now, reconnect automatically.
@@ -163,7 +171,11 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
                         }
                     }
 
-                    UpdateUserInterface(uid, component);
+                    if (subnetsChanged)
+                    {
+                        UpdateUserInterface(uid, component);
+                    }
+                    // _CS End: Gate subnet UI updates to real subnet-list mutations.
                     break;
             }
         }
