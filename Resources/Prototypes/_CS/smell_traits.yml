@@ -413,6 +413,24 @@
   scentProtos:
   - Wildflowers
 
+- type: trait
+  id: ScentMetal
+  name: trait-scent-metal-name
+  description: trait-scent-metal-desc
+  category: Scents
+  cost: 1
+  scentProtos:
+  - Metal
+  
+- type: trait
+  id: ScentPennies
+  name: trait-scent-pennies-name
+  description: trait-scent-pennies-desc
+  category: Scents
+  cost: 1
+  scentProtos:
+  - Pennies
+
 # Lewd smells
 - type: trait
   id: ScentMusk

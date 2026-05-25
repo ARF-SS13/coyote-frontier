@@ -716,6 +716,31 @@
   msgsFar:
   - scent-wildflowers-far
 
+- type: scent
+  id: Metal
+  parent:
+  - ScentBase
+  msgsExamine:
+  - scent-metal-examine
+  msgsDirect:
+  - scent-metal-direct
+  msgsClose:
+  - scent-metal-close
+  msgsFar:
+  - scent-metal-far
+  
+- type: scent
+  id: Pennies
+  parent:
+  - ScentBase
+  msgsExamine:
+  - scent-pennies-examine
+  msgsDirect:
+  - scent-pennies-direct
+  msgsClose:
+  - scent-pennies-close
+  msgsFar:
+  - scent-pennies-far
 
 # Lewd Scents
 
