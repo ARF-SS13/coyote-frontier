@@ -92,7 +92,7 @@
   parent: [ BaseC2Contraband, CSBaseWeaponHeavySubMachineGunChamber40, CSBaseWeaponFrameHeavySubMachineGunFrontierGunsmith ]
   name: Typewriter
   description: |-
-    A modern take on the classic design used by mobsters throughout space and time.
+    A modern take on the classic design used by mobsters throughout space and time. Swiss em, fella's.
   components:
   - type: Gun
     soundGunshot:
